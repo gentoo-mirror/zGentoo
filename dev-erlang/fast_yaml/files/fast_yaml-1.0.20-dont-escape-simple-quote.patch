@@ -1,0 +1,19 @@
+--- a/src/fast_yaml.erl	2019-09-02 22:00:04.144612419 +0200
++++ b/src/fast_yaml.erl	2019-09-02 22:01:01.560213848 +0200
+@@ -146,7 +146,6 @@
+            ($\s) -> [$\s];  % $\s ==  "space"
+            ($\t) -> [$\\, "t"];  % $\t ==  "tab"
+            ($\v) -> [$\\, "v"];  % $\v ==  "vertical tab"
+-           ($') -> [$\\, $'];    % $"  ==  simple quote
+            ($") -> [$\\, $"];    % $"  ==  double quote
+            ($\\) -> [$\\, $\\];  % $\\ ==  backslash
+           (C) -> C
+@@ -382,7 +381,7 @@
+
+ encode_decode_simple_quote_test() ->
+     FileName = filename:join(["..", "test", "temp_test.yml"]),
+-    Binary = <<"\'\"\'">>,
++    Binary = <<"'\"'">>,
+     Encoded = encode([[{'Source', Binary}]]),
+     file:write_file(FileName, Encoded),
+     Decoded = decode_from_file(FileName, [plain_as_atom]),

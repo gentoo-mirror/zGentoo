@@ -1,0 +1,38 @@
+Subject: [PATCH] Adjust ejabberdctl for Gentoo jabberbase setup
+
+Set SHELL since the generic jabber user used on Gentoo for jabber
+servers doesn't have a valid shell set by default and fix EXEC_CMD
+otherwise it fails with This account is currently not available again
+due to jabber not having a valid shell.
+
+Also, workaround the assumption that jabber's /root is a directory when
+instead it defaults to /dev/null on Gentoo.
+---
+
+diff --git a/ejabberdctl.template b/ejabberdctl.template
+index 571b90b..71336c0 100755
+--- a/ejabberdctl.template.ori	2019-09-02 22:56:46.989503719 +0200
++++ b/ejabberdctl.template	2019-09-02 22:57:54.259019627 +0200
+@@ -80,6 +80,7 @@
+ ERL_LIBS={{libdir}}
+ ERL_CRASH_DUMP="$LOGS_DIR"/erl_crash_$(date "+%Y%m%d-%H%M%S").dump
+ ERL_INETRC="$ETC_DIR"/inetrc
++HOME=$SPOOL_DIR
+ 
+ # define ejabberd parameters
+ EJABBERD_OPTS="$EJABBERD_OPTS\
+@@ -103,12 +104,13 @@
+ export CONTRIB_MODULES_PATH
+ export CONTRIB_MODULES_CONF_DIR
+ export ERL_LIBS
++export HOME
+ 
+ # run command either directly or via su $INSTALLUSER
+ exec_cmd()
+ {
+     case $EXEC_CMD in
+-        as_install_user) su -s /bin/sh -c '"$0" "$@"' "$INSTALLUSER" -- "$@" ;;
++        as_install_user) su -p -s /bin/sh -c '"$0" "$@"' "$INSTALLUSER" -- "$@" ;;
+         as_current_user) "$@" ;;
+     esac
+ }

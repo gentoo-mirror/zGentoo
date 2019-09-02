@@ -1,0 +1,11 @@
+--- a/src/idevice.c 2019-01-04 16:27:45.898210681 +0100
++++ b/src/idevice.c 2019-01-04 16:28:44.724611964 +0100
+@@ -678,7 +678,7 @@
+ 	}
+ 	BIO_set_fd(ssl_bio, (int)(long)connection->data, BIO_NOCLOSE);
+ 
+-	SSL_CTX *ssl_ctx = SSL_CTX_new(SSLv3_method());
++	SSL_CTX *ssl_ctx = SSL_CTX_new(SSLv23_method());
+ 	if (ssl_ctx == NULL) {
+ 		debug_info("ERROR: Could not create SSL context.");
+ 		BIO_free(ssl_bio);

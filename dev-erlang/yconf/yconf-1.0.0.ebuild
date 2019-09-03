@@ -20,4 +20,4 @@ RDEPEND="media-libs/gd[png,jpeg,webp]
 	>=dev-erlang/fast_yaml-1.0.20"
 DEPEND="${RDEPEND}"
 
-DOCS=( README.md LICENSE )
+DOCS=( LICENSE )

@@ -1,17 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{3_5,3_6} )
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils \
-	pax-utils python-single-r1 toolchain-funcs eapi7-ver
+inherit git-r3 check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="http://www.blender.org"
 
-SRC_URI="http://download.blender.org/source/${P}.tar.gz"
+# SRC_URI="http://download.blender.org/source/${P}.tar.gz"
+EGIT_REPO_URI="https://git.blender.org/blender.git"
+EGIT_COMMIT="v2.81a"
 
 # Blender can have letters in the version string,
 # so strip off the letter if it exists.
@@ -96,8 +97,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-install-rules.patch"
-	"${FILESDIR}/${P}-gcc-8.patch"
-	"${FILESDIR}/${P}-ffmpeg-4-compat.patch"
 )
 
 blender_check_requirements() {

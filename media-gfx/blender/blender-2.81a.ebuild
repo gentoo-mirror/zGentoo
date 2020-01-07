@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit git-r3 check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils pax-utils python-single-r1 toolchain-funcs
+inherit git-r3 check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils pax-utils python-single-r1 toolchain-funcs eapi7-ver
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="http://www.blender.org"
@@ -16,6 +16,7 @@ EGIT_COMMIT="v2.81a"
 
 # Blender can have letters in the version string,
 # so strip off the letter if it exists.
+# HINT: in EAPI_7 inheritance 'eapi7-ver' must not be used
 MY_PV="$(ver_cut 1-2)"
 
 SLOT="0"
@@ -97,6 +98,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-install-rules.patch"
+#	"${FILESDIR}/${PN}-fix-cycles-bvh.patch"
 )
 
 blender_check_requirements() {
@@ -122,15 +124,14 @@ src_prepare() {
 	# we don't want static glew, but it's scattered across
 	# multiple files that differ from version to version
 	# !!!CHECK THIS SED ON EVERY VERSION BUMP!!!
-	local file
-	while IFS="" read -d $'\0' -r file ; do
-		sed -i -e '/-DGLEW_STATIC/d' "${file}" || die
-	done < <(find . -type f -name "CMakeLists.txt")
+	for f in `find . -type f -name "CMakeLists.txt"`; do
+		sed -i -e '/-DGLEW_STATIC/d' "${f}" || die
+	done
 
 	# Disable MS Windows help generation. The variable doesn't do what it
 	# it sounds like.
 	sed -e "s|GENERATE_HTMLHELP      = YES|GENERATE_HTMLHELP      = NO|" \
-	    -i doc/doxygen/Doxyfile || die
+		-i doc/doxygen/Doxyfile || die
 }
 
 src_configure() {

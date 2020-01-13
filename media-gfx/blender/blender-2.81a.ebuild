@@ -88,6 +88,7 @@ RDEPEND="${PYTHON_DEPS}
 	valgrind? ( dev-util/valgrind )"
 
 DEPEND="${RDEPEND}
+	dev-cpp/tbb
 	>=dev-cpp/eigen-3.2.8:3
 	virtual/pkgconfig
 	doc? (
@@ -98,7 +99,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-install-rules.patch"
-#	"${FILESDIR}/${PN}-fix-cycles-bvh.patch"
 )
 
 blender_check_requirements() {

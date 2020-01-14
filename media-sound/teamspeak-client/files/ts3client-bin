@@ -3,6 +3,11 @@
 # Sets BASEDIR for teamspeak3-client
 BASEDIR="/opt/teamspeak3-client"
 
+export KDEDIRS=
+export KDEDIR=
+export QTDIR="${BASEDIR}"
+export QT_PLUGIN_PATH="${BASEDIR}"
+
 # Work around DT_RPATH (.) security issue by chdir'ing into expected $LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="${BASEDIR}${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
 

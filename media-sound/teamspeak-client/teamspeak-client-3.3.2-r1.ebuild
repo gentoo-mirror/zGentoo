@@ -59,13 +59,14 @@ src_prepare() {
 
 src_install() {
 	exeinto /opt/teamspeak3-client
-	doexe error_report package_inst ts3client "${FILESDIR}"/ts3client-bin update  *.so*
+	doexe error_report package_inst ts3client "${FILESDIR}"/ts3client-bin update *.so* QtWebEngineProcess
 
 	exeinto /opt/teamspeak3-client/soundbackends
 	doexe soundbackends/*.so
 
 	insinto /opt/teamspeak3-client
-	doins -r gfx html resources sound styles translations iconengines imageformats xcbglintegrations qtwebengine_locales translations sqldrivers platforms
+	doins -r gfx html resources sound styles translations iconengines imageformats xcbglintegrations 
+	doins -r qtwebengine_locales translations sqldrivers platforms openglblacklist.json qt.conf
 
 	# not needed anymore - wee're using the shipped Qt - to get rid of qtwebengine
 	# dosym ../../usr/$(get_libdir)/qt5/libexec/QtWebEngineProcess /opt/teamspeak3-client/QtWebEngineProcess

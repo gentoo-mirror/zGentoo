@@ -1,0 +1,699 @@
+--- a/test/zziptests.py	2020-01-13 23:20:19.281853471 +0100
++++ b/test/zziptests.py	2020-01-13 23:35:25.002584699 +0100
+@@ -4,12 +4,12 @@
+ import inspect
+ import os
+ import collections
+-import urllib
++import urllib.request, urllib.parse, urllib.error
+ import shutil
+ import random
+ import re
+ from fnmatch import fnmatchcase as matches
+-from cStringIO import StringIO
++from io import StringIO
+ 
+ logg = logging.getLogger("test")
+ 
+@@ -27,7 +27,7 @@
+ def shell(command, shell=True, calls=False, cwd=None, env=None, lang=None, returncodes=None):
+     returncodes = returncodes or [ None, 0 ]
+     Shell = collections.namedtuple("Shell",["returncode", "output", "errors", "shell"])
+-    if isinstance(command, basestring):
++    if isinstance(command, str):
+        sh_command = command
+        command = [ command ]
+     else:
+@@ -35,7 +35,7 @@
+     if not env: 
+         env = os.environ.copy()
+     if lang:
+-        for name, value in env.items():
++        for name, value in list(env.items()):
+             if name.startswith("LC_"):
+                 env[name] = lang
+         env["LANG"] = lang # defines message format
+@@ -106,7 +106,7 @@
+     data = "tmp.download"
+     if not os.path.isdir(data):
+         os.makedirs(data)
+-    subname = urllib.quote_plus(base_url)
++    subname = urllib.parse.quote_plus(base_url)
+     subdir = os.path.join(data, subname)
+     if not os.path.isdir(subdir):
+         os.makedirs(subdir)
+@@ -118,7 +118,7 @@
+           shutil.copy(srcfile, subfile)
+     if not os.path.exists(subfile):
+        logg.info("need %s", subfile)
+-       d = urllib.urlopen(base_url + "/" + filename + style)
++       d = urllib.request.urlopen(base_url + "/" + filename + style)
+        f = open(subfile, "w")
+        f.write(d.read())
+        f.close()
+@@ -135,7 +135,7 @@
+     out, err = run.communicate()
+     return out
+ def grep(pattern, lines):
+-    if isinstance(lines, basestring):
++    if isinstance(lines, str):
+         lines = lines.split("\n")
+     for line in lines:
+        if re.search(pattern, line.rstrip()):
+@@ -143,7 +143,7 @@
+ def greps(lines, pattern):
+     return list(grep(pattern, lines))
+ def all_errors(lines):
+-    if isinstance(lines, basestring):
++    if isinstance(lines, str):
+         lines = lines.split("\n")
+     for line in lines:
+         if not line.strip():
+@@ -196,7 +196,7 @@
+     result = StringIO()
+     old1 = ''
+     old2 = ''
+-    for i in xrange(size):
++    for i in range(size):
+         while True:
+             x = random.choice("       abcdefghijklmnopqrstuvwxyz\n")
+             if x == old1 or x == old2: continue
+@@ -278,7 +278,7 @@
+     zipfile="test2.zip"
+     tmpdir="test2.tmp"
+     exe=self.bins("mkzip")
+-    for i in xrange(100):
++    for i in range(100):
+        filename = os.path.join(tmpdir,"file.%02i" % i)
+        filetext = "file-%02i\n" % i
+        self.mkfile(filename, filetext)
+@@ -294,7 +294,7 @@
+     zipfile="test3.zip"
+     tmpdir="test3.tmp"
+     exe=self.bins("mkzip")
+-    for i in xrange(1000):
++    for i in range(1000):
+        filename = os.path.join(tmpdir,"file.%03i" % i)
+        filetext = "file-%03i\n" % i
+        self.mkfile(filename, filetext)
+@@ -311,7 +311,7 @@
+     zipfile="test4.zip"
+     tmpdir="test4.tmp"
+     exe=self.bins("mkzip")
+-    for i in xrange(10000):
++    for i in range(10000):
+        filename = os.path.join(tmpdir,"file%04i.txt" % i)
+        filetext = "file-%04i\n" % i
+        self.mkfile(filename, filetext)
+@@ -328,12 +328,12 @@
+     zipfile="test5.zip"
+     tmpdir="test5.tmp"
+     exe=self.bins("mkzip")
+-    for depth in xrange(20):
++    for depth in range(20):
+       dirpath = ""
+-      for i in xrange(depth):
++      for i in range(depth):
+         if i:
+           dirpath += "subdir%i/" % i
+-      for size in xrange(18):
++      for size in range(18):
+         size = 2 ** size
+         filetext = self.gentext(size)
+         filepart = "file%i-%i.txt" % (depth, size)
+@@ -3467,7 +3467,7 @@
+     setstub="./zzipsetstub" + exeext
+     run = shell("{setstub} {exefile} {libstub}".format(**locals()))
+     self.assertFalse(run.returncode)
+-    os.chmod(exefile, 0755)
++    os.chmod(exefile, 0o755)
+     # now ask the new .exe to show some of its own content
+     run = shell("./{exefile} {txtfile_name}".format(**locals()))
+     self.assertFalse(run.returncode)
+--- a/docs/zzipdoc/textfileheader.py	2020-01-13 23:30:18.047800744 +0100
++++ b/docs/zzipdoc/textfileheader.py	2020-01-13 23:35:12.979034374 +0100
+@@ -1,4 +1,4 @@
+-from match import Match
++from .match import Match
+ 
+ class TextFileHeader:
+     """ scan for a comment block at the source file start and fill the
+@@ -17,7 +17,7 @@
+         x = Match()
+         text = self.textfile.get_src_text()
+         if not text:
+-            print "nonexistent file:", self.textfile.get_filename()
++            return("nonexistent file:", self.textfile.get_filename())
+             return False
+         if text & x(r"(?s)[/][*]+(\s(?:.(?!\*\/))*.)\*\/"
+                     r"(?:\s*\#(?:define|ifdef|endif)[ ]*\S*[ ]*\S*)*"
+--- a/docs/zzipdoc/options.py	2020-01-13 23:30:18.047800744 +0100
++++ b/docs/zzipdoc/options.py	2020-01-13 23:35:12.935036026 +0100
+@@ -3,13 +3,13 @@
+ # @creator (C) 2003 Guido U. Draheim
+ # @license http://creativecommons.org/licenses/by-nc-sa/2.0/de/
+ 
+-from match import Match
++from .match import Match
+ 
+ # use as o.optionname to check for commandline options.
+ class Options:
+     var = {}
+     def __getattr__(self, name):
+-        if not self.var.has_key(name): return None
++        if name not in self.var: return None
+         return self.var[name]
+     def __setattr__(self, name, value):
+         self.var[name] = value
+--- a/docs/zzipdoc/match.py	2020-01-13 23:30:18.047800744 +0100
++++ b/docs/zzipdoc/match.py	2020-01-13 23:35:12.921036551 +0100
+@@ -18,7 +18,7 @@
+         MatchReplace.__call__(self, matching, template, count, flags)
+     def __call__(self, matching, template = None, count = 0, flags = None):
+         """ other than __init__ the template may be left off to be unchanged"""
+-        if isinstance(count, basestring): # count/flags swapped over?
++        if isinstance(count, str): # count/flags swapped over?
+             flags = count; count = 0
+         if isinstance(matching, Match):
+             self.matching = matching
+--- a/docs/zzipdoc/match.py 2020-01-14 00:39:06.443161885 +0100
++++ b/docs/zzipdoc/match.py 2020-01-14 00:39:15.056943229 +0100
+@@ -57,7 +57,7 @@
+     def __call__(self, pattern, flags = None):
+         assert isinstance(pattern, str) or pattern is None
+         assert isinstance(flags, str) or flags is None
+-        str.__init__(self, pattern)
++        str.__init__(self)
+         self.replaced = 0 # set by subn() inside MatchReplace
+         self.found = None # set by search() to a MatchObject
+         self.pattern = pattern
+@@ -90,14 +90,14 @@
+ if __name__ == "__main__":
+     # matching:
+     if "foo" & Match("oo"):
+-        print "oo"
++        print("oo")
+     x = Match()
+     if "foo" & x("(o+)"):
+-        print x[1]
++        print(x[1])
+     # replacing:
+     y = "fooboo" & Match("oo") >> "ee"
+-    print y
++    print(y)
+     r = Match("oo") >> "ee"
+-    print "fooboo" & r
++    print("fooboo" & r)
+     s = MatchReplace("oo", "ee")
+-    print "fooboo" & s
++    print("fooboo" & s)
+--- a/docs/zzipdoc/functionprototype.py	2020-01-13 23:30:18.047800744 +0100
++++ b/docs/zzipdoc/functionprototype.py	2020-01-13 23:35:12.701044809 +0100
+@@ -1,4 +1,4 @@
+-from match import Match
++from .match import Match
+ 
+ class FunctionPrototype:
+     """ takes a single function prototype line (cut from some source file)
+--- a/docs/zzipdoc/functionlistreference.py	2020-01-13 23:30:18.046800769 +0100
++++ b/docs/zzipdoc/functionlistreference.py	2020-01-13 23:35:12.672045898 +0100
+@@ -1,7 +1,7 @@
+ #! /usr/bin/env python
+ # -*- coding: UTF-8 -*-
+-from match import Match
+-from htm2dbk import *
++from .match import Match
++from .htm2dbk import *
+ 
+ class FunctionListReference:
+     """ Creating a docbook-style <reference> list of <refentry> parts
+@@ -19,7 +19,7 @@
+         description = entry.body_xml_text(name)
+         funcsynopsis = entry.head_xml_text()
+         if not funcsynopsis:
+-            print "no funcsynopsis for", name
++            print("no funcsynopsis for", name)
+             return
+         if self.entry is None:
+             self.entry = FunctionListRefEntry(entry, self.o)
+--- a/docs/zzipdoc/functionlisthtmlpage.py	2020-01-13 23:30:18.046800769 +0100
++++ b/docs/zzipdoc/functionlisthtmlpage.py	2020-01-13 23:35:12.576049501 +0100
+@@ -1,5 +1,5 @@
+-from options import *
+-from match import Match
++from .options import *
++from .match import Match
+ 
+ class FunctionListHtmlPage:
+     """ The main part here is to create a TOC (table of contents) at the
+@@ -35,7 +35,7 @@
+         head_text = entry.head_xml_text()
+         body_text = entry.body_xml_text(name)
+         if not head_text:
+-            print "no head_text for", name
++            print("no head_text for", name)
+             return
+         try:
+             prespec = entry.head_get_prespec()
+@@ -102,7 +102,7 @@
+         text &= (Match("(?s)<link>(\w+)</link>")
+                  >> (lambda x: self.resolve_internal(x.group(1))))
+         if len(self.not_found_in_anchors):
+-            print "not found in anchors: ", self.not_found_in_anchors
++            print("not found in anchors: ", self.not_found_in_anchors)
+         return (text & Match("(?s)<link>([^<>]*)</link>")
+                 >> "<code>\\1</code>")
+     def resolve_external(self, func, sect):
+--- a/docs/zzipdoc/functionheader.py	2020-01-13 23:30:18.046800769 +0100
++++ b/docs/zzipdoc/functionheader.py	2020-01-13 23:35:12.514051829 +0100
+@@ -1,4 +1,4 @@
+-from match import Match
++from .match import Match
+ 
+ class FunctionHeader:
+     """ parsing the comment block that is usually presented before
+--- a/docs/zzipdoc/commentmarkup.py	2020-01-13 23:30:18.046800769 +0100
++++ b/docs/zzipdoc/commentmarkup.py	2020-01-13 23:35:12.408055807 +0100
+@@ -1,4 +1,4 @@
+-from match import Match
++from .match import Match
+ 
+ def markup_link_syntax(text):
+     """ markup the link-syntax ` => somewhere ` in the text block """
+--- a/docs/zzipdoc/textfile.py	2020-01-13 23:20:19.274853647 +0100
++++ b/docs/zzipdoc/textfile.py	2020-01-13 23:35:12.957035200 +0100
+@@ -41,7 +41,7 @@
+         self._line(self.src_text, offset)
+     def _line(self, text, offset):
+         line = 1
+-        for x in xrange(0,offset):
++        for x in range(0,offset):
+             if x == "\n":
+                 line += 1
+         return line
+--- a/docs/zzipdoc/htmldocument.py	2020-01-13 23:20:19.274853647 +0100
++++ b/docs/zzipdoc/htmldocument.py	2020-01-13 23:35:12.821040305 +0100
+@@ -1,6 +1,6 @@
+ #! /usr/bin/env python
+ # -*- coding: UTF-8 -*-
+-from match import Match
++from .match import Match
+ 
+ class HtmlDocument:
+     """ binds some html content page with additional markup - in this
+@@ -42,18 +42,18 @@
+         try:   return style.html_style()
+         except Exception as e: ee = e; pass
+         try:   return style.xml_style()
+-        except Exception as e: print "HtmlDocument/style", ee, e; pass
++        except Exception as e: print("HtmlDocument/style", ee, e); pass
+         try:   return str(style)
+-        except Exception as e: print "HtmlDocument/style", e; return ""
++        except Exception as e: print("HtmlDocument/style", e); return ""
+     def _html_text(self, html):
+         """ accepts adapter objects with .html_text() and .xml_text() """
+         ee = None
+         try:   return html.html_text()
+         except Exception as e: ee = e; pass
+         try:   return html.xml_text()
+-        except Exception as e: print "HtmlDocument/text", ee, e; pass
++        except Exception as e: print("HtmlDocument/text", ee, e); pass
+         try:   return str(html)
+-        except Exception as e: print "HtmlDocument/text", e; return "&nbsp;"
++        except Exception as e: print("HtmlDocument/text", e); return "&nbsp;"
+     def navigation(self):
+         if self.navi:
+             return self.navi
+@@ -103,15 +103,15 @@
+         return filename
+     def save(self, filename = None):
+         filename = self._filename(filename)
+-        print "writing '"+filename+"'"
++        print("writing '"+filename+"'")
+         try:
+             fd = open(filename, "w")
+-            print >>fd, self.html_header()
++            print(self.html_header(), file=fd)
+             for text in self.text:
+-                print >>fd, self._html_text(text)
+-            print >>fd, self.html_footer()
++                print(self._html_text(text), file=fd)
++            print(self.html_footer(), file=fd)
+             fd.close()
+             return True
+         except IOError as e:
+-            print "could not open '"+filename+"'file", e
++            print("could not open '"+filename+"'file", e)
+             return False
+--- a/docs/zzipdoc/htm2dbk.py	2020-01-13 23:20:19.274853647 +0100
++++ b/docs/zzipdoc/htm2dbk.py	2020-01-13 23:35:12.765042407 +0100
+@@ -7,7 +7,7 @@
+ present in the world of docbook-to-anything converters. """
+ 
+ from datetime import date
+-import match
++from . import match
+ import sys
+ 
+ m = match.Match
+@@ -147,7 +147,7 @@
+             doc.add(f.read())
+             f.close()
+         except IOError as e:
+-            print >> sys.stderr, "can not open "+filename
++            print("can not open "+filename, file=sys.stderr)
+     return doc.value()
+ 
+ def html2docbook(text):
+@@ -155,4 +155,4 @@
+     return htm2dbk_conversion().convert2(text)
+ 
+ if __name__ == "__main__":
+-    print htm2dbk_files(sys.argv[1:])
++    print(htm2dbk_files(sys.argv[1:]))
+--- a/docs/zzipdoc/docbookdocument.py	2020-01-13 23:20:19.274853647 +0100
++++ b/docs/zzipdoc/docbookdocument.py	2020-01-13 23:35:12.470053480 +0100
+@@ -1,6 +1,6 @@
+ #! /usr/bin/env python
+ # -*- coding: UTF-8 -*-
+-from match import Match
++from .match import Match
+ 
+ class DocbookDocument:
+     """ binds some xml content page with additional markup - in this
+@@ -30,7 +30,7 @@
+     def _xml_text(self, xml):
+         """ accepts adapter objects with .xml_text() """
+         try:   return xml.xml_text()
+-        except Exception as e: print "DocbookDocument/text", e; pass
++        except Exception as e: print("DocbookDocument/text", e); pass
+         return str(xml)
+     def _fetch_rootnode(self, text):
+         fetch = Match(r"^[^<>]*<(\w+)\b")
+@@ -47,7 +47,7 @@
+         return filename
+     def save(self, filename = None):
+         filename = self._filename(filename)
+-        print "writing '"+filename+"'"
++        print("writing '"+filename+"'")
+         if len(self.text) > 1:
+             self.save_all(filename)
+         else:
+@@ -58,12 +58,12 @@
+             xml_text = self._xml_text(text)
+             rootnode = self._fetch_rootnode(xml_text)
+             doctype = self._xml_doctype(rootnode)
+-            print >>fd, doctype
+-            print >>fd, xml_text
++            print(doctype, file=fd)
++            print(xml_text, file=fd)
+             fd.close()
+             return True
+         except IOError as e:
+-            print "could not open '"+filename+"'file", e
++            print("could not open '"+filename+"'file", e)
+             return False
+     def save_all(self, filename):
+         assert len(self.text) > 1
+@@ -76,20 +76,20 @@
+             else:
+                 rootnode = self.rootnode
+             doctype = self._xml_doctype(rootnode)
+-            print >>fd, doctype
++            print(doctype, file=fd)
+             title = self.get_title()
+             if title and self.rootnode in self.has_title_child:
+-                print >>fd, "<"+self.rootnode+'><title>'+title+'</title>'
++                print("<"+self.rootnode+'><title>'+title+'</title>', file=fd)
+             elif title:
+-                print >>fd, "<"+self.rootnode+' id="'+title+'">'
++                print("<"+self.rootnode+' id="'+title+'">', file=fd)
+             else:
+-                print >>fd, "<"+self.rootnode+'>'
++                print("<"+self.rootnode+'>', file=fd)
+             for text in self.text:
+                 text = self._xml_text(text)
+-                print >>fd, text
+-            print >>fd, "</"+self.rootnode+">"
++                print(text, file=fd)
++            print("</"+self.rootnode+">", file=fd)
+             fd.close()
+             return True
+         except IOError as e:
+-            print "could not open '"+filename+"'file", e
++            print("could not open '"+filename+"'file", e)
+             return False
+--- a/docs/zzipdoc/dbk2htm.py	2020-01-13 23:20:19.273853672 +0100
++++ b/docs/zzipdoc/dbk2htm.py	2020-01-13 23:35:12.422055282 +0100
+@@ -1,4 +1,4 @@
+-from match import Match
++from .match import Match
+ import string
+ 
+ class dbk2htm_conversion:
+--- a/docs/makedocs.py	2020-01-13 23:20:19.272853698 +0100
++++ b/docs/makedocs.py	2020-01-13 23:35:12.371057196 +0100
+@@ -1,4 +1,4 @@
+-from __future__ import print_function
++
+ import sys
+ from zzipdoc.match import *
+ from zzipdoc.options import *
+--- a/docs/make-doc.py	2020-01-13 23:20:19.272853698 +0100
++++ b/docs/make-doc.py	2020-01-13 23:35:12.198063690 +0100
+@@ -3,7 +3,7 @@
+ import sys
+ import re
+ import string
+-import commands
++import subprocess
+ import warnings
+ 
+ errors = 0
+@@ -23,7 +23,7 @@
+ def m(string, pattern):
+     return re.match(pattern, string)
+ def sorted_keys(dict):
+-    keys = dict.keys()
++    keys = list(dict.keys())
+     keys.sort()
+     return keys
+ 
+@@ -126,7 +126,7 @@
+ class Options:
+     var = {}
+     def __getattr__(self, name):
+-        if not self.var.has_key(name): return None
++        if name not in self.var: return None
+         return self.var[name]
+     def __setattr__(self, name, value):
+         self.var[name] = value
+@@ -135,15 +135,15 @@
+ o = Options()
+ o.verbose = 0
+ 
+-o.version = s( commands.getoutput(
++o.version = s( subprocess.getoutput(
+     """ grep -i "^version *:" *.spec 2>/dev/null |
+         sed -e "s/[Vv]ersion *: *//" """),  r"\s*",r"")
+-o.package = s(commands.getoutput(
++o.package = s(subprocess.getoutput(
+     """ grep -i "^name *:" *.spec 2>/dev/null |
+         sed -e "s/[Nn]ame *: *//" """),     r"\s*",r"")
+ 
+ if not len(o.version):
+-    o.version = commands.getoutput(""" date +%Y.%m.%d """)
++    o.version = subprocess.getoutput(""" date +%Y.%m.%d """)
+ if not len(o.package):
+     o.package = "_project"
+ 
+@@ -158,7 +158,7 @@
+         self.copyright = ""
+     def __getattr__(self, name):
+         """ defend against program to break on uninited members """
+-        if self.__dict__.has_key(name): return self.__dict__[name]
++        if name in self.__dict__: return self.__dict__[name]
+         warn("no such member: "+name); return None
+     def set_author(self, text):
+         if self.authors:
+@@ -294,12 +294,12 @@
+ #        return ""
+     def __getattr__(self, name):
+         """ defend against program exit on members being not inited """
+-        if self.__dict__.has_key(name): return self.__dict__[name]
++        if name in self.__dict__: return self.__dict__[name]
+         warn("no such member: "+name); return None
+     def dict(self):
+         return self.__dict__
+     def dict_sorted_keys(self):
+-        keys = self.__dict__.keys()
++        keys = list(self.__dict__.keys())
+         keys.sort()
+         return keys
+     def parse(self, prototype):
+@@ -376,7 +376,7 @@
+         function.head = s(function.head, r"(.*)also:(.*)", lambda x
+                           : set_seealso(function, x.group(2)) and x.group(1))
+         if function.seealso and None:
+-            print "function[",function.name,"].seealso=",function.seealso
++            print("function[",function.name,"].seealso=",function.seealso)
+ examine_head_anchors(function_list)
+ 
+ # =============================================================== HTML =====
+@@ -455,7 +455,7 @@
+             s(ensure_name(this_function_link(section2html( func.body ),
+                                              func.name), func.name),
+               r"(?sx) (</?para>\s*) <br\s*\/>", r"\1"))
+-    return combined.values()
++    return list(combined.values())
+ html_pages = combined_html_pages(function_list)
+ 
+ def html_resolve_links_on_page(text, list):
+@@ -495,7 +495,7 @@
+         return T
+     def add_page_map(self, list):
+         """ generate the index-block at the start of the onepage-html file """
+-        keys = list.keys()
++        keys = list(list.keys())
+         keys.sort()
+         for name in keys:
+             self.toc += "<tr valign=\"top\">\n"+ \
+@@ -528,7 +528,7 @@
+     warn(# ............. open(o.libhtmlfile, "w") ..............
+         "can not open html output file: "+o.libhtmlfile, error)
+ else:
+-    print >> F, html.page_text()
++    print(html.page_text(), file=F)
+     F.close()
+ #fi
+ 
+@@ -954,7 +954,7 @@
+         if not header[file].authors and page.authors_list:
+             header[file].authors_list = page.authors_list
+         if not header[file].description:
+-            found = m(commands.getoutput("cat "+o.package+".spec"),
++            found = m(subprocess.getoutput("cat "+o.package+".spec"),
+                       r"(?s)\%description\b([^\%]*)\%")
+             if found:
+                 header[file].description = found.group(1)
+@@ -990,19 +990,19 @@
+ except IOError as error:
+     warn("can not open docbook output file: "+o.docbookfile, error)
+ else:
+-    print >> F, doctype, '<reference><title>Manual Pages</title>'
++    print(doctype, '<reference><title>Manual Pages</title>', file=F)
+ 
+     for page in combined_pages:
+-        print >> F, page.refentry_text()
++        print(page.refentry_text(), file=F)
+     #od
+ 
+-    for page in header_refpages.values():
++    for page in list(header_refpages.values()):
+         if not page.refentry: continue
+-        print >> F, "\n<!-- _______ "+page.id+" _______ -->",
+-        print >> F, page.refentry_text()
++        print("\n<!-- _______ "+page.id+" _______ -->", end=' ', file=F)
++        print(page.refentry_text(), file=F)
+     #od
+ 
+-    print >> F, "\n",'</reference>',"\n"
++    print("\n",'</reference>',"\n", file=F)
+     F.close()
+ #fi
+ 
+@@ -1014,13 +1014,13 @@
+ else:
+     for func in function_list:
+         name = func.name
+-        print >> F, "<fn id=\""+name+"\">"+"<!-- FOR \""+name+"\" -->\n"
++        print("<fn id=\""+name+"\">"+"<!-- FOR \""+name+"\" -->\n", file=F)
+         for H in sorted_keys(func.dict()):
+-            print >> F, "<"+H+" name=\""+name+"\">",
+-            print >> F, str(func.dict()[H]),
+-            print >> F, "</"+H+">"
++            print("<"+H+" name=\""+name+"\">", end=' ', file=F)
++            print(str(func.dict()[H]), end=' ', file=F)
++            print("</"+H+">", file=F)
+         #od
+-        print >> F, "</fn><!-- END \""+name+"\" -->\n\n";
++        print("</fn><!-- END \""+name+"\" -->\n\n", file=F);
+     #od
+     F.close();
+ #fi
+--- a/docs/dir2index.py	2020-01-13 23:20:19.272853698 +0100
++++ b/docs/dir2index.py	2020-01-13 23:35:11.837077245 +0100
+@@ -1,5 +1,5 @@
+ #! /usr/bin/python
+-from __future__ import print_function
++
+ 
+ """ Searches through a directory and creates an index page for it
+ """
+--- a/docs/dbk2man.py	2020-01-13 23:20:19.271853723 +0100
++++ b/docs/dbk2man.py	2020-01-13 23:35:11.781079348 +0100
+@@ -1,5 +1,5 @@
+ #! /usr/bin/python
+-from __future__ import print_function
++
+ 
+ """ Converts an xml-file with docbook elements into troff manual pages.
+     The conversion uses etree expecting <refentry> elements in the input.
+@@ -67,7 +67,7 @@
+             logg.warning("found <%s> instead", refentry.tag)
+             continue
+         overviewref = refentry2(man, refentry, subdirectory, title)
+-        for filename, overviewentry in overviewref.items():
++        for filename, overviewentry in list(overviewref.items()):
+             overview[filename] = overviewentry
+     return overview
+ 
+--- a/docs/cpp2markdown.py	2020-01-13 23:20:19.271853723 +0100
++++ b/docs/cpp2markdown.py	2020-01-13 23:35:11.566087423 +0100
+@@ -62,7 +62,7 @@
+     def run(self, filename):
+         filetext = open(filename).read()
+         for line in self.process(filetext, filename):
+-            print line
++            print(line)
+     def process(self, filetext, filename=""):
+         for token, text in self.parse(filetext):
+             if token == FileInclude:
+@@ -86,7 +86,7 @@
+             else:
+                 if text:
+                     yield "#### NOTES"
+-                    print token, text.replace("\n", "\n  ")
++                    print(token, text.replace("\n", "\n  "))
+     def isexported_function(self):
+         function = self.function_text.strip().replace("\n"," ")
+         logg.debug("@ --------------------------------------") 
+--- a/docs/cpp2markdown-1.py	2020-01-13 23:20:19.271853723 +0100
++++ b/docs/cpp2markdown-1.py	2020-01-13 23:35:11.480090653 +0100
+@@ -39,7 +39,7 @@
+         check2 = re.compile(r"^\s[*]\s+\b[Cc]opyright\b")
+         empty1 = re.compile(r"^\s[*]\s*$")
+         state = "intro"
+-        for i in xrange(1,len(lines)-1):
++        for i in range(1,len(lines)-1):
+             line = lines[i]
+             if state == "intro":
+                 if empty1.match(line):
+@@ -108,7 +108,7 @@
+     def run(self, filename):
+         filetext = open(filename).read()
+         for line in self.process(filetext, filename):
+-            print line
++            print(line)
+     def process(self, filetext, filename=""):
+         section_ruler = "-----------------------------------------"
+         copyright = ""
+@@ -136,7 +136,7 @@
+             else:
+                 if text:
+                     yield "#### NOTES"
+-                    print token, text.replace("\n", "\n  ")
++                    print(token, text.replace("\n", "\n  "))
+         if copyright:
+             yield section_ruler
+             yield "### COPYRIGHT"

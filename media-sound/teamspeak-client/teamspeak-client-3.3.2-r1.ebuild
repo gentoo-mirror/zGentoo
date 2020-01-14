@@ -22,14 +22,6 @@ RDEPEND="
 	app-arch/snappy:0/1
 	dev-libs/openssl-compat:1.0.0
 	dev-libs/quazip
-	>dev-qt/qtcore-5.12.3:5
-	>dev-qt/qtgui-5.12.3:5[accessibility,dbus,xcb]
-	>dev-qt/qtnetwork-5.12.3:5
-	>dev-qt/qtsql-5.12.3:5[sqlite]
-	>dev-qt/qtsvg-5.12.3:5
-	>dev-qt/qtwebchannel-5.12.3:5
-	>dev-qt/qtwebengine-5.12.3:5[widgets]
-	>dev-qt/qtwidgets-5.12.3:5
 	net-libs/libsrtp:0
 	sys-libs/libcxx[libcxxabi]
 	sys-libs/zlib:0/1
@@ -49,6 +41,7 @@ QA_PREBUILT="
 	opt/teamspeak3-client/soundbackends/libpulseaudio_linux_*.so
 	opt/teamspeak3-client/ts3client
 	opt/teamspeak3-client/update
+	opt/teamspeak3-client/*.so*
 "
 
 src_prepare() {
@@ -66,15 +59,16 @@ src_prepare() {
 
 src_install() {
 	exeinto /opt/teamspeak3-client
-	doexe error_report package_inst ts3client "${FILESDIR}"/ts3client-bin update
+	doexe error_report package_inst ts3client "${FILESDIR}"/ts3client-bin update  *.so*
 
 	exeinto /opt/teamspeak3-client/soundbackends
 	doexe soundbackends/*.so
 
 	insinto /opt/teamspeak3-client
-	doins -r gfx html resources sound styles translations
+	doins -r gfx html resources sound styles translations iconengines imageformats xcbglintegrations qtwebengine_locales translations sqldrivers platforms
 
-	dosym ../../usr/$(get_libdir)/qt5/libexec/QtWebEngineProcess /opt/teamspeak3-client/QtWebEngineProcess
+	# not needed anymore - wee're using the shipped Qt - to get rid of qtwebengine
+	# dosym ../../usr/$(get_libdir)/qt5/libexec/QtWebEngineProcess /opt/teamspeak3-client/QtWebEngineProcess
 
 	dodir /opt/bin
 	dosym ../teamspeak3-client/ts3client-bin /opt/bin/ts3client

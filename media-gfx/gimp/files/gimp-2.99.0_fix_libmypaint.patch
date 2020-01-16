@@ -1,0 +1,22 @@
+--- a/app/paint/gimpmybrushcore.c
++++ b/app/paint/gimpmybrushcore.c
+@@ -285,7 +285,8 @@
+                                    0.0f,
+                                    coords->xtilt,
+                                    coords->ytilt,
+-                                   1.0f /* Pretend the cursor hasn't moved in a while */);
++                                   1.0f, /* Pretend the cursor hasn't moved in a while */
++                                   0.0f, 0.0f, 0.0f); // fix for libmypaint-2.0.0_beta1
+         }
+ 
+       dt = 0.015;
+@@ -317,7 +318,8 @@
+                                pressure,
+                                coords->xtilt,
+                                coords->ytilt,
+-                               dt);
++                               dt,
++                               0.0f, 0.0f, 0.0f); // fix for libmypaint-2.0.0_beta1
+     }
+ 
+   mybrush->private->last_time = time;

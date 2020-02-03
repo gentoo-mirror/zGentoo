@@ -1,0 +1,3 @@
+# upstream underneath gui-libs
+net-libs/libwpe
+net-libs/libwpe-backend

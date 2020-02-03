@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,16 +8,16 @@ inherit desktop flag-o-matic linux-info linux-mod multilib-minimal \
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/"
 
+AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 ARM_NV_PACKAGE="NVIDIA-Linux-armv7l-gnueabihf-${PV}"
 
-NV_TPV="440.44"
-
-NV_URI="https://developer.download.nvidia.com/assets/gameworks/downloads/secure/Vulkan_Beta_Drivers"
+NV_URI="https://us.download.nvidia.com/XFree86/"
 SRC_URI="
-	amd64? ( https://developer.nvidia.com/vulkan-beta-${PV/./}0${PVR#*-r}-linux -> ${AMD64_NV_PACKAGE}.run )
+	amd64-fbsd? ( ${NV_URI}FreeBSD-x86_64/${PV}/${AMD64_FBSD_NV_PACKAGE}.tar.gz )
+	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
 	tools? (
-		https://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${NV_TPV}.tar.bz2
+		https://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2
 	)
 "
 
@@ -26,7 +26,7 @@ KEYWORDS="-* amd64"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
-IUSE="acpi compat +driver gtk3 kernel_linux +kms libglvnd multilib static-libs +tools uvm wayland +X"
+IUSE="acpi compat +driver gtk3 kernel_FreeBSD kernel_linux +kms libglvnd multilib static-libs +tools uvm wayland +X"
 REQUIRED_USE="
 	tools? ( X )
 	static-libs? ( tools )
@@ -82,7 +82,7 @@ RDEPEND="
 QA_PREBUILT="opt/* usr/lib*"
 S=${WORKDIR}/
 PATCHES=(
-	"${FILESDIR}"/${PN}-440.26-locale.patch
+	"${FILESDIR}"/${P}-locale.patch
 )
 NV_KV_MAX_PLUS="5.5"
 CONFIG_CHECK="!DEBUG_MUTEXES ~!I2C_NVIDIA_GPU ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
@@ -123,12 +123,24 @@ pkg_setup() {
 	fi
 
 	# set variables to where files are in the package structure
-	NV_DOC="${S}"
-	NV_OBJ="${S}"
-	NV_SRC="${S}/kernel"
-	NV_MAN="${S}"
-	NV_X11="${S}"
-	NV_SOVER=${PV}.0${PVR#*-r}
+	if use kernel_FreeBSD; then
+		use amd64-fbsd && S="${WORKDIR}/${AMD64_FBSD_NV_PACKAGE}"
+		NV_DOC="${S}/doc"
+		NV_OBJ="${S}/obj"
+		NV_SRC="${S}/src"
+		NV_MAN="${S}/x11/man"
+		NV_X11="${S}/obj"
+		NV_SOVER=1
+	elif use kernel_linux; then
+		NV_DOC="${S}"
+		NV_OBJ="${S}"
+		NV_SRC="${S}/kernel"
+		NV_MAN="${S}"
+		NV_X11="${S}"
+		NV_SOVER=${PV}
+	else
+		die "Could not determine proper NVIDIA package"
+	fi
 }
 
 src_configure() {
@@ -144,10 +156,14 @@ src_prepare() {
 	done
 
 	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-fno-common.patch "${WORKDIR}" || die
 		cp "${FILESDIR}"/nvidia-settings-linker.patch "${WORKDIR}" || die
 		sed -i \
-			-e "s:@PV@:${NV_TPV}:g" \
-			"${WORKDIR}"/nvidia-settings-linker.patch || die
+			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-fno-common.patch \
+			"${WORKDIR}"/nvidia-settings-linker.patch \
+			|| die
+		eapply "${WORKDIR}"/nvidia-settings-fno-common.patch
 		eapply "${WORKDIR}"/nvidia-settings-linker.patch
 	fi
 
@@ -161,14 +177,17 @@ src_prepare() {
 
 src_compile() {
 	cd "${NV_SRC}"
-	if use driver && use kernel_linux; then
+	if use kernel_FreeBSD; then
+		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
+			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
+	elif use driver && use kernel_linux; then
 		BUILD_TARGETS=module linux-mod_src_compile \
 			KERNELRELEASE="${KV_FULL}" \
 			src="${KERNEL_DIR}"
 	fi
 
 	if use tools; then
-		emake -C "${S}"/nvidia-settings-${NV_TPV}/src/libXNVCtrl \
+		emake -C "${S}"/nvidia-settings-${PV}/src/libXNVCtrl \
 			DO_STRIP= \
 			LIBDIR="$(get_libdir)" \
 			NVLD="$(tc-getLD)" \
@@ -176,7 +195,7 @@ src_compile() {
 			OUTPUTDIR=. \
 			RANLIB="$(tc-getRANLIB)"
 
-		emake -C "${S}"/nvidia-settings-${NV_TPV}/src \
+		emake -C "${S}"/nvidia-settings-${PV}/src \
 			DO_STRIP= \
 			GTK3_AVAILABLE=$(usex gtk3 1 0) \
 			LIBDIR="$(get_libdir)" \
@@ -247,6 +266,14 @@ src_install() {
 		exeinto "$(get_udevdir)"
 		newexe "${FILESDIR}"/nvidia-udev.sh-r1 nvidia-udev.sh
 		udev_newrules "${FILESDIR}"/nvidia.udev-rule 99-nvidia.rules
+	elif use kernel_FreeBSD; then
+		if use x86-fbsd; then
+			insinto /boot/modules
+			doins "${S}/src/nvidia.kld"
+		fi
+
+		exeinto /boot/modules
+		doexe "${S}/src/nvidia.ko"
 	fi
 
 	# NVIDIA kernel <-> userspace driver config lib
@@ -326,7 +353,7 @@ src_install() {
 	fi
 
 	if use tools; then
-		emake -C "${S}"/nvidia-settings-${NV_TPV}/src/ \
+		emake -C "${S}"/nvidia-settings-${PV}/src/ \
 			DESTDIR="${D}" \
 			DO_STRIP= \
 			GTK3_AVAILABLE=$(usex gtk3 1 0) \
@@ -338,20 +365,22 @@ src_install() {
 			install
 
 		if use static-libs; then
-			dolib.a "${S}"/nvidia-settings-${NV_TPV}/src/libXNVCtrl/libXNVCtrl.a
+			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
 
 			insinto /usr/include/NVCtrl
-			doins "${S}"/nvidia-settings-${NV_TPV}/src/libXNVCtrl/*.h
+			doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
 		fi
 
 		insinto /usr/share/nvidia/
-		doins nvidia-application-profiles-${NV_SOVER}-key-documentation
+		doins nvidia-application-profiles-${PV}-key-documentation
 
 		insinto /etc/nvidia
 		newins \
-			nvidia-application-profiles-${NV_SOVER}-rc nvidia-application-profiles-rc
+			nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
 
-		doicon ${NV_OBJ}/nvidia-settings.png
+		# There is no icon in the FreeBSD tarball.
+		use kernel_FreeBSD || \
+			doicon ${NV_OBJ}/nvidia-settings.png
 
 		domenu "${FILESDIR}"/nvidia-settings.desktop
 
@@ -375,12 +404,20 @@ src_install() {
 	is_final_abi || die "failed to iterate through all ABIs"
 
 	# Documentation
-	newdoc "${NV_DOC}/README.txt" README
-	dodoc "${NV_DOC}/NVIDIA_Changelog"
-	doman "${NV_MAN}"/nvidia-smi.1
-	use X && doman "${NV_MAN}"/nvidia-xconfig.1
-	use tools && doman "${NV_MAN}"/nvidia-settings.1
-	doman "${NV_MAN}"/nvidia-cuda-mps-control.1
+	if use kernel_FreeBSD; then
+		dodoc "${NV_DOC}/README"
+		use X && doman "${NV_MAN}"/nvidia-xconfig.1
+		use tools && doman "${NV_MAN}"/nvidia-settings.1
+	else
+		# Docs
+		newdoc "${NV_DOC}/README.txt" README
+		dodoc "${NV_DOC}/NVIDIA_Changelog"
+		doman "${NV_MAN}"/nvidia-smi.1
+		use X && doman "${NV_MAN}"/nvidia-xconfig.1
+		use tools && doman "${NV_MAN}"/nvidia-settings.1
+		doman "${NV_MAN}"/nvidia-cuda-mps-control.1
+	fi
+
 	readme.gentoo_create_doc
 
 	docinto html
@@ -439,6 +476,12 @@ src_install-libs() {
 		then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-egl-wayland.so.1.1.4"
+			)
+		fi
+
+		if use kernel_FreeBSD; then
+			NV_GLX_LIBRARIES+=(
+				"libnvidia-tls.so.${NV_SOVER}"
 			)
 		fi
 

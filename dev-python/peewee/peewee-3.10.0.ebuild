@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite(+)"
 
 inherit distutils-r1
@@ -16,9 +16,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
-DEPEND="dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+DEPEND="dev-python/cython
+	dev-python/setuptools
+	doc? ( dev-python/sphinx )"
 
 # Req'd to ensure a unique tmp.db for each python impl running the testsuite.
 DISTUTILS_IN_SOURCE_BUILD=1

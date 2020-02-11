@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools bash-completion-r1 multilib python-single-r1 systemd vala xdg
@@ -57,10 +57,10 @@ DEPEND="${COMMON_DEPEND}
 	vala? ( $(vala_depend) )
 "
 RDEPEND="${COMMON_DEPEND}
-	>=app-portage/layman-2[${PYTHON_USEDEP}]
-	>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
+	>=app-portage/layman-2
+	>=sys-apps/portage-2.2
 	consolekit? ( sys-auth/consolekit )
-	entropy? ( >=sys-apps/entropy-234[${PYTHON_USEDEP}] )
+	entropy? ( >=sys-apps/entropy-234 )
 "
 
 PATCHES=(

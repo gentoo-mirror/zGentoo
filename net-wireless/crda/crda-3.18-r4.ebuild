@@ -25,11 +25,11 @@ RDEPEND="!gcrypt? (
 	net-wireless/wireless-regdb"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/m2crypto[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/m2crypto')
 	virtual/pkgconfig"
 
 python_check_deps() {
-	has_version --host-root "dev-python/m2crypto[${PYTHON_USEDEP}]"
+	has_version --host-root "dev-python/m2crypto"
 }
 
 PATCHES=(

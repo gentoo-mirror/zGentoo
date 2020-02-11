@@ -65,7 +65,7 @@ COMMON_DEPEND="
 	postscript? ( app-text/ghostscript-gpl )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.0:3
 		>=dev-python/pygments-2.5.0
 	)
 	udev? ( >=dev-libs/libgudev-167:= )

@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-r1
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	app-accessibility/at-spi2-core
-	>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}]
+	>=dev-python/pygobject-2.90.3:3
 	>=x11-libs/gtk+-3:3[introspection]
 	x11-libs/gtk+:2
 	>=dev-libs/gobject-introspection-0.10.7:=
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	dev-libs/glib[dbus]
-	>=dev-python/pyatspi-2.1.90[${PYTHON_USEDEP}]
+	>=dev-python/pyatspi-2.1.90
 	>=gnome-base/gsettings-desktop-schemas-3
 	gnome-base/librsvg:2
 	sys-apps/dbus

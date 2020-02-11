@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-    dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/pytest-cov[${PYTHON_USEDEP}]"
+    dev-python/mock
+	dev-python/pytest-cov"
 DEPEND="
     ${RDEPEND}
-    dev-python/setuptools[${PYTHON_USEDEP}]"
+    dev-python/setuptools"

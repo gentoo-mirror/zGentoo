@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -18,8 +18,8 @@ IUSE="doc test"
 
 RDEPEND="
 	test? ( 
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/hypothesis[${PYTHON_USEDEP}] 
+		dev-python/pytest
+		dev-python/hypothesis 
 	)
 "
 DEPEND="${RDEPEND}

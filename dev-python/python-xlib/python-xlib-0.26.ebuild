@@ -16,9 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
-RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/six"
 DEPEND="${RDEPEND}
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm
 	doc? ( sys-apps/texinfo )"
 
 # DISTUTILS_IN_SOURCE_BUILD=1

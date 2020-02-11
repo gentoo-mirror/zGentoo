@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
@@ -28,55 +28,55 @@ REQUIRED_USE="
 		)"
 
 COMMON_DEPEND="
-	dev-python/cycler[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
-	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
-	dev-python/pytz[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+	dev-python/cycler
+	>=dev-python/numpy-1.7.1
+	dev-python/python-dateutil:0
+	dev-python/pytz
+	>=dev-python/six-1.10
 	media-fonts/stix-fonts
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=media-libs/qhull-2013
-	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
-	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
+	>=dev-python/kiwisolver-1.0.0
+	cairo? ( dev-python/cairocffi )
 	gtk2? (
 		dev-libs/glib:2=
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
-		dev-python/pygtk[${PYTHON_USEDEP}] )
-	wxwidgets? ( >=dev-python/wxpython-2.8:*[${PYTHON_USEDEP}] )"
+		dev-python/pygtk )
+	wxwidgets? ( >=dev-python/wxpython-2.8:* )"
 
 DEPEND="${COMMON_DEPEND}
-	dev-python/versioneer[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/versioneer
+	dev-python/setuptools
 	virtual/pkgconfig
 	doc? (
 		app-text/dvipng
-		dev-python/colorspacious[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/ipython[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		>=dev-python/numpydoc-0.8[${PYTHON_USEDEP}]
+		dev-python/colorspacious
+		dev-python/pillow
+		dev-python/ipython
+		dev-python/mock
+		>=dev-python/numpydoc-0.8
 		<dev-python/numpydoc-0.9
-		sci-libs/scipy[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-gallery-0.3.1[${PYTHON_USEDEP}]
-		dev-python/xlwt[${PYTHON_USEDEP}]
+		sci-libs/scipy
+		>=dev-python/sphinx-1.3.0
+		>=dev-python/sphinx-gallery-0.3.1
+		dev-python/xlwt
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexrecommended
 		media-gfx/graphviz[cairo]
 	)
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
+		dev-python/mock
+		>=dev-python/nose-0.11.1
 		)"
 
 RDEPEND="${COMMON_DEPEND}
-	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
-	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
+	>=dev-python/pyparsing-1.5.6
+	excel? ( dev-python/xlwt )
 	gtk3? (
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pygobject:3
 		x11-libs/gtk+:3[introspection] )
 	latex? (
 		virtual/latex-base
@@ -87,7 +87,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-xetex
 	)
-	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )"
+	qt5? ( dev-python/PyQt5[gui,widgets] )"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.

@@ -19,7 +19,7 @@ IUSE="python static-libs"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-python/cython-0.17[${PYTHON_USEDEP}] )"
+	python? ( >=dev-python/cython-0.17 )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

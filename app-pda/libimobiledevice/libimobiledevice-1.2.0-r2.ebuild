@@ -26,11 +26,11 @@ RDEPEND=">=app-pda/libplist-2:=
 	!gnutls? ( dev-libs/openssl:0 )
 	python? (
 		${PYTHON_DEPS}
-		app-pda/libplist[python(-),${PYTHON_USEDEP}]
+		app-pda/libplist[python(-)]
 		)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-python/cython-0.17[${PYTHON_USEDEP}] )"
+	python? ( >=dev-python/cython-0.17 )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

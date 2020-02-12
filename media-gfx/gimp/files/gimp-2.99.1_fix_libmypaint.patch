@@ -1,0 +1,83 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1892,22 +1892,22 @@
+ # Check for libmypaint
+ ######################
+ 
+-PKG_CHECK_MODULES(LIBMYPAINT, libmypaint >= 1.4.0,,
++PKG_CHECK_MODULES(LIBMYPAINT, libmypaint >= 2.0.0,,
+   [
+     PKG_CHECK_MODULES(LIBMYPAINT, libmypaint >= libmypaint_required_version,,
+                       [add_deps_error([libmypaint >= libmypaint_required_version])])
+     warning_libmypaint="
+-WARNING: libmypaint lower than version 1.4.0 is known to crash when
++WARNING: libmypaint lower than version 2.0.0 is known to crash when
+          parsing MyPaint 2 brushes. Please update."
+   ])
+ 
+-PKG_CHECK_MODULES(MYPAINT_BRUSHES, mypaint-brushes-1.0,,
+-                  [add_deps_error([mypaint-brushes-1.0])])
++PKG_CHECK_MODULES(MYPAINT_BRUSHES, mypaint-brushes-2.0,,
++                  [add_deps_error([mypaint-brushes-2.0])])
+ 
+ if test "x$enable_relocatable_bundle" != xno; then
+-  mypaint_brushes_dir='${gimp_installation_dir}/share/mypaint-data/1.0/brushes'
++  mypaint_brushes_dir='${gimp_installation_dir}/share/mypaint-data/2.0/brushes'
+ else
+-  mypaint_brushes_dir=`$PKG_CONFIG --variable=brushesdir mypaint-brushes-1.0`
++  mypaint_brushes_dir=`$PKG_CONFIG --variable=brushesdir mypaint-brushes-2.0`
+ fi
+ AC_SUBST(mypaint_brushes_dir)
+ 
+--- a/meson.build
++++ b/meson.build
+@@ -356,13 +356,13 @@
+ json_glib         = dependency('json-glib-1.0',      version: '>=1.2.6')
+ lcms_minver       = '2.8'
+ lcms              = dependency('lcms2',              version: '>='+lcms_minver)
+-libmypaint_minver = '1.3.0'
++libmypaint_minver = '2.0.0'
+ libmypaint        = dependency('libmypaint',         version: '>='+libmypaint_minver)
+-mypaint_brushes   = dependency('mypaint-brushes-1.0',version: '>='+libmypaint_minver)
+-if not libmypaint.version().version_compare('>=1.4.0')
++mypaint_brushes   = dependency('mypaint-brushes-2.0',version: '>='+libmypaint_minver)
++if not libmypaint.version().version_compare('>=2.0.0')
+   libmypaint_warning='''
+ 
+-        libmypaint lower than version 1.4.0 is known to crash when
++        libmypaint lower than version 2.0.0 is known to crash when
+         parsing MyPaint 2 brushes. Please update.
+     '''
+     warning(libmypaint_warning)
+@@ -372,7 +372,7 @@
+ 
+ if relocatable_bundle
+   mypaint_brushes_dir = '${gimp_installation_dir}'\
+-                        /'share'/'mypaint-data'/'1.0'/'brushes'
++                        /'share'/'mypaint-data'/'2.0'/'brushes'
+ else
+   mypaint_brushes_dir = mypaint_brushes.get_pkgconfig_variable('brushesdir')
+ endif
+
+--- a/app/paint/gimpmybrushcore.c
++++ b/app/paint/gimpmybrushcore.c
+@@ -285,7 +285,8 @@
+                                    0.0f,
+                                    coords->xtilt,
+                                    coords->ytilt,
+-                                   1.0f /* Pretend the cursor hasn't moved in a while */);
++                                   1.0f, /* Pretend the cursor hasn't moved in a while */
++                                   0.0f, 0.0f, 0.0f); // fix for libmypaint-2.0.0_beta1
+         }
+ 
+       dt = 0.015;
+@@ -317,7 +318,8 @@
+                                pressure,
+                                coords->xtilt,
+                                coords->ytilt,
+-                               dt);
++                               dt,
++                               0.0f, 0.0f, 0.0f); // fix for libmypaint-2.0.0_beta1
+     }
+ 
+   mybrush->private->last_time = time;

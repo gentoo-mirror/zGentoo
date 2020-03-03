@@ -32,7 +32,7 @@ Then run `emerge --sync`
 
 ## Colaboration
 
-You can directly communicate with us using discord, just follow this invite link: [zGentoo (#news)](https://discord.gg/NFHyn3w)
+You can directly communicate with us using discord, just follow this invite link: [zGentoo (#zgentoo)](https://discord.gg/jMBFy56)
 
 ### Re-digesting all ebuilds
 

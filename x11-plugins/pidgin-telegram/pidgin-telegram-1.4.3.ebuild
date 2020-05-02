@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,9 +27,6 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
-
-# temporary WORKAROUND (not fixed) for: https://github.com/majn/telegram-purple/issues/517
-PATCHES="${FILESDIR}/${P}-disable_images.patch" 
 
 S="${WORKDIR}/telegram-purple"
 

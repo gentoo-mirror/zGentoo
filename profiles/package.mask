@@ -1,3 +1,6 @@
-# upstream underneath gui-libs
+## upstream underneath gui-libs not net-libs
 net-libs/libwpe
 net-libs/libwpe-backend
+
+## we only use our version (stripped off qtwebengine)
+>net-miusc/nextcloud-client-2.6.4-r2

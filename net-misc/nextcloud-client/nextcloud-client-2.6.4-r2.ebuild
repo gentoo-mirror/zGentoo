@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc dolphin nautilus shibboleth test"
+IUSE="doc dolphin nautilus shibboleth test +gnome-keyring"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	>=dev-libs/openssl-1.1.0:0=
@@ -31,7 +31,8 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kio:5
 	)
 	nautilus? ( dev-python/nautilus-python )
-	shibboleth? ( dev-qt/qtwebkit:5 )"
+	shibboleth? ( dev-qt/qtwebkit:5 )
+	gnome-keyring? ( gnome-base/libgnome-keyring )"
 
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}

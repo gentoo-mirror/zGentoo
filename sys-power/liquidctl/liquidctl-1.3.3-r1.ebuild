@@ -16,16 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+experimental"
 
-BDEPEND=(
-    "dev-libs/libusb:1"
-    "dev-libs/hidapi"
-    "dev-python/docopt"
-    "dev-python/pyusb"
-    "dev-python/setuptools"
-)
-RDEPEND=(
-    ${BDEPEND}
-)
+BDEPEND="dev-libs/libusb:1
+        dev-libs/hidapi
+        dev-python/docopt
+        dev-python/pyusb
+        dev-python/setuptools"
+
+RDEPEND="${BDEPEND}"
+
 src_prepare() {
     default
     use experimental && eapply "${FILESDIR}/${P}-experimental.patch"

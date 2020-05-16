@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/pycairo
 	dev-python/pygobject
 	dev-python/requests
+	dev-python/typing-extensions
 	>=dev-python/python-xlib-0.26
 	>=dev-python/Rx-3.0.1
 "

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-DESCRIPTION="Ratchet (Optimus) loading of nvidia (propietary) drivers beside an amdgpu (Vega)."
+DESCRIPTION="Ratchet (PRIME) loading of nvidia (propietary) drivers beside an amdgpu (Vega)."
 HOMEPAGE="https://lab.retarded.farm/zappel/nvidia-ratchet-g14"
 SRC_URI="https://lab.retarded.farm/zappel/${PN}/-/archive/${PV}/${P}.tar.gz"
 

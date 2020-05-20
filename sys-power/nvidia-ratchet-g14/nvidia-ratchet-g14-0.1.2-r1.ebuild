@@ -32,7 +32,7 @@ pkg_postinst() {
     ## patching the kernel
 	if [[ -d "${ROOT}"/usr/src/linux-${KV}-gentoo ]]; then
         ewarn "Applying kernel patch for \"sys-kernel/gentoo-sources-${KV}\"..."
-        patch -d "${ROOT}"/usr/src/linux-${KV}-gentoo -p1 < "${FILESDIR}"/amdwmi-gentoo-sources-${KV}.patch || eerror "could not apply amdwmi-gentoo-sources-${KV}.patch"
+        patch -d "${ROOT}"/usr/src/linux-${KV}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${KV}.patch || eerror "could not apply asus-wmi-kernel-${KV}.patch"
 
         ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."
 	fi

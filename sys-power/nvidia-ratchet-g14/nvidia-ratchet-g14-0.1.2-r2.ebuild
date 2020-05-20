@@ -4,8 +4,6 @@ EAPI=7
 
 inherit systemd
 
-KV="5.6.13"
-
 DESCRIPTION="Ratchet (PRIME) loading of nvidia (propietary) drivers beside an amdgpu (Vega)."
 HOMEPAGE="https://lab.retarded.farm/zappel/nvidia-ratchet-g14"
 SRC_URI="https://lab.retarded.farm/zappel/${PN}/-/archive/${PV}/${P}.tar.gz"
@@ -17,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=">=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms]
         >=gnome-base/gdm-3.36.2
         >=x11-apps/xrandr-1.5.1
-        =sys-kernel/gentoo-sources-${KV}
+        >=sys-kernel/gentoo-sources-5.6.13
 "
 DEPEND="${RDEPEND}"
 
@@ -30,10 +28,14 @@ src_install() {
 
 pkg_postinst() {
     ## patching the kernel
-	if [[ -d "${ROOT}"/usr/src/linux-${KV}-gentoo ]]; then
-        ewarn "Applying kernel patch for \"sys-kernel/gentoo-sources-${KV}\"..."
-        patch -d "${ROOT}"/usr/src/linux-${KV}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${KV}.patch || eerror "could not apply asus-wmi-kernel-${KV}.patch"
 
-        ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."
-	fi
+    for kv in {13..14}; do
+        kv="5.6.${kv}"
+    	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
+            ewarn "Applying kernel patch for \"sys-kernel/gentoo-sources-${kv}\"..."
+            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || eerror "could not apply asus-wmi-kernel-${kv}.patch"
+	    fi
+    done
+    ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."
+    systemd_enable_service user ratchet-tt
 }

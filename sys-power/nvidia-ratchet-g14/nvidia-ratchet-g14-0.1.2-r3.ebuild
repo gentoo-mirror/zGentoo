@@ -16,6 +16,7 @@ RDEPEND=">=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms]
         >=gnome-base/gdm-3.36.2
         >=x11-apps/xrandr-1.5.1
         >=sys-kernel/gentoo-sources-5.6.13
+        sys-power/rog-core
 "
 DEPEND="${RDEPEND}"
 

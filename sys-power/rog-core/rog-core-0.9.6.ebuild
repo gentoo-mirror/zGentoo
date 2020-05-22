@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-# HINT: this list must be upddate on any version change
+# HINT: this list must be updated on any version change
 CRATES="
 proc-macro2-1.0.12
 unicode-xid-0.2.0
@@ -101,7 +101,7 @@ gumdrop-0.8.0
 dbus-tokio-0.5.1
 "
 
-# sub-dependdenciess (THIS IS REALLY BAD!)
+# sub-dependencies (should be avoided)
 CRATES="${CRATES}
 fuchsia-zircon-0.3.3
 fuchsia-zircon-sys-0.3.3
@@ -137,7 +137,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 # TODO: workaround because '--path' parameter is not working(?)
-# (https://github.com/gentoo/gentoo/pull/14097)
+# (see https://github.com/gentoo/gentoo/pull/14097)
 CARGO_INSTALL_PATH="${PN}"
 
 src_install() {

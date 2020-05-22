@@ -23,7 +23,6 @@ DEPEND="${RDEPEND}"
 src_install() {
     insinto /
     doins -r src/*
-    systemd_dounit "${FILESDIR}"/ratchet-tt.service
     dodoc README.md
 }
 
@@ -38,5 +37,4 @@ pkg_postinst() {
 	    fi
     done
     ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."
-    systemd_enable_service user ratchet-tt
 }

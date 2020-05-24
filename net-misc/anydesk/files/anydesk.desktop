@@ -3,7 +3,7 @@ Type=Application
 Name=AnyDesk
 GenericName=AnyDesk
 X-GNOME-FullName=AnyDesk
-Exec=/opt/bin/anydesk %u
+Exec=env GTK2_RC_FILES= GTK_DATA_PREFIX= GTK_THEME=Adwaita /opt/bin/anydesk %u
 Icon=anydesk
 Terminal=false
 TryExec=anydesk

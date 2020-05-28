@@ -12,10 +12,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+K_MIN="13"
+K_MAX="15"
+
 RDEPEND=">=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms]
         >=gnome-base/gdm-3.36.2
         >=x11-apps/xrandr-1.5.1
-        >=sys-kernel/gentoo-sources-5.6.13
+        >=sys-kernel/gentoo-sources-5.6.${K_MIN}
+        <=sys-kernel/gentoo-sources-5.6.${K_MAX}
         sys-power/rog-core
 "
 DEPEND="${RDEPEND}"
@@ -29,11 +33,11 @@ src_install() {
 pkg_postinst() {
     ## patching the kernel
 
-    for kv in {13..14}; do
+    for kv in $(seq ${K_MIN} ${K_MAX}); do
         kv="5.6.${kv}"
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
             ewarn "Applying kernel patch for \"sys-kernel/gentoo-sources-${kv}\"..."
-            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || eerror "could not apply asus-wmi-kernel-${kv}.patch"
+            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"
 	    fi
     done
     ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."

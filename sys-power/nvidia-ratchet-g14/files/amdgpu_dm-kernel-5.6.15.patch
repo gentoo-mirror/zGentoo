@@ -1,6 +1,6 @@
 --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
 +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-@@ -1356,7 +1356,7 @@  static int dm_late_init(void *handle)
+@@ -1356,7 +1356,7 @@ static int dm_late_init(void *handle)
  	unsigned int linear_lut[16];
  	int i;
  	struct dmcu *dmcu = NULL;
@@ -9,7 +9,7 @@
  
  	if (!adev->dm.fw_dmcu)
  		return detect_mst_link_for_all_connectors(adev->ddev);
-@@ -1377,13 +1377,10 @@  static int dm_late_init(void *handle)
+@@ -1377,13 +1377,10 @@ static int dm_late_init(void *handle)
  	 */
  	params.min_abm_backlight = 0x28F;
  

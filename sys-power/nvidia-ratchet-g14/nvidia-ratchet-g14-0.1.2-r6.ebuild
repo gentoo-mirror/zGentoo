@@ -38,6 +38,8 @@ pkg_postinst() {
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
             ewarn "Applying kernel patch for \"sys-kernel/gentoo-sources-${kv}\"..."
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"
+            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/k10temp-kernel-${kv}.patch || ewarn "could not apply k10temp-kernel-${kv}.patch"
+            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/amdgpu_dm-kernel-${kv}.patch || ewarn "could not apply amdgpu_dm-kernel-${kv}.patch"
 	    fi
     done
     ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."

@@ -36,7 +36,7 @@ pkg_postinst() {
     for kv in $(seq ${K_MIN} ${K_MAX}); do
         kv="5.6.${kv}"
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
-            ewarn "Applying kernel patch for \"sys-kernel/gentoo-sources-${kv}\"..."
+            einfo "Applying kernel patch for \"sys-kernel/gentoo-sources-${kv}\"..."
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/k10temp-kernel-${kv}.patch || ewarn "could not apply k10temp-kernel-${kv}.patch"
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/amdgpu_dm-kernel-${kv}.patch || ewarn "could not apply amdgpu_dm-kernel-${kv}.patch"

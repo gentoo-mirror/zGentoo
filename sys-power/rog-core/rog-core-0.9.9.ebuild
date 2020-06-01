@@ -131,7 +131,7 @@ https://github.com/flukejones/${PN}/archive/v${PV}.tar.gz
 $(cargo_crate_uris ${CRATES})
 "
 
-LICENSE="GPL-2"
+LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

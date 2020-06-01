@@ -4,7 +4,7 @@ EAPI=7
 
 inherit systemd
 
-DESCRIPTION="Ratchet (PRIME) loading of nvidia (propietary) drivers beside an amdgpu (Vega)."
+DESCRIPTION="Ratchet (PRIME) loading of nvidia (propietary) drivers beside an amdgpu (Vega 7)."
 HOMEPAGE="https://lab.retarded.farm/zappel/nvidia-ratchet-g14"
 SRC_URI="https://lab.retarded.farm/zappel/${PN}/-/archive/${PV}/${P}.tar.gz"
 
@@ -12,15 +12,18 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-K_MIN="13"
-K_MAX="15"
+K_MIN="5.6.13"
+K_MAX="5.7.0"
+K_SUP="${K_MIN} 5.6.14 5.6.15 ${K_MAX}"
 
-RDEPEND=">=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms]
-        >=gnome-base/gdm-3.36.2
-        >=x11-apps/xrandr-1.5.1
-        >=sys-kernel/gentoo-sources-5.6.${K_MIN}
-        <=sys-kernel/gentoo-sources-5.6.${K_MAX}
-        sys-power/rog-core
+BDEPEND=""
+RDEPEND="${BDEPEND}
+    >=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms]
+    >=gnome-base/gdm-3.36.2
+    >=x11-apps/xrandr-1.5.1
+    >=sys-kernel/gentoo-sources-${K_MIN}
+    <=sys-kernel/gentoo-sources-${K_MAX}
+    >=sys-power/rog-core-0.9.9
 "
 DEPEND="${RDEPEND}"
 
@@ -33,8 +36,7 @@ src_install() {
 pkg_postinst() {
     ## patching the kernel
 
-    for kv in $(seq ${K_MIN} ${K_MAX}); do
-        kv="5.6.${kv}"
+    for kv in ${K_SUP}; do
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
             elog "Applying kernel patchsets for \"sys-kernel/gentoo-sources-${kv}\"..."
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"

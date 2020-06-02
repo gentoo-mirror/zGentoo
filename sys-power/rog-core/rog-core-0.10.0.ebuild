@@ -136,11 +136,25 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+    || (
+		>=dev-lang/rust-bin-1.41.1
+		>=dev-lang/rust-1.41.1
+	)
+    >=sys-devel/llvm-9.0.1
+    >=sys-devel/clang-runtime-9.0.1
+    dev-libs/libusb:1
+"
 
 # TODO: workaround because '--path' parameter is not working(?)
 # (see https://github.com/gentoo/gentoo/pull/14097)
 CARGO_INSTALL_PATH="${PN}"
+
+src_prepare() {
+    default
+    ## patching wheel-group
+    sed -i 's/sudo/wheel/g' data/${PN}.conf || die "could not patch dbus configuration!"
+}
 
 src_install() {
     cargo_src_install

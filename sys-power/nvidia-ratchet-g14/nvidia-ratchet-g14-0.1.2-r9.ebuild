@@ -12,9 +12,16 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+# min/max supported kernel versions
 K_MIN="5.6.13"
 K_MAX="5.7.0"
-K_SUP="${K_MIN} 5.6.14 5.6.15 ${K_MAX}"
+
+# kernel 5.6 and 5.7 patches
+K_56="${K_MIN} 5.6.14 5.6.15 5.6.16"
+K_57="${K_MAX}"
+
+## combined version
+K_SUP="${K_56} ${K_57}"
 
 BDEPEND=""
 RDEPEND="${BDEPEND}

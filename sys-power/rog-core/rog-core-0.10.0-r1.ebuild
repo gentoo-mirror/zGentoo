@@ -133,14 +133,11 @@ $(cargo_crate_uris ${CRATES})
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-    || (
-		>=dev-lang/rust-bin-1.41.1
-		>=dev-lang/rust-1.41.1
-	)
+	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1
     dev-libs/libusb:1

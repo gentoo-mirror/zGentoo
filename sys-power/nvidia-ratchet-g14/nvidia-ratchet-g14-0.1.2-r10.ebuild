@@ -46,6 +46,7 @@ pkg_postinst() {
     for kv in ${K_SUP}; do
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
             elog "Applying kernel patchsets for \"sys-kernel/gentoo-sources-${kv}\"..."
+            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/amdgpu-dm-kernel-${kv}.patch || ewarn "could not apply amdgpu-dm-kernel-${kv}.patch"
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/k10temp-kernel-${kv}.patch || ewarn "could not apply k10temp-kernel-${kv}.patch"
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/snd-hda-intel_realtek-kernel-${kv}.patch || ewarn "could not apply snd-hda-intel_realtek-kernel-${kv}.patch"

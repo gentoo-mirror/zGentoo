@@ -89,6 +89,7 @@ textwrap-0.11.0
 thiserror-1.0.16
 thiserror-impl-1.0.16
 thread_local-1.0.1
+tinybmp-0.2.3
 tokio-0.2.20
 tokio-macros-0.2.5
 toml-0.5.6
@@ -100,6 +101,7 @@ vec_map-0.8.1
 version_check-0.9.1
 which-3.1.1
 xattr-0.2.2
+yansi-term-0.1.2
 "
 
 # sub-dependencies (should be avoided)
@@ -142,6 +144,9 @@ DEPEND="${RDEPEND}
     >=sys-devel/clang-runtime-9.0.1
     dev-libs/libusb:1
 "
+
+# should be removed in 0.10.1
+PATCHES=("${FILESDIR}/animatrix.patch")
 
 # TODO: workaround because '--path' parameter is not working(?)
 # (see https://github.com/gentoo/gentoo/pull/14097)

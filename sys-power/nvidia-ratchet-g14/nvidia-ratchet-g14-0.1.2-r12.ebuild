@@ -14,11 +14,11 @@ KEYWORDS="~amd64 ~x86"
 
 # min/max supported kernel versions
 K_MIN="5.6.13"
-K_MAX="5.7.0"
+K_MAX="5.7.1"
 
 # kernel 5.6 and 5.7 patches
-K_56="${K_MIN} 5.6.14 5.6.15 5.6.16"
-K_57="${K_MAX}"
+K_56="${K_MIN} 5.6.14 5.6.15 5.6.16 5.6.17"
+K_57="5.7.0 ${K_MAX}"
 
 ## combined version
 K_SUP="${K_56} ${K_57}"

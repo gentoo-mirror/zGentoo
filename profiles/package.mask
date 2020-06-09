@@ -4,3 +4,6 @@ net-libs/libwpe-backend
 
 ## we only use our version (stripped off qtwebengine)
 >net-miusc/nextcloud-client-2.6.4-r2
+
+## please use gentoo-g14 as a replacement for
+sys-power/nvidia-ratchet-g14

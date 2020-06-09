@@ -11,6 +11,7 @@ SRC_URI="https://lab.retarded.farm/zappel/${PN}/-/archive/${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="+extras gnome nvidia X"
 
 # min/max supported kernel versions
 K_MIN="5.6.13"
@@ -23,20 +24,37 @@ K_57="5.7.0 ${K_MAX}"
 ## combined version
 K_SUP="${K_56} ${K_57}"
 
-BDEPEND=""
+BDEPEND="!!sys-power/nvidia-ratchet-g14"
 RDEPEND="${BDEPEND}
-    >=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms]
-    >=gnome-base/gdm-3.36.2
-    >=x11-apps/xrandr-1.5.1
+    nvidia? ( >=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms] )
+    gnome? ( >=gnome-base/gdm-3.36.2 )
+    X? ( >=x11-apps/xrandr-1.5.1 )
+    extras? ( >=sys-power/rog-core-0.9.9 )
     >=sys-kernel/gentoo-sources-${K_MIN}
     <=sys-kernel/gentoo-sources-${K_MAX}
-    >=sys-power/rog-core-0.9.9
 "
 DEPEND="${RDEPEND}"
 
 src_install() {
-    insinto /
-    doins -r src/*
+    if use nvidia; then
+        insinto /etc/modprobe.d
+        doins -r src/etc/modprobe.d/*
+        insinto /lib
+        doins -r src/lib/*
+        if use X; then
+            insinto /etc/X11
+            doins -r src/etc/X11/*
+            insinto /etc/xdg
+            doins -r src/etc/xdg/*
+        fi
+        if use gnome; then
+            insinto /usr
+            doins -r src/usr/*
+            insinto /var/lib
+            doins -r src/var/lib/*
+        fi
+    fi
+    
     dodoc README.md
 }
 

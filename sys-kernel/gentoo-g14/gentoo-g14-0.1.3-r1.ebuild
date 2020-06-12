@@ -4,7 +4,7 @@ EAPI=7
 
 inherit systemd
 
-DESCRIPTION="Ratchet (PRIME) loading of nvidia (propietary) drivers beside an amdgpu (Vega 7)."
+DESCRIPTION="ASUS ROG Zephyrus G14 patches and PRIME Loader for propietary nvidia drivers"
 HOMEPAGE="https://lab.retarded.farm/zappel/nvidia-ratchet-g14"
 SRC_URI="https://lab.retarded.farm/zappel/${PN}/-/archive/${PV}/${P}.tar.gz"
 

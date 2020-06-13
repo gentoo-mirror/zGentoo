@@ -13,16 +13,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+extras gnome nvidia X"
 
-# min/max supported kernel versions
-K_MIN="5.6.13"
-K_MAX="5.7.2"
-
-# kernel 5.6 and 5.7 patches
-K_56="${K_MIN} 5.6.14 5.6.15 5.6.16 5.6.17"
-K_57="5.7.0 5.7.1 ${K_MAX}"
-
-## combined version
-K_SUP="${K_56} ${K_57}"
+# supported kernel versions
+# 5.6
+KERNEL_VERSIONS=(
+    "5.6.13"
+    "5.6.14"
+    "5.6.15"
+    "5.6.16"
+    "5.6.17"
+    "5.6.18"
+)
+# 5.7
+KERNEL_VERSIONS=("${KERNEL_VERSIONS[@]}"
+    "5.7.0"
+    "5.7.1"
+    "5.7.2"
+)
 
 BDEPEND="!!sys-power/nvidia-ratchet-g14"
 RDEPEND="${BDEPEND}
@@ -30,8 +36,8 @@ RDEPEND="${BDEPEND}
     gnome? ( >=gnome-base/gdm-3.36.2 )
     X? ( >=x11-apps/xrandr-1.5.1 )
     extras? ( >=sys-power/rog-core-0.9.9 )
-    >=sys-kernel/gentoo-sources-${K_MIN}
-    <=sys-kernel/gentoo-sources-${K_MAX}
+    >=sys-kernel/gentoo-sources-${KERNEL_VERSIONS[0]}
+    <=sys-kernel/gentoo-sources-${KERNEL_VERSIONS[-1]}
 "
 DEPEND="${RDEPEND}"
 
@@ -59,9 +65,8 @@ src_install() {
 }
 
 pkg_postinst() {
-    ## patching the kernel
-
-    for kv in ${K_SUP}; do
+    # patching the kernel(s)
+    for kv in "${KERNEL_VERSIONS[@]}"; do
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
             elog "Applying kernel patchsets for \"sys-kernel/gentoo-sources-${kv}\"..."
             patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/amdgpu-dm-kernel-${kv}.patch || ewarn "could not apply amdgpu-dm-kernel-${kv}.patch"

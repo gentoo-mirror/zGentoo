@@ -143,6 +143,11 @@ DEPEND="${RDEPEND}
     dev-libs/libusb:1
 "
 
+PATCHES=(
+    "${FILESDIR}"/${P}-init_fix.patch
+    "${FILESDIR}"/${P}-module_write.patch
+)
+
 # TODO: workaround because '--path' parameter is not working(?)
 # (see https://github.com/gentoo/gentoo/pull/14097)
 CARGO_INSTALL_PATH="${PN}"

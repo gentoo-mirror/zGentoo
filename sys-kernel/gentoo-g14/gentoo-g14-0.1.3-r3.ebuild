@@ -16,18 +16,17 @@ IUSE="+extras gnome nvidia X"
 # supported kernel versions
 # 5.6
 KERNEL_VERSIONS=(
-    "5.6.13"
-    "5.6.14"
-    "5.6.15"
     "5.6.16"
     "5.6.17"
     "5.6.18"
+    "5.6.19"
 )
 # 5.7
 KERNEL_VERSIONS=("${KERNEL_VERSIONS[@]}"
     "5.7.0"
     "5.7.1"
     "5.7.2"
+    "5.7.3"
 )
 
 BDEPEND="!!sys-power/nvidia-ratchet-g14"

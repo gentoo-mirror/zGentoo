@@ -9,15 +9,6 @@
  } __packed;
  
  /*
-@@ -1722,7 +1724,7 @@
- 	asus->fan_boost_mode = new_mode;
- 	fan_boost_mode_write(asus);
- 
--	return result;
-+	return count;
- }
- 
- // Fan boost mode: 0 - normal, 1 - overboost, 2 - silent
 --- a/drivers/platform/x86/asus-nb-wmi.c
 +++ b/drivers/platform/x86/asus-nb-wmi.c
 @@ -110,6 +110,12 @@

@@ -28,6 +28,7 @@ KERNEL_VERSIONS=("${KERNEL_VERSIONS[@]}"
     "5.7.2"
     "5.7.3"
     "5.7.4"
+    "5.7.5"
 )
 
 BDEPEND="!!sys-power/nvidia-ratchet-g14"
@@ -38,6 +39,7 @@ RDEPEND="${BDEPEND}
     extras? ( >=sys-power/rog-core-0.9.9 )
     >=sys-kernel/gentoo-sources-${KERNEL_VERSIONS[0]}
     <=sys-kernel/gentoo-sources-${KERNEL_VERSIONS[-1]}
+    !>sys-kernel/gentoo-sources-${KERNEL_VERSIONS[-1]}
 "
 DEPEND="${RDEPEND}"
 
@@ -69,10 +71,22 @@ pkg_postinst() {
     for kv in "${KERNEL_VERSIONS[@]}"; do
     	if [[ -d "${ROOT}"/usr/src/linux-${kv}-gentoo ]]; then
             elog "Applying kernel patchsets for \"sys-kernel/gentoo-sources-${kv}\"..."
-            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/amdgpu-dm-kernel-${kv}.patch || ewarn "could not apply amdgpu-dm-kernel-${kv}.patch"
-            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"
-            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/k10temp-kernel-${kv}.patch || ewarn "could not apply k10temp-kernel-${kv}.patch"
-            patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/snd-hda-intel_realtek-kernel-${kv}.patch || ewarn "could not apply snd-hda-intel_realtek-kernel-${kv}.patch"
+            # patching amdgpu
+            if [ -f "${FILESDIR}"/amdgpu-dm-kernel-${kv}.patch ]; then
+                patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/amdgpu-dm-kernel-${kv}.patch || ewarn "could not apply amdgpu-dm-kernel-${kv}.patch"
+            fi
+            # patching asus-wmi-nb
+            if [ -f "${FILESDIR}"/asus-wmi-kernel-${kv}.patch ]; then
+                patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/asus-wmi-kernel-${kv}.patch || ewarn "could not apply asus-wmi-kernel-${kv}.patch"
+            fi
+            # patching k10temp
+            if [ -f "${FILESDIR}"/k10temp-kernel-${kv}.patch ]; then
+                patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/k10temp-kernel-${kv}.patch || ewarn "could not apply k10temp-kernel-${kv}.patch"
+            fi
+            # patching snd-hda-intel_realtek
+            if [ -f "${FILESDIR}"/snd-hda-intel_realtek-kernel-${kv}.patch ]; then
+                patch -d "${ROOT}"/usr/src/linux-${kv}-gentoo -p1 < "${FILESDIR}"/snd-hda-intel_realtek-kernel-${kv}.patch || ewarn "could not apply snd-hda-intel_realtek-kernel-${kv}.patch"
+            fi
 	    fi
     done
     ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."

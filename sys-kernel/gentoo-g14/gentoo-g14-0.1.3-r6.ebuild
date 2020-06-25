@@ -29,6 +29,7 @@ KERNEL_VERSIONS=("${KERNEL_VERSIONS[@]}"
     "5.7.3"
     "5.7.4"
     "5.7.5"
+    "5.7.6"
 )
 
 BDEPEND="!!sys-power/nvidia-ratchet-g14"

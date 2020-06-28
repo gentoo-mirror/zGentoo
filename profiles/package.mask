@@ -7,3 +7,8 @@ net-libs/libwpe-backend
 
 ## please use gentoo-g14 as a replacement for
 sys-power/nvidia-ratchet-g14
+
+
+## bug in versioning - rog-core
+=sys-power/rog-core-1.11.1
+=sys-power/rog-core-1.11.1-r1

@@ -4,15 +4,12 @@ EAPI=7
 
 inherit systemd cargo
 
-MY_PV=${PV}
-if [[ "${PV}" == *9999* ]]; then
-    MY_PV=${PV:0:-5}
-    PROPERTIES="live"
-fi
-
 DESCRIPTION="rog-core is a utility for Linux to control many aspects (eventually) of the ASUS ROG laptops like the Zephyrus GX502GW."
 HOMEPAGE="https://github.com/flukejones/rog-core"
-SRC_URI="https://github.com/flukejones/${PN}/archive/v${MY_PV}.tar.gz"
+SRC_URI="
+    https://github.com/flukejones/${PN}/archive/v${PV}.tar.gz
+    https://github.com/flukejones/${PN}/releases/download/v${PV}/vendor_${PN}_${PV}.tar.xz
+"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -26,18 +23,17 @@ DEPEND="${RDEPEND}
     dev-libs/libusb:1
 "
 
-S="${WORKDIR}/${PN}-${MY_PV}"
-
-# TODO: workaround because '--path' parameter is not working(?)
-# (see https://github.com/gentoo/gentoo/pull/14097)
 CARGO_INSTALL_PATH="${PN}"
 
 src_unpack() {
-    default
-    [[ "${PV}" == *9999* ]] && cargo_live_src_unpack
+    unpack v${PV}.tar.gz
+    # adding vendor-package
+    cd "${S}" && unpack vendor_${PN}_${PV}.tar.xz
 }
 
 src_prepare() {
+    # adding vendor package config
+    mkdir -p "${S}"/.cargo && cp "${FILESDIR}"/vendor_config "${S}"/.cargo/config
     default
 }
 

@@ -12,3 +12,6 @@ sys-power/nvidia-ratchet-g14
 ## bug in versioning - rog-core
 =sys-power/rog-core-1.11.1
 =sys-power/rog-core-1.11.1-r1
+
+## mask unstable development version
+=sys-power/rog-core-9999

@@ -54,7 +54,7 @@ src_install() {
         insinto /lib
         doins -r src/iGPU/lib/*
         insinto /usr
-        doins -r src/dGPU/usr/*
+        doins -r src/iGPU/usr/*
         if use X; then
             insinto /etc/X11
             doins -r src/iGPU/etc/X11/*

@@ -1,0 +1,18 @@
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c	2020-07-02 13:07:43.750167126 +0200
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c	2020-07-02 13:08:30.997045346 +0200
+@@ -1355,14 +1355,9 @@
+ 	struct dmcu_iram_parameters params;
+ 	unsigned int linear_lut[16];
+ 	int i;
+-	struct dmcu *dmcu = NULL;
++        struct dmcu *dmcu = adev->dm.dc->res_pool->dmcu;
+ 	bool ret;
+ 
+-	if (!adev->dm.fw_dmcu)
+-		return detect_mst_link_for_all_connectors(adev->ddev);
+-
+-	dmcu = adev->dm.dc->res_pool->dmcu;
+-
+ 	for (i = 0; i < 16; i++)
+ 		linear_lut[i] = 0xFFFF * i / 15;
+ 

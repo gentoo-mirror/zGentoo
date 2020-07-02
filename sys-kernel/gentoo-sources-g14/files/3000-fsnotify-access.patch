@@ -1,0 +1,37 @@
+diff --git a/fs/file_table.c b/fs/file_table.c
+index 65603502fed6..656647f9575a 100644
+--- a/fs/file_table.c
++++ b/fs/file_table.c
+@@ -230,7 +230,7 @@ struct file *alloc_file_pseudo(struct inode *inode, struct vfsmount *mnt,
+ 		d_set_d_op(path.dentry, &anon_ops);
+ 	path.mnt = mntget(mnt);
+ 	d_instantiate(path.dentry, inode);
+-	file = alloc_file(&path, flags | FMODE_NONOTIFY, fops);
++	file = alloc_file(&path, flags, fops);
+ 	if (IS_ERR(file)) {
+ 		ihold(inode);
+ 		path_put(&path);
+diff --git a/include/linux/fsnotify.h b/include/linux/fsnotify.h
+index 5ab28f6c7d26..3a07824332f5 100644
+--- a/include/linux/fsnotify.h
++++ b/include/linux/fsnotify.h
+@@ -246,6 +246,9 @@ static inline void fsnotify_rmdir(struct inode *dir, struct dentry *dentry)
+  */
+ static inline void fsnotify_access(struct file *file)
+ {
++	if (file->f_mode & FMODE_STREAM)
++		return 0;
++
+ 	fsnotify_file(file, FS_ACCESS);
+ }
+ 
+@@ -254,6 +257,9 @@ static inline void fsnotify_access(struct file *file)
+  */
+ static inline void fsnotify_modify(struct file *file)
+ {
++	if (file->f_mode & FMODE_STREAM)
++		return 0;
++
+ 	fsnotify_file(file, FS_MODIFY);
+ }
+ 

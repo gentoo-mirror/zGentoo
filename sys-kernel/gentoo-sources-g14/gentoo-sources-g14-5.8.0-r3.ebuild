@@ -10,8 +10,8 @@ KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14"
 IUSE="experimental"
 
-SLOT="${PV}-rc3"
-K_NAME="linux-5.8-rc3"
+SLOT="${PV}-rc${PVR##*r}"
+K_NAME="linux-${PV:0:-2}-rc${PVR##*r}"
 
 DESCRIPTION="Full sources including the Gentoo patchset for the ${K_NAME} kernel tree"
 SRC_URI="https://git.kernel.org/torvalds/t/${K_NAME}.tar.gz"
@@ -43,6 +43,7 @@ src_prepare() {
 	eapply "${FILESDIR}/6000-asus-wmi-kernel-5.8.patch" || die
 	eapply "${FILESDIR}/6001-snd-hda-intel_realtek-kernel-5.8.patch" || die
 	eapply "${FILESDIR}/6002-amdgpu-dm-kernel-5.8.patch" || die
+	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die
 }
 
 pkg_postinst() {

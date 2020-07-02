@@ -53,8 +53,6 @@ src_install() {
         doins -r src/iGPU/etc/modprobe.d/*
         insinto /lib
         doins -r src/iGPU/lib/*
-        insinto /usr
-        doins -r src/iGPU/usr/*
         if use X; then
             insinto /etc/X11
             doins -r src/iGPU/etc/X11/*
@@ -63,6 +61,8 @@ src_install() {
             insinto /var/lib
             doins -r src/iGPU/var/lib/*
         fi
+        exeinto /usr/bin
+        doexe src/iGPU/usr/bin/prime-run
     fi
     
     dodoc README.md

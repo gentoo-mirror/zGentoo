@@ -53,6 +53,8 @@ src_install() {
         doins -r src/iGPU/etc/modprobe.d/*
         insinto /lib
         doins -r src/iGPU/lib/*
+        insinto /usr
+        doins -r src/dGPU/usr/*
         if use X; then
             insinto /etc/X11
             doins -r src/iGPU/etc/X11/*

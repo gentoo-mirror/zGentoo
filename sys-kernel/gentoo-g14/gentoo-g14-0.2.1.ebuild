@@ -45,22 +45,37 @@ RDEPEND="${BDEPEND}
 DEPEND="${RDEPEND}"
 
 src_install() {
-    if use nvidia; then
+    if use nvidia && use dGPU; then
         insinto /etc/modprobe.d
-        doins -r src/etc/modprobe.d/*
+        doins -r src/dGPU/etc/modprobe.d/*
         insinto /lib
-        doins -r src/lib/*
+        doins -r src/dGPU/lib/*
         if use X; then
             insinto /etc/X11
-            doins -r src/etc/X11/*
+            doins -r src/dGPU/etc/X11/*
             insinto /etc/xdg
-            doins -r src/etc/xdg/*
+            doins -r src/dGPU/etc/xdg/*
         fi
         if use gnome; then
             insinto /usr
-            doins -r src/usr/*
+            doins -r src/dGPU/usr/*
             insinto /var/lib
-            doins -r src/var/lib/*
+            doins -r src/dGPU/var/lib/*
+        fi
+    elif use nvidia; then
+        insinto /etc/modprobe.d
+        doins -r src/iGPU/etc/modprobe.d/*
+        insinto /lib
+        doins -r src/iGPU/lib/*
+        insinto /usr
+        doins -r src/iGPU/usr/*
+        if use X; then
+            insinto /etc/X11
+            doins -r src/iGPU/etc/X11/*
+        fi
+        if use gnome; then
+            insinto /var/lib
+            doins -r src/iGPU/var/lib/*
         fi
     fi
     

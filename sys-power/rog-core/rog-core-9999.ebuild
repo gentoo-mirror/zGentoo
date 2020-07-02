@@ -30,7 +30,11 @@ src_install() {
     cargo_src_install
 
     insinto /etc
-    doins data/rogcore.conf && ewarn Resetted /etc/rogcore.conf make sure to check your fan-levels!
+    if [ -f data/rogcore.conf ]; then
+        doins data/rogcore.conf && ewarn Resetted /etc/rogcore.conf make sure to check your settings!
+    else
+        doins "${FILESDIR}"/rogcore.conf && ewarn Resetted /etc/rogcore.conf make sure to check your settings!
+    fi
 
     insinto /usr/share/dbus-1/system.d/
     doins data/${PN}.conf

@@ -13,17 +13,14 @@ IUSE="experimental"
 SLOT="${PV}-rc${PVR##*r}"
 K_NAME="linux-${PV:0:-2}-rc${PVR##*r}"
 
-DESCRIPTION="Full sources including the Gentoo patchset for the ${K_NAME} kernel tree"
+DESCRIPTION="Full sources including the Gentoo(G14) patchset for the ${K_NAME} kernel tree"
 SRC_URI="https://git.kernel.org/torvalds/t/${K_NAME}.tar.gz"
 
-
-S="${WORKDIR}/linux-${PV}-gentoo"
+S="${WORKDIR}/${K_NAME}-g14"
 
 src_unpack() {
 	unpack ${K_NAME}.tar.gz
 	mv ${K_NAME} ${S}
-	## setting default kernel-config
-	cp "${FILESDIR}/kernel-${PV}.config" ${S}/.config
 }
 
 src_prepare() {
@@ -52,4 +49,8 @@ pkg_postinst() {
 	einfo "${HOMEPAGE}"
 
 	einfo "please run genkernel or genkernel_upgrade afterwards"
+}
+
+pkg_postrm() {
+	kernel-2_pkg_postrm
 }

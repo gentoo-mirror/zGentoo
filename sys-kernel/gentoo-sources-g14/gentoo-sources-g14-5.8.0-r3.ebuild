@@ -16,7 +16,7 @@ K_NAME="linux-${PV:0:-2}-rc${PVR##*r}"
 DESCRIPTION="Full sources including the Gentoo(G14) patchset for the ${K_NAME} kernel tree"
 SRC_URI="https://git.kernel.org/torvalds/t/${K_NAME}.tar.gz"
 
-S="${WORKDIR}/${K_NAME}-g14"
+S="${WORKDIR}/linux-${SLOT}-g14"
 
 src_unpack() {
 	unpack ${K_NAME}.tar.gz

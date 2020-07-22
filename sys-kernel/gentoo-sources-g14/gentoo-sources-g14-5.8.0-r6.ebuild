@@ -25,8 +25,8 @@ src_unpack() {
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch" || die
 	eapply "${FILESDIR}/0001-nonupstream-navi10-vfio-reset.patch" || die
+	eapply "${FILESDIR}/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch" || die
 	eapply "${FILESDIR}/1510_fs-enable-link-security-restrictions-by-default.patch" || die
 	eapply "${FILESDIR}/4567_distro-Gentoo-Kconfig.patch" || die
 	eapply "${FILESDIR}/5000_ZSTD-v5-1-8-prepare-zstd-for-preboot-env.patch" || die

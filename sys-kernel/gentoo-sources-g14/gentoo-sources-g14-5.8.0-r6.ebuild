@@ -36,10 +36,8 @@ src_prepare() {
 	eapply "${FILESDIR}/5004_ZSTD-v5-5-8-add-support-for-zstd-compressed-initramfs.patch" || die
 	eapply "${FILESDIR}/5005_ZSTD-v5-6-8-bump-ZO-z-extra-bytes-margin.patch" || die
 	eapply "${FILESDIR}/5006_ZSTD-v5-7-8-support-for-ZSTD-compressed-kernel.patch" || die
-	eapply "${FILESDIR}/6000-asus-wmi-kernel-5.8.patch" || die
-	eapply "${FILESDIR}/6001-snd-hda-intel_realtek-kernel-5.8.patch" || die
-	eapply "${FILESDIR}/6002-amdgpu-dm-kernel-5.8.patch" || die
-	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die
+	eapply "${FILESDIR}/6000-asus-wmi-kernel-5.8.patch" || die # needed for G14/G15 asus-nb-wmi (upstream pending)
+	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die # needed for virtualbox (for vbox itself another patch is needed)
 }
 
 pkg_postinst() {

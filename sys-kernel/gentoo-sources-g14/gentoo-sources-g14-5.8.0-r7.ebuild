@@ -25,6 +25,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+	eapply "${FILESDIR}/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch" || die
 	eapply "${FILESDIR}/0001-nonupstream-navi10-vfio-reset.patch" || die
 	eapply "${FILESDIR}/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch" || die
 	eapply "${FILESDIR}/1510_fs-enable-link-security-restrictions-by-default.patch" || die
@@ -36,6 +37,8 @@ src_prepare() {
 	eapply "${FILESDIR}/5004_ZSTD-v5-5-8-add-support-for-zstd-compressed-initramfs.patch" || die
 	eapply "${FILESDIR}/5005_ZSTD-v5-6-8-bump-ZO-z-extra-bytes-margin.patch" || die
 	eapply "${FILESDIR}/5006_ZSTD-v5-7-8-support-for-ZSTD-compressed-kernel.patch" || die
+	eapply "${FILESDIR}/6001-alsa-hda-realtek-enable-headset-mic-of-asus-rog-zephyrus-g15-ga502-series-with-alc289.patch" || die
+	eapply "${FILESDIR}/6002-alsa-hda-realtek-typo_fix-enable-headset-mic-of-asus-rog-zephyrus-g14-ga401-series-with-alc289.patch" || die
 	eapply "${FILESDIR}/6000-asus-wmi-kernel-5.8.patch" || die # needed for G14/G15 asus-nb-wmi (upstream pending)
 	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die # needed for virtualbox (for vbox itself another patch is needed)
 }

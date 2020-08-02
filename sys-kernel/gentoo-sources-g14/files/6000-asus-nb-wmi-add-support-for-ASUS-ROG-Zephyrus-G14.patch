@@ -11,7 +11,7 @@ structs (one for each series), as well as all current available G401/G502
 DMI_PRODUCT_NAMES to match the corresponding devices.
 
 patch-changelog:
-v1: intial G401 patches
+v1: initial G401 patches
 v2: --
 v3: re-initial GA401 and GA502 and setting description
 v4: corrected typo(s) added GA502DU series

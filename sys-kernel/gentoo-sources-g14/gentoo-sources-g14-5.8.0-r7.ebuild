@@ -39,7 +39,7 @@ src_prepare() {
 	eapply "${FILESDIR}/5006_ZSTD-v5-7-8-support-for-ZSTD-compressed-kernel.patch" || die
 	eapply "${FILESDIR}/6001-alsa-hda-realtek-enable-headset-mic-of-asus-rog-zephyrus-g15-ga502-series-with-alc289.patch" || die
 	eapply "${FILESDIR}/6002-alsa-hda-realtek-typo_fix-enable-headset-mic-of-asus-rog-zephyrus-g14-ga401-series-with-alc289.patch" || die
-	eapply "${FILESDIR}/6000-asus-wmi-kernel-5.8.patch" || die # needed for G14/G15 asus-nb-wmi (upstream pending)
+	eapply "${FILESDIR}/6000-asus-nb-wmi-add-support-for-ASUS-ROG-Zephyrus-G14.patch" || die # needed for G14/G15 asus-nb-wmi (upstream pending)
 	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die # needed for virtualbox (for vbox itself another patch is needed)
 }
 

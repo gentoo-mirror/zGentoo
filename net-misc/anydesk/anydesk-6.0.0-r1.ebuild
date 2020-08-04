@@ -60,8 +60,8 @@ QA_PREBUILT="opt/${PN}/*"
 src_install() {
 	local dst="/opt/${PN}"
 
-        ## removing dynamik linkage of pangox
-        patchelf --remove-needed libpangox-1.0.so.0 ${PN}
+    ## removing dynamik linkage of pangox
+    patchelf --remove-needed libpangox-1.0.so.0 ${PN}
 
 	dodir ${dst}
 	exeinto ${dst}

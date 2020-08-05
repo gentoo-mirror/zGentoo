@@ -17,8 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+extras gnome nvidia X -dGPU"
 
 BDEPEND="
-    !!sys-power/nvidia-ratchet-g14
-    !!sys-kernel/gentoo-g14
+    !sys-power/nvidia-ratchet-g14
+    !sys-kernel/gentoo-g14
 "
 RDEPEND="${BDEPEND}
     nvidia? ( >=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms] )
@@ -69,7 +69,5 @@ src_install() {
 }
 
 pkg_postinst() {
-    ewarn "Please make sure to set at least the following kernel commandline parameters:"
-    ewarn "\t'clocksource=tsc tsc=reliable iommu=pt'\n"
     ewarn "Please upgrade your kernel accordingly. Normally just run 'genkernel' to do so."
 }

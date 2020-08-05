@@ -35,7 +35,7 @@ src_install() {
     doins "${FILESDIR}"/${MY_PN}.conf && ewarn Resetted /etc/${MY_PN}.conf make sure to check your settings!
 
     insinto /etc/udev/rules.d/
-    doins data/${MY_PN}.conf
+    doins data/${MY_PN}.rules
 
     insinto /usr/share/dbus-1/system.d/
     doins data/${MY_PN}.conf

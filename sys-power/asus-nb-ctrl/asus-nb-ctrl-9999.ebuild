@@ -45,6 +45,6 @@ src_install() {
 
 pkg_postinst() {
     ewarn "Don't forget to reload dbus and enable \"${MY_PN}\" service, \
-by runnning:\n >> systemctl reload dbus && systemctl enable ${MY_PN} \
-&& systemctl start ${MY_PN}"
+by runnning:\n >> systemctl reload dbus && udevadm control --reload-rules \
+&& udevadm trigger"
 }

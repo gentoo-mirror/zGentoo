@@ -20,6 +20,7 @@ SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 src_prepare() {
 	default
 	eapply "${FILESDIR}/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
+	eapply "${FILESDIR}/0002-drm-amd-display-use-correct-scale-for-actual_brightness.patch" || die # needed for amdgpu backlight control
 	eapply "${FILESDIR}/6000-asus-nb-wmi-add-support-for-ASUS-ROG-Zephyrus-G14.patch" || die # needed for G14/G15 asus-nb-wmi (upstream pending)
 	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die # needed for virtualbox (for vbox itself another patch is needed)
 }

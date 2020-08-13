@@ -43,9 +43,9 @@ src_prepare() {
 src_install() {
     cargo_src_install
 
-    insinto /etc
+    insinto /etc/${MY_PN}
     doins data/${MY_PN}-ledmodes.toml
-    doins "${FILESDIR}"/${MY_PN}.conf && ewarn Resetted /etc/${MY_PN}.conf make sure to check your settings!
+    doins "${FILESDIR}"/${MY_PN}.conf && ewarn Resetted /etc/${MY_PN}/${MY_PN}.conf make sure to check your settings!
 
     insinto /etc/udev/rules.d/
     doins data/${MY_PN}.rules

@@ -8,10 +8,14 @@ MY_PN="asusd"
 
 DESCRIPTION="${PN} (${MY_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-EGIT_REPO_URI="https://gitlab.com/asus-linux/${PN}.git"
+SRC_URI="
+    https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
+    https://gitlab.com/asus-linux/${PN}/uploads/c52688bb03c64e832ac9c1c48ccf2e0b/vendor-${PV}.tar.xz
+"
 
 LICENSE="MPL-2.0"
 SLOT="0"
+KEYWORDS="~amd64"
 
 RDEPEND="!!sys-power/rog-core"
 DEPEND="${RDEPEND}
@@ -22,10 +26,18 @@ DEPEND="${RDEPEND}
 "
 CARGO_INSTALL_PATH="${PN}"
 
+CARGO_INSTALL_PATH="${PN}"
+
 src_unpack() {
+    unpack ${PN}-${PV}.tar.gz
+    # adding vendor-package
+    cd "${S}" && unpack vendor-${PV}.tar.xz
+}
+
+src_prepare() {
+    # adding vendor package config
+    mkdir -p "${S}"/.cargo && cp "${FILESDIR}"/vendor_config "${S}"/.cargo/config
     default
-    git-r3_src_unpack
-    cargo_live_src_unpack
 }
 
 src_install() {

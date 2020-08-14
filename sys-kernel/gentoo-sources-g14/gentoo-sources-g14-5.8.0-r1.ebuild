@@ -17,8 +17,21 @@ IUSE="experimental"
 DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 
+MY_S="${WORKDIR}/linux-${PV}-gentoo-g14"
+if [[ ${PR} != "r0" ]]; then
+	MY_S="${WORKDIR}/linux-${PV}-gentoo-${PR}-g14"
+fi
+
+src_unpack() {
+	kernel-2_src_unpack
+	# changing target path
+	mv ${S} ${MY_S}
+	S=${MY_S}
+}
+
 src_prepare() {
 	default
+	kernel-2_src_prepare
 	eapply "${FILESDIR}/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
 	eapply "${FILESDIR}/0002-drm-amd-display-use-correct-scale-for-actual_brightness.patch" || die # needed for amdgpu backlight control
 	eapply "${FILESDIR}/6000-asus-nb-wmi-add-support-for-ASUS-ROG-Zephyrus-G14.patch" || die # needed for G14/G15 asus-nb-wmi (upstream pending)
@@ -29,6 +42,8 @@ pkg_postinst() {
 	kernel-2_pkg_postinst
 	einfo "For more info on this patchset, and how to report problems, see:"
 	einfo "${HOMEPAGE}"
+
+	einfo "please run genkernel or genkernel_upgrade afterwards"
 }
 
 pkg_postrm() {

@@ -17,15 +17,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+extras gnome nvidia X -dGPU"
 
 BDEPEND="
-    !sys-power/nvidia-ratchet-g14
-    !sys-kernel/gentoo-g14
+    !!sys-power/nvidia-ratchet-g14
+    !!sys-kernel/gentoo-g14
 "
 RDEPEND="${BDEPEND}
     nvidia? ( >=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms] )
     gnome? ( >=gnome-base/gdm-3.36.2 )
     X? ( >=x11-apps/xrandr-1.5.1 )
-    extras? ( >=sys-power/rog-core-0.9.9 )
-    sys-kernel/gentoo-sources-g14
+    extras? ( >=sys-power/asus-nb-ctrl-1.0.0 )
+    >=sys-kernel/gentoo-sources-g14-5.8.0
 "
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"

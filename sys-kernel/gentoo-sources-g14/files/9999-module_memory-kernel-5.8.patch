@@ -10,7 +10,7 @@ index 3091c2ca60df..f027bc7d2534 100644
  
  int is_vmalloc_or_module_addr(const void *x)
  {
-@@ -2130,6 +2131,7 @@ struct vm_struct *__get_vm_area_caller(unsigned long size, unsigned long flags,
+@@ -2129,6 +2130,7 @@ struct vm_struct *__get_vm_area_caller(unsigned long size, unsigned long flags,
         return __get_vm_area_node(size, 1, flags, start, end, NUMA_NO_NODE,
                                   GFP_KERNEL, caller);
  }

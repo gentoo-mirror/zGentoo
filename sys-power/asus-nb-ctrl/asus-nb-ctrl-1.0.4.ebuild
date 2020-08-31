@@ -10,7 +10,7 @@ DESCRIPTION="${PN} (${MY_PN}) is a utility for Linux to control many aspects of 
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/c52688bb03c64e832ac9c1c48ccf2e0b/vendor-${PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/uploads/b25a04c3e42149704cf2330ff5945b71/vendor-${PV}.tar.xz
 "
 
 LICENSE="MPL-2.0"

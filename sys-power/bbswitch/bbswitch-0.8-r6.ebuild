@@ -8,6 +8,7 @@ inherit linux-mod toolchain-funcs
 inherit git-r3
 EGIT_REPO_URI="https://github.com/Bumblebee-Project/${PN}.git"
 EGIT_BRANCH="develop"
+EGIT_COMMIT="ddbd243"
 KEYWORDS="amd64 x86"
 
 DESCRIPTION="Toggle discrete NVIDIA Optimus graphics card"

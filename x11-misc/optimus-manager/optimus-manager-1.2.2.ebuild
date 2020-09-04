@@ -17,7 +17,7 @@ EGIT_COMMIT="1bbdd19"
 KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind gdm lightdm sddm systemd"
+IUSE="elogind gdm lightdm sddm systemd amdgpu"
 REQUIRED_USE="elogind? ( !systemd )"
 
 DEPEND="

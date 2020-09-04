@@ -19,7 +19,10 @@ LICENSE="GPL-3+"
 IUSE="g14"
 
 RDEPEND="
-	g14? ( x11-misc/optimus-manager[amdgpu] )
+	g14? ( 
+		x11-misc/optimus-manager[amdgpu]
+		sys-power/acpi_call
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -50,6 +53,10 @@ src_install() {
 
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}"/bbswitch.modprobe bbswitch.conf
+	if use g14; then
+		insinto /etc/modules-load.d
+		newins "${FILESDIR}"/bbswitch.modload bbswitch.conf
+	fi
 
 	linux-mod_src_install
 }

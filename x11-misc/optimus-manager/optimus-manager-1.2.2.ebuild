@@ -10,17 +10,14 @@ inherit distutils-r1 systemd
 DESCRIPTION="Management utility to handle GPU switching for Optimus laptops"
 HOMEPAGE="https://github.com/Askannz/optimus-manager"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}"
-else
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
+inherit git-r3
+EGIT_REPO_URI="https://github.com/Kr1ss-XD/optimus-manager"
+EGIT_BRANCH="amdigpu-compat"
+EGIT_COMMIT="1bbdd19"
+KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind gdm lightdm sddm systemd amdgpu"
+IUSE="elogind gdm lightdm sddm systemd"
 REQUIRED_USE="elogind? ( !systemd )"
 
 DEPEND="
@@ -37,17 +34,13 @@ RDEPEND="
 
 
 src_prepare() {
-	## adding amdgpu (iGPU) support
-	if use amdgpu; then
-		eapply "${FILESDIR}/${P}-amdgpu-as-igpu-prepare.patch"
-		eapply "${FILESDIR}/${P}-amdgpu-as-igpu.patch"
-	fi
-
 	# Fixing path installation
 	sed -i -e 's|/sbin|/usr/sbin|g' \
 		login_managers/sddm/20-optimus-manager.conf
 	sed -i -e 's|/sbin|/usr/sbin|g' \
 		login_managers/lightdm/20-optimus-manager.conf
+	sed -i -e 's|/usr/bin/pri|/usr/sbin/pri|g' \
+		systemd/optimus-manager.service
 	default
 }
 
@@ -65,6 +58,7 @@ src_install() {
 
 	insinto /lib/modprobe.d
 	doins modules/${PN}.conf
+	doins "${FILESDIR}"/99-nvidia-blacklist.conf
 
 	insinto /var/lib/${PN}
 	doins var/*

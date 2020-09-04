@@ -12,4 +12,3 @@ depend() {
 start_pre() {
     /usr/sbin/prime-switch-boot || return $?
 }
-

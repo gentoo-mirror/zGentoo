@@ -17,7 +17,7 @@ EGIT_COMMIT="1bbdd19"
 KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind gdm lightdm sddm systemd amdgpu"
+IUSE="elogind gnome lightdm sddm systemd amdgpu"
 REQUIRED_USE="elogind? ( !systemd )"
 
 DEPEND="
@@ -27,7 +27,7 @@ DEPEND="
 	elogind? ( sys-auth/elogind )"
 RDEPEND="
 	${DEPEND}
-	gdm? ( gnome-base/gdm[prime] )
+	gnome? ( gnome-base/gdm[prime] )
 	lightdm? ( x11-misc/lightdm )
 	sddm? ( x11-misc/sddm )
 	systemd? ( sys-apps/systemd )"

@@ -25,7 +25,8 @@ fi
 src_unpack() {
 	kernel-2_src_unpack
 	echo ">>> Applying ASUS ROG Zephyrus G14/G15 laptop specific patches"
-	eapply "${FILESDIR}/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
+	eapply "${FILESDIR}/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
+	eapply "${FILESDIR}/0001-ALSA-hda-fixup-headset-for-ASUS-GX502-laptop.patch" || die # patch for GX502 audio (upstream pending)
 	eapply "${FILESDIR}/0001-asus-nb-wmi-add-support-for-GU502DU.patch" || die # needed for GA/GU_502DU
 	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die # needed for virtualbox (for vbox itself another patch is needed)
 

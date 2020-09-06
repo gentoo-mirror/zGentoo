@@ -4,7 +4,7 @@
 EAPI="6"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="7"
+K_GENPATCHES_VER="10"
 
 inherit kernel-2
 detect_version
@@ -26,8 +26,8 @@ src_unpack() {
 	kernel-2_src_unpack
 	echo ">>> Applying ASUS ROG Zephyrus G14/G15 laptop specific patches"
 	eapply "${FILESDIR}/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
+	eapply "${FILESDIR}/0001-ALSA-hda-fixup-headset-for-ASUS-GX502-laptop.patch" || die # patch for GX502 audio (upstream pending)
 	eapply "${FILESDIR}/0001-asus-nb-wmi-add-support-for-GU502DU.patch" || die # needed for GA/GU_502DU
-	eapply "${FILESDIR}/0002-drm-amd-display-use-correct-scale-for-actual_brightness.patch" || die # needed for amdgpu backlight control
 	eapply "${FILESDIR}/9999-module_memory-kernel-5.8.patch" || die # needed for virtualbox (for vbox itself another patch is needed)
 
 	# changing source destination path

@@ -94,7 +94,7 @@ pkg_postinst() {
 	elog "If you're using KDE Plasma or LXQt, you may require the optimus-manager-qt package."
 	elog "If you're using Gnome, you can install the optimus-manager-argos Gnome Shell extension."
 	ewarn "Only works with Xorg. Wayland is not supported yet."
-	if use !sddm && use !gdm && use !lightdm; then
+	if use !sddm && use !gnome && use !lightdm; then
 		elog "As you are not using support for SDDM, GDM and/or LightDM, you can set it manually."
 		elog "More info can be found at:"
 		elog "https://github.com/Askannz/optimus-manager/wiki/FAQ,-common-issues,-troubleshooting#my-display-manager-is-not-sddm-lightdm-nor-sddm"

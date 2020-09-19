@@ -63,6 +63,6 @@ src_prepare() {
 }
 
 src_install() {
-	dobin croc
-	dodoc src/github.com/schollz/croc/README.md
+	dobin ${PN}
+	dodoc src/${EGO_PN}/README.md
 }

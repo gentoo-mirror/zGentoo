@@ -5,12 +5,13 @@ EAPI=7
 inherit systemd cargo git-r3
 
 MY_PN="asusd"
+MY_VN="vendor-1.1.1"
 
 DESCRIPTION="${PN} (${MY_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/b25a04c3e42149704cf2330ff5945b71/vendor-${PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/uploads/70db0c0f828c10acf1b665851c2b7b7f/${MY_VN}.tar.xz
 "
 
 LICENSE="MPL-2.0"
@@ -31,7 +32,7 @@ CARGO_INSTALL_PATH="${PN}"
 src_unpack() {
     unpack ${PN}-${PV}.tar.gz
     # adding vendor-package
-    cd "${S}" && unpack vendor-${PV}.tar.xz
+    cd "${S}" && unpack ${MY_VN}.tar.xz
 }
 
 src_prepare() {

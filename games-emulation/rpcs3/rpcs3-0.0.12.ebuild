@@ -9,8 +9,7 @@ DESCRIPTION="Open source PlayStation 3 emulator"
 HOMEPAGE="https://rpcs3.net/"
 
 EGIT_REPO_URI="https://github.com/RPCS3/rpcs3.git"
-# EGIT_COMMIT="v${PV}" - used in normal ebuild verisons
-EGIT_COMMIT="63080c22a37b26ca81e2f75068ae64c57cde10de"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"

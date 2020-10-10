@@ -18,7 +18,6 @@ DEPEND="${RDEPEND}
     >=sys-devel/clang-runtime-9.0.1
     dev-libs/libusb:1
 "
-CARGO_INSTALL_PATH="${PN}"
 
 src_unpack() {
     default
@@ -26,8 +25,13 @@ src_unpack() {
     cargo_live_src_unpack
 }
 
+src_compile() {
+    cargo_gen_config
+    default
+}
+
 src_install() {
-    cargo_src_install
+    cargo_src_install --path "${PN}"
 
     insinto /etc
     if [ -f data/rogcore.conf ]; then

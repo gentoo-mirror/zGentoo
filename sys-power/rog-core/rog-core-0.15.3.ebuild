@@ -23,8 +23,6 @@ DEPEND="${RDEPEND}
     dev-libs/libusb:1
 "
 
-CARGO_INSTALL_PATH="${PN}"
-
 src_unpack() {
     unpack v${PV}.tar.gz
     # adding vendor-package
@@ -37,8 +35,13 @@ src_prepare() {
     default
 }
 
+src_compile() {
+    cargo_gen_config
+    default
+}
+
 src_install() {
-    cargo_src_install
+    cargo_src_install --path "${PN}"
 
     insinto /etc
     if [ -f data/rogcore.conf ]; then

@@ -5,13 +5,12 @@ EAPI=7
 inherit systemd cargo git-r3
 
 MY_PN="asusd"
-MY_VN="vendor-1.1.1"
 
 DESCRIPTION="${PN} (${MY_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/70db0c0f828c10acf1b665851c2b7b7f/${MY_VN}.tar.xz
+    https://gitlab.com/asus-linux/asus-nb-ctrl/uploads/f24d63bc74ac207778f97c0ecbe068c9/vendor_${PN}_${PV}.tar.xz
 "
 
 LICENSE="MPL-2.0"
@@ -25,14 +24,11 @@ DEPEND="${RDEPEND}
     >=sys-devel/clang-runtime-9.0.1
     dev-libs/libusb:1
 "
-CARGO_INSTALL_PATH="${PN}"
-
-CARGO_INSTALL_PATH="${PN}"
 
 src_unpack() {
     unpack ${PN}-${PV}.tar.gz
     # adding vendor-package
-    cd "${S}" && unpack ${MY_VN}.tar.xz
+    cd "${S}" && unpack vendor_${PN}_${PV}.tar.xz
 }
 
 src_prepare() {
@@ -41,20 +37,39 @@ src_prepare() {
     default
 }
 
+src_compile() {
+    cargo_gen_config
+    default
+}
+
 src_install() {
-    cargo_src_install
+    cargo_src_install --path "${PN}"
+    cargo_src_install --path "asus-notify"
 
     insinto /etc/${MY_PN}
     doins data/${MY_PN}-ledmodes.toml
     doins "${FILESDIR}"/${MY_PN}.conf && ewarn Resetted /etc/${MY_PN}/${MY_PN}.conf make sure to check your settings!
+
+    insinto /usr/share/icons/hicolor/512x512/apps/
+    doins data/icons/*.png
 
     insinto /etc/udev/rules.d/
     doins data/${MY_PN}.rules
 
     insinto /usr/share/dbus-1/system.d/
     doins data/${MY_PN}.conf
+
+    if [ -f data/_asusctl ] && [ -d /usr/share/zsh/site-functions ]; then
+        insinto /usr/share/zsh/site-functions
+        doins data/_asusctl
+    fi
     
+    ## GFX needs testing - not implemented atm. (currently managed by sys-kernel/gentoo-g14-next)
+    # 90-nvidia-screen-G05.conf -> /lib/udev/rules.d (PRIME)
+    # 90-asusd-nvidia-pm.rules -> /X11/xorg.conf.d (X11)
+
     systemd_dounit data/${MY_PN}.service
+    systemd_dounit data/asus-notify.service
 }
 
 pkg_postinst() {

@@ -16,6 +16,7 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+gfx +notify"
 
 RDEPEND="!!sys-power/rog-core"
 DEPEND="${RDEPEND}
@@ -23,6 +24,7 @@ DEPEND="${RDEPEND}
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1
     dev-libs/libusb:1
+    gfx? ( !sys-kernel/gentoo-g14-next )
 "
 
 src_unpack() {
@@ -44,7 +46,7 @@ src_compile() {
 
 src_install() {
     cargo_src_install --path "${PN}"
-    cargo_src_install --path "asus-notify"
+    use notify && cargo_src_install --path "asus-notify"
 
     insinto /etc/${MY_PN}
     doins data/${MY_PN}-ledmodes.toml
@@ -64,12 +66,23 @@ src_install() {
         doins data/_asusctl
     fi
     
-    ## GFX needs testing - not implemented atm. (currently managed by sys-kernel/gentoo-g14-next)
-    # 90-nvidia-screen-G05.conf -> /lib/udev/rules.d (PRIME)
-    # 90-asusd-nvidia-pm.rules -> /X11/xorg.conf.d (X11)
+    ## GFX needs testing
+    if use gfx; then
+        ## screen settings
+        insinto /lib/udev/rules.d
+        data/90-nvidia-screen-G05.conf
+        
+        ## pm settings
+        insinto /X11/xorg.conf.d
+        data/90-asusd-nvidia-pm.rules
+
+        ## mod blacklisting
+        insinto /etc/modprobe.d
+        "${FILESDIR}"/90-nvidia-blacklist.conf
+    fi
 
     systemd_dounit data/${MY_PN}.service
-    systemd_dounit data/asus-notify.service
+    use notify && systemd_douserunit data/asus-notify.service
 }
 
 pkg_postinst() {

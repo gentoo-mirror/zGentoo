@@ -20,7 +20,7 @@
 +			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 +			DMI_MATCH(DMI_PRODUCT_NAME, "GU502DU"),
 +		},
-+		.driver_data = &quirk_asus_vendor_backlight,,
++		.driver_data = &quirk_asus_vendor_backlight,
 +	},
  	{},
  };

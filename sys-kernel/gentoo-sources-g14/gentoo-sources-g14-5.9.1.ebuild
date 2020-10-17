@@ -26,7 +26,7 @@ src_unpack() {
 	kernel-2_src_unpack
 	echo ">>> Applying ASUS ROG Zephyrus G14/G15 laptop specific patches"
 	eapply "${FILESDIR}/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
-	eapply "${FILESDIR}/0001-asus-nb-wmi-add-support-for-GU502DU.patch" || die # added asus-nb-wmi support for GU502DU G15 Series (testing)
+	eapply "${FILESDIR}/0001-asus-nb-wmi-add-support-for-GU502DU-5.9.patch" || die # added asus-nb-wmi support for GU502DU G15 Series (testing)
 	if use experimental; then
 		eapply "${FILESDIR}/0001-alsa-hda-ga401-experimental.patch" || die # needed for GA401 -  new experimental patch (experimental)
 	else

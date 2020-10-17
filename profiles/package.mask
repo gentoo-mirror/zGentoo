@@ -5,13 +5,8 @@ net-libs/libwpe-backend
 ## we only use our version (stripped off qtwebengine)
 >net-miusc/nextcloud-client-2.6.4-r2
 
-## please use gentoo-g14 as a replacement for
-sys-power/nvidia-ratchet-g14
+## please use gentoo-asus as a replacement for gentoo-g14-next
+sys-kernel/gentoo-g14-next
 
-
-## bug in versioning - rog-core
-=sys-power/rog-core-1.11.1
-=sys-power/rog-core-1.11.1-r1
-
-## mask unstable development version
-=sys-power/rog-core-9999
+## deprecated, please use sys-power/asus-nb-ctrl as a replacement
+sys-power/rog-core

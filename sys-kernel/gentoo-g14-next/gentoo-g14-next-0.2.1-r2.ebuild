@@ -14,7 +14,7 @@ SRC_URI="https://lab.retarded.farm/zappel/${MY_PN}/-/archive/${PV}/${MY_P}.tar.g
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+extras gnome nvidia X -dGPU bbswitch"
+IUSE="+extras gnome nvidia X -dGPU"
 
 BDEPEND="
     !!sys-power/nvidia-ratchet-g14
@@ -26,7 +26,6 @@ RDEPEND="${BDEPEND}
     X? ( >=x11-apps/xrandr-1.5.1 )
     extras? ( >=sys-power/asus-nb-ctrl-1.0.0 )
     >=sys-kernel/gentoo-sources-g14-5.8.0
-    bbswitch? ( sys-power/bbswitch[g14] )
 "
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
@@ -54,10 +53,6 @@ src_install() {
         doins -r src/iGPU/etc/modprobe.d/*
         insinto /lib
         doins -r src/iGPU/lib/*
-        if use X && ! use bbswitch; then
-            insinto /etc/X11
-            doins -r src/iGPU/etc/X11/*
-        fi
         if use gnome; then
             insinto /var/lib
             doins -r src/iGPU/var/lib/*

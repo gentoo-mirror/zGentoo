@@ -1,0 +1,41 @@
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -127,6 +127,7 @@
+ 	int battery_stat;
+ 	bool battery_in_query;
+ 	unsigned long battery_next_query;
++	u64 asus_raw_event_fan_last_query;
+ };
+ 
+ static int asus_report_battery(struct asus_drvdata *, u8 *, int);
+@@ -363,8 +364,8 @@
+ 
+ 	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD) {
+ 		/*
+-		 * Skip these report ID, the device emits a continuous stream associated
+-		 * with the AURA mode it is in which looks like an 'echo'
++		 * Skip these report ID, the device emits a continuous stream 
++		 * associated with the AURA mode it is in which looks like an 'echo'
+ 		*/
+ 		if (report->id == FEATURE_KBD_LED_REPORT_ID1 ||
+ 				report->id == FEATURE_KBD_LED_REPORT_ID2) {
+@@ -373,9 +374,16 @@
+ 		} else if (report->id == FEATURE_KBD_REPORT_ID) {
+ 			/* Fn+F5 "fan" symbol, trigger WMI event to toggle next mode */
+ 			if (data[1] == 0xae) {
+-				ret = asus_wmi_send_event(drvdata, 0xae);
+-				if (ret < 0) {
+-					hid_warn(hdev, "Asus failed to trigger fan control event");
++				/* burst intervall limit in ms - 500 seems to be safe*/
++				if (drvdata->asus_raw_event_fan_last_query + 500 * 1000000 
++						< ktime_get_ns()) {
++					drvdata->asus_raw_event_fan_last_query = ktime_get_ns();
++					if (asus_wmi_send_event(drvdata, data[1]) < 0)
++						hid_warn(hdev, 
++							"Asus failed to trigger fan control event");
++				} else {
++					hid_warn(hdev, 
++						"Asus trigger fan control event repeated to fast");
+ 				}
+ 				return -1;
+ 			/*

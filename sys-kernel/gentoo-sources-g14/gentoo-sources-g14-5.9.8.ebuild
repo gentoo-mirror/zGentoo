@@ -4,7 +4,8 @@
 EAPI="6"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="2"
+K_GENPATCHES_VER="8"
+K_NODRYRUN="1"
 
 inherit kernel-2
 detect_version
@@ -27,11 +28,11 @@ src_unpack() {
 	echo ">>> Applying ASUS ROG Zephyrus G14/G15 laptop specific patches"
 	eapply "${FILESDIR}/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch" || die # needed for ASUS ROG NKey Keyboard devices (upstream pending)
 	eapply "${FILESDIR}/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fixup.patch" || die # fixes ASUS ROG NKey Keyboard devices fan mode keypress (testing)
-	eapply "${FILESDIR}/0001-asus-nb-wmi-add-support-for-GU502DU-5.9.patch" || die # added asus-nb-wmi support for GU502DU G15 Series (testing)
+	eapply "${FILESDIR}/0002-asus-nb-wmi-add-support-for-GU502DU.patch" || die # added asus-nb-wmi support for GU502DU G15 Series (testing)
 	if use experimental; then
-		eapply "${FILESDIR}/0001-alsa-hda-ga401-experimental.patch" || die # needed for GA401 -  new experimental patch (experimental)
+		eapply "${FILESDIR}/0002-alsa-hda-ga401-experimental.patch" || die # needed for GA401 -  new experimental patch (experimental)
 	else
-		eapply "${FILESDIR}/0004-alsa-hda-ga401-ga502-testing.patch" || die # needed for GA401 - v1/v2 mixture patch (testing)
+		eapply "${FILESDIR}/0005-alsa-hda-ga401-ga502-testing.patch" || die # needed for GA401 - v1/v2 mixture patch (testing)
 	fi
 
 	# changing source destination path

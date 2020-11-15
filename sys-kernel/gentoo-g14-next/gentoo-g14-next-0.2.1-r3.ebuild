@@ -24,8 +24,8 @@ RDEPEND="${BDEPEND}
     nvidia? ( >=x11-drivers/nvidia-drivers-435.21-r1[uvm,libglvnd,kms] )
     gnome? ( >=gnome-base/gdm-3.36.2 )
     X? ( >=x11-apps/xrandr-1.5.1 )
-    extras? ( >=sys-power/asus-nb-ctrl-1.0.0 )
-    >=sys-kernel/gentoo-sources-g14-5.8.0
+    extras? ( >=sys-power/asus-nb-ctrl-2.0.0 )
+    >=sys-kernel/gentoo-sources-g14-5.9.0
 "
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"

@@ -14,7 +14,7 @@ SRC_URI="amd64? ( https://files.teamspeak-services.com/releases/client/${PV}/Tea
 
 KEYWORDS="-* ~amd64 ~x86"
 LICENSE="teamspeak3"
-SLOT="0"
+SLOT="3"
 IUSE="alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 

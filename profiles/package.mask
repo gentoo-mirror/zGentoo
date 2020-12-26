@@ -10,3 +10,12 @@ sys-kernel/gentoo-g14-next
 
 ## deprecated, please use sys-power/asus-nb-ctrl as a replacement
 sys-power/rog-core
+
+# Mike Pagano <mpagano@gentoo.org> (2020-12-18)
+# Serious data corruption bug when using F2FS,
+# see https://bugzilla.kernel.org/show_bug.cgi?id=210765
+# Feel free to manually unmask when not using F2FS.
+=sys-kernel/gentoo-sources-g14-5.10.1
+
+# old and unstable kernels (use at own risk)
+<sys-kernel/gentoo-sources-g14-5.9.16

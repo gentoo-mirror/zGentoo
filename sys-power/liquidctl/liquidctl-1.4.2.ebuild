@@ -23,8 +23,3 @@ BDEPEND="dev-libs/libusb:1
         dev-python/setuptools"
 
 RDEPEND="${BDEPEND}"
-
-src_prepare() {
-    default
-    use experimental && eapply "${FILESDIR}/${P}-experimental.patch"
-}

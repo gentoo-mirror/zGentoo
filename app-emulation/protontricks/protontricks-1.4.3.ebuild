@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -23,10 +23,3 @@ DEPEND="${RDEPEND}
 		dev-python/setuptools"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-# S=${WORKDIR}/${PN}-${EGIT_COMMIT}
-
-#src_compile() {
-#	python_setup
-#}
-

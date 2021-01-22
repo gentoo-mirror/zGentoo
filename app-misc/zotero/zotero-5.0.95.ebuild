@@ -11,7 +11,7 @@ fi
 MY_PN="Zotero"
 MY_P="${MY_PN}-${PV}"
 
-inherit eutils
+inherit eutils desktop
 
 DESCRIPTION="A tool to help you collect, organize, cite, and share your research sources"
 HOMEPAGE="https://www.zotero.org/"

@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="fluent-bit promtail +server tools"
+IUSE="fluent-bit promtail +server tools systemd"
 
 RESTRICT="mirror strip"
 
@@ -45,7 +45,11 @@ src_compile() {
 	fi
 	if use promtail; then
 		einfo "Building cmd/loki/promtail..."
-		CGO_ENABLED=0 go build -ldflags "${EGO_LDFLAGS}" -tags netgo -mod vendor -o cmd/promtail/promtail ./cmd/promtail || die
+		if use systemd; then
+			CGO_ENABLED=1 go build -ldflags "${EGO_LDFLAGS}" -tags netgo -mod vendor -o cmd/promtail/promtail ./cmd/promtail || die
+		else
+			CGO_ENABLED=0 go build -ldflags "${EGO_LDFLAGS}" -tags netgo -mod vendor -o cmd/promtail/promtail ./cmd/promtail || die
+		fi
 	fi
 	if use fluent-bit; then
 		einfo "Building cmd/fluent-bit/out_loki..."
@@ -77,7 +81,9 @@ src_install() {
 
 		newconfd "${FILESDIR}/promtail.confd" "promtail"
 		newinitd "${FILESDIR}/promtail.initd" "promtail"
-		systemd_newunit "${FILESDIR}"/promtail.service promtail.service
+		if use systemd; then
+			systemd_newunit "${FILESDIR}"/promtail.service promtail.service
+		fi
 
 		insinto "/etc/${PN}"
 		doins "${S}/cmd/promtail/promtail-local-config.yaml"

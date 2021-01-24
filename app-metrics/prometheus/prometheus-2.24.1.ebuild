@@ -4,14 +4,13 @@
 EAPI=7
 inherit go-module systemd
 MY_PV=v${PV/_rc/-rc.}
-GIT_COMMIT=e448727
+# GIT_COMMIT=e448727
 
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
 SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-#	https://dev.gentoo.org/~williamh/dist/${P}-assets.tar.gz"
 
-IUSE="+snmp systemd"
+IUSE="systemd"
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
@@ -20,8 +19,7 @@ COMMON_DEPEND="acct-group/prometheus
 	acct-user/prometheus"
 DEPEND="!app-metrics/prometheus-bin
 	${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}
-	snmp? ( >=app-metrics/snmp_exporter-0.15.0 )"
+RDEPEND="${COMMON_DEPEND}"
 BDEPEND=">=dev-util/promu-0.3.0
 	app-arch/p7zip"
 
@@ -29,9 +27,8 @@ RESTRICT+=" test"
 
 src_prepare() {
 	default
-	sed -i -e "s/{{.Revision}}/${GIT_COMMIT}/" .promu.yml || die
+	sed -i -e "s/{{.Revision}}/${PV}/" .promu.yml || die
 	7z x ${FILESDIR}/${P}-assets.7z -oweb/ui || die
-#	mv ../assets_vfsdata.go web/ui || die
 }
 
 src_compile() {
@@ -51,13 +48,6 @@ src_install() {
 	newinitd "${FILESDIR}"/prometheus.initd prometheus
 	newconfd "${FILESDIR}"/prometheus.confd prometheus
 	use systemd && systemd_newunit "${FILESDIR}"/prometheus.service prometheus.service
-
-	## SNMP exporter (prometheus extension)
-	if use snmp; then
-		newconfd "${FILESDIR}"/snmp_exporter.confd snmp_exporter
-		newinitd "${FILESDIR}"/snmp_exporter.initd snmp_exporter
-		use systemd && systemd_newunit "${FILESDIR}"/snmp_exporter.service snmp_exporter.service
-	fi
 
 	keepdir /var/log/prometheus /var/lib/prometheus
 	fowners prometheus:prometheus /var/log/prometheus /var/lib/prometheus

@@ -6,7 +6,8 @@ User=prometheus
 Group=prometheus
 Type=simple
 Restart=on-failure
-ExecStart=/usr/bin/prometheus --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/var/lib/prometheus/data
+EnvironmentFile=/etc/conf.d/prometheus
+ExecStart=/usr/bin/prometheus --config.file=${PROMETHEUS_CONFIG} --storage.tsdb.path=${PROMETHEUS_TSDATA} ${PROMETHEUS_ARGS}
 PIDFile=/run/prometheus.pid
 
 [Install]

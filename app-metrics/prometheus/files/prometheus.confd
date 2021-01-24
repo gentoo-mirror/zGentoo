@@ -1,2 +1,7 @@
 # arguments for Prometheus
+PROMETHEUS_CONFIG="/etc/prometheus/prometheus.yml"
+PROMETHEUS_TSDATA="/var/lib/prometheus/data"
+PROMETHEUS_ARGS="--web.listen-address=localhost:9090"
+
+## unused - only used in openRC (systemd uses PROMETHEUS_ARGS)
 command_args=""

@@ -1,0 +1,5 @@
+# The snmp_exporter config file
+SNMPE_CONF="/etc/snmp_exporter/snmp.yml"
+
+# Add any extra options to pass to snmp_exporter to this setting.
+SNMPE_OPTS="--client.external-labels=host=localhost"

@@ -63,7 +63,7 @@ src_install() {
 
 		newconfd "${FILESDIR}/loki.confd" "loki"
 		newinitd "${FILESDIR}/loki.initd" "loki"
-                systemd_newunit "${FILESDIR}"/loki.service loki.service
+        use systemd && systemd_newunit "${FILESDIR}"/loki.service loki.service
 
 		insinto "/etc/${PN}"
 		doins "${S}/cmd/loki/loki-local-config.yaml"
@@ -81,9 +81,7 @@ src_install() {
 
 		newconfd "${FILESDIR}/promtail.confd" "promtail"
 		newinitd "${FILESDIR}/promtail.initd" "promtail"
-		if use systemd; then
-			systemd_newunit "${FILESDIR}"/promtail.service promtail.service
-		fi
+		use systemd && systemd_newunit "${FILESDIR}"/promtail.service promtail.service
 
 		insinto "/etc/${PN}"
 		doins "${S}/cmd/promtail/promtail-local-config.yaml"

@@ -2,4 +2,4 @@
 PROMTAIL_CONF="/etc/loki/promtail-local-config.yaml"
 
 # Add any extra options to pass to promtail to this setting.
-#PROMTAIL_OPTS=""
+PROMTAIL_OPTS="--client.external-labels=host=localhost"

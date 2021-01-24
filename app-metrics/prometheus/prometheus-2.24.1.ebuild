@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/prometheus/prometheus"
 SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 #	https://dev.gentoo.org/~williamh/dist/${P}-assets.tar.gz"
 
+IUSE="+snmp systemd"
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
@@ -19,7 +20,8 @@ COMMON_DEPEND="acct-group/prometheus
 	acct-user/prometheus"
 DEPEND="!app-metrics/prometheus-bin
 	${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	snmp? ( >=app-metrics/snmp_exporter-0.15.0 )"
 BDEPEND=">=dev-util/promu-0.3.0
 	app-arch/p7zip"
 
@@ -48,7 +50,14 @@ src_install() {
 
 	newinitd "${FILESDIR}"/prometheus.initd prometheus
 	newconfd "${FILESDIR}"/prometheus.confd prometheus
-	systemd_newunit "${FILESDIR}"/prometheus.service prometheus.service
+	use systemd && systemd_newunit "${FILESDIR}"/prometheus.service prometheus.service
+
+	## SNMP exporter (prometheus extension)
+	if use snmp; then
+		newconfd "${FILESDIR}"/snmp_exporter.confd snmp_exporter
+		newinitd "${FILESDIR}"/snmp_exporter.initd snmp_exporter
+		use systemd && systemd_newunit "${FILESDIR}"/snmp_exporter.service snmp_exporter.service
+	fi
 
 	keepdir /var/log/prometheus /var/lib/prometheus
 	fowners prometheus:prometheus /var/log/prometheus /var/lib/prometheus

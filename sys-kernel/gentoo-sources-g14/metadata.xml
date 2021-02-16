@@ -7,6 +7,7 @@
 </maintainer>
 <use>
   <flag name="experimental">Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".</flag>
+  <flag name="fanmode_hotkey">Apply patch for G14/G15 to enable fanmode hotkey (fn + F5).</flag>
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>

@@ -45,8 +45,9 @@ src_compile() {
 }
 
 src_install() {
-    cargo_src_install --path "asusctl"
     use notify && cargo_src_install --path "asus-notify"
+    cargo_src_install --path "asusctl"
+    cargo_src_install --path "daemon"
 
     insinto /etc/${MY_PN}
     doins data/${MY_PN}-ledmodes.toml

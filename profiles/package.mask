@@ -19,3 +19,6 @@ sys-power/rog-core
 # see https://bugzilla.kernel.org/show_bug.cgi?id=210765
 # Feel free to manually unmask when not using F2FS.
 =sys-kernel/gentoo-sources-g14-5.10.1
+
+# updated version should be used. (patched again)
+=sys-kernel/gentoo-sources-g14-5.11.0

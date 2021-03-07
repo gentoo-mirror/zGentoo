@@ -14,12 +14,14 @@ SRC_URI="
 "
 
 LICENSE="MPL-2.0"
-SLOT="0"
+SLOT="2/2.2.1"
 KEYWORDS="~amd64"
 IUSE="+gfx +notify"
 
-RDEPEND="!!sys-power/rog-core"
+RDEPEND="!!sys-power/rog-core
+    !!sys-power/asus-nb-ctr:3"
 DEPEND="${RDEPEND}
+    sys-apps/systemd
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1

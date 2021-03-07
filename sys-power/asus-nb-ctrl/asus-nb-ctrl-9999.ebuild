@@ -11,11 +11,12 @@ HOMEPAGE="https://asus-linux.org"
 EGIT_REPO_URI="https://gitlab.com/asus-linux/${PN}.git"
 
 LICENSE="MPL-2.0"
-SLOT="0"
+SLOT="9999"
 IUSE="+gfx +notify"
 
 RDEPEND="!!sys-power/rog-core"
 DEPEND="${RDEPEND}
+    sys-apps/systemd
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
@@ -10,11 +10,11 @@ DESCRIPTION="${PN} (${MY_PN}) is a utility for Linux to control many aspects of 
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/asus-nb-ctrl/uploads/df4fa5bb409512dda33ddebe5db71700/vendor_${PN}_${PV}.tar.xz
+    https://gitlab.com/asus-linux/asus-nb-ctrl/uploads/99cf7040a5aac19e9b1b46ce1d41e98d/vendor_${PN}_${PV}.tar.xz
 "
 
 LICENSE="MPL-2.0"
-SLOT="2/2.1.2"
+SLOT="3/3.0.1"
 KEYWORDS="~amd64"
 IUSE="+gfx +notify"
 
@@ -47,8 +47,9 @@ src_compile() {
 }
 
 src_install() {
-    cargo_src_install --path "${PN}"
     use notify && cargo_src_install --path "asus-notify"
+    cargo_src_install --path "asusctl"
+    cargo_src_install --path "daemon"
 
     insinto /etc/${MY_PN}
     doins data/${MY_PN}-ledmodes.toml

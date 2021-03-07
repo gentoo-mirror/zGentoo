@@ -12,7 +12,7 @@ sys-kernel/gentoo-g14-next
 sys-power/rog-core
 
 # old and unstable kernels (use at own risk)
-<sys-kernel/gentoo-sources-g14-5.10.8
+<sys-kernel/gentoo-sources-g14-5.10.15
 
 # Mike Pagano <mpagano@gentoo.org> (2020-12-18)
 # Serious data corruption bug when using F2FS,

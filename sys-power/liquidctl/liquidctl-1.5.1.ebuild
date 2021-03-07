@@ -22,4 +22,6 @@ BDEPEND="dev-libs/libusb:1
         dev-python/pyusb
         dev-python/setuptools"
 
+# TODO: need smbus and hidus (from pypi/pip) as dependencies
+
 RDEPEND="${BDEPEND}"

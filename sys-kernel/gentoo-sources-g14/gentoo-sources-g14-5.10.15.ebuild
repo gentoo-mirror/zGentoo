@@ -13,7 +13,7 @@ detect_arch
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches"
-IUSE="experimental"
+IUSE="experimental +fanmode_hotkey"
 
 DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
@@ -27,7 +27,9 @@ src_unpack() {
 	kernel-2_src_unpack
 	echo ">>> Applying ASUS ROG Zephyrus G14/G15 laptop specific patches"
 	eapply "${FILESDIR}/0010-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch" || die # needed for ASUS ROG NKey Keyboard devices (will be available in 5.11)
-	eapply "${FILESDIR}/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch" || die # fixes ASUS ROG NKey Keyboard devices fan mode keypress (testing)
+	
+	# fixes ASUS ROG NKey Keyboard devices fan mode keypress (experimental)
+	use fanmode_hotkey && eapply "${FILESDIR}/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch" || die # fixes ASUS ROG NKey Keyboard devices fan mode keypress (testing)
 	
 	# changing source destination path
 	mv ${S} ${MY_S}

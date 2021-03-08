@@ -16,12 +16,12 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="2/2.1.2"
 KEYWORDS="~amd64"
-IUSE="+gfx +notify"
+IUSE="+gfx +notify systemd"
 
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctr:2"
 DEPEND="${RDEPEND}
-    sys-apps/systemd
+    systemd? ( sys-apps/systemd )
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1
@@ -60,9 +60,6 @@ src_install() {
     insinto /etc/udev/rules.d/
     doins data/${MY_PN}.rules
 
-    insinto /usr/share/dbus-1/system.d/
-    doins data/${MY_PN}.conf
-
     if [ -f data/_asusctl ] && [ -d /usr/share/zsh/site-functions ]; then
         insinto /usr/share/zsh/site-functions
         doins data/_asusctl
@@ -83,8 +80,13 @@ src_install() {
         "${FILESDIR}"/90-nvidia-blacklist.conf
     fi
 
-    systemd_dounit data/${MY_PN}.service
-    use notify && systemd_douserunit data/asus-notify.service
+    if use systemd; then
+        insinto /usr/share/dbus-1/system.d/
+        doins data/${MY_PN}.conf
+
+        systemd_dounit data/${MY_PN}.service
+        use notify && systemd_douserunit data/asus-notify.service
+    fi
 }
 
 pkg_postinst() {

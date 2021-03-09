@@ -29,7 +29,9 @@ src_unpack() {
 	eapply "${FILESDIR}/0010-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch" || die # needed for ASUS ROG NKey Keyboard devices (will be available in 5.11)
 	
 	# fixes ASUS ROG NKey Keyboard devices fan mode keypress (experimental)
-	use fanmode_hotkey && eapply "${FILESDIR}/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch" || die # fixes ASUS ROG NKey Keyboard devices fan mode keypress (testing)
+	if use fanmode_hotkey; then
+		eapply "${FILESDIR}/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch" || die
+	fi
 	
 	# changing source destination path
 	mv ${S} ${MY_S}

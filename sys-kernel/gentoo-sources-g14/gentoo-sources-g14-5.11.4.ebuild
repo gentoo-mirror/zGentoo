@@ -32,7 +32,9 @@ src_unpack() {
 	eapply "${FILESDIR}/0001-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch" || die
 	
 	# fixes ASUS ROG NKey Keyboard devices fan mode keypress (experimental)
-	use fanmode_hotkey && eapply "${FILESDIR}/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch" || die
+	if use fanmode_hotkey; then
+		eapply "${FILESDIR}/0002-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard_fanmode.patch" || die
+	fi
 
 	# changing source destination path
 	mv ${S} ${MY_S}

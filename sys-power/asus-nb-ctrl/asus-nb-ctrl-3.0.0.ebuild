@@ -21,7 +21,7 @@ IUSE="+gfx +notify systemd"
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctr:2"
 DEPEND="${RDEPEND}
-    systemd? (sys-apps/systemd)
+    systemd? ( sys-apps/systemd )
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1

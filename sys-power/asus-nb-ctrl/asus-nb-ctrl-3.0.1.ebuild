@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="+gfx +notify systemd"
 
 RDEPEND="!!sys-power/rog-core
-    !!sys-power/asus-nb-ctr:2"
+    !!sys-power/asus-nb-ctrl:2"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
 	>=virtual/rust-1.44.0

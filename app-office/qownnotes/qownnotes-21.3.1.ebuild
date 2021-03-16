@@ -1,11 +1,5 @@
-# Copyright 2014-2021 Patrizio Bekerle
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-#
-# QOwnNotes 21.3.1
-#
-
 EAPI=7
 
 inherit qmake-utils eutils desktop

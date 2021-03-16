@@ -1,14 +1,17 @@
-## upstream underneath gui-libs not net-libs
+# upstream underneath gui-libs not net-libs
 net-libs/libwpe
 net-libs/libwpe-backend
 
-## we only use our version (stripped off qtwebengine)
+# broken configure script - 2.99.4 is upstream (also masked)
+=media-gfx/gimp-2.99.1
+
+# we only use our version (stripped off qtwebengine)
 >net-miusc/nextcloud-client-2.6.4-r2
 
-## please use gentoo-asus as a replacement for gentoo-g14-next
+# please use gentoo-asus as a replacement for gentoo-g14-next
 sys-kernel/gentoo-g14-next
 
-## deprecated, please use sys-power/asus-nb-ctrl as a replacement
+# deprecated, please use sys-power/asus-nb-ctrl as a replacement
 sys-power/rog-core
 
 # old and unstable kernels (use at own risk)

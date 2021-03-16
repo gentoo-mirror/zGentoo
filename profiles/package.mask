@@ -4,10 +4,7 @@ net-libs/libwpe-backend
 
 # broken configure script - 2.99.4 is upstream (also masked)
 =media-gfx/gimp-2.99.1
-=media-gfx/mypaint-brushes-2.0.2
 =media-libs/libmypaint-2.0.0_beta1
-
-
 
 # we only use our version (stripped off qtwebengine)
 >net-miusc/nextcloud-client-2.6.4-r2

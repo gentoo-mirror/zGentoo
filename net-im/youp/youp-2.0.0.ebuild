@@ -10,7 +10,7 @@ libappindicator-0.5.2
 gdk-pixbuf-0.9.0
 "
 
-inherit cargo meson xdg
+inherit gnome2-utils cargo meson xdg
 
 DESCRIPTION="Youp - a whatsapp wrapper written with Rust and GTK3"
 HOMEPAGE="https://github.com/gigitux/youpforwhatsapp"
@@ -68,4 +68,9 @@ src_install() {
     
     # correcting share path (patched in prepare)
     mv ${D}/usr/share/com.gigitux.youp ${D}/usr/share/youp
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
 }

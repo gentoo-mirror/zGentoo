@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-inherit systemd cargo git-r3
+inherit systemd cargo git-r3 xdg
 
 MY_PN="asusd"
 
@@ -69,15 +69,15 @@ src_install() {
     if use gfx; then
         ## screen settings
         insinto /lib/udev/rules.d
-        data/90-nvidia-screen-G05.conf
+        doins data/90-nvidia-screen-G05.conf
         
         ## pm settings
         insinto /X11/xorg.conf.d
-        data/90-asusd-nvidia-pm.rules
+        doins data/90-asusd-nvidia-pm.rules
 
         ## mod blacklisting
         insinto /etc/modprobe.d
-        "${FILESDIR}"/90-nvidia-blacklist.conf
+        doins "${FILESDIR}"/90-nvidia-blacklist.conf
     fi
 
     if use systemd; then
@@ -90,7 +90,12 @@ src_install() {
 }
 
 pkg_postinst() {
+    xdg_icon_cache_update
     ewarn "Don't forget to reload dbus to enable \"${MY_PN}\" service, \
 by runnning:\n >> systemctl reload dbus && udevadm control --reload-rules \
 && udevadm trigger"
+}
+
+pkg_postrm() {
+    xdg_icon_cache_update
 }

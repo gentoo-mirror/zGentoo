@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-inherit systemd cargo git-r3
+inherit systemd cargo git-r3 linux-info xdg
 
 MY_PN="asusd"
 
@@ -14,7 +14,9 @@ LICENSE="MPL-2.0"
 SLOT="9999"
 IUSE="+gfx +notify systemd"
 
-RDEPEND="!!sys-power/rog-core"
+RDEPEND="!!sys-power/rog-core
+!!sys-power/asus-nb-ctrl:2
+!!sys-power/asus-nb-ctrl:3"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
 	>=virtual/rust-1.44.0
@@ -28,6 +30,19 @@ src_unpack() {
     default
     git-r3_src_unpack
     cargo_live_src_unpack
+}
+
+src_prepare() {
+    # checking for needed kernel-modules since v3.2.0
+    k_err="\n"
+    require_configured_kernel
+    linux_chkconfig_module VFIO_PCI || k_err="${k_err}CONFIG_VFIO_PCI must be enabled as module\n"
+    linux_chkconfig_module VFIO_IOMMU_TYPE1 || k_err="${k_err}CONFIG_VFIO_IOMMU_TYPE1 must be enabled as module\n"
+    linux_chkconfig_module VFIO_VIRQFD || k_err="${k_err}CONFIG_VFIO_VIRQFD must be enabled as module\n"
+    linux_chkconfig_module VFIO_MDEV || k_err="${k_err}CONFIG_VFIO_MDEV must be enabled as module\n"
+    linux_chkconfig_module VFIO || k_err="${k_err}CONFIG_VFIO must be enabled as module\n"
+    [[ ${k_err} != "\n" ]] && die "\nKernel configuration mismatch:\n${k_err}"
+    refault
 }
 
 src_compile() {
@@ -63,15 +78,15 @@ src_install() {
     if use gfx; then
         ## screen settings
         insinto /lib/udev/rules.d
-        data/90-nvidia-screen-G05.conf
+        doins data/90-nvidia-screen-G05.conf
         
         ## pm settings
         insinto /X11/xorg.conf.d
-        data/90-asusd-nvidia-pm.rules
+        doins data/90-asusd-nvidia-pm.rules
 
         ## mod blacklisting
         insinto /etc/modprobe.d
-        "${FILESDIR}"/90-nvidia-blacklist.conf
+        doins "${FILESDIR}"/90-nvidia-blacklist.conf
     fi
 
     if use systemd; then
@@ -84,7 +99,12 @@ src_install() {
 }
 
 pkg_postinst() {
+    xdg_icon_cache_update
     ewarn "Don't forget to reload dbus to enable \"${MY_PN}\" service, \
 by runnning:\n >> systemctl reload dbus && udevadm control --reload-rules \
 && udevadm trigger"
+}
+
+pkg_postrm() {
+    xdg_icon_cache_update
 }

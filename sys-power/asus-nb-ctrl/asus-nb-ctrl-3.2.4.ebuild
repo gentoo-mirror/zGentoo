@@ -4,19 +4,23 @@ EAPI=7
 
 inherit systemd cargo git-r3 linux-info xdg
 
-MY_PN="asusd"
+_PN="asusd"
 
-DESCRIPTION="${PN} (${MY_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
+DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-EGIT_REPO_URI="https://gitlab.com/asus-linux/${PN}.git"
+SRC_HASH="c3b533e047a12b7947c1cf5aad02bbc5"
+SRC_URI="
+    https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
+    https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
+"
 
 LICENSE="MPL-2.0"
-SLOT="9999"
+SLOT="3/3.2.3"
+KEYWORDS="~amd64"
 IUSE="+gfx +notify systemd"
 
 RDEPEND="!!sys-power/rog-core
-!!sys-power/asus-nb-ctrl:2
-!!sys-power/asus-nb-ctrl:3"
+    !!sys-power/asus-nb-ctrl:2"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
 	>=virtual/rust-1.44.0
@@ -26,10 +30,12 @@ DEPEND="${RDEPEND}
     gfx? ( !sys-kernel/gentoo-g14-next )
 "
 
+S="${WORKDIR}/${PN}-${PV}"
+
 src_unpack() {
-    default
-    git-r3_src_unpack
-    cargo_live_src_unpack
+    unpack ${PN}-${PV}.tar.gz
+    # adding vendor-package
+    cd ${S} && unpack vendor_${PN}_${PV}.tar.xz
 }
 
 src_prepare() {
@@ -42,32 +48,26 @@ src_prepare() {
     linux_chkconfig_module VFIO_MDEV || k_wrn="${k_wrn}CONFIG_VFIO_MDEV must be enabled as module\n"
     linux_chkconfig_module VFIO || k_wrn="${k_wrn}CONFIG_VFIO must be enabled as module\n"
     [[ ${k_wrn} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for VFIO graphics switch):\n${k_wrn}"
-    refault
+
+    # adding vendor package config
+    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
+    default
 }
 
 src_compile() {
     cargo_gen_config
-    ## patch config to NOT trigger install in "all" target (this will fail)
-    sed -i 's/build\ install/build/g' Makefile
     default
 }
 
 src_install() {
-    cargo_src_install --path "${PN}"
-    use notify && cargo_src_install --path "asus-notify"
-
-    insinto /etc/${MY_PN}
-    doins data/${MY_PN}-ledmodes.toml
-    doins "${FILESDIR}"/${MY_PN}.conf && ewarn Resetted /etc/${MY_PN}/${MY_PN}.conf make sure to check your settings!
+    insinto /etc/${_PN}
+    doins data/${_PN}-ledmodes.toml
 
     insinto /usr/share/icons/hicolor/512x512/apps/
     doins data/icons/*.png
 
-    insinto /etc/udev/rules.d/
-    doins data/${MY_PN}.rules
-
-    insinto /usr/share/dbus-1/system.d/
-    doins data/${MY_PN}.conf
+    insinto /lib/udev/rules.d/
+    doins data/${_PN}.rules
 
     if [ -f data/_asusctl ] && [ -d /usr/share/zsh/site-functions ]; then
         insinto /usr/share/zsh/site-functions
@@ -81,26 +81,30 @@ src_install() {
         doins data/90-nvidia-screen-G05.conf
         
         ## pm settings
-        insinto /X11/xorg.conf.d
+        insinto /etc/X11/xorg.conf.d
         doins data/90-asusd-nvidia-pm.rules
 
         ## mod blacklisting
         insinto /etc/modprobe.d
-        doins "${FILESDIR}"/90-nvidia-blacklist.conf
+        doins ${FILESDIR}/90-nvidia-blacklist.conf
     fi
 
     if use systemd; then
         insinto /usr/share/dbus-1/system.d/
-        doins data/${MY_PN}.conf
+        doins data/${_PN}.conf
 
-        systemd_dounit data/${MY_PN}.service
+        systemd_dounit data/${_PN}.service
         use notify && systemd_douserunit data/asus-notify.service
     fi
+
+    use notify && cargo_src_install --path "asus-notify"
+    cargo_src_install --path "asusctl"
+    cargo_src_install --path "daemon"
 }
 
 pkg_postinst() {
     xdg_icon_cache_update
-    ewarn "Don't forget to reload dbus to enable \"${MY_PN}\" service, \
+    ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
 by runnning:\n >> systemctl reload dbus && udevadm control --reload-rules \
 && udevadm trigger"
 }

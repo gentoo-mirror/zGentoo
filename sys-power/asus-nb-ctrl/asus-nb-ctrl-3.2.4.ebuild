@@ -15,7 +15,7 @@ SRC_URI="
 "
 
 LICENSE="MPL-2.0"
-SLOT="3/3.2.3"
+SLOT="3/3.2.4"
 KEYWORDS="~amd64"
 IUSE="+gfx +notify systemd"
 

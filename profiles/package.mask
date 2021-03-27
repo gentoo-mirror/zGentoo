@@ -26,3 +26,6 @@ sys-power/rog-core
 
 # updated version should be used. (patched again)
 =sys-kernel/gentoo-sources-g14-5.11.0
+
+# unstable release, may break several things. (will be readded if stabelized)
+sys-power/asus-nb-ctrl

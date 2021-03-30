@@ -12,13 +12,13 @@ EGIT_REPO_URI="https://gitlab.com/asus-linux/${PN}.git"
 
 LICENSE="MPL-2.0"
 SLOT="9999"
-IUSE="+gfx +notify systemd"
+IUSE="+gfx +notify systemd gnome"
 
 RDEPEND="!!sys-power/rog-core
-!!sys-power/asus-nb-ctrl:2
-!!sys-power/asus-nb-ctrl:3"
+!!<=sys-power/asus-nb-ctrl-9999"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
+    gnome? ( x11-apps/xrandr && gnome-base/gdm )
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1
@@ -33,15 +33,24 @@ src_unpack() {
 }
 
 src_prepare() {
-    # checking for needed kernel-modules since v3.2.0
-    k_wrn="\n"
     require_configured_kernel
-    linux_chkconfig_module VFIO_PCI || k_wrn="${k_wrn}CONFIG_VFIO_PCI must be enabled as module\n"
-    linux_chkconfig_module VFIO_IOMMU_TYPE1 || k_wrn="${k_wrn}CONFIG_VFIO_IOMMU_TYPE1 must be enabled as module\n"
-    linux_chkconfig_module VFIO_VIRQFD || k_wrn="${k_wrn}CONFIG_VFIO_VIRQFD must be enabled as module\n"
-    linux_chkconfig_module VFIO_MDEV || k_wrn="${k_wrn}CONFIG_VFIO_MDEV must be enabled as module\n"
-    linux_chkconfig_module VFIO || k_wrn="${k_wrn}CONFIG_VFIO must be enabled as module\n"
-    [[ ${k_wrn} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for VFIO graphics switch):\n${k_wrn}"
+
+    # checking for needed kernel-modules since v3.2.0
+    k_wrn_vfio="\n"
+    linux_chkconfig_module ACPI_CALL || k_wrn_vfio="${k_wrn_vfio}CONFIG_ACPI_CALL must be enabled as module\n"
+    linux_chkconfig_module VFIO_PCI || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_PCI must be enabled as module\n"
+    linux_chkconfig_module VFIO_IOMMU_TYPE1 || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_IOMMU_TYPE1 must be enabled as module\n"
+    linux_chkconfig_module VFIO_VIRQFD || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_VIRQFD must be enabled as module\n"
+    linux_chkconfig_module VFIO_MDEV || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_MDEV must be enabled as module\n"
+    linux_chkconfig_module VFIO || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO must be enabled as module\n"
+    [[ ${k_wrn_vfio} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for VFIO graphics switch):\n${k_wrn_vfio}"
+
+    # TODO: acpi_call
+    k_wrn_touch="\n"
+    linux_chkconfig_present PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}CONFIG_PINCTRL_AMD not found, should be neither builtin ot build as module\n"
+    linux_chkconfig_present I2C_HID || k_wrn_touch="${k_wrn_touch}CONFIG_I2C_HID not found, should be neither builtin ot build as module\n"
+    [[ ${k_wrn_touch} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for touchpad support):\n${k_wrn_touch}"
+    
     refault
 }
 
@@ -95,6 +104,16 @@ src_install() {
 
         systemd_dounit data/${MY_PN}.service
         use notify && systemd_douserunit data/asus-notify.service
+    fi
+
+    # xrandrs settings for nvidia-primary (gnome only)
+    if use gnome; then
+        insinto /usr/share/gdm/greeter/autostart
+        doins "${FILESDIR}"/xrandr-nvidia.desktop
+    else
+        ewarn "you're not using gnome, please make sure you run \n\
+        `xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto` \n\
+        when logging into your WM/DM"
     fi
 }
 

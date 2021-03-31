@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>luke@ljones.dev</email>
+		<name>Luke Jones</name>
+	</maintainer>
+    <member>
+        <email>zappel@simple-co.de</email>
+        <name>Armas Spann</name>
+        <role>member/co-maintainer</role>
+    </member>
+	<upstream>
+		<remote-id type="git">https://gitlab.com/asus-linux/asus-nb-ctrl</remote-id>
+	</upstream>
+	<use>
+		<flag name="notify">Installs asus-nb-ctrl notify binary and service</flag>
+		<flag name="gfx">Add support for switching graphics(gfx) devices</flag>
+	</use>
+</pkgmetadata>

@@ -12,13 +12,19 @@ EGIT_REPO_URI="https://gitlab.com/asus-linux/${PN}.git"
 
 LICENSE="MPL-2.0"
 SLOT="9999"
-IUSE="+gfx +notify systemd gnome"
+IUSE="+acpi +gfx +notify systemd gnome"
+REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
-!!<=sys-power/asus-nb-ctrl-9999"
+    !<sys-power/asus-nb-ctrl-${PV}
+    acpi? ( sys-power/acpi_call )
+    gnome? (
+        x11-apps/xrandr
+        gnome-base/gdm
+        gnome-extra/gnome-shell-extension-asus-nb-gex
+    )"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
-    gnome? ( x11-apps/xrandr && gnome-base/gdm )
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1
@@ -71,9 +77,6 @@ src_compile() {
 }
 
 src_install() {
-    cargo_src_install --path "${PN}"
-    use notify && cargo_src_install --path "asus-notify"
-
     insinto /etc/${MY_PN}
     doins data/${MY_PN}-ledmodes.toml
     doins "${FILESDIR}"/${MY_PN}.conf && ewarn Resetted /etc/${MY_PN}/${MY_PN}.conf make sure to check your settings!
@@ -92,19 +95,32 @@ src_install() {
         doins data/_asusctl
     fi
     
-    ## GFX needs testing
+    ## GFX
     if use gfx; then
         ## screen settings
         insinto /lib/udev/rules.d
         doins data/90-nvidia-screen-G05.conf
         
         ## pm settings
-        insinto /X11/xorg.conf.d
+        insinto /etc/X11/xorg.conf.d
         doins data/90-asusd-nvidia-pm.rules
 
         ## mod blacklisting
         insinto /etc/modprobe.d
-        doins "${FILESDIR}"/90-nvidia-blacklist.conf
+        doins ${FILESDIR}/90-nvidia-blacklist.conf
+
+        # xrandr settings for nvidia-primary (gnome only, will autofail on non-nvidia as primary)
+        if use gnome; then
+            insinto /etc/xdg/autostart
+            doins "${FILESDIR}"/xrandr-nvidia.desktop
+
+            insinto /usr/share/gdm/greeter/autostart
+            doins "${FILESDIR}"/xrandr-nvidia.desktop
+        else
+            ewarn "you're not using gnome, please make sure you run \n\
+            `xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto` \n\
+            when logging into your WM/DM"
+        fi
     fi
 
     if use systemd; then
@@ -113,17 +129,13 @@ src_install() {
 
         systemd_dounit data/${MY_PN}.service
         use notify && systemd_douserunit data/asus-notify.service
+    else
+        eerror "OpenRC is not supported"
     fi
 
-    # xrandrs settings for nvidia-primary (gnome only)
-    if use gnome; then
-        insinto /usr/share/gdm/greeter/autostart
-        doins "${FILESDIR}"/xrandr-nvidia.desktop
-    else
-        ewarn "you're not using gnome, please make sure you run \n\
-        `xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto` \n\
-        when logging into your WM/DM"
-    fi
+    use notify && cargo_src_install --path "asus-notify"
+    cargo_src_install --path "asusctl"
+    cargo_src_install --path "daemon"
 }
 
 pkg_postinst() {

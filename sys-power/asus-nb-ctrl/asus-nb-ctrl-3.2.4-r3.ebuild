@@ -17,18 +17,19 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+gfx +notify systemd gnome"
+IUSE="+acpi +gfx +notify systemd gnome"
+REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
     !<sys-power/asus-nb-ctrl-${PV}
-    !sys-power/acpi_call
-    x11-apps/xrandr"
-DEPEND="${RDEPEND}
-    systemd? ( sys-apps/systemd )
-    gnome? ( 
+    acpi? ( sys-power/acpi_call )
+    gnome? (
         x11-apps/xrandr
         gnome-base/gdm
-    )
+        gnome-extra/gnome-shell-extension-asus-nb-gex
+    )"
+DEPEND="${RDEPEND}
+    systemd? ( sys-apps/systemd )
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
     >=sys-devel/clang-runtime-9.0.1
@@ -46,9 +47,6 @@ src_unpack() {
 
 src_prepare() {
     require_configured_kernel
-
-    # make sure acpi_call is disabled (causes massive problems on gentoo)
-    linux_chkconfig_present ACPI_CALL && die "CONFIG_ACPI_CALL must be disabled."
 
     # checking for needed kernel-modules since v3.2.0
     k_wrn_vfio="\n"
@@ -111,6 +109,19 @@ src_install() {
         ## mod blacklisting
         insinto /etc/modprobe.d
         doins ${FILESDIR}/90-nvidia-blacklist.conf
+
+        # xrandr settings for nvidia-primary (gnome only, will autofail on non-nvidia as primary)
+        if use gnome; then
+            insinto /etc/xdg/autostart
+            doins "${FILESDIR}"/xrandr-nvidia.desktop
+
+            insinto /usr/share/gdm/greeter/autostart
+            doins "${FILESDIR}"/xrandr-nvidia.desktop
+        else
+            ewarn "you're not using gnome, please make sure you run \n\
+            `xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto` \n\
+            when logging into your WM/DM"
+        fi
     fi
 
     if use systemd; then
@@ -123,17 +134,10 @@ src_install() {
         eerror "OpenRC is not supported"
     fi
 
-    # xrandr settings for nvidia-primary (gnome only, will autofail on non-nvidia as primary)
-    if use gnome; then
-        insinto /etc/xdg/autostart
-        doins "${FILESDIR}"/xrandr-nvidia.desktop
 
-        insinto /usr/share/gdm/greeter/autostart
-        doins "${FILESDIR}"/xrandr-nvidia.desktop
-    else
-        ewarn "you're not using gnome, please make sure you run \n\
-        `xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto` \n\
-        when logging into your WM/DM"
+    if use acpi; then
+        insinto /etc/modules-load.d
+        doins ${FILESDIR}/90-acpi_call.conf
     fi
 
     use notify && cargo_src_install --path "asus-notify"

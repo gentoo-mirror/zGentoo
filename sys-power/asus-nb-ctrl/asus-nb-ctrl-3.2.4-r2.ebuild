@@ -21,12 +21,13 @@ IUSE="+gfx +notify systemd gnome"
 
 RDEPEND="!!sys-power/rog-core
     !<sys-power/asus-nb-ctrl-${PV}
+    !sys-power/acpi_call
     x11-apps/xrandr"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
     gnome? ( 
         x11-apps/xrandr
-        gnome-base/gdm 
+        gnome-base/gdm
     )
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1
@@ -46,9 +47,11 @@ src_unpack() {
 src_prepare() {
     require_configured_kernel
 
+    # make sure acpi_call is disabled (causes massive problems on gentoo)
+    linux_chkconfig_present ACPI_CALL && die "CONFIG_ACPI_CALL must be disabled."
+
     # checking for needed kernel-modules since v3.2.0
     k_wrn_vfio="\n"
-    linux_chkconfig_module ACPI_CALL || k_wrn_vfio="${k_wrn_vfio}CONFIG_ACPI_CALL must be enabled as module\n"
     linux_chkconfig_module VFIO_PCI || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_PCI should be enabled as module\n"
     linux_chkconfig_module VFIO_IOMMU_TYPE1 || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_IOMMU_TYPE1 should be enabled as module\n"
     linux_chkconfig_module VFIO_VIRQFD || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_VIRQFD should be enabled as module\n"

@@ -35,23 +35,32 @@ src_unpack() {
 src_prepare() {
     require_configured_kernel
 
+    # make sure acpi_call is disabled (causes massive problems on gentoo)
+    linux_chkconfig_present ACPI_CALL && die "CONFIG_ACPI_CALL must be disabled."
+
     # checking for needed kernel-modules since v3.2.0
     k_wrn_vfio="\n"
-    linux_chkconfig_module ACPI_CALL || k_wrn_vfio="${k_wrn_vfio}CONFIG_ACPI_CALL must be enabled as module\n"
-    linux_chkconfig_module VFIO_PCI || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_PCI must be enabled as module\n"
-    linux_chkconfig_module VFIO_IOMMU_TYPE1 || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_IOMMU_TYPE1 must be enabled as module\n"
-    linux_chkconfig_module VFIO_VIRQFD || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_VIRQFD must be enabled as module\n"
-    linux_chkconfig_module VFIO_MDEV || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_MDEV must be enabled as module\n"
-    linux_chkconfig_module VFIO || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO must be enabled as module\n"
-    [[ ${k_wrn_vfio} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for VFIO graphics switch):\n${k_wrn_vfio}"
+    linux_chkconfig_module VFIO_PCI || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_PCI should be enabled as module\n"
+    linux_chkconfig_module VFIO_IOMMU_TYPE1 || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_IOMMU_TYPE1 should be enabled as module\n"
+    linux_chkconfig_module VFIO_VIRQFD || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_VIRQFD should be enabled as module\n"
+    linux_chkconfig_module VFIO_MDEV || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_MDEV should be enabled as module\n"
+    linux_chkconfig_module VFIO || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO should be enabled as module\n"
+    [[ ${k_wrn_vfio} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for switching gfx):\n${k_wrn_vfio}"
 
-    # TODO: acpi_call
+    # checking for touchpad dependencies
     k_wrn_touch="\n"
-    linux_chkconfig_present PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}CONFIG_PINCTRL_AMD not found, should be neither builtin ot build as module\n"
-    linux_chkconfig_present I2C_HID || k_wrn_touch="${k_wrn_touch}CONFIG_I2C_HID not found, should be neither builtin ot build as module\n"
+    linux_chkconfig_present PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}CONFIG_PINCTRL_AMD not found, should be neither builtin or build as module\n"
+    linux_chkconfig_present I2C_HID || k_wrn_touch="${k_wrn_touch}CONFIG_I2C_HID not found, should be neither builtin or build as module\n"
     [[ ${k_wrn_touch} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for touchpad support):\n${k_wrn_touch}"
+
+    # fix nvidia as primary (might be gentoo specific)
+    sed -i 's/Section\ /Section\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ /g' \
+        ${S}/daemon/src/ctrl_gfx/mod.rs || die "Can't add modesetting to the gfx switcher."
+
+    sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
+        ${S}/daemon/src/ctrl_gfx/mod.rs || die "Can't add nvidia device section to the gfx switcher."
     
-    refault
+    default
 }
 
 src_compile() {

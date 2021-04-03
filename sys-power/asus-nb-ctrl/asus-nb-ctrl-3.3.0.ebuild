@@ -8,7 +8,7 @@ _PN="asusd"
 
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-SRC_HASH="c3b533e047a12b7947c1cf5aad02bbc5"
+SRC_HASH="f3e901ecd1d40689ca72c1fc942c70cb"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
     https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
@@ -55,7 +55,13 @@ src_prepare() {
     linux_chkconfig_module VFIO_VIRQFD || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_VIRQFD should be enabled as module\n"
     linux_chkconfig_module VFIO_MDEV || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO_MDEV should be enabled as module\n"
     linux_chkconfig_module VFIO || k_wrn_vfio="${k_wrn_vfio}CONFIG_VFIO should be enabled as module\n"
-    [[ ${k_wrn_vfio} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for switching gfx):\n${k_wrn_vfio}"
+    if [[ ${k_wrn_vfio} != "\n" ]]; then 
+        ewarn "\nKernel configuration mismatch (needed for switching gfx vfio mode - disabled by default):\n${k_wrn_vfio}"
+    else
+        ## enabeling fvio mode
+        einfo "Kernel configuration matches FVIO requirements. (enabeling now vfio gfx switch by default)"
+        sed -i 's/gfx_vfio_enable:\ false,/gfx_vfio_enable:\ true,/g' ${S}/daemon/src/config.rs || die "Could not enable VFIO."
+    fi
 
     # checking for touchpad dependencies
     k_wrn_touch="\n"
@@ -64,10 +70,8 @@ src_prepare() {
     [[ ${k_wrn_touch} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for touchpad support):\n${k_wrn_touch}"
 
     # fix nvidia as primary (might be gentoo specific)
-    sed -i 's/Section\ /Section\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ /g' \
-        ${S}/daemon/src/ctrl_gfx/mod.rs || die "Can't add modesetting to the gfx switcher."
-
-    sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
+    # this enables modesetting modules and nvidia as a device entry in the generated 90-nvidia-primary.conf (if siwthced to nvidia as primary)
+    sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
         ${S}/daemon/src/ctrl_gfx/mod.rs || die "Can't add nvidia device section to the gfx switcher."
 
     # adding vendor package config

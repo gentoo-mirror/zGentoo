@@ -4,10 +4,13 @@
   <repo quality="experimental" status="unofficial">
     <name><![CDATA[zGentoo]]></name>
     <description lang="en"><![CDATA[ZappeL's Gentoo-Overlay]]></description>
-    <homepage>https://</homepage>
+    <homepage>https://lab.retarded.farm/zappel/zGentoo</homepage>
     <owner type="person">
-      <name><![CDATA[ZappeL]]></name>
+      <name><![CDATA[Armas Spann]]></name>
+      <email>zappel@simple-co.de</email>
     </owner>
-    <source type="git">https://lab.retarded.farm/zappel/zGentoo</source>
+    <source type="git">https://lab.retarded.farm/zappel/zGentoo.git</source>
+    <source type="git">git@lab.retarded.farm:zappel/zGentoo.git</source>
+    <feed>https://lab.retarded.farm/zappel/zGentoo/-/commits/master.atom</feed>
   </repo>
 </repositories>

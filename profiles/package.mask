@@ -18,14 +18,8 @@ sys-power/rog-core
 # old and unstable kernels (use at own risk)
 <sys-kernel/gentoo-sources-g14-5.10.15
 
-# Mike Pagano <mpagano@gentoo.org> (2020-12-18)
-# Serious data corruption bug when using F2FS,
-# see https://bugzilla.kernel.org/show_bug.cgi?id=210765
-# Feel free to manually unmask when not using F2FS.
-=sys-kernel/gentoo-sources-g14-5.10.1
-
-# updated version should be used. (patched again)
-=sys-kernel/gentoo-sources-g14-5.11.0
-
 # not supported anymore (by 03-30-2021)
 <sys-power/asus-nb-ctrl-3.2.4
+
+# please use sys-power/asusctl as it was renamed on 04-11-2021
+sys-power/asus-nb-ctrl

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=A minimal header only C++ logger system
+EAPI=6
+HOMEPAGE=https://github.com/dominikschnitzer/minilog
+INHERIT=git-r3
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD2
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=206f09eba5721630d1051933109f3cf7

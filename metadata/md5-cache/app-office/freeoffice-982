@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=app-admin/chrpath app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A complete, free Microsoft Office-compatible alternative office suite
+EAPI=7
+HOMEPAGE=https://www.freeoffice.com
+INHERIT=desktop pax-utils xdg
+IUSE=l10n_ar l10n_bg l10n_da l10n_de l10n_el l10n_en-GB l10n_en-US l10n_es l10n_et l10n_fi l10n_fr l10n_hu l10n_id l10n_it l10n_ja l10n_kk l10n_ko l10n_lt l10n_lv l10n_nl l10n_pl l10n_pt l10n_pt-BR l10n_ro l10n_ru l10n_sl l10n_sv l10n_tr l10n_uk l10n_zh
+KEYWORDS=~amd64 ~x86
+LICENSE=SoftMaker
+RDEPEND=app-admin/chrpath app-arch/xz-utils media-libs/mesa net-misc/curl x11-libs/libXrandr
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://www.softmaker.net/down/softmaker-freeoffice-982-amd64.tgz ) x86? ( https://www.softmaker.net/down/softmaker-freeoffice-982-i386.tgz )
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	pax-utils	d3fc79d3d50544347e324864f95206e2	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=a3d7a65146027039d6684f35eb74b85c

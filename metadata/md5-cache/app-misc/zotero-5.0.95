@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=A tool to help you collect, organize, cite, and share your research sources
+EAPI=7
+HOMEPAGE=https://www.zotero.org/
+INHERIT=eutils desktop
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://download.zotero.org/client/release/5.0.95/Zotero-5.0.95_linux-x86_64.tar.bz2 ) x86? ( https://download.zotero.org/client/release/5.0.95/Zotero-5.0.95_linux-i686.tar.bz2 )
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=875295f8fdcb3b92a746bbda40fac465

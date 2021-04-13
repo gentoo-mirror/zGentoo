@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Extension for visualizing asusctl-ctrl(asusd) settings and status."
 HOMEPAGE="https://gitlab.com/asus-linux/asusctl-gex"
-SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/1173853212/artifacts/download -> ${P}.zip"
+SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/1174363162/artifacts/download -> ${P}.zip"
 S="${WORKDIR}/asusctl-gex@asus-linux.org"
 
 LICENSE="GPL-3"

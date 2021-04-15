@@ -2,12 +2,9 @@ acct-group/logger 0-r1: Logger program group
 acct-user/fluent-bit 0-r1: fluent-bit program user
 acct-user/loki 0-r1: Loki program user
 acct-user/trezord 0: User for TREZOR Bridge
-app-accessibility/caribou 0.4.21-r1: Input assistive technology intended for switch and pointer users
 app-admin/fluent-bit 1.6.9: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
 app-admin/loki 2.1.0: Like Prometheus, but for logs.
-app-admin/packagekit-base 1.1.13: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-editors/imhex 1.5.0: A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM.
-app-emulation/protontricks 1.4.3: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/vmware-horizon-client 8.2.0: VMware Horizon View client
 app-metrics/prometheus 2.24.1: Prometheus monitoring system and time series database
 app-metrics/snmp_exporter 0.19.0: Prometheus exporter for snmp metrics
@@ -24,23 +21,18 @@ dev-python/py3nvml 0.2.6: Python 3 Bindings for NVML library. Get NVIDIA GPU sta
 dev-python/pybind11-cm 2.5.0 2.6.0 2.6.1: AST-based Python refactoring library - CMake files
 dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
-games-emulation/stella 6.5: Stella Atari 2600 VCS Emulator
 gnome-extra/gnome-shell-extension-asus-nb-gex 1.0.0_rc1: Extension for visualizing asus-nb-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-asusctl-gex 1.0.0_rc2: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4
-media-gfx/gimp 2.99.1: GNU Image Manipulation Program
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system. It will backup all the photos the user uploaded to Google Photos, but also the album information and additional Google Photos ‘Creations’ (animations, panoramas, movies, effects and collages).
 media-gfx/yed 3.20.1: yEd Graph Editor - High-quality diagrams made easy
-media-libs/libmypaint 2.0.0_beta1: Library for making brushstrokes
 media-sound/freetube 0.12.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/nuvolaplayer 4.20.0: Nuvola Player™ provides a tight Linux desktop integration for web- based media streaming services
-media-sound/sndio 1.6.0: small audio and MIDI framework part of the OpenBSD project
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.27.1: A complete, modular, portable and easily extensible MITM framework
 net-im/discord-bin 0.0.14: All-in-one voice and text chat for gamers
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-im/zoom 5.6.13558.0321: Video conferencing and web conferencing service
-net-libs/libnm-glib 1.18.8-r1: NetworkManager client library (legacy)
 net-misc/anydesk 6.0.0-r1: Feature rich multi-platform remote desktop application
 net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
@@ -60,7 +52,6 @@ virtual/linux-sources 3-r99: Virtual for Linux kernel sources
 www-apps/grafana 7.3.7 7.4.0_beta1: The tool for beautiful monitoring and metric analytics & dashboards
 www-apps/rainloop 1.14.0: Simple, modern and fast web-based email client
 www-apps/rainloop-community 1.14.0: Simple, modern and fast web-based email client (community-edition)
-x11-drivers/nvidia-drivers 460.32.03: NVIDIA Accelerated Graphics Driver
 x11-libs/diorite 4.20.0: Diorite library is a private utility and widget library for Nuvola Apps project based on GLib, GIO and GTK
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0
 x11-libs/libdri2 0_p20120823: Library for the DRI2 extension to the X Window System

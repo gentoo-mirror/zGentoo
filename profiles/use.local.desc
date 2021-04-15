@@ -90,11 +90,6 @@ app-admin/loki:fluent-bit - Build the fluent-bit plugin to publish from app-admi
 app-admin/loki:promtail - Build the promtail log gathering agent
 app-admin/loki:server - Build the loki server
 app-admin/loki:tools - Build the loki tools logcli and loki-canary
-app-admin/packagekit-base:command-not-found - Enable packagekit support on shell "command not found"
-app-admin/packagekit-base:consolekit - Use sys-auth/consolekit to get user session
-app-admin/packagekit-base:cron - Install cron script for auto-update
-app-admin/packagekit-base:elogind - Enable sys-auth/elogind support to get user session
-app-admin/packagekit-base:entropy - Enable Entropy backend
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
 games-emulation/rpcs3:discord-rpc - Enable Discord integration
 games-emulation/rpcs3:evdev - Enable evdev for input
@@ -105,14 +100,8 @@ games-emulation/rpcs3:system-llvm - Use the system-wide LLVM library instead of 
 games-emulation/rpcs3:vulkan - Enable vulkan video output
 media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner via avahi.
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
-media-gfx/gimp:heif - Enable support for ISO/IEC 23008-12:2017 HEIF files
-media-gfx/gimp:smp - Enable support for multiprocessors
-media-gfx/gimp:vector-icons - Enable support for vector icons (experimental)
-media-libs/libmypaint:gegl - Add support for media-libs/gegl
 net-im/zoom:bundled-libjpeg-turbo - Use bundled libturbojpeg instead of media-libs/libjpeg-turbo
 net-im/zoom:bundled-qt - Use bundled Qt and icu instead of system-wide libs
-net-libs/libnm-glib:minimal - Only install library files
-net-libs/libnm-glib:nss - Use dev-libs/nss for cryptography
 net-p2p/trezord-go:systemd - Install systemd service file
 net-p2p/trezord-go:udev - Install udev rules
 sys-kernel/gentoo-g14-next:dGPU - Use dGPU as default source

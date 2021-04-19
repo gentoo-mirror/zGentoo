@@ -17,6 +17,7 @@ REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
+    !<=sys-power/asusctl-9999
     acpi? ( sys-power/acpi_call )
     gnome? (
         x11-apps/xrandr

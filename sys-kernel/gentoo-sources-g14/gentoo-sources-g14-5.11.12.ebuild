@@ -24,12 +24,12 @@ fi
 
 src_unpack() {
 	kernel-2_src_unpack
-	echo ">>> Applying ASUS ROG notebook specific patches"
+	echo ">>> Applying ASUS ROG notebook (2021 series) specific patches"
 
 	# updated device ids and generalized G14 detection
-	eapply "${FILESDIR}/0001-HID-asus-Add-support-for-2021-ASUS-N-Key-keyboard.patch" || die
-	eapply "${FILESDIR}/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch" || die
-	eapply "${FILESDIR}/0001-WMI-asus-Reduce-G14-and-G15-match-to-min-product-nam.patch" || die
+	for p in ${FILESDIR}/2021_models/*.patch; do
+		eapply "${p}" || die
+	done
 	
 	# fixes ASUS ROG NKey Keyboard devices fan mode keypress (experimental)
 	if use fanmode_hotkey; then

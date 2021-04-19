@@ -38,7 +38,7 @@ net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 sys-kernel/gentoo-g14-next 0.2.1-r3: ASUS ROG Zephyrus G14 patches and PRIME Loader for propietary nvidia drivers
-sys-kernel/gentoo-sources-g14 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources-g14 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asus-nb-ctrl 3.3.0 9999: asus-nb-ctrl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

@@ -12,6 +12,7 @@ app-misc/zotero 5.0.95: A tool to help you collect, organize, cite, and share yo
 app-office/freeoffice 982: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 21.3.1: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.1: CastXML is a C-family abstract syntax tree XML output tool.
+dev-lang/kotlin-bin 1.4.32: Statically typed programming language for modern multiplatform applications
 dev-libs/hidapi 0.10.1: HIDAPI library for Windows, Linux, FreeBSD and macOS
 dev-python/Rx 3.1.0: Reactive Extensions for Python
 dev-python/exif 1.2.0: Read and modify image EXIF metadata using Python

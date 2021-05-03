@@ -1,0 +1,21 @@
+--- a/freon@UshakovVasilii_Github.yahoo.com/metadata.json 2021-03-21 18:52:43.996177663 +0100
++++ b/freon@UshakovVasilii_Github.yahoo.com/metadata.json 2021-03-21 19:01:55.900015287 +0100
+@@ -1,5 +1,5 @@
+ {
+-  "shell-version": ["3.38"],
++  "shell-version": ["3.38","40.rc","40.0"],
+   "uuid": "freon@UshakovVasilii_Github.yahoo.com",
+   "name": "Freon",
+   "description": "Shows CPU temperature, disk temperature, video card temperature (NVIDIA/Catalyst/Bumblebee&NVIDIA), voltage and fan RPM (forked from xtranophilist/gnome-shell-extension-sensors)",
+
+--- a/freon@UshakovVasilii_Github.yahoo.com/prefs.js  2021-03-21 19:01:14.569422373 +0100
++++ b/freon@UshakovVasilii_Github.yahoo.com/prefs.js  2021-03-21 19:01:35.924691329 +0100
+@@ -130,7 +130,5 @@
+ });
+ 
+ function buildPrefsWidget() {
+-    let w = new FreonPrefsWidget();
+-    w.show_all();
+-    return w;
++    return new FreonPrefsWidget();
+ }

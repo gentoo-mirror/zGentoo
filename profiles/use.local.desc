@@ -90,6 +90,7 @@ app-admin/loki:fluent-bit - Build the fluent-bit plugin to publish from app-admi
 app-admin/loki:promtail - Build the promtail log gathering agent
 app-admin/loki:server - Build the loki server
 app-admin/loki:tools - Build the loki tools logcli and loki-canary
+app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP server.
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
 games-emulation/rpcs3:discord-rpc - Enable Discord integration
 games-emulation/rpcs3:evdev - Enable evdev for input

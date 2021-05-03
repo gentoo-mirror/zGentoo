@@ -4,6 +4,7 @@ acct-user/loki 0-r1: Loki program user
 acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 1.6.9: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
 app-admin/loki 2.1.0: Like Prometheus, but for logs.
+app-crypt/seahorse 40.0-r2: Manage your passwords and encryption keys
 app-editors/imhex 1.5.0: A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM.
 app-emulation/vmware-horizon-client 8.2.0: VMware Horizon View client
 app-metrics/prometheus 2.24.1: Prometheus monitoring system and time series database
@@ -24,6 +25,8 @@ dev-python/pytest-runner 5.2: Adds support for tests during installation of setu
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 gnome-extra/gnome-shell-extension-asus-nb-gex 1.0.0_rc1: Extension for visualizing asus-nb-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-asusctl-gex 1.0.0_rc2: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-freon 43-r1: Freon is an extension for displaying sensors data.
+gnome-extra/gnome-shell-extension-topicons-plus 27-r1: Moves legacy tray icons to top panel
 media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system. It will backup all the photos the user uploaded to Google Photos, but also the album information and additional Google Photos ‘Creations’ (animations, panoramas, movies, effects and collages).
 media-gfx/yed 3.20.1: yEd Graph Editor - High-quality diagrams made easy

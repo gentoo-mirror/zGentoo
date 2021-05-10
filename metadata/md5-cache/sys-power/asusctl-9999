@@ -11,5 +11,5 @@ PROPERTIES=live
 RDEPEND=!!sys-power/rog-core !!sys-power/asus-nb-ctrl !<=sys-power/asusctl-9999 acpi? ( sys-power/acpi_call ) gnome? ( x11-apps/xrandr gnome-base/gdm gnome-extra/gnome-shell-extension-asusctl-gex )
 REQUIRED_USE=gnome? ( gfx )
 SLOT=9999
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	multiprocessing	cac3169468f893670dac3e7cb940e045	cargo	9addecaaccf5f5938f36c0163768a6e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	multiprocessing	cac3169468f893670dac3e7cb940e045	cargo	7a8c7ca59987a0dfb53f3c68656d2c3c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=3ca3f0cc46c24f0e1aa8acb4c2170d7e

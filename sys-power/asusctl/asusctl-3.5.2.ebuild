@@ -8,7 +8,7 @@ _PN="asusd"
 
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-SRC_HASH="0269d3ea9f3180bd13f7d80c18660a84"
+SRC_HASH="a3446c908778fa413c04d75593542c43"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
     https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz

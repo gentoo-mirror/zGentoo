@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=GPL-3
 RDEPEND=>=gnome-base/gnome-shell-3.36 app-eselect/eselect-gnome-shell-extensions !!gnome-extra/gnome-shell-extension-asus-nb-gex
 SLOT=0
-SRC_URI=https://gitlab.com/asus-linux/asusctl-gex/-/jobs/1174363162/artifacts/download -> gnome-shell-extension-asusctl-gex-1.0.0_rc2.zip
-_md5_=a754b3798bdff0ab660810ca10e8887a
+SRC_URI=https://gitlab.com/asus-linux/asusctl-gex/-/jobs/1286806345/artifacts/download -> gnome-shell-extension-asusctl-gex-1.0.0_rc3.zip
+_md5_=b3833fe401f0a20e60a4502981a47033

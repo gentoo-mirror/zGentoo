@@ -8,11 +8,13 @@ _PN="asusd"
 
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-SRC_HASH="a3446c908778fa413c04d75593542c43"
+SRC_HASH="b909fa91ad6e988610b21ecac06f7a5d"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor-${PV}.tar.xz
 "
+# must be changed, 3.6.1 has a naming issue in the vendor package
+# https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -27,7 +29,7 @@ RDEPEND="!!sys-power/rog-core
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
-        gnome-extra/gnome-shell-extension-asusctl-gex
+        >=gnome-extra/gnome-shell-extension-asusctl-gex-1.0.0_rc4
     )"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
@@ -43,7 +45,8 @@ S="${WORKDIR}/${PN}-${PV}"
 src_unpack() {
     unpack ${PN}-${PV}.tar.gz
     # adding vendor-package
-    cd ${S} && unpack vendor_${PN}_${PV}.tar.xz
+    cd ${S} && unpack vendor-${PV}.tar.xz
+    # cd ${S} && unpack vendor_${PN}_${PV}.tar.xz
 }
 
 src_prepare() {

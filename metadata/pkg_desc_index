@@ -54,8 +54,8 @@ sys-power/upower 0.99.11-r1: D-Bus abstraction for enumerating power devices, qu
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r99: Virtual for Linux kernel sources
 www-apps/grafana 7.3.7 7.4.0_beta1: The tool for beautiful monitoring and metric analytics & dashboards
-www-apps/rainloop 1.14.0: Simple, modern and fast web-based email client
-www-apps/rainloop-community 1.14.0: Simple, modern and fast web-based email client (community-edition)
+www-apps/rainloop 1.16.0: Simple, modern and fast web-based email client
+www-apps/rainloop-community 1.16.0: Simple, modern and fast web-based email client (community-edition)
 x11-libs/diorite 4.20.0: Diorite library is a private utility and widget library for Nuvola Apps project based on GLib, GIO and GTK
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0
 x11-libs/libdri2 0_p20120823: Library for the DRI2 extension to the X Window System

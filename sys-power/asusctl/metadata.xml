@@ -4,8 +4,7 @@
 	<maintainer type="person">
         <email>zappel@simple-co.de</email>
         <name>Armas Spann</name>
-        <role>member/co-maintainer</role>
-    </member>
+    </maintainer>
 	<upstream>
 		<remote-id type="git">https://gitlab.com/asus-linux/asus-nb-ctrl</remote-id>
 	</upstream>

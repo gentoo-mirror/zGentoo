@@ -6,10 +6,6 @@
         <name>Armas Spann</name>
     </maintainer>
 	<upstream>
-		<remote-id type="git">https://gitlab.com/asus-linux/asus-nb-ctrl</remote-id>
+		<remote-id type="git">https://gitlab.com/asus-linux/asusctl-gex</remote-id>
 	</upstream>
-	<use>
-		<flag name="notify">Installs asus-nb-ctrl notify binary and service</flag>
-		<flag name="gfx">Add support for switching graphics(gfx) devices</flag>
-	</use>
 </pkgmetadata>

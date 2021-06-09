@@ -8,7 +8,7 @@ _PN="asusd"
 
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-SRC_HASH="28f0d92668ee85d8cbab165b6ea7ed41"
+SRC_HASH="38afd49927d30144a833d27f3c0ef4f9"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
     https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
@@ -27,7 +27,7 @@ RDEPEND="!!sys-power/rog-core
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
-        >=gnome-extra/gnome-shell-extension-asusctl-gex-1.0.0_rc4
+        >=gnome-extra/gnome-shell-extension-asusctl-gex-3.6.2
     )"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )

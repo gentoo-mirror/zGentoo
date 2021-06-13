@@ -8,7 +8,7 @@ _PN="asusd"
 
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
-SRC_HASH="38afd49927d30144a833d27f3c0ef4f9"
+SRC_HASH="a966c9a02b825ee3bc43cef3ffe5aacd"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
     https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
@@ -27,13 +27,13 @@ RDEPEND="!!sys-power/rog-core
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
-        >=gnome-extra/gnome-shell-extension-asusctl-gex-3.6.2
+        >=gnome-extra/gnome-shell-extension-asusctl-gex-3.7.0
     )"
 DEPEND="${RDEPEND}
     systemd? ( sys-apps/systemd )
-	>=virtual/rust-1.44.0
-    >=sys-devel/llvm-9.0.1
-    >=sys-devel/clang-runtime-9.0.1
+	>=virtual/rust-1.51.0
+    >=sys-devel/llvm-10.0.1
+    >=sys-devel/clang-runtime-10.0.1
     dev-libs/libusb:1
     gfx? ( !sys-kernel/gentoo-g14-next )
 "
@@ -71,7 +71,7 @@ src_prepare() {
     [[ ${k_wrn_touch} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for touchpad support):\n${k_wrn_touch}"
 
     # fix nvidia as primary (might be gentoo specific)
-    # this enables modesetting modules and nvidia as a device entry in the generated 90-nvidia-primary.conf (if siwthced to nvidia as primary)
+    # this enables modesetting modules and nvidia as a device entry in the generated 90-nvidia-primary.conf (if siwtched to nvidia as primary)
     sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
         ${S}/daemon/src/ctrl_gfx/mod.rs || die "Can't add nvidia device section to the gfx switcher."
 

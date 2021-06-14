@@ -24,7 +24,7 @@ dev-python/pybind11-cm 2.5.0 2.6.0 2.6.1: AST-based Python refactoring library -
 dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 gnome-extra/gnome-shell-extension-asus-nb-gex 1.0.0_rc1: Extension for visualizing asus-nb-ctrl(asusd) settings and status.
-gnome-extra/gnome-shell-extension-asusctl-gex 3.7.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-asusctl-gex 3.7.1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r1: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r1: Moves legacy tray icons to top panel
 media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4

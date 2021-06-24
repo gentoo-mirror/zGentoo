@@ -37,6 +37,7 @@ net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 sys-kernel/gentoo-sources-g14 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources-rog 5.12.13: Full sources including the Gentoo patchset for the 5.12 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 3.7.1 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
@@ -44,7 +45,7 @@ sys-power/gwe 0.15.3: System utility designed to provide information, control th
 sys-power/liquidctl 1.6.1: Cross-platform tool and drivers for liquid coolers and other devices
 sys-power/upower 0.99.12: D-Bus abstraction for enumerating power devices, querying history and statistics
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
-virtual/linux-sources 3-r99: Virtual for Linux kernel sources
+virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 7.3.7 7.4.0_beta1: The tool for beautiful monitoring and metric analytics & dashboards
 www-apps/rainloop 1.16.0: Simple, modern and fast web-based email client
 www-apps/rainloop-community 1.16.0: Simple, modern and fast web-based email client (community-edition)

@@ -21,8 +21,8 @@ sys-power/rog-core
 sys-power/asus-nb-ctrl
 
 # removal in 30 days at 20th July 2021 due to EOL (everything is upstream)
+# please use "sys-kernel/gentoo-sources-rog" as a replacement
 virtual/gentoo-asus
-virtual/linux-sources
 sys-kernel/gentoo-sources-g14
 
 # currently under review (not installable in the current version)

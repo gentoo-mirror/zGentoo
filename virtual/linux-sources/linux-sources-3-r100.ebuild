@@ -12,7 +12,7 @@ RDEPEND="
 	firmware? ( sys-kernel/linux-firmware )
 	|| (
 		sys-kernel/gentoo-sources
-		sys-kernel/gentoo-sources-g14
+		sys-kernel/gentoo-sources-rog
 		sys-kernel/vanilla-sources
 		sys-kernel/git-sources
 		sys-kernel/mips-sources

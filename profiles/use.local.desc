@@ -118,5 +118,3 @@ sys-power/asusctl:gfx - Add support for switching graphics(gfx) devices
 sys-power/asusctl:notify - Installs asus-nb-ctrl notify binary and service
 sys-power/liquidctl:experimental - Enables experimental NZXT-Kraken x53/x63/x73 AIO-Watercooling support
 virtual/linux-sources:firmware - Install linux kernel firmware
-x11-drivers/nvidia-drivers:driver - Install kernel driver modules
-x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings

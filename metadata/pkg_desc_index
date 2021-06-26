@@ -49,7 +49,6 @@ virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 7.3.7 7.4.0_beta1: The tool for beautiful monitoring and metric analytics & dashboards
 www-apps/rainloop 1.16.0: Simple, modern and fast web-based email client
 www-apps/rainloop-community 1.16.0: Simple, modern and fast web-based email client (community-edition)
-x11-drivers/nvidia-drivers 470.42.01: NVIDIA Accelerated Graphics Driver
 x11-libs/diorite 4.22.0: Diorite library is a private utility and widget library for Nuvola Apps project based on GLib, GIO and GTK
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0
 x11-libs/libdri2 0_p20120823: Library for the DRI2 extension to the X Window System

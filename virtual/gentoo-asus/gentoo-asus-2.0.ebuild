@@ -9,6 +9,6 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	=virtual/linux-sources-3-r99
-	sys-kernel/gentoo-sources-g14
+	sys-kernel/gentoo-sources-rog
 	sys-power/asusctl[gfx]
 	"

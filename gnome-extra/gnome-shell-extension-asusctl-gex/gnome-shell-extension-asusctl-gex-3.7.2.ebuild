@@ -5,7 +5,8 @@ EAPI=7
 
 DESCRIPTION="Extension for visualizing asusctl-ctrl(asusd) settings and status."
 HOMEPAGE="https://gitlab.com/asus-linux/asusctl-gex"
-SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/1342979938/artifacts/download -> ${P}.zip"
+SRC_JID="1503832486"
+SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/${SRC_JID}/artifacts/download -> ${P}.zip"
 S="${WORKDIR}/asusctl-gex@asus-linux.org"
 
 LICENSE="GPL-3"
@@ -14,9 +15,10 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	>=gnome-base/gnome-shell-3.36
-	app-eselect/eselect-gnome-shell-extensions
 	!!gnome-extra/gnome-shell-extension-asus-nb-gex
+	>=gnome-base/gnome-shell-3.36
+	>=sys-power/asusctl-3.7.2
+	app-eselect/eselect-gnome-shell-extensions
 "
 DEPEND="${RDEPEND}
 	dev-libs/glib:2

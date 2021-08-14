@@ -1,7 +1,7 @@
-From 0e8cbc53ddd7f82c81bcf27af8bed6116f6baa64 Mon Sep 17 00:00:00 2001
+From 1aa112b6238dc6615caad0abcd68252fdb2f17c0 Mon Sep 17 00:00:00 2001
 From: Marcin Bachry <hegel666@gmail.com>
-Date: Tue, 16 Mar 2021 15:28:51 -0400
-Subject: [PATCH] PCI: quirks: Quirk PCI d3hot delay for AMD xhci
+Date: Sat, 27 Feb 2021 17:06:49 +0100
+Subject: [PATCH 15/18] PCI: quirks: Quirk PCI d3hot delay for AMD xhci
 
 Renoir needs a similar delay.
 
@@ -12,7 +12,7 @@ Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 98851d00dc4d..8c929b7d335e 100644
+index 98851d00d..8c929b7d3 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
 @@ -1904,6 +1904,9 @@ static void quirk_ryzen_xhci_d3hot(struct pci_dev *dev)
@@ -26,5 +26,5 @@ index 98851d00dc4d..8c929b7d335e 100644
  #ifdef CONFIG_X86_IO_APIC
  static int dmi_disable_ioapicreroute(const struct dmi_system_id *d)
 -- 
-GitLab
+2.31.1
 

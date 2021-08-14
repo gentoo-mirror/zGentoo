@@ -8,21 +8,13 @@ net-libs/libwpe-backend
 # please use gentoo-asus as a replacement for gentoo-g14-next
 sys-kernel/gentoo-g14-next
 
-# deprecated, please use sys-power/asus-nb-ctrl as a replacement
+# deprecated, please use sys-power/asusctl as a replacement
 sys-power/rog-core
-
-# old and unstable kernels (use at own risk)
-<sys-kernel/gentoo-sources-g14-5.10.15
-
-# not supported anymore (by 03-30-2021)
-<sys-power/asus-nb-ctrl-3.2.4
 
 # please use sys-power/asusctl as it was renamed on 04-11-2021
 sys-power/asus-nb-ctrl
 
-# removal in 30 days at 20th July 2021 due to EOL (everything is upstream)
 # please use "sys-kernel/gentoo-sources-rog" as a replacement
-virtual/gentoo-asus
 sys-kernel/gentoo-sources-g14
 
 # currently under review (not installable in the current version)

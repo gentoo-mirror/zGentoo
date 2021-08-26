@@ -33,6 +33,7 @@ net-analyzer/bettercap 2.31.1: A complete, modular, portable and easily extensib
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-im/zoom 5.6.22045.0607: Video conferencing and web conferencing service
 net-misc/anydesk 6.1.1: Feature rich multi-platform remote desktop application
+net-misc/postman-bin 8.11.1: Supercharge your API workflow
 net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).

@@ -6,7 +6,7 @@ app-admin/fluent-bit 1.7.9: Fast and Lightweight Log processor and forwarder for
 app-admin/loki 2.2.1: Like Prometheus, but for logs.
 app-crypt/seahorse 40.0-r2: Manage your passwords and encryption keys
 app-editors/imhex 1.8.1: A hex editor for reverse engineers, programmers, and eyesight
-app-emulation/vmware-horizon-client 8.2.0: VMware Horizon View client
+app-emulation/vmware-horizon-client 8.3.1: VMware Horizon View client
 app-metrics/snmp_exporter 0.19.0: Prometheus exporter for snmp metrics
 app-office/freeoffice 982: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 21.3.1: A plain-text file markdown note taking with Nextcloud/ownCloud integration

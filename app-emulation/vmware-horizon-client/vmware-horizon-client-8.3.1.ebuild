@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="VMware Horizon View client"
 HOMEPAGE="https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/8_0"
-SRC_URI="https://download3.vmware.com/software/view/viewclients/CART22FQ1/VMware-Horizon-Client-2103-${PV}-17742757.x64.bundle -> ${PF}.bin"
+SRC_URI="https://download3.vmware.com/software/view/viewclients/CART22FQ2/VMware-Horizon-Client-2106.1-${PV}-18435609.x64.bundle -> ${PF}.bin"
 
 RESTRICT="mirror"
 

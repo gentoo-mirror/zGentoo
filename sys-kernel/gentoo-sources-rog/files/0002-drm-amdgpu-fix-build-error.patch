@@ -1,0 +1,39 @@
+From 625def6be5608dfdee6015a98515cbfd7c4a5d19 Mon Sep 17 00:00:00 2001
+From: Guchun Chen <guchun.chen@amd.com>
+Date: Thu, 22 Jul 2021 17:20:21 +0800
+Subject: [PATCH 2/5] drm/amdgpu: fix build error
+
+drivers/gpu/drm/amd/amdgpu/../pm/swsmu/smu_cmn.c: In function 'smu_cmn_send_msg_without_waiting':
+drivers/gpu/drm/amd/amdgpu/../pm/swsmu/smu_cmn.c:259:15: error: 'struct amdgpu_device' has no member named 'in_pci_err_recovery'
+   if (smu->adev->in_pci_err_recovery)
+               ^~
+  CC [M]  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.o
+scripts/Makefile.build:272: recipe for target 'drivers/gpu/drm/amd/amdgpu/../pm/swsmu/smu_cmn.o' failed
+make[7]: *** [drivers/gpu/drm/amd/amdgpu/../pm/swsmu/smu_cmn.o] Error 1
+scripts/Makefile.build:515: recipe for target 'drivers/gpu/drm/amd/amdgpu' failed
+make[6]: *** [drivers/gpu/drm/amd/amdgpu] Error 2
+make[6]: *** Waiting for unfinished jobs....
+
+Fixes: e070ba49f3a7 drm/amd/pm: Fix a bug communicating with the SMU (v5)
+Signed-off-by: Guchun Chen <guchun.chen@amd.com>
+Reviewed-by: Luben Tuikov <luben.tuikov@amd.com>
+---
+ drivers/gpu/drm/amd/pm/swsmu/smu_cmn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu_cmn.c b/drivers/gpu/drm/amd/pm/swsmu/smu_cmn.c
+index a48f18932..a0e2111eb 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu_cmn.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu_cmn.c
+@@ -256,7 +256,7 @@ int smu_cmn_send_msg_without_waiting(struct smu_context *smu,
+ 	u32 reg;
+ 	int res;
+ 
+-	if (smu->adev->in_pci_err_recovery)
++	if (smu->adev->no_hw_access)
+ 		return 0;
+ 
+ 	mutex_lock(&smu->message_lock);
+-- 
+2.31.1
+

@@ -1,0 +1,31 @@
+From e8af9953d7da62c32c437c8edf6a41eabc6cf82a Mon Sep 17 00:00:00 2001
+From: Scott B <28817345+foundObjects@users.noreply.github.com>
+Date: Tue, 20 Jul 2021 23:31:31 -0700
+Subject: [PATCH 3/5] drm/amd/pm: Add information about SMU11 firmware version
+
+hacky manual import of: https://lists.freedesktop.org/archives/amd-gfx/2021-July/066834.html
+
+This information is useful for root causing issues with S0ix.
+
+Signed-off-by: Mario Limonciello <mario.limonciello at amd.com>
+---
+ drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
+index 0a5d46ac9..626d7c2bd 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
+@@ -272,6 +272,9 @@ int smu_v11_0_check_fw_version(struct smu_context *smu)
+ 		break;
+ 	}
+ 
++	dev_info(smu->adev->dev, "smu fw reported version = 0x%08x (%d.%d.%d)\n",
++			 smu_version, smu_major, smu_minor, smu_debug);
++
+ 	/*
+ 	 * 1. if_version mismatch is not critical as our fw is designed
+ 	 * to be backward compatible.
+-- 
+2.31.1
+

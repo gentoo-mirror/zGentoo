@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+acpi +gfx gnome notify systemd"
+IUSE="+acpi +gfx gnome notify"
 REQUIRED_USE="gnome? ( gfx )"
 
 
@@ -28,14 +28,16 @@ RDEPEND="!!sys-power/rog-core
         x11-apps/xrandr
         gnome-base/gdm
         >=gnome-extra/gnome-shell-extension-asusctl-gex-3.7.0
-    )"
+    )
+    "
 DEPEND="${RDEPEND}
-    systemd? ( sys-apps/systemd )
-	>=virtual/rust-1.51.0
+    >=virtual/rust-1.51.0
     >=sys-devel/llvm-10.0.1
     >=sys-devel/clang-runtime-10.0.1
     dev-libs/libusb:1
     gfx? ( !sys-kernel/gentoo-g14-next )
+    sys-apps/systemd:0=
+	sys-apps/dbus
 "
 
 S="${WORKDIR}/${PN}-${PV}"
@@ -123,23 +125,18 @@ src_install() {
             insinto /usr/share/gdm/greeter/autostart
             doins "${FILESDIR}"/xrandr-nvidia.desktop
         else
-            ewarn "you're not using gnome, please make sure you run \n\
-            `xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto` \n\
-            when logging into your WM/DM"
+            ewarn "you're not using gnome, please make sure to run the following, when logging into your WM/DM: \n \
+\`xrandr --setprovideroutputsource modesetting NVIDIA-0\; xrandr --auto\`\n \
+Possible locations are ~/.xinitrc, /etc/sddm/Xsetup, etc.\n"
         fi
     fi
 
-    if use systemd; then
-        insinto /usr/share/dbus-1/system.d/
-        doins data/${_PN}.conf
+    insinto /usr/share/dbus-1/system.d/
+    doins data/${_PN}.conf
 
-        systemd_dounit data/${_PN}.service
-        systemd_douserunit data/${_PN}-user.service
-        use notify && systemd_douserunit data/asus-notify.service
-    else
-        eerror "OpenRC is not supported"
-    fi
-
+    systemd_dounit data/${_PN}.service
+    systemd_douserunit data/${_PN}-user.service
+    use notify && systemd_douserunit data/asus-notify.service
 
     if use acpi; then
         insinto /etc/modules-load.d
@@ -155,8 +152,16 @@ src_install() {
 pkg_postinst() {
     xdg_icon_cache_update
     ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
-by runnning:\n >> systemctl reload dbus && udevadm control --reload-rules \
-&& udevadm trigger"
+by runnning:\n \`systemctl daemon-reload && systemctl reload dbus &&  \
+udevadm control --reload-rules && udevadm trigger\`\n"
+
+    x11_warn_conf=""
+    for c in `grep -il nvidia /etc/X11/xorg.conf.d/*.*`; do 
+        if ! `grep -q asusd "$c"` && [[ "$c" != *"90-asusd-nvidia-pm.rules" ]]; then
+            x11_warn_conf="$x11_warn_conf$c\n";
+        fi
+    done
+    [[ "$x11_warn_conf" == "" ]] || ewarn "WARNING: Potential inteferring files found:\n$x11_warn_conf"
 }
 
 pkg_postrm() {

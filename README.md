@@ -13,7 +13,7 @@ To use this method, make sure you've emerged `app-eselect/eselect-repository` be
 To add the repo, just run:
 
 ```bash
-eselect repository add zGentoo
+eselect repository enable zGentoo
 ```
 
 Then run `emaint sync -r zGentoo` to sync it.

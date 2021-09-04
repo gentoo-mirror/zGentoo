@@ -99,14 +99,6 @@ src_install() {
     
     ## GFX
     if use gfx; then
-        ## screen settings
-        insinto /lib/udev/rules.d
-        doins data/90-nvidia-screen-G05.conf
-        
-        ## pm settings
-        insinto /etc/X11/xorg.conf.d
-        doins data/90-asusd-nvidia-pm.rules
-
         ## mod blacklisting
         insinto /etc/modprobe.d
         doins ${FILESDIR}/90-nvidia-blacklist.conf

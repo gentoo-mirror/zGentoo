@@ -11,7 +11,7 @@ detect_version
 detect_arch
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches"
+HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches and https://asus-linux.org (ROG comunity patches & information)"
 IUSE="experimental"
 
 DESCRIPTION="Full sources including the Gentoo and ASUS ROG patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
@@ -29,7 +29,7 @@ src_unpack() {
 	kernel-2_src_unpack
 
 	# ROG Patches
-	echo ">>> Applying ASUS ROG notebook specific patches"
+	echo ">>> Applying ASUS ROG specific patches"
 	for p in ${FILESDIR}/*.patch; do
 		eapply "${p}" || die
 	done
@@ -40,10 +40,6 @@ pkg_postinst() {
 
 	einfo "For more info on this patchset, and how to report problems, see:"
 	einfo "${HOMEPAGE}"
-	
-	einfo "please run genkernel or genkernel_upgrade afterwards, and make"
-	einfo "sure that grub-mkconfig created the correct order if this is a"
-	einfo "revision(-rX) installation."
 }
 
 pkg_postrm() {

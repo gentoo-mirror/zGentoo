@@ -17,11 +17,11 @@ IUSE="experimental"
 DESCRIPTION="Full sources including the Gentoo and ASUS ROG patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 
-# setting kernel version (-rog) and source dir
-KV="${PV}-gentoo-rog"
-if [[ ${PR} != "r0" ]]; then
-	KV="${PV}-${PR}-gentoo-rog"
-fi
+# appending kernel version (-rog) and setting source dir
+EXTRAVERSION="-gentoo-rog"
+[[ ${PR} != "r0" ]] && \
+	KV="${PV}-${PR}${EXTRAVERSION}" || \
+	KV="${PV}${EXTRAVERSION}"
 KV_FULL="${KV}"
 S="${WORKDIR}/linux-${KV}"
 

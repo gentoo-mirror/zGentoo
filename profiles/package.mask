@@ -19,3 +19,6 @@ sys-kernel/gentoo-sources-g14
 
 # currently under review (not installable in the current version)
 app-editors/imhex
+
+# mask for testing (should be stable to use)
+=sys-kernel/gentoo-sources-rog-5.14.3

@@ -32,6 +32,7 @@ media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice co
 net-analyzer/bettercap 2.31.1: A complete, modular, portable and easily extensible MITM framework
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-im/zoom 5.6.22045.0607: Video conferencing and web conferencing service
+net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
 net-misc/anydesk 6.1.1: Feature rich multi-platform remote desktop application
 net-misc/postman-bin 8.11.1: Supercharge your API workflow
 net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon

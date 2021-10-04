@@ -26,7 +26,7 @@ media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system. It will backup all the photos the user uploaded to Google Photos, but also the album information and additional Google Photos ‘Creations’ (animations, panoramas, movies, effects and collages).
 media-gfx/yed 3.21.1: yEd Graph Editor - High-quality diagrams made easy
 media-libs/opensubdiv 3.4.4: An Open-Source subdivision surface library
-media-sound/freetube 0.13.2: An open source desktop YouTube player built with privacy in mind.
+media-sound/freetube 0.14.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/nuvolaplayer 4.22.0: Nuvola Player™ provides a tight Linux desktop integration for web- based media streaming services
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.31.1: A complete, modular, portable and easily extensible MITM framework

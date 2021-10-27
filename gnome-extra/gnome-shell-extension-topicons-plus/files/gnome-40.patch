@@ -6,8 +6,8 @@
      "3.34",
 -    "3.36"
 +    "3.36",
-+    "40.rc",
-+    "40.0"
++    "40.0",
++    "41.0"
    ],
    "settings-schema": "org.gnome.shell.extensions.topicons",
    "url": "https://github.com/phocean/TopIcons-plus",

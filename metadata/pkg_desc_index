@@ -20,8 +20,8 @@ dev-python/py3nvml 0.2.6: Python 3 Bindings for NVML library. Get NVIDIA GPU sta
 dev-python/pytest-runner 5.3.1: Adds support for tests during installation of setup.py files
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2: Extension for visualizing asusctl-ctrl(asusd) settings and status.
-gnome-extra/gnome-shell-extension-freon 43-r1: Freon is an extension for displaying sensors data.
-gnome-extra/gnome-shell-extension-topicons-plus 27-r1: Moves legacy tray icons to top panel
+gnome-extra/gnome-shell-extension-freon 43-r2: Freon is an extension for displaying sensors data.
+gnome-extra/gnome-shell-extension-topicons-plus 27-r2: Moves legacy tray icons to top panel
 media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system. It will backup all the photos the user uploaded to Google Photos, but also the album information and additional Google Photos ‘Creations’ (animations, panoramas, movies, effects and collages).
 media-gfx/yed 3.21.1: yEd Graph Editor - High-quality diagrams made easy

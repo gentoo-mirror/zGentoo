@@ -10,14 +10,16 @@ SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/${SRC_JID}/artifacts/d
 S="${WORKDIR}/asusctl-gex@asus-linux.org"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/3"
 KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
+	!!gnome-extra/gnome-shell-extension-asusctl-gex:0/4
+	!!sys-power/supergfxctl
+	!!sys-power/asusctl:0/4
 	!!gnome-extra/gnome-shell-extension-asus-nb-gex
 	>=gnome-base/gnome-shell-3.36
-	>=sys-power/asusctl-3.7.2
 	app-eselect/eselect-gnome-shell-extensions
 "
 DEPEND="${RDEPEND}

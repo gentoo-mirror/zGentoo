@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
+#### IMPORTANT ####
+# This ebuild is mostly unmaintained - DO NOT USE IT!
+
 inherit systemd cargo git-r3 linux-info xdg
 
 _PN="asusd"
@@ -17,12 +20,13 @@ REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
+    !!sys-power/suppergfxctl
     !<=sys-power/asusctl-9999
     acpi? ( sys-power/acpi_call )
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
-        gnome-extra/gnome-shell-extension-asusctl-gex
+        gnome-extra/gnome-shell-extension-asusctl-gex:3
     )"
 DEPEND="${RDEPEND}
 	>=virtual/rust-1.44.0

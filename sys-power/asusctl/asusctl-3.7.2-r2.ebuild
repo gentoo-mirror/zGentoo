@@ -11,11 +11,11 @@ HOMEPAGE="https://asus-linux.org"
 SRC_HASH="08341a60dec85e75817bb03a91ee8d3a"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/${SRC_HASH}/vendor_${PN}_${PV}.tar.xz
+    https://vendors.retarded.farm/${PN}/vendor-${PV}.tar.xz -> vendor_${PN}-${PV}.tar.xz
 "
 
 LICENSE="MPL-2.0"
-SLOT="0"
+SLOT="0/3"
 KEYWORDS="~amd64"
 IUSE="+acpi +gfx gnome notify"
 REQUIRED_USE="gnome? ( gfx )"
@@ -23,11 +23,11 @@ REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
+    !!sys-power/supergfxctl
     acpi? ( sys-power/acpi_call )
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
-        >=gnome-extra/gnome-shell-extension-asusctl-gex-3.7.0
     )
     "
 DEPEND="${RDEPEND}
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
     >=sys-devel/clang-runtime-10.0.1
     dev-libs/libusb:1
     gfx? ( !sys-kernel/gentoo-g14-next )
+    gnome? ( gnome-extra/gnome-shell-extension-asusctl-gex:0/3 )
     sys-apps/systemd:0=
 	sys-apps/dbus
 "
@@ -45,7 +46,7 @@ S="${WORKDIR}/${PN}-${PV}"
 src_unpack() {
     unpack ${PN}-${PV}.tar.gz
     # adding vendor-package
-    cd ${S} && unpack vendor_${PN}_${PV}.tar.xz
+    cd ${S} && unpack vendor_${PN}-${PV}.tar.xz
 }
 
 src_prepare() {
@@ -109,15 +110,15 @@ src_install() {
     if use gfx; then
         ## mod blacklisting
         insinto /etc/modprobe.d
-        doins ${FILESDIR}/90-nvidia-blacklist.conf
+        doins ${FILESDIR}/3.x/90-nvidia-blacklist.conf
 
         # xrandr settings for nvidia-primary (gnome only, will autofail on non-nvidia as primary)
         if use gnome; then
             insinto /etc/xdg/autostart
-            doins "${FILESDIR}"/xrandr-nvidia.desktop
+            doins "${FILESDIR}"/3.x/xrandr-nvidia.desktop
 
             insinto /usr/share/gdm/greeter/autostart
-            doins "${FILESDIR}"/xrandr-nvidia.desktop
+            doins "${FILESDIR}"/3.x/xrandr-nvidia.desktop
         else
             ewarn "you're not using gnome, please make sure to run the following, when logging into your WM/DM: \n \
 \`xrandr --setprovideroutputsource modesetting NVIDIA-0\; xrandr --auto\`\n \

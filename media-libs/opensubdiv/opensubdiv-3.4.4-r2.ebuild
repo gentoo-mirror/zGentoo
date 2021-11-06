@@ -46,11 +46,13 @@ S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${P}-add-CUDA-compatibility.patch"
+	"${FILESDIR}/${PN}-3.4.3-install-tutorials-into-bin.patch"
 )
 
 RESTRICT="!test? ( test )"
 
 pkg_pretend() {
+	## removed gcc 9 check as we patched it correctly above
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 

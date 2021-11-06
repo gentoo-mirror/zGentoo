@@ -19,7 +19,7 @@ dev-python/plum-py 0.6.0: Pack/Unpack Memory
 dev-python/py3nvml 0.2.6: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pytest-runner 5.3.1: Adds support for tests during installation of setup.py files
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
-gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.0.1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r2: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r2: Moves legacy tray icons to top panel
 gnome-extra/gucharmap 14.0.0: Unicode character map viewer and library
@@ -39,12 +39,14 @@ net-misc/postman-bin 8.11.1: Supercharge your API workflow
 net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-sys-kernel/gentoo-sources-rog 5.14.3 5.14.4: Full sources including the Gentoo and ASUS ROG patchset for the 5.14 kernel tree
+sys-kernel/gentoo-sources-rog 5.14.3 5.14.4 5.15.1: Full sources including the Gentoo and ASUS ROG patchset for the 5.15 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
-sys-power/asusctl 3.7.2-r1 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
+sys-power/asusctl 3.7.2-r2 4.0.6 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.3: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/liquidctl 1.6.1: Cross-platform tool and drivers for liquid coolers and other devices
+sys-power/power-profiles-daemon 0.10.1: Makes power profiles handling available over D-Bus.
+sys-power/supergfxctl 2.0.4: supergfxctl (supergfxd) Graphics switching
 sys-power/upower 0.99.12: D-Bus abstraction for enumerating power devices, querying history and statistics
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources

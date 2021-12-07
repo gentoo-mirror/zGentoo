@@ -38,7 +38,7 @@ src_unpack() {
 pkg_postinst() {
 	kernel-2_pkg_postinst
 
-	einfo "For more info on this patchset, and how to report problems, see:"
+	einfo "For more info on this patchset and how to report problems, see:"
 	einfo "${HOMEPAGE}"
 }
 

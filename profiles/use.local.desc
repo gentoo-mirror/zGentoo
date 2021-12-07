@@ -101,11 +101,6 @@ games-emulation/rpcs3:system-llvm - Use the system-wide LLVM library instead of 
 games-emulation/rpcs3:vulkan - Enable vulkan video output
 media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner via avahi.
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
-media-libs/opensubdiv:cuda - Enable NVIDIA CUDA Toolkit support through dev-util/nvidia-cuda-toolkit
-media-libs/opensubdiv:opencl - Enable OpenCL support through virtual/opencl
-media-libs/opensubdiv:ptex - Adds support for faster per-face texture mapping through media-libs/ptex
-media-libs/opensubdiv:tbb - Enable multithreading with the Intel Threads Building Blocks through dev-cpp/tbb
-media-libs/opensubdiv:tutorials - Install the tutorials
 net-im/zoom:bundled-libjpeg-turbo - Use bundled libturbojpeg instead of media-libs/libjpeg-turbo
 net-im/zoom:bundled-qt - Use bundled Qt and icu instead of system-wide libs
 net-p2p/trezord-go:systemd - Install systemd service file

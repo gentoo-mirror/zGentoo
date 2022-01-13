@@ -13,5 +13,5 @@ RDEPEND=!!sys-power/rog-core !!sys-power/asus-nb-ctrl !!sys-power/supergfxctl ac
 REQUIRED_USE=gnome? ( gfx )
 SLOT=0/3
 SRC_URI=https://gitlab.com/asus-linux/asusctl/-/archive/3.7.2/asusctl-3.7.2.tar.gz https://vendors.retarded.farm/asusctl/vendor-3.7.2.tar.xz -> vendor_asusctl-3.7.2.tar.xz
-_eclasses_=toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	multilib	de4beb52bfa93c4c5d96792a6b5e1784	systemd	2736b403a83f194b59b767f3b344c2c1	multiprocessing	61c959fc55c15c00bbb1079d6a71370b	cargo	c7fefacaebdcb455d2a7b59429eb47a6	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da	linux-info	2f039741fe92bcea55c78806d16ac0f5	xdg-utils	4f29a8b760a594a212abe9c2ba957c31	xdg	6024fbc93167fad782e2032933654857
+_eclasses_=toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	multilib	de4beb52bfa93c4c5d96792a6b5e1784	systemd	2736b403a83f194b59b767f3b344c2c1	multiprocessing	61c959fc55c15c00bbb1079d6a71370b	cargo	7ea27a358c2ff39754bf66a96c06f3de	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da	linux-info	2f039741fe92bcea55c78806d16ac0f5	xdg-utils	4f29a8b760a594a212abe9c2ba957c31	xdg	6024fbc93167fad782e2032933654857
 _md5_=a80f604673098016aa8c43858128bb04

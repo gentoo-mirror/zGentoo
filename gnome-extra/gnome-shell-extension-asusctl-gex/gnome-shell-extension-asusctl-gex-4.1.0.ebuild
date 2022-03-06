@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Extension for visualizing asusctl-ctrl(asusd) settings and status."
 HOMEPAGE="https://gitlab.com/asus-linux/asusctl-gex"
-SRC_JID="1589898615"
+SRC_JID="1988831924"
 SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/${SRC_JID}/artifacts/download -> ${P}.zip"
 S="${WORKDIR}/asusctl-gex@asus-linux.org"
 
@@ -18,7 +18,7 @@ RDEPEND="
 	!!gnome-extra/gnome-shell-extension-asus-nb-gex
 	>=gnome-base/gnome-shell-40.0
 	app-eselect/eselect-gnome-shell-extensions
-	>=sys-power/supergfxctl-2.0.0
+	>=sys-power/supergfxctl-4.0.4
 "
 DEPEND="${RDEPEND}
 	dev-libs/glib:2

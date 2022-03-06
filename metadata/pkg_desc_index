@@ -39,7 +39,7 @@ net-misc/postman-bin 8.11.1: Supercharge your API workflow
 net-p2p/trezord-go 2.0.30: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-sys-kernel/gentoo-sources-rog 5.15.7 5.15.8 5.15.9 5.15.10 5.15.11: Full sources including the Gentoo and ASUS ROG patchset for the 5.15 kernel tree
+sys-kernel/gentoo-sources-rog 5.15.23 5.16.12: Full sources including the Gentoo and ASUS ROG patchset for the 5.16 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 3.7.2-r2 4.0.7 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

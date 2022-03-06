@@ -4,7 +4,7 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="10"
+K_GENPATCHES_VER="13"
 
 inherit kernel-2
 detect_version
@@ -29,10 +29,12 @@ src_unpack() {
 	kernel-2_src_unpack
 
 	# ROG Patches
-	echo ">>> Applying ASUS ROG specific patches"
-	for p in ${FILESDIR}/${KV%.*}/*.patch; do
-		eapply "${p}" || die
-	done
+	if [ -d ${FILESDIR}/${KV%.*} ]; then
+		echo ">>> Applying ASUS ROG specific patches"
+		for p in ${FILESDIR}/${KV%.*}/*.patch; do
+			eapply "${p}" || die
+		done
+	fi
 }
 
 pkg_postinst() {

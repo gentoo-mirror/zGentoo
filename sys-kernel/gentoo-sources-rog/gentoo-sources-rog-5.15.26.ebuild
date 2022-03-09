@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -10,7 +10,7 @@ inherit kernel-2
 detect_version
 detect_arch
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches and https://asus-linux.org (ROG comunity patches & information)"
 IUSE="experimental"
 
@@ -29,10 +29,12 @@ src_unpack() {
 	kernel-2_src_unpack
 
 	# ROG Patches
-	echo ">>> Applying ASUS ROG specific patches"
-	for p in ${FILESDIR}/${KV%.*}/*.patch; do
-		eapply "${p}" || die
-	done
+	if [ -d ${FILESDIR}/${KV%.*} ]; then
+		echo ">>> Applying ASUS ROG specific patches"
+		for p in ${FILESDIR}/${KV%.*}/*.patch; do
+			eapply "${p}" || die
+		done
+	fi
 }
 
 pkg_postinst() {

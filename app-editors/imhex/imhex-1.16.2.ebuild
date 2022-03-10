@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -10,15 +10,19 @@ inherit git-r3 desktop xdg-utils python-single-r1 cmake
 DESCRIPTION="A hex editor for reverse engineers, programmers, and eyesight"
 HOMEPAGE="https://github.com/WerWolv/ImHex"
 EGIT_REPO_URI="https://github.com/WerWolv/ImHex.git"
-# SRC_URI="https://github.com/WerWolv/ImHex/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/WerWolv/ImHex-Patterns/archive/448a81a06dd39f160d1770989d41b6dba7338753.zip -> imhex-patterns-${PV}.zip"
+
+# see: https://github.com/WerWolv/ImHex/blob/v${PV}/.gitmodules
 EGIT_SUBMODULES=(
-	external/nativefiledialog
-	external/yara/yara
-	external/xdgpp
-	external/fmt
-	external/curl
+	lib/external/capstone
+	lib/external/curl
+	lib/external/fmt
+	lib/external/libromfs
+	lib/external/nativefiledialog
+	lib/external/xdgpp
+	lib/external/yara/yara
 )
-EGIT_COMMIT="0717d4a"
+EGIT_TAG="v${PV}"
 S="${WORKDIR}/ImHex-${PV}"
 EGIT_CHECKOUT_DIR="${S}"
 
@@ -44,12 +48,23 @@ RDEPEND="${DEPEND}"
 BDEPEND="
   dev-util/cmake
 "
-PATCHES=("${FILESDIR}/${P}-gcc11.patch")
 
 CMAKE_BUILD_TYPE="Release"
 CMAKE_MAKEFILE_GENERATOR="emake"
 
 src_configure() {
+	## we respect the network-sandbox!
+	_POS=`grep -n downloadImHexPatternsFiles cmake/build_helpers.cmake | cut -d: -f1`
+	sed -i "${_POS},\$d" cmake/build_helpers.cmake || \
+		die "couldn't patch build_helpers to respect the sandbox"
+	sed -i "s/downloadImHexPatternsFiles/#downloadImHexPatternsFiles/g" CMakeLists.txt || \
+		die "couldn't patch CMakeLists to respect the sandbox"
+
+	## unpacking imhex-patterns
+	unpack imhex-patterns-${PV}.zip
+	mv ${S}/ImHex-Patterns-*/{constants,encodings,includes,patterns,magic} .
+
+	## configure
 	local mycmakeargs=(
         -Wno-dev
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -66,15 +81,18 @@ src_configure() {
 src_install() {
 	# can't use cmake_src_install, doing it manual
 	newbin ${BUILD_DIR}/${PN} ${PN}
-	newlib.so ${BUILD_DIR}/plugins/lib${PN}/lib${PN}.so lib${PN}.so
-	newins ${BUILD_DIR}/plugins/builtin/builtin.hexplug /usr/bin/builtin.hexplug
+	newlib.so ${BUILD_DIR}/lib/lib${PN}/lib${PN}.so lib${PN}.so
+
+
+	insinto /usr/share/${PN}/plugins/
+	doins ${BUILD_DIR}/plugins/builtin/builtin.hexplug
 
 	insinto /usr/share/${PN}
-	doins -r ${S}/python_libs/lib/.
-	doins ${S}/res/icon.ico
-  	
+	doins -r ${S}/resources/lib/python/lib/.
+
 	# create desktop icon
-	make_desktop_entry /opt/${PV}/bin/imhex "ImHex" /usr/share/${PN}/icon.ico "X-Editor"
+	doicon ${S}/resources/icon.png
+	make_desktop_entry ${PN} "ImHex" icon "Editor;X-Editor"
 
 	# install docs
 	einstalldocs

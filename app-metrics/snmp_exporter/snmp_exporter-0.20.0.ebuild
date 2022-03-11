@@ -1,47 +1,50 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit user golang-build golang-vcs-snapshot systemd
-
-EGO_PN="github.com/prometheus/snmp_exporter"
-EGIT_COMMIT="v${PV/_rc/-rc.}"
-# SNMP_EXPORTER_COMMIT="92a3da4"
-ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+EAPI=8
+inherit systemd
 
 DESCRIPTION="Prometheus exporter for snmp metrics"
 HOMEPAGE="https://github.com/prometheus/snmp_exporter"
-SRC_URI="${ARCHIVE_URI}"
+SRC_URI="
+	https://github.com/prometheus/snmp_exporter/archive/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz
+	https://vendors.retarded.farm/snmp_exporter/vendor-${P}.tar.xz
+"
+## vendor archive: go mod vendor
+
+KEYWORDS="~amd64"
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE="systemd"
 
-DEPEND=">=dev-lang/go-1.11
-	dev-util/promu
-	net-analyzer/net-snmp"
+DEPEND=">=dev-lang/go-1.16
+	net-analyzer/net-snmp
+	acct-group/${PN}
+	acct-user/${PN}"
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
-
-src_prepare() {
+src_unpack() {
 	default
-	sed -i -e "s/{{.Revision}}/${PV}/" src/${EGO_PN}/.promu.yml || die
+	mv vendor ${S}/vendor
 }
 
 src_compile() {
-	pushd src/${EGO_PN} || die
-	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}"/go-cache promu build -v || die
+	pushd ${S} || die
+	BDT=`date --iso-8601=seconds`
+	GO111MODULE=on GOCACHE="${T}"/go-cache go build -mod=vendor -o ./bin/${PN} -ldflags " \
+		-X github.com/prometheus/common/version.Version=${PV} \
+		-X github.com/prometheus/common/version.Revision=${PR} \
+		-X github.com/prometheus/common/version.Branch=non-git \
+		-X github.com/prometheus/common/version.BuildUser=portage \
+		-X github.com/prometheus/common/version.BuildDate=${BDT} \
+		" -a -tags netgo .
 	pushd generator || die
-	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}"/go-cache go build -mod=vendor -o ../bin/generator . || die
+	GO111MODULE=on GOCACHE="${T}"/go-cache go build -mod=vendor -o ../bin/generator . || die
 	popd || die
 }
 
 src_install() {
-	pushd src/${EGO_PN} || die
-	dobin bin/generator snmp_exporter
+	pushd ${S} || die
+	dobin bin/*
 	dodoc {README,CONTRIBUTING}.md generator/{FORMAT,README}.md generator/generator.yml
 	insinto /etc/snmp_exporter
 	newins snmp.yml snmp.yml.example

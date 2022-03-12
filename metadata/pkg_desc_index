@@ -11,6 +11,7 @@ app-metrics/snmp_exporter 0.20.0: Prometheus exporter for snmp metrics
 app-office/freeoffice 982: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 21.3.1: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.3: CastXML is a C-family abstract syntax tree XML output tool.
+dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-lang/kotlin-bin 1.4.32: Statically typed programming language for modern multiplatform applications
 dev-libs/hidapi 0.10.1: HIDAPI library for Windows, Linux, FreeBSD and macOS
 dev-python/Rx 3.2.0-r1: Reactive Extensions for Python
@@ -48,7 +49,7 @@ sys-power/power-profiles-daemon 0.10.1: Makes power profiles handling available 
 sys-power/supergfxctl 4.0.4: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
-www-apps/grafana 7.3.7 7.4.0_beta1: The tool for beautiful monitoring and metric analytics & dashboards
+www-apps/grafana 8.4.3: The tool for beautiful monitoring and metric analytics & dashboards
 www-apps/rainloop 1.16.0: Simple, modern and fast web-based email client
 www-apps/rainloop-community 1.16.0: Simple, modern and fast web-based email client (community-edition)
 x11-libs/diorite 4.22.0: Diorite library is a private utility and widget library for Nuvola Apps project based on GLib, GIO and GTK

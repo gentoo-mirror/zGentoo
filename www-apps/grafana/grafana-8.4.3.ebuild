@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit go-module systemd
 
@@ -10,21 +10,34 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 DESCRIPTION="The tool for beautiful monitoring and metric analytics & dashboards"
 HOMEPAGE="https://grafana.com"
-SRC_URI="https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-
+SRC_URI="
+	https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+	https://vendors.retarded.farm/${PN}/vendor_yarn-${P}.tar.xz
+"
+# default vendor pacakge created using:
+# > go mod vendor && tar -c -I 'xz -9 -T0' -f vendor-grafana-<version>.tar.xz vendor
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="mirror network-sandbox"
+IUSE="systemd"
 
-DEPEND="!www-apps/grafana-bin
-	acct-group/grafana
-	acct-user/grafana
+DEPEND="!www-apps/${PN}-bin
+	acct-group/${PN}
+	acct-user/${PN}
 	media-libs/fontconfig
-	=net-libs/nodejs-12*[icu]
-	sys-apps/yarn"
+	>=net-libs/nodejs-16[icu]
+	sys-apps/yarn
+	>=dev-lang/go-1.16
+	dev-go/wire"
 
-QA_PRESTRIPPED="usr/bin/grafana-*"
+QA_PRESTRIPPED="usr/bin/${PN}-*"
+
+src_unpack() {
+	default
+	mv vendor ${S}/vendor
+	mv vendor_yarn ${S}/vendor_yarn
+}
 
 src_prepare() {
 	sed -i "s:;reporting_enabled = .*:reporting_enabled = false:" \
@@ -34,16 +47,28 @@ src_prepare() {
 
 	mkdir "plugins-bundled/external"
 
-	yarn install --pure-lockfile --no-progress || die "prepare failed"
+	## offline/cache installation
+	echo "enableMirror: true" >> .yarnrc.yml
+	echo "cacheFolder: ./vendor_yarn" >> .yarnrc.yml
+	# to create the vendor package after the patch above:
+	# > rm -rf vendor_yarn && yarn cache clean --mirror && yarn install
+	# > tar -c -I 'xz -9 -T0' -f vendor_yarn-grafana-<version>.tar.xz vendor_yarn
+
+	## install yarn deps(offline)..
+	export CYPRESS_INSTALL_BINARY=0
+	yarn install || die "prepare failed"
+
 	default
 }
 
 src_compile() {
 	addpredict /etc/npm
 
-	einfo "Build go files"
-	go run build.go build || die "compile failed"
-	einfo "Build frontend "
+	einfo "Wiring everything up.."
+	wire gen -tags oss ./pkg/server ./pkg/cmd/grafana-cli/runner || die "wiring failed"
+	einfo "Building binaries using go.."
+	go run -mod=vendor build.go build || die "compile failed"
+	einfo "Building frontend using webpack.."
 	yarn run build || die "compile failed"
 	yarn run plugins:build-bundled || die "compile failed"
 }
@@ -61,7 +86,7 @@ src_install() {
 
 	newconfd "${FILESDIR}/grafana.confd" "${PN}"
 	newinitd "${FILESDIR}/grafana.initd" "${PN}"
-	systemd_newunit "${FILESDIR}/${PN}.service" "${PN}.service"
+	use systemd && systemd_newunit "${FILESDIR}/${PN}.service" "${PN}.service"
 
 	keepdir /var/{lib,log}/grafana
 	fowners grafana:grafana /var/{lib,log}/grafana

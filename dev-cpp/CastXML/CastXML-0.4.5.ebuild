@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-EAPI=7
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="CastXML is a C-family abstract syntax tree XML output tool."
 HOMEPAGE="https://github.com/CastXML/CastXML"
@@ -20,5 +20,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DCLANG_LINK_CLANG_DYLIB=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

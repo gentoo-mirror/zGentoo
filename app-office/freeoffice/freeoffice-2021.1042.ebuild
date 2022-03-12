@@ -1,19 +1,19 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-EAPI=7
+EAPI=8
 
 inherit desktop pax-utils xdg
 
+# year slug from version
+PY=${PV%%.*}
+
 DESCRIPTION="A complete, free Microsoft Office-compatible alternative office suite"
 HOMEPAGE="https://www.freeoffice.com"
-BASE_URI="https://www.softmaker.net/down/softmaker-${P}"
-SRC_URI="
-	amd64? ( ${BASE_URI}-amd64.tgz )
-	x86? ( ${BASE_URI}-i386.tgz )"
+SRC_URI="https://www.softmaker.net/down/softmaker-${P/./-}-amd64.tgz"
 
 LICENSE="SoftMaker"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 LANGUAGES="ar bg da de el en-GB en-US es et fi fr hu id it ja kk ko lt lv nl pl pt pt-BR ro ru sl sv tr uk zh"
@@ -70,7 +70,7 @@ lang_cleaner() {
 			*)
 				suffix="${lang%:*}";;
 		esac
-		rm -r html_${suffix}
+		rm -r inst/*_${suffix}.zip
 		rm *_${suffix}.dwr
 	done
 }
@@ -84,9 +84,9 @@ src_install(){
 	cd "${ED%/}/usr/$(get_libdir)/${PN}/"
 
 	unpack ${A}
-	xz -d "freeoffice2018.tar.lzma" || die
-	tar x -f "freeoffice2018.tar" \
-		&& rm "freeoffice2018.tar" || die
+	xz -d "freeoffice${PY}.tar.lzma" || die
+	tar x -f "freeoffice${PY}.tar" \
+		&& rm "freeoffice${PY}.tar" || die
 	rm "installfreeoffice"
 
 	chrpath --delete "textmaker"
@@ -103,14 +103,17 @@ src_install(){
 		dobin "${FILESDIR}/freeoffice-${e}"
 	done
 
-	for size in 16 24 32 48 64 72 128 256 512; do
-		newicon -s ${size} icons/pml_${size}.png ${PN}-planmaker.png
-		newicon -s ${size} icons/prl_${size}.png ${PN}-presentations.png
-		newicon -s ${size} icons/tml_${size}.png ${PN}-textmaker.png
+	for size in 16 24 32 48 64 72 96 128 256 512; do
+		[[ -f icons/pml_${size}.png ]] && \
+			newicon -s ${size} icons/pml_${size}.png ${PN}-planmaker.png
+		[[ -f icons/prl_${size}.png ]] && \
+			newicon -s ${size} icons/prl_${size}.png ${PN}-presentations.png
+		[[ -f icons/tml_${size}.png ]] && \
+			newicon -s ${size} icons/tml_${size}.png ${PN}-textmaker.png
 	done
 
 	insinto /usr/share/mime/packages
-	doins mime/softmaker-freeoffice18.xml
+	doins mime/softmaker-freeoffice${PY:(-2)}.xml
 
 	pax-mark -m "${ED%/}"/usr/$(get_libdir)/${PN}/planmaker
 	pax-mark -m "${ED%/}"/usr/$(get_libdir)/${PN}/presentations

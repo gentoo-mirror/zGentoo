@@ -24,6 +24,7 @@ games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r2: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r2: Moves legacy tray icons to top panel
+media-gfx/blender 3.1.0: 3D Creation/Animation/Publishing System
 media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system.
 media-gfx/yed 3.21.1: yEd Graph Editor - High-quality diagrams made easy

@@ -1,10 +1,3 @@
----
- drivers/platform/x86/asus-wmi.c            | 567 ++++++++++++++++++++-
- include/linux/platform_data/x86/asus-wmi.h |   2 +
- 2 files changed, 564 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index e14fb5fa7324..680570b37c2f 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
 @@ -106,8 +106,17 @@ module_param(fnlock_default, bool, 0444);
@@ -670,8 +663,6 @@ index e14fb5fa7324..680570b37c2f 100644
  	asus_wmi_battery_exit(asus);
  
  	if (asus->platform_profile_support)
-diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 17dc5cb6f3f2..a571b47ff362 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
 @@ -77,6 +77,8 @@
@@ -683,7 +674,3 @@ index 17dc5cb6f3f2..a571b47ff362 100644
  
  /* Power */
  #define ASUS_WMI_DEVID_PROCESSOR_STATE	0x00120012
--- 
-2.33.0
-
-  

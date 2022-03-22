@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-DESCRIPTION="3D Creation/Animation/Publishing System"
-HOMEPAGE="https://www.blender.org"
+DESCRIPTION="Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase"
+HOMEPAGE="https://flutter.dev"
 
 SRC_URI="https://storage.googleapis.com/${PN}_infra_release/releases/stable/linux/${PN}_linux_${PV}-stable.tar.xz"
 KEYWORDS="amd64"

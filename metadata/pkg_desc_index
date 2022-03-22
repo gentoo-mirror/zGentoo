@@ -21,7 +21,7 @@ dev-python/injector 0.19.0: Python dependency injection framework, inspired by G
 dev-python/plum-py 0.7.5: Pack/Unpack Memory
 dev-python/py3nvml 0.2.6: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files
-dev-util/flutter 2.10.3: 3D Creation/Animation/Publishing System
+dev-util/flutter 2.10.3: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r2: Freon is an extension for displaying sensors data.

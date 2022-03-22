@@ -10,7 +10,7 @@ KEYWORDS="amd64"
 
 SLOT="0"
 LICENSE="BSD-3"
-IUSE="X wayland"
+IUSE="X wayland +android"
 
 RDEPEND="
     app-shells/bash
@@ -22,6 +22,7 @@ RDEPEND="
     app-arch/zip
     X? ( virtual/glu )
     wayland? ( virtual/glu )
+    android? ( dev-util/android-sdk-cmdline-tools )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="acct-group/${PN}"
@@ -56,13 +57,20 @@ src_install() {
     
     # bins
     chmod +x ${D}/opt/${PN}/bin/{dart,flutter}
-    chmod +x ${D}/opt/${PN}/bin/cache/dart-sdk/bin/dart
+    chmod +x ${D}/opt/${PN}/bin/cache/dart-sdk/bin/dart*
+    chmod +x ${D}/opt/${PN}/bin/cache/dart-sdk/bin/utils/gen_snapshot
+    chmod +x ${D}/opt/${PN}/bin/cache/artifacts/engine/**/linux-x64/gen_snapshot
+    chmod +x ${D}/opt/${PN}/bin/cache/artifacts/engine/linux-x64*/gen_snapshot
+    chmod +x ${D}/opt/${PN}/bin/cache/artifacts/engine/linux-x64/flutter_tester
+    chmod +x ${D}/opt/${PN}/bin/cache/artifacts/engine/linux-x64/font-subset
     chmod +x ${D}/opt/${PN}/bin/internal/*.sh
 
     # general permissions
     chown -R root:${PN} ${D}/opt/${PN}
     chmod g+w -R ${D}/opt/${PN}
     chmod +s ${D}/opt/${PN}
+
+    use android && 
 
     # docs
     dodoc AUTHORS CODE_OF_CONDUCT.md CODEOWNERS CONTRIBUTING.md LICENSE \

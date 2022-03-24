@@ -1,5 +1,2 @@
-# The snmp_exporter config file
-SNMPE_CONF="/etc/snmp_exporter/snmp.yml"
-
-# Add any extra options to pass to snmp_exporter to this setting.
-SNMPE_OPTS="--web.listen-address=localhost:9116"
+# arguments for prometheus snmp exporter
+command_args="--config.file=/etc/snmp_exporter/snmp.yml"

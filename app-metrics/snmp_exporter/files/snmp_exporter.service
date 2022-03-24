@@ -1,15 +1,13 @@
 [Unit]
-Description=SNMP exporter for prometheus
+Description=Prometheus snmp exporter
 
 [Service]
-User=prometheus
-Group=prometheus
 Type=simple
-Restart=on-failure
-Environment=SNMPE_CONF="/etc/snmp_exporter/snmp.yml"
-Environment=SNMPE_OPTS="--web.listen-address=localhost:9116"
+User=snmp_exporter
+Group=snmp_exporter
 ExecStart=/usr/bin/snmp_exporter --config.file=${SNMPE_CONF} ${SNMPE_OPTS}
 PIDFile=/run/snmp_exporter.pid
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

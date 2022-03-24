@@ -39,13 +39,12 @@ src_install() {
 	# install binaries
 	dobin bin/*
 
-	# install docs
-	dodoc {README,CONTRIBUTING}.md 
-	dodoc generator/{{FORMAT,README}.md,generator.yml}
+	# install docs (all md's and generator.yml)
+	dodoc {*.md,generator/*.{md,yml}}
 
 	# install configurations
 	insinto /etc/${PN}
-	newins snmp.yml snmp.yml.example
+	newins snmp.yml{,.example}
 
 	# install logrotate configuration
 	insinto /etc/logrotate.d

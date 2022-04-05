@@ -1,0 +1,11 @@
+--- a/rog-profiles/src/fan_curve_set.rs
++++ b/rog-profiles/src/fan_curve_set.rs
+@@ -72,7 +72,7 @@
+                     let mut p = r;
+                     if percentages {
+                         p *= 255 / 100;
+-                        if p > 100 {
++                        if r > 100 {
+                             return Err(ProfileError::ParseFanCurvePercentOver100(r));
+                         }
+                     }

@@ -1,0 +1,15 @@
+BDEPEND=>=net-libs/nodejs-14.0.0 >=dev-util/promu-0.3.0 >=dev-lang/go-1.16 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=!app-metrics/prometheus-bin acct-group/prometheus acct-user/prometheus
+DESCRIPTION=Prometheus monitoring system and time series database
+EAPI=8
+HOMEPAGE=https://github.com/prometheus/prometheus
+INHERIT=go-module systemd
+KEYWORDS=amd64 ~arm
+LICENSE=Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0
+RDEPEND=acct-group/prometheus acct-user/prometheus
+RESTRICT=test strip
+SLOT=0
+SRC_URI=https://github.com/prometheus/prometheus/archive/v2.35.0.tar.gz -> prometheus-2.35.0.tar.gz https://vendors.retarded.farm/prometheus/vendor-prometheus-2.35.0.tar.xz https://vendors.retarded.farm/prometheus/node-modules-prometheus-2.35.0.tar.xz
+_eclasses_=go-module	a13d34fe4e2996720e1ca6c53b9ea95a	toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8	multilib	4a33c9008e5ee30cb8840a3fdc24df2b	systemd	2736b403a83f194b59b767f3b344c2c1
+_md5_=de99f555772f82ca362be0e637f749b5

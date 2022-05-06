@@ -8,7 +8,7 @@ inherit go-module systemd
 MY_PV=${PV/_beta/-beta}
 S=${WORKDIR}/${PN}-${MY_PV}
 
-DESCRIPTION="The tool for beautiful monitoring and metric analytics & dashboards"
+DESCRIPTION="The open-source platform for monitoring and observability"
 HOMEPAGE="https://grafana.com"
 SRC_URI="
 	https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
@@ -69,6 +69,8 @@ src_compile() {
 	einfo "Building binaries using go.."
 	go run -mod=vendor build.go build || die "compile failed"
 	einfo "Building frontend using webpack.."
+	# beware, we need at least 8G RAM (@32T)
+	export NODE_OPTIONS="--max-old-space-size=8192"
 	yarn run build || die "compile failed"
 	yarn run plugins:build-bundled || die "compile failed"
 }

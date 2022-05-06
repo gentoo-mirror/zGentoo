@@ -22,6 +22,8 @@ RDEPEND="acct-group/grafana
 	fluent-bit? ( app-admin/fluent-bit )"
 DEPEND="${RDEPEND}"
 
+PATCHES=("${FILESDIR}/${P}-fix-go18.patch")
+
 src_compile() {
 	BUILD_VERSION="${PV}"
 	BUILD_BRANCH="${PV}"

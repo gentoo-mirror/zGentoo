@@ -20,3 +20,8 @@ sys-kernel/gentoo-sources-g14
 # masked due slot-change (please uninstall before update!)
 <=sys-power/asusctl-3.7.2-r1
 <=gnome-extra/gnome-shell-extension-asusctl-gex-3.7.2
+
+# masked rainloop because of a critical security flaw (snappymail will be avialable soon), 
+# see: https://blog.sonarsource.com/rainloop-emails-at-risk-due-to-code-flaw/
+www-apps/rainloop
+www-apps/rainloop-community

@@ -12,7 +12,7 @@ SRC_URI="
 "
 # default vendor package created using:
 # > GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw && \
-# > tar -c -I 'xz -9 -T0' -f vendor-prometheus-<version>.tar.xz vendor
+# > tar -c -I 'xz -9 -T0' -f vendor-prometheus-<version>.tar.xz go-mod
 
 LICENSE="Apache-2.0"
 SLOT="0"

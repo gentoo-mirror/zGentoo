@@ -92,6 +92,8 @@ app-admin/loki:server - Build the loki server
 app-admin/loki:tools - Build the loki tools logcli and loki-canary
 app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP server.
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
+dev-db/influxdb:client - BUild the influxdb client app-admin/influx-cli
+dev-db/influxdb:telegraf - Build the telegraf agent app-metrics/telegraf
 games-emulation/rpcs3:discord-rpc - Enable Discord integration
 games-emulation/rpcs3:evdev - Enable evdev for input
 games-emulation/rpcs3:faudio - Enable audio using app-emulation/faudio

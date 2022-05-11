@@ -10,9 +10,6 @@ SRC_URI="
 	https://github.com/prometheus/prom2json/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
 "
-# default vendor package created using:
-# > GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw && \
-# > tar -c -I 'xz -9 -T0' -f vendor-prometheus-<version>.tar.xz go-mod
 
 LICENSE="Apache-2.0"
 SLOT="0"

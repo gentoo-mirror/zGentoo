@@ -44,4 +44,5 @@ Then run `emerge --sync`
 
 ## Colaboration
 
-You can directly communicate with us using discord, just follow this invite link: [zGentoo (#zgentoo)](https://discord.gg/jMBFy56)
+You can directly communicate with us using discord, just follow this invite link: 
+[zGentoo (#zgentoo)](https://discord.gg/f8xbb6g)

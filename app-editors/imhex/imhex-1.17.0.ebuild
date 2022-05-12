@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit git-r3 desktop xdg-utils python-single-r1 cmake
 
@@ -19,6 +19,7 @@ EGIT_SUBMODULES=(
 	lib/external/fmt
 	lib/external/libromfs
 	lib/external/nativefiledialog
+	lib/external/pattern_language
 	lib/external/xdgpp
 	lib/external/yara/yara
 )

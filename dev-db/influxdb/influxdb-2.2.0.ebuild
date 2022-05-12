@@ -25,7 +25,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+client telegraf"
 
-BDEPEND="virtual/rust"
+BDEPEND="virtual/rust
+    dev-libs/protobuf"
 COMMON_DEPEND="
     acct-group/${PN}
     acct-user/${PN}"

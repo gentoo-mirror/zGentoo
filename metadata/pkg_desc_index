@@ -58,4 +58,5 @@ virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.2: The open-source platform for monitoring and observability
 www-apps/rainloop 1.16.0: Simple, modern and fast web-based email client
 www-apps/rainloop-community 1.16.0: Simple, modern and fast web-based email client (community-edition)
+www-apps/snappymail 2.16.3: Simple, modern and fast web-based email client
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0

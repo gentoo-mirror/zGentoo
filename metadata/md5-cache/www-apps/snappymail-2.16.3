@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare prerm setup
+DEPEND=app-admin/webapp-config
+DESCRIPTION=Simple, modern and fast web-based email client
+EAPI=8
+HOMEPAGE=https://snappymail.eu/
+INHERIT=webapp
+IUSE=vhosts
+KEYWORDS=amd64 x86
+LICENSE=AGPL-3
+RDEPEND=dev-lang/php[curl,iconv,json,ssl,xml] virtual/httpd-php app-admin/webapp-config
+SLOT=2.16.3
+SRC_URI=https://github.com/the-djmaze/snappymail/releases/download/v2.16.3/snappymail-2.16.3.tar.gz
+_eclasses_=webapp	d872f28d7595b70dd46545199ef35fb0
+_md5_=d339503596aa07c6c0eed48a374f084d

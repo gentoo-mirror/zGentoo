@@ -10,7 +10,7 @@ HOMEPAGE="https://snappymail.eu/"
 SRC_URI="https://github.com/the-djmaze/snappymail/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="AGPL-3"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""

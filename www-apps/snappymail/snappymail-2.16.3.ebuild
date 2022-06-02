@@ -29,6 +29,10 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r .
 
+	insinto "${MY_HOSTROOTDIR}"
+	doins -r .
+
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/data
+	webapp_serverowned -R "${MY_HOSTROOTDIR}"/data
 	webapp_src_install
 }

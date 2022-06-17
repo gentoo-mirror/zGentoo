@@ -1,8 +1,6 @@
-# config file for /etc/init.d/grafana
-
-GRAFANA_CONFIG="/etc/grafana/grafana.ini"
-GRAFANA_DATADIR="/var/lib/grafana"
-GRAFANA_LOGDIR="/var/log/grafana"
+GRAFANA_CONFIG="/etc/~PN_S~/grafana.ini"
+GRAFANA_DATADIR="/var/lib/~PN_S~"
+GRAFANA_LOGDIR="/var/log/~PN_S~"
 
 GRAFANA_OPTS="-config=${GRAFANA_CONFIG} \
 	cfg:default.paths.data=${GRAFANA_DATADIR} \

@@ -1,17 +1,17 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-description="The tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus & More"
+description="The open-source platform for monitoring and observability"
 
 : ${GRAFANA_USER:=grafana}
-: ${GRAFANA_DATADIR:=/var/lib/grafana}
-: ${GRAFANA_LOGDIR:=/var/log/grafana}
+: ${GRAFANA_DATADIR:=/var/lib/~PN_S~}
+: ${GRAFANA_LOGDIR:=/var/log/~PN_S~}
 : ${GRAFANA_TERMTIMEOUT:="TERM/20/KILL/5"}
-: ${SSD_OPTS:="-d /usr/share/grafana -w 1000"}
+: ${SSD_OPTS:="-d /usr/share/~PN_S~ -w 1000"}
 
 name="Grafana"
-command="/usr/bin/grafana-server"
+command="/usr/bin/~PN_S~-server"
 command_args="${GRAFANA_OPTS}"
 command_user="${GRAFANA_USER}"
 command_background=true

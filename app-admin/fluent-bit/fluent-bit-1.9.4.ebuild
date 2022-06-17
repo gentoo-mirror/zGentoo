@@ -154,7 +154,7 @@ done
 RESTRICT="mirror"
 
 RDEPEND="acct-group/logger
-    acct-user/fluent-bit
+    acct-user/${PN}
     luajit? ( dev-lang/luajit )
     jemalloc? ( dev-libs/jemalloc )
     fluentbit_output_plugins_pgsql? ( >=dev-db/postgresql-9.5:= )"
@@ -207,8 +207,8 @@ src_install() {
 
     newconfd "${FILESDIR}/${PN}.confd" "${PN}"
     newinitd "${FILESDIR}/${PN}.initd" "${PN}"
-    use systemd && systemd_newunit "${FILESDIR}"/fluent-bit.service fluent-bit.service
+    use systemd && systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 
 
-    fowners fluent-bit:logger "/etc/${PN}"
+    fowners ${PN}:logger "/etc/${PN}"
 }

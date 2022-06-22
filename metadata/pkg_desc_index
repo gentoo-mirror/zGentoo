@@ -53,7 +53,7 @@ sys-power/asusctl 3.7.2-r2 4.0.7-r2 9999: asusctl (asusd) is a utility for Linux
 sys-power/gwe 0.15.4: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/liquidctl 1.8.1: Cross-platform tool and drivers for liquid coolers and other devices
 sys-power/power-profiles-daemon 0.10.1: Makes power profiles handling available over D-Bus.
-sys-power/supergfxctl 4.0.4: supergfxctl (supergfxd) Graphics switching
+sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.6 9.0.0: The open-source platform for monitoring and observability

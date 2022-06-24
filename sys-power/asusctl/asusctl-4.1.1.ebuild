@@ -20,7 +20,6 @@ KEYWORDS="~amd64"
 IUSE="+acpi +gfx gnome notify"
 REQUIRED_USE="gnome? ( gfx )"
 
-BDEPEND="dev-python/python-dbusmock"
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
     acpi? ( sys-power/acpi_call )

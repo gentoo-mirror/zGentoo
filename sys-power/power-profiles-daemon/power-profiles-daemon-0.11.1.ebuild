@@ -16,6 +16,7 @@ IUSE="doc"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 BDEPEND=">=dev-libs/libgudev-234
+    dev-python/python-dbusmock
     >=sys-auth/polkit-0.114
     sys-power/upower
 "

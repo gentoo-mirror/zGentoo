@@ -49,10 +49,10 @@ net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/
 sys-kernel/gentoo-sources-rog 5.15.41 5.17.14 5.18.3 5.18.4 5.18.5 5.18.6: Full sources including the Gentoo and ASUS ROG patchset for the 5.18 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
-sys-power/asusctl 3.7.2-r2 4.0.7-r2 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
+sys-power/asusctl 3.7.2-r2 4.0.7-r2 4.1.1 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.4: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/liquidctl 1.8.1: Cross-platform tool and drivers for liquid coolers and other devices
-sys-power/power-profiles-daemon 0.10.1: Makes power profiles handling available over D-Bus.
+sys-power/power-profiles-daemon 0.11.1: Makes power profiles handling available over D-Bus.
 sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources

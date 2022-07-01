@@ -1,0 +1,5 @@
+# Synapse config file
+SYNAPSE_CONFIG="/etc/synapse/server.yaml"
+
+# Synapse user
+SYNAPSE_USER="synapse"

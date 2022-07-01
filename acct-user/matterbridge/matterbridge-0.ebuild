@@ -11,4 +11,3 @@ ACCT_USER_GROUPS=(${PN})
 ACCT_USER_HOME="/var/lib/${PN}"
 
 acct-user_add_deps
-

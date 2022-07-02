@@ -1,8 +1,10 @@
 acct-group/flutter 0: Flutter program group
 acct-group/logger 0-r1: Logger program group
+acct-group/matterbridge 0: System group: matterbridge
 acct-group/synapse 0: System group: synapse
 acct-user/fluent-bit 0-r1: fluent-bit program user
 acct-user/loki 0-r1: Loki program user
+acct-user/matterbridge 0: System user: matterbridge
 acct-user/synapse 0: System user: synapse
 acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 1.9.4: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
@@ -49,6 +51,7 @@ media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice co
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord-bin 0.0.18: All-in-one voice and text chat for gamers
 net-im/matrix-synapse 1.61.1 1.62.0_rc2: Synapse: Matrix reference homeserver
+net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
 net-misc/anydesk 6.1.1: Feature rich multi-platform remote desktop application

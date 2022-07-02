@@ -3,12 +3,7 @@
 
 EAPI=8
 
-inherit acct-user
+inherit acct-group
 
 KEYWORDS="~amd64 ~x86"
-ACCT_USER_ID=-1
-ACCT_USER_GROUPS=(${PN})
-ACCT_USER_HOME="/var/lib/${PN}"
-
-acct-user_add_deps
-
+ACCT_GROUP_ID=-1

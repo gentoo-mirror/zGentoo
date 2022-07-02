@@ -3,8 +3,6 @@
 
 EAPI=8
 
-## WARNING: still under review - error in QA (perms) .. 
-
 inherit check-reqs go-module systemd
 
 DESCRIPTION="A simple chat bridge - for matrix"
@@ -17,13 +15,15 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="systemd"
-QA_PRESTRIPPED=("build/${PN}")
 # needed for MS Teams
 CHECKREQS_MEMORY="4G"
 
 DEPEND="acct-group/${PN}
     acct-user/${PN}
     >=dev-lang/go-1.17"
+
+QA_EXECSTACK="usr/bin/${PN}"
+QA_WX_LOAD="usr/bin/${PN}"
 
 src_unpack() {
     default

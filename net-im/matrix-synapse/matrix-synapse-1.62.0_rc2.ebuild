@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SRC_URI="https://github.com/matrix-org/synapse/archive/v${PV/_rc/rc}.tar.gz -> ${P/_rc/rc}.tar.gz"
 S="${WORKDIR}/synapse-${PV/_rc/rc}"
 
-SLOT=""
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="systemd +hiredis"

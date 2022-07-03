@@ -21,7 +21,10 @@ sys-kernel/gentoo-sources-g14
 <=sys-power/asusctl-3.7.2-r1
 <=gnome-extra/gnome-shell-extension-asusctl-gex-3.7.2
 
-# masked rainloop because of a critical security flaw (snappymail will be avialable soon), 
+# masked rainloop because of a critical security flaw (use snappymail as a replacement), 
 # see: https://blog.sonarsource.com/rainloop-emails-at-risk-due-to-code-flaw/
 www-apps/rainloop
 www-apps/rainloop-community
+
+# masked because it's not yet ready for production (unmask if needed)
+>=net-im/matrix-synapse-1.62.0_rc2

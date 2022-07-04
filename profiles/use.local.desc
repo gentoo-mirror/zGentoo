@@ -104,6 +104,7 @@ media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
 net-p2p/trezord-go:systemd - Install systemd service file
 net-p2p/trezord-go:udev - Install udev rules
+sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
 sys-kernel/gentoo-sources-rog:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 sys-kernel/gentoo-sources-rog:fanmode_hotkey - Apply patch for G14/G15 to enable fanmode hotkey (fn + F5).
 sys-power/asusctl:gfx - Add support for switching graphics(gfx) devices

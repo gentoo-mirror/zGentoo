@@ -11,8 +11,8 @@ Date:   Sun Jul 3 21:46:21 2022 -0700
 
 diff --git gkbuilds/boost-build.gkbuild gkbuilds/boost-build.gkbuild
 index 03d1f88..0e06ba7 100644
---- gkbuilds/boost-build.gkbuild
-+++ gkbuilds/boost-build.gkbuild
+--- a/gkbuilds/boost-build.gkbuild
++++ b/gkbuilds/boost-build.gkbuild
 @@ -53,6 +53,6 @@ src_install() {
  	find "${D}/usr/share/boost-build" -iname "*.py" -delete \
  		|| die "Failed to remove python files"

@@ -49,7 +49,6 @@ media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.16.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
-net-im/discord-bin 0.0.18: All-in-one voice and text chat for gamers
 net-im/matrix-synapse 1.61.1 1.62.0_rc2: Synapse: Matrix reference homeserver
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
@@ -59,7 +58,6 @@ net-misc/postman-bin 9.14.0: Supercharge your API workflow
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-sys-kernel/genkernel 4.2.6-r5: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-sources-rog 5.15.41 5.17.14 5.18.3 5.18.4 5.18.5 5.18.6: Full sources including the Gentoo and ASUS ROG patchset for the 5.18 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
@@ -70,6 +68,6 @@ sys-power/power-profiles-daemon 0.11.1: Makes power profiles handling available 
 sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
-www-apps/grafana 8.5.6 9.0.0: The open-source platform for monitoring and observability
+www-apps/grafana 8.5.6 9.0.2: The open-source platform for monitoring and observability
 www-apps/snappymail 2.16.3: Simple, modern and fast web-based email client
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0

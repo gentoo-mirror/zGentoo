@@ -49,7 +49,7 @@ media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.16.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
-net-im/matrix-synapse 1.61.1 1.62.0_rc2: Synapse: Matrix reference homeserver
+net-im/matrix-synapse 1.61.1 1.62.0: Synapse: Matrix reference homeserver
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries

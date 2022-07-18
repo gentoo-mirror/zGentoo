@@ -45,7 +45,6 @@ gnome-extra/gnome-shell-extension-freon 43-r3: Freon is an extension for display
 gnome-extra/gnome-shell-extension-topicons-plus 27-r3: Moves legacy tray icons to top panel
 media-gfx/brother-scan4-bin 0.4.10-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system.
-media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.16.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
@@ -57,8 +56,6 @@ net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
 net-misc/anydesk 6.1.1: Feature rich multi-platform remote desktop application
 net-misc/postman-bin 9.14.0: Supercharge your API workflow
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
-net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 sys-kernel/gentoo-sources-rog 5.15.41 5.17.14 5.18.3 5.18.4 5.18.5 5.18.6: Full sources including the Gentoo and ASUS ROG patchset for the 5.18 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system

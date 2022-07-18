@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
-inherit eutils autotools flag-o-matic multilib
+inherit autotools flag-o-matic multilib
 
 DESCRIPTION="Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series)."
 HOMEPAGE="http://support-sg.canon-asia.com/contents/SG/EN/0100469302.html"
@@ -27,6 +26,14 @@ RDEPEND="
 DEPEND="${DEPEND}
 	sys-devel/gettext
 "
+PATCHES=(
+	"${FILESDIR}/${PN}"-3.70-png.patch
+	"${FILESDIR}/${PN}"-3.70-ppd.patch
+	"${FILESDIR}/${PN}"-3.70-ppd2.patch
+	"${FILESDIR}/${PN}"-3.70-libexec-cups.patch
+	"${FILESDIR}/${PN}"-3.70-libexec-backend.patch
+	"${FILESDIR}/${P}"-cups1.6.patch
+)
 
 S="${WORKDIR}/${PN}-source-${PV}-1"
 
@@ -61,16 +68,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	local d i
-
-	epatch \
-		"${FILESDIR}/${PN}"-3.70-png.patch \
-		"${FILESDIR}/${PN}"-3.70-ppd.patch \
-		"${FILESDIR}/${PN}"-3.70-ppd2.patch \
-		"${FILESDIR}/${PN}"-3.70-libexec-cups.patch \
-		"${FILESDIR}/${PN}"-3.70-libexec-backend.patch \
-		"${FILESDIR}/${P}"-cups1.6.patch
-
 	_dir_build "${DIRS}" "eautoreconf"
 }
 

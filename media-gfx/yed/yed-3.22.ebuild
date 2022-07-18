@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=8
 
-inherit eutils java-pkg-2
+inherit desktop java-pkg-2
 
 DESCRIPTION="yEd Graph Editor - High-quality diagrams made easy"
 HOMEPAGE="http://www.yworks.com/en/products_yed_about.html"

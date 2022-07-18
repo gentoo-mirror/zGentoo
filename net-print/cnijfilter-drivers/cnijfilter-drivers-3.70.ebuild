@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
 MY_PN="${PN/-drivers/}"
 
@@ -32,6 +31,14 @@ RDEPEND="
 DEPEND="${DEPEND}
 	sys-devel/gettext
 "
+PATCHES=(
+	"${FILESDIR}/${MY_PN}"-3.70-png.patch
+	"${FILESDIR}/${MY_PN}"-3.70-ppd.patch
+	"${FILESDIR}/${MY_PN}"-3.70-ppd2.patch
+	"${FILESDIR}/${MY_PN}"-3.70-libexec-cups.patch
+	"${FILESDIR}/${MY_PN}"-3.70-libexec-backend.patch
+	"${FILESDIR}/${MY_PN}"-3.70-6-cups-1.6.patch
+)
 
 REQUIRED_USE="|| ( ${PRINTER_USE[@]} )"
 
@@ -92,18 +99,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	local d i
 
 	# missing macros directory make aclocal fail
 	mkdir printui/m4 || die
-
-	epatch \
-		"${FILESDIR}/${MY_PN}"-3.70-png.patch \
-		"${FILESDIR}/${MY_PN}"-3.70-ppd.patch \
-		"${FILESDIR}/${MY_PN}"-3.70-ppd2.patch \
-		"${FILESDIR}/${MY_PN}"-3.70-libexec-cups.patch \
-		"${FILESDIR}/${MY_PN}"-3.70-libexec-backend.patch \
-		"${FILESDIR}/${MY_PN}"-3.70-6-cups-1.6.patch
 
 	_dir_build "${DIRS_PRINTER}" "eautoreconf"
 

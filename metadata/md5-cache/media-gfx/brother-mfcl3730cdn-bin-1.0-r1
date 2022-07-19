@@ -1,0 +1,9 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Scanner driver for Brother MFC-L3730CDN (brscan4)
+EAPI=8
+HOMEPAGE=http://support.brother.com
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=media-gfx/brother-scan4-bin
+SLOT=0
+_md5_=fe2c80af4b1a6d5bed48f99aa05eec0a

@@ -34,8 +34,8 @@ src_install() {
 	cp -r opt "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/mfc9332cdw/lpd/filtermfc9332cdw brother_lpdwrapper_mfc9332cdw ) || die
+	( cd "${D}/usr/libexec/cups/filter/" && ln -s /opt/brother/Printers/mfc9332cdw/lpd/filtermfc9332cdw brother_lpdwrapper_mfc9332cdw ) || die
 
 	mkdir -p "${D}/usr/share/cups/model" || die
-	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/mfc9332cdw/cupswrapper/brother_mfc9332cdw_printer_en.ppd ) || die
+	( cd "${D}/usr/share/cups/model" && ln -s /opt/brother/Printers/mfc9332cdw/cupswrapper/brother_mfc9332cdw_printer_en.ppd ) || die
 }

@@ -22,10 +22,10 @@ app-office/qownnotes 22.7.2: A plain-text file markdown note taking with Nextclo
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.3.0: Scalable datastore for metrics, events, and real-time analytics
 dev-go/wire 0.5.0: Wire: Automated Initialization in Go
-dev-lang/kotlin-bin 1.6.10: Statically typed programming language for modern multiplatform applications
-dev-libs/hidapi 0.11.2: A multi-platform library for USB and Bluetooth HID-Class devices
+dev-lang/kotlin-bin 1.6.10 1.7.10: Statically typed programming language for modern multiplatform applications
+dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-python/Rx 4.0.0: Reactive Extensions for Python
-dev-python/canonicaljson 1.6.1: Canonical JSON
+dev-python/canonicaljson 1.6.1 1.6.2: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
 dev-python/frozendict 2.3.2: An immutable dictionary
 dev-python/injector 0.19.0: Python dependency injection framework, inspired by Guice

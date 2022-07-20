@@ -1,25 +1,21 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-## WARN
-# This ebuild is still WIP! Expect issues. If you find one - please contribute!
-# The best place for this is dicord(currently): https://discord.gg/f8xbb6g
-#
-# Due to the mass of dependencies, LICENSEs might not be complete. (TODO)
-
 EAPI=8
 inherit go-module systemd
-go-module_set_globals
+#go-module_set_globals
 
 DESCRIPTION="Scalable datastore for metrics, events, and real-time analytics"
 HOMEPAGE="https://www.influxdata.com/products/influxdb-overview/"
 SRC_URI="
     https://github.com/influxdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
     https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
-    https://vendors.retarded.farm/${PN}/vendor-libflux-0.161.0.tar.xz
+    https://vendors.retarded.farm/${PN}/vendor-libflux-0.171.0.tar.xz
     https://github.com/influxdata/ui/releases/download/OSS-2.1.2/build.tar.gz -> ${P}-build.tar.gz
     https://github.com/influxdata/openapi/archive/refs/tags/${PN}-oss-v${PV}.tar.gz -> ${P}-openapi.tar.gz
 "
+# >> go mod vendor && mkdir influxdb-<version> && mv vendor influxdb-<version>/vendor \
+# >> tar -c -I 'xz -9 -T0' -f vendor-influxdb-<version>.tar.xz influxdb-<version>/vendor
 LICENSE="MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 BSD-2 ISC"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -42,11 +38,12 @@ src_unpack() {
     default
     mv build ${S}/static/data || die
     cp openapi-${PN}-oss-v${PV}/contracts/oss.json ${S}/static/data/swagger.json || die
-    mv vendor go-mod/github.com/influxdata/flux@v0.161.0/libflux/vendor
+    # libflux needs cargo vendors (just as a hint)
+    mv vendor go-mod/github.com/influxdata/flux@v0.171.0/libflux/ || die
 
     # prepare crates vendor
-    mkdir -p go-mod/github.com/influxdata/flux@v0.161.0/libflux/.cargo && \
-        cp ${FILESDIR}/vendor_config go-mod/github.com/influxdata/flux@v0.161.0/libflux/.cargo/config
+    mkdir -p go-mod/github.com/influxdata/flux@v0.171.0/libflux/.cargo && \
+        cp ${FILESDIR}/vendor_config go-mod/github.com/influxdata/flux@v0.171.0/libflux/.cargo/config
 }
 
 src_prepare() {
@@ -78,10 +75,6 @@ src_install() {
 
     # docs
     dodoc *.md
-
-    # logrotate
-    insinto /etc/logrotate.d
-    newins scripts/logrotate ${PN}
     
     #  services
     systemd_dounit ${FILESDIR}/${PN}.service

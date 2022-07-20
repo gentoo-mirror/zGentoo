@@ -10,7 +10,7 @@ inherit git-r3 desktop xdg-utils python-single-r1 cmake
 DESCRIPTION="A hex editor for reverse engineers, programmers, and eyesight"
 HOMEPAGE="https://github.com/WerWolv/ImHex"
 EGIT_REPO_URI="https://github.com/WerWolv/ImHex.git"
-SRC_URI="https://github.com/WerWolv/ImHex-Patterns/archive/448a81a06dd39f160d1770989d41b6dba7338753.zip -> imhex-patterns-${PV}.zip"
+SRC_URI="https://github.com/WerWolv/ImHex-Patterns/archive/f40943c8cd5b799357e86d93736a23784bef3100.zip -> imhex-patterns-${PV}.zip"
 
 # see: https://github.com/WerWolv/ImHex/blob/v${PV}/.gitmodules
 EGIT_SUBMODULES=(
@@ -55,10 +55,10 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 
 src_configure() {
 	## we respect the network-sandbox!
-	_POS=`grep -n downloadImHexPatternsFiles cmake/build_helpers.cmake | cut -d: -f1`
+	_POS=`grep -n downloadImHexPatternsFiles cmake/build_helpers.cmake | cut -d: -f1 | tail -1`
 	sed -i "${_POS},\$d" cmake/build_helpers.cmake || \
 		die "couldn't patch build_helpers to respect the sandbox"
-	sed -i "s/downloadImHexPatternsFiles/#downloadImHexPatternsFiles/g" CMakeLists.txt || \
+	sed -i "s/downloadImHexPatternsFiles/#downloadImHexPatternsFiles/g" cmake/build_helpers.cmake || \
 		die "couldn't patch CMakeLists to respect the sandbox"
 
 	## unpacking imhex-patterns
@@ -86,7 +86,7 @@ src_install() {
 
 
 	insinto /usr/share/${PN}/plugins/
-	doins ${BUILD_DIR}/plugins/builtin/builtin.hexplug
+	doins ${BUILD_DIR}/plugins/builtin.hexplug
 
 	insinto /usr/share/${PN}
 	doins -r ${S}/resources/lib/python/lib/.

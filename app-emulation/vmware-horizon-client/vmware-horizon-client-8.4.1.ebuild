@@ -1,16 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
+EAPI=8
 DESCRIPTION="VMware Horizon View client"
 HOMEPAGE="https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/8_0"
-SRC_URI="https://download3.vmware.com/software/view/viewclients/CART22FQ2/VMware-Horizon-Client-2106.1-${PV}-18435609.x64.bundle -> ${PF}.bin"
+SRC_URI="https://download3.vmware.com/software/CART23FQ1_LIN64_2111_1/VMware-Horizon-Client-2111.1-${PV}-19480456.x64.bundle -> ${PF}.bin"
 
 RESTRICT="mirror"
 
 LICENSE="vmware"
-SLOT="0/2106.1"
+SLOT="0/2111.1"
 KEYWORDS="~amd64"
 IUSE=""
 

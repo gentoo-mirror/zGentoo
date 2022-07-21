@@ -1,8 +1,10 @@
 acct-group/flutter 0: Flutter program group
+acct-group/grafana-matrix-forwarder 0: System group: grafana-matrix-forwarder
 acct-group/logger 0-r1: Logger program group
 acct-group/matterbridge 0: System group: matterbridge
 acct-group/synapse 0: System group: synapse
 acct-user/fluent-bit 0-r1: fluent-bit program user
+acct-user/grafana-matrix-forwarder 0: System user: grafana-matrix-forwarder
 acct-user/loki 0-r1: Loki program user
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/synapse 0: System user: synapse
@@ -12,6 +14,7 @@ app-admin/influx-cli 2.3.0: CLI for managing resources in InfluxDB v2
 app-admin/loki 2.5.0-r1: Like Prometheus, but for logs.
 app-editors/imhex 1.19.1: A hex editor for reverse engineers, programmers, and eyesight
 app-emulation/vmware-horizon-client 8.4.0 8.4.1 8.5.0: VMware Horizon View client
+app-metrics/grafana-matrix-forwarder 0.6.0: Forward alerts from Grafana to a Matrix chat room.
 app-metrics/prom2json 1.3.1: A tool to scrape a Prometheus client and dump the result as JSON
 app-metrics/prometheus 2.37.0: Prometheus monitoring system and time series database
 app-metrics/snmp_exporter 0.20.0-r2: Prometheus exporter for snmp metrics

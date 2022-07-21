@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 systemd
 
-DESCRIPTION="An immutable dictionary"
+DESCRIPTION="Post a message to a matrix room with a simple HTTP POST"
 HOMEPAGE="https://pypi.python.org/pypi/matrix-webhook https://github.com/nim65s/matrix-webhook"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

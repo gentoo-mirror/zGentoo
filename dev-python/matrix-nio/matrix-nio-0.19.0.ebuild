@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="nio Framework"
+DESCRIPTION="Multilayered Matrix client library"
 HOMEPAGE="https://pypi.python.org/pypi/matrix-nio https://github.com/poljar/matrix-nio"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

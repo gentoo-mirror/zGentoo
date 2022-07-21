@@ -1,11 +1,13 @@
 acct-group/flutter 0: Flutter program group
 acct-group/grafana-matrix-forwarder 0: System group: grafana-matrix-forwarder
 acct-group/logger 0-r1: Logger program group
+acct-group/matrix-webhook 0: System group: matrix-webhook
 acct-group/matterbridge 0: System group: matterbridge
 acct-group/synapse 0: System group: synapse
 acct-user/fluent-bit 0-r1: fluent-bit program user
 acct-user/grafana-matrix-forwarder 0: System user: grafana-matrix-forwarder
 acct-user/loki 0-r1: Loki program user
+acct-user/matrix-webhook 0: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/synapse 0: System user: synapse
 acct-user/trezord 0: User for TREZOR Bridge
@@ -32,7 +34,9 @@ dev-python/canonicaljson 1.6.1 1.6.2: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
 dev-python/frozendict 2.3.2: An immutable dictionary
 dev-python/injector 0.19.0: Python dependency injection framework, inspired by Guice
+dev-python/logbook 1.5.3-r1: A logging replacement for Python
 dev-python/matrix-common 1.1.0 1.2.1: Common utilities for Synapse, Sydent and Sygnal.
+dev-python/matrix-nio 0.19.0: nio Framework
 dev-python/plum-py 0.8.0: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pymacaroons 0.13.0: PyMacaroons is a Python implementation of Macaroons
@@ -56,6 +60,7 @@ media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice co
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
 net-im/element-desktop-bin 1.11.0: A glossy Matrix collaboration client for desktop (binary package)
 net-im/matrix-synapse 1.61.1 1.62.0: Synapse: Matrix reference homeserver
+net-im/matrix-webhook 3.3.0: An immutable dictionary
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries

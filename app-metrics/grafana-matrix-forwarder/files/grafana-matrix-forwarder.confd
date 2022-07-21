@@ -1,0 +1,5 @@
+USER="@user:matrix.org"
+PASSWD="myVerySecretPassword"
+SERVER="matrix.org"
+HOST="0.0.0.0"
+PORT="6000"

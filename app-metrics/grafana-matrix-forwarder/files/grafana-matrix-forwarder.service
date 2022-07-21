@@ -1,0 +1,21 @@
+[Unit]
+Description=Grafana Matrix Forwarder
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=grafana-matrix-forwarder
+Group=grafana-matrix-forwarder
+EnvironmentFile=/etc/conf.d/grafana-matrix-forwarder
+ExecStart=/usr/bin/grafana-matrix-forwarder \
+  --user $USER \
+  --password $PASSWORD \
+  --homeserver $SERVER \
+  --host $HOST \
+  --port $PORT
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

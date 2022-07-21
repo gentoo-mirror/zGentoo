@@ -22,11 +22,15 @@ RDEPEND="${DEPEND}
     dev-python/aiofiles
     dev-python/aiohttp
     dev-python/aiohttp-socks
+    dev-python/future
     dev-python/h11
     dev-python/h2
+    dev-python/jsonschema
     dev-python/logbook
     dev-python/markdown
-    dev-python/matrix-nio"
+    dev-python/matrix-nio
+    dev-python/pycryptodome
+    dev-python/unpaddedbase64"
 
 python_install_all() {
     newconfd "${FILESDIR}"/${PN}.confd ${PN}

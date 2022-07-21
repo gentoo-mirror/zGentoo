@@ -1,0 +1,6 @@
+HOST=""
+PORT="4785"
+MATRIX_URL="https://matrix.org"
+MATRIX_ID="@user:matrix.org"
+MATRIX_PW="MySecretPassword"
+API_KEY=""

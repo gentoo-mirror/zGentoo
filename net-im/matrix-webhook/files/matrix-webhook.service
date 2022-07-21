@@ -1,0 +1,16 @@
+[Unit]
+Description=Grafana Matrix Forwarder
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=matrix-webhook
+Group=matrix-webhook
+EnvironmentFile=/etc/conf.d/matrix-webhook
+ExecStart=/usr/bin/python -m matrix_webhook
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

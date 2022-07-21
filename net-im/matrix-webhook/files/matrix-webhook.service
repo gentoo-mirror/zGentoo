@@ -1,5 +1,5 @@
 [Unit]
-Description=Grafana Matrix Forwarder
+Description=Matrix-Webhook service
 Wants=network-online.target
 After=network-online.target
 

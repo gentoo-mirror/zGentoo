@@ -29,9 +29,19 @@ RDEPEND="${DEPEND}
     dev-python/logbook[${PYTHON_USEDEP}]
     dev-python/markdown[${PYTHON_USEDEP}]
     dev-python/matrix-nio[${PYTHON_USEDEP}]
-    e2e? ( dev-python/matrix-nio[${PYTHON_USEDEP},e2e] )
+    e2e? ( 
+        dev-python/atomicwrites[${PYTHON_USEDEP}]
+        dev-python/cachetools[${PYTHON_USEDEP}]
+        dev-python/matrix-nio[${PYTHON_USEDEP},e2e]
+        dev-python/peewee[${PYTHON_USEDEP}]
+    )
     dev-python/pycryptodome[${PYTHON_USEDEP}]
     dev-python/unpaddedbase64[${PYTHON_USEDEP}]"
+
+src_prepare() {
+    default
+    use e2e && eapply ${FILESDIR}/${P}-e2ee.patch
+}
 
 python_install_all() {
     newconfd "${FILESDIR}"/${PN}.confd ${PN}

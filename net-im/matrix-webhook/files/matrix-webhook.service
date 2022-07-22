@@ -9,6 +9,7 @@ User=matrix-webhook
 Group=matrix-webhook
 EnvironmentFile=/etc/conf.d/matrix-webhook
 ExecStart=/usr/bin/python -m matrix_webhook
+WorkingDirectory=/var/lib/matrix-webhook
 
 Restart=always
 

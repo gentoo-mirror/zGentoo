@@ -13,24 +13,25 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+e2e"
 
 DEPEND="
 	acct-user/${PN}
     acct-group/${PN}"
 RDEPEND="${DEPEND}
-    dev-python/aiofiles
-    dev-python/aiohttp
-    dev-python/aiohttp-socks
-    dev-python/future
-    dev-python/h11
-    dev-python/h2
-    dev-python/jsonschema
-    dev-python/logbook
-    dev-python/markdown
-    dev-python/matrix-nio
-    dev-python/pycryptodome
-    dev-python/unpaddedbase64"
+    dev-python/aiofiles[${PYTHON_USEDEP}]
+    dev-python/aiohttp[${PYTHON_USEDEP}]
+    dev-python/aiohttp-socks[${PYTHON_USEDEP}]
+    dev-python/future[${PYTHON_USEDEP}]
+    dev-python/h11[${PYTHON_USEDEP}]
+    dev-python/h2[${PYTHON_USEDEP}]
+    dev-python/jsonschema[${PYTHON_USEDEP}]
+    dev-python/logbook[${PYTHON_USEDEP}]
+    dev-python/markdown[${PYTHON_USEDEP}]
+    dev-python/matrix-nio[${PYTHON_USEDEP}]
+    e2e? ( dev-python/matrix-nio[${PYTHON_USEDEP},e2e] )
+    dev-python/pycryptodome[${PYTHON_USEDEP}]
+    dev-python/unpaddedbase64[${PYTHON_USEDEP}]"
 
 python_install_all() {
     newconfd "${FILESDIR}"/${PN}.confd ${PN}

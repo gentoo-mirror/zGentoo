@@ -5,7 +5,7 @@ EAPI=7
 #### IMPORTANT ####
 # This ebuild is mostly unmaintained - DO NOT USE IT!
 
-inherit systemd cargo git-r3 linux-info xdg
+inherit systemd cargo git-r3 linux-info udev xdg
 
 _PN="asusd"
 
@@ -61,7 +61,7 @@ src_prepare() {
 
     # checking for touchpad dependencies
     k_wrn_touch="\n"
-    linux_chkconfig_present PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}CONFIG_PINCTRL_AMD not found, should be either builtin or build as module\n"
+    linux_chkconfig_builtin PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}CONFIG_PINCTRL_AMD not found, must be builtin\n"
     linux_chkconfig_present I2C_HID || k_wrn_touch="${k_wrn_touch}CONFIG_I2C_HID not found, should be either builtin or build as module\n"
     [[ ${k_wrn_touch} != "\n" ]] && ewarn "\nKernel configuration mismatch (needed for touchpad support):\n${k_wrn_touch}"
 

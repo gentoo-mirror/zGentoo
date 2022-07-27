@@ -10,6 +10,7 @@
     </upstream>
     <use>
         <flag name="notify">Installs asus-nb-ctrl notify binary and service</flag>
+        <flag name="gui">Installs rog-control-center(UI)</flag>
         <flag name="gfx">Add support for switching graphics(gfx) devices</flag>
     </use>
 </pkgmetadata>

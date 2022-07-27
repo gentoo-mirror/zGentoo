@@ -3,7 +3,7 @@
 EAPI=8
 CRATES="vendor"
 
-inherit systemd cargo git-r3 linux-info xdg
+inherit systemd cargo git-r3 linux-info udev xdg
 
 _PN="asusd"
 
@@ -54,7 +54,7 @@ src_prepare() {
     linux_chkconfig_present I2C_HID_CORE || k_wrn_touch="${k_wrn_touch}> CONFIG_I2C_HID_CORE not found, should be either builtin or build as module\n"
     linux_chkconfig_present I2C_HID_ACPI || k_wrn_touch="${k_wrn_touch}> CONFIG_I2C_HID_ACPI not found, should be either builtin or build as module\n"
     linux_chkconfig_present HID_ASUS || k_wrn_touch="${k_wrn_touch}> CONFIG_HID_ASUS not found, should be either builtin or build as module\n"
-    linux_chkconfig_present PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}> CONFIG_PINCTRL_AMD not found, should be either builtin or build as module\n"
+    linux_chkconfig_builtin PINCTRL_AMD || k_wrn_touch="${k_wrn_touch}> CONFIG_PINCTRL_AMD not found, must be builtin\n"
     [[ ${k_wrn_touch} != "" ]] && ewarn "\nKernel configuration issue(s), needed for touchpad support:\n\n${k_wrn_touch}"
 
     # adding vendor package config
@@ -108,11 +108,10 @@ src_install() {
 
 pkg_postinst() {
     xdg_icon_cache_update
-    ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
-by runnning:\n \`systemctl daemon-reload && systemctl reload dbus &&  \
-udevadm control --reload-rules && udevadm trigger\`\n"
+    udev_reload
 }
 
 pkg_postrm() {
     xdg_icon_cache_update
+    udev_reload
 }

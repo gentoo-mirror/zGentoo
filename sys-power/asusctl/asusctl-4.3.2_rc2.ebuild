@@ -7,16 +7,18 @@ inherit systemd cargo git-r3 linux-info udev xdg
 
 _PN="asusd"
 
+
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
-    https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://vendors.retarded.farm/${PN}/vendor-${PV}.tar.xz -> vendor_${PN}-${PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/-/archive/${PV/_/.}/${PN}-${PV/_/.}.tar.gz
+    https://vendors.retarded.farm/${PN}/vendor_${PN}_${PV%%_*}.tar.xz
 "
 
 LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="~amd64"
+# will add gui when the vendor build of it is stabelized - disabled rog-cc for now(as of rc2)
 IUSE="+acpi +gfx gnome notify"
 REQUIRED_USE="gnome? ( gfx )"
 
@@ -38,13 +40,12 @@ DEPEND="${RDEPEND}
     sys-apps/systemd:0=
 	sys-apps/dbus
 "
-PATCHES=("${FILESDIR}/${P}-fancurve_fix.patch")
-S="${WORKDIR}/${PN}-${PV}"
+S="${WORKDIR}/${PN}-${PV/_/.}"
 
 src_unpack() {
-    unpack ${PN}-${PV}.tar.gz
+    unpack ${PN}-${PV/_/.}.tar.gz
     # adding vendor-package
-    cd ${S} && unpack vendor_${PN}-${PV}.tar.xz
+    cd ${S} && unpack vendor_${PN}_${PV%%_*}.tar.xz
 }
 
 src_prepare() {
@@ -63,6 +64,10 @@ src_prepare() {
 
     # fixing wrong relative path in asusctl/Cargo.toml
     sed -i "s~../../supergfx~../vendor/supergfx~g" ${S}/*/Cargo.toml
+
+    # only build rog-control-center when "gui" flag is set
+    # ! use gui && eapply "${FILESDIR}/${PN}-${PV%%_*}-disable_rog-cc.patch"
+    eapply "${FILESDIR}/${PN}-${PV%%_*}-disable_rog-cc.patch"
 
     default
 }
@@ -103,6 +108,9 @@ src_install() {
         insinto /etc/modules-load.d
         doins ${FILESDIR}/90-acpi_call.conf
     fi
+
+    # must be enabled when the rog-cc vendor is working (disabled during rc2)
+    # use gui &&  domenu rog-control-center/data/rog-control-center.desktop
 
     default
 }

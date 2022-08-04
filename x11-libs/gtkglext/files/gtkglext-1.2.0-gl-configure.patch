@@ -2,8 +2,8 @@ Fix broken multilib gl and glu detection
 https://bugs.gentoo.org/543050
 https://bugs.gentoo.org/578482
 
---- gtkglext-1.2.0/configure.in
-+++ gtkglext-1.2.0/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -139,6 +139,7 @@
  AC_ISC_POSIX
  #AM_DISABLE_STATIC

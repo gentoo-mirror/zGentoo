@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="A minimal header only C++ logger system"
 HOMEPAGE="https://github.com/dominikschnitzer/minilog"
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
         local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX=/usr
+		    -DCMAKE_INSTALL_PREFIX=/usr
         )
         cmake-utils_src_configure
 }

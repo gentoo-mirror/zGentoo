@@ -19,7 +19,7 @@ LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="~amd64"
 # will add gui when the vendor build of it is stabelized - disabled rog-cc for now(as of rc2)
-IUSE="+acpi +gfx gnome notify"
+IUSE="+acpi +gfx gnome gui notify"
 REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
@@ -60,14 +60,13 @@ src_prepare() {
     [[ ${k_wrn_touch} != "" ]] && ewarn "\nKernel configuration issue(s), needed for touchpad support:\n\n${k_wrn_touch}"
 
     # adding vendor package config
-    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
+    mkdir -p ${S}/.cargo && cp ${FILESDIR}/${PN}-4.3-vendor_config ${S}/.cargo/config
 
     # fixing wrong relative path in asusctl/Cargo.toml
     sed -i "s~../../supergfx~../vendor/supergfx~g" ${S}/*/Cargo.toml
 
     # only build rog-control-center when "gui" flag is set
-    # ! use gui && eapply "${FILESDIR}/${PN}-${PV%%_*}-disable_rog-cc.patch"
-    eapply "${FILESDIR}/${PN}-${PV%%_*}-disable_rog-cc.patch"
+    ! use gui && eapply "${FILESDIR}/${PN}-${PV%%_*}-disable_rog-cc.patch"
 
     default
 }
@@ -109,8 +108,7 @@ src_install() {
         doins ${FILESDIR}/90-acpi_call.conf
     fi
 
-    # must be enabled when the rog-cc vendor is working (disabled during rc2)
-    # use gui &&  domenu rog-control-center/data/rog-control-center.desktop
+    use gui &&  domenu rog-control-center/data/rog-control-center.desktop
 
     default
 }

@@ -18,7 +18,6 @@ SRC_URI="
 LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="~amd64"
-# will add gui when the vendor build of it is stabelized - disabled rog-cc for now(as of rc2)
 IUSE="+acpi +gfx gnome gui notify"
 REQUIRED_USE="gnome? ( gfx )"
 

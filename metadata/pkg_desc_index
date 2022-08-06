@@ -14,7 +14,7 @@ acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 1.9.6: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
 app-admin/influx-cli 2.3.0: CLI for managing resources in InfluxDB v2
 app-admin/loki 2.5.0-r1: Like Prometheus, but for logs.
-app-editors/imhex 1.19.1: A hex editor for reverse engineers, programmers, and eyesight
+app-editors/imhex 1.20.0: A hex editor for reverse engineers, programmers, and eyesight
 app-emulation/vmware-horizon-client 8.4.0 8.4.1 8.5.0: VMware Horizon View client
 app-metrics/grafana-matrix-forwarder 0.6.0: Forward alerts from Grafana to a Matrix chat room.
 app-metrics/prom2json 1.3.1: A tool to scrape a Prometheus client and dump the result as JSON

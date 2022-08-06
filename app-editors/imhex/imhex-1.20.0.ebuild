@@ -10,7 +10,7 @@ inherit git-r3 desktop xdg-utils python-single-r1 cmake
 DESCRIPTION="A hex editor for reverse engineers, programmers, and eyesight"
 HOMEPAGE="https://github.com/WerWolv/ImHex"
 EGIT_REPO_URI="https://github.com/WerWolv/ImHex.git"
-SRC_URI="https://github.com/WerWolv/ImHex-Patterns/archive/f40943c8cd5b799357e86d93736a23784bef3100.zip -> imhex-patterns-${PV}.zip"
+SRC_URI="https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v${PV}.tar.gz -> imhex-patterns-${PV}.tar.gz"
 
 # see: https://github.com/WerWolv/ImHex/blob/v${PV}/.gitmodules
 EGIT_SUBMODULES=(
@@ -49,6 +49,9 @@ RDEPEND="${DEPEND}"
 BDEPEND="
   dev-util/cmake
 "
+PATCHES=(
+	"${FILESDIR}/${P}-fix_setupCompilerWarnings.patch"
+)
 
 CMAKE_BUILD_TYPE="Release"
 CMAKE_MAKEFILE_GENERATOR="emake"
@@ -62,7 +65,7 @@ src_configure() {
 		die "couldn't patch CMakeLists to respect the sandbox"
 
 	## unpacking imhex-patterns
-	unpack imhex-patterns-${PV}.zip
+	unpack imhex-patterns-${PV}.tar.gz
 	mv ${S}/ImHex-Patterns-*/{constants,encodings,includes,patterns,magic} .
 
 	## configure
@@ -82,8 +85,9 @@ src_configure() {
 src_install() {
 	# can't use cmake_src_install, doing it manual
 	newbin ${BUILD_DIR}/${PN} ${PN}
-	newlib.so ${BUILD_DIR}/lib/lib${PN}/lib${PN}.so lib${PN}.so
 
+	insinto /usr/lib/${PN}
+	newlib.so ${BUILD_DIR}/lib/lib${PN}/lib${PN}.so.${PV}  lib${PN}.so.${PV}
 
 	insinto /usr/share/${PN}/plugins/
 	doins ${BUILD_DIR}/plugins/builtin.hexplug

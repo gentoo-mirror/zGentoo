@@ -49,7 +49,7 @@ dev-python/unpaddedbase64 2.1.0: Unpadded Base64
 dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
-gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r3: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r3: Moves legacy tray icons to top panel
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
@@ -57,7 +57,7 @@ media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CD
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system.
 media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
-media-sound/freetube 0.16.0: An open source desktop YouTube player built with privacy in mind.
+media-sound/freetube 0.17.1: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
 net-im/element-desktop-bin 1.11.0: A glossy Matrix collaboration client for desktop (binary package)

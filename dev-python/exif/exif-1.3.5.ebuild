@@ -8,8 +8,7 @@ PYTHON_COMPAT=( pypy3 python3_{9..10} )
 inherit edos2unix distutils-r1
 
 DESCRIPTION="Read and modify image EXIF metadata using Python"
-HOMEPAGE="https://gitlab.com/TNThieding/exif
-	https://pypi.org/project/exif/"
+HOMEPAGE="https://gitlab.com/TNThieding/exif https://pypi.org/project/exif"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

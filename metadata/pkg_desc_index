@@ -30,20 +30,20 @@ dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-lang/kotlin-bin 1.6.10 1.7.10: Statically typed programming language for modern multiplatform applications
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/olm 3.2.12: Implementation of the olm and megolm cryptographic ratchets
-dev-python/Rx 4.0.0: Reactive Extensions for Python
-dev-python/canonicaljson 1.6.1 1.6.2: Canonical JSON
+dev-python/Rx 4.0.4: Reactive Extensions for Python
+dev-python/canonicaljson 1.6.2: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
-dev-python/frozendict 2.3.2: An immutable dictionary
-dev-python/injector 0.19.0: Python dependency injection framework, inspired by Guice
+dev-python/frozendict 2.3.4: An immutable dictionary
+dev-python/injector 0.20.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.5.3-r1: A logging replacement for Python
-dev-python/matrix-common 1.1.0 1.2.1: Common utilities for Synapse, Sydent and Sygnal.
+dev-python/matrix-common 1.2.1: Common utilities for Synapse, Sydent and Sygnal.
 dev-python/matrix-nio 0.19.0: Multilayered Matrix client library
-dev-python/plum-py 0.8.0: Pack/Unpack Memory
+dev-python/plum-py 0.8.1: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pymacaroons 0.13.0: PyMacaroons is a Python implementation of Macaroons
 dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files
 dev-python/python-olm 3.2.12: Python CFFI binding to libolm
-dev-python/signedjson 1.1.1: Signs JSON objects with ED25519 signatures.
+dev-python/signedjson 1.1.4: Signs JSON objects with ED25519 signatures.
 dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the redis database.
 dev-python/unpaddedbase64 2.1.0: Unpadded Base64
 dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
@@ -73,7 +73,7 @@ net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CD
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-sys-kernel/gentoo-sources-rog 5.15.52 5.19.0: Full sources including the Gentoo and ASUS ROG patchset for the 5.19 kernel tree
+sys-kernel/gentoo-sources-rog 5.15.52 5.19.1: Full sources including the Gentoo and ASUS ROG patchset for the 5.19 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 3.7.2-r2 4.0.7-r2 4.1.1 4.3.4 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

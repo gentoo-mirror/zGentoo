@@ -60,8 +60,8 @@ media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.17.1: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
-net-im/element-desktop-bin 1.11.0: A glossy Matrix collaboration client for desktop (binary package)
-net-im/matrix-synapse 1.64.0: Synapse: Matrix reference homeserver
+net-im/element-desktop-bin 1.11.3: A glossy Matrix collaboration client for desktop (binary package)
+net-im/matrix-synapse 1.65.0: Synapse: Matrix reference homeserver
 net-im/matrix-webhook 3.3.0-r1: Post a message to a matrix room with a simple HTTP POST
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3

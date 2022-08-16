@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="PyMacaroons is a Python implementation of Macaroons"
-HOMEPAGE="https://github.com/ecordell/pymacaroons https://pypi.python.org/pypi/pymacaroons-pynacl"
+HOMEPAGE="https://github.com/ecordell/pymacaroons https://pypi.python.org/pypi/pymacaroons"
 SRC_URI="https://github.com/ecordell/pymacaroons/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

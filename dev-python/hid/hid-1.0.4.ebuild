@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{9..10} )
 
 inherit edos2unix distutils-r1
 
-DESCRIPTION="Read and modify image EXIF metadata using Python"
+DESCRIPTION="ctypes bindings for hidapi"
 HOMEPAGE="https://github.com/apmorton/pyhidapi https://pypi.org/project/hid"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

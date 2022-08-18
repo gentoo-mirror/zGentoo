@@ -73,11 +73,11 @@ net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CD
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-sys-kernel/gentoo-sources-rog 5.15.52 5.19.1: Full sources including the Gentoo and ASUS ROG patchset for the 5.19 kernel tree
+sys-kernel/gentoo-sources-rog 5.15.52 5.19.2: Full sources including the Gentoo and ASUS ROG patchset for the 5.19 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 3.7.2-r2 4.0.7-r2 4.1.1 4.3.4 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
-sys-power/gwe 0.15.4: System utility designed to provide information, control the fans and overclock your NVIDIA card
+sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/liquidctl 1.8.1: Cross-platform tool and drivers for liquid coolers and other devices
 sys-power/power-profiles-daemon 0.11.1: Makes power profiles handling available over D-Bus.
 sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching

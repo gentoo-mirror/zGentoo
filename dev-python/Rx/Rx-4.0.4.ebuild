@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
 inherit distutils-r1 virtualx
 
@@ -20,11 +20,17 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )
-	dev-python/pyproject2setuppy
+	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
 
 src_test() {
 	virtx distutils-r1_src_test
+}
+
+src_prepare() {
+	sed -i "s/version\ =\ \"0.0.0\"/version\ =\ \"${PV}\"/g" pyproject.toml \
+		|| die "couldn't patch project version"
+	default
 }

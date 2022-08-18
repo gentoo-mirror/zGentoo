@@ -34,7 +34,7 @@ dev-python/Rx 4.0.4: Reactive Extensions for Python
 dev-python/canonicaljson 1.6.2: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
 dev-python/frozendict 2.3.4: An immutable dictionary
-dev-python/hid 1.0.4: Read and modify image EXIF metadata using Python
+dev-python/hid 1.0.4: ctypes bindings for hidapi
 dev-python/hidapi 0.12.0-r2: A Cython interface to the hidapi from https://github.com/libusb/hidapi
 dev-python/injector 0.20.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.5.3-r1: A logging replacement for Python

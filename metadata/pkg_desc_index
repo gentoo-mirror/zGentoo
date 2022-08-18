@@ -34,6 +34,8 @@ dev-python/Rx 4.0.4: Reactive Extensions for Python
 dev-python/canonicaljson 1.6.2: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
 dev-python/frozendict 2.3.4: An immutable dictionary
+dev-python/hid 1.0.4: Read and modify image EXIF metadata using Python
+dev-python/hidapi 0.12.0-r2: A Cython interface to the hidapi from https://github.com/libusb/hidapi
 dev-python/injector 0.20.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.5.3-r1: A logging replacement for Python
 dev-python/matrix-common 1.2.1: Common utilities for Synapse, Sydent and Sygnal.
@@ -44,6 +46,7 @@ dev-python/pymacaroons 0.13.0: PyMacaroons is a Python implementation of Macaroo
 dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files
 dev-python/python-olm 3.2.12: Python CFFI binding to libolm
 dev-python/signedjson 1.1.4: Signs JSON objects with ED25519 signatures.
+dev-python/smbus 1.1-r2: Python bindings for Linux SMBus access through i2c-dev
 dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the redis database.
 dev-python/unpaddedbase64 2.1.0: Unpadded Base64
 dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
@@ -78,8 +81,8 @@ sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 3.7.2-r2 4.0.7-r2 4.1.1 4.3.4 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
-sys-power/liquidctl 1.8.1: Cross-platform tool and drivers for liquid coolers and other devices
-sys-power/power-profiles-daemon 0.11.1: Makes power profiles handling available over D-Bus.
+sys-power/liquidctl 1.10.0: Cross-platform tool and drivers for liquid coolers and other devices
+sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.
 sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources

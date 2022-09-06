@@ -1,2 +1,3 @@
 >=dev-python/Rx-4.0.0
 =dev-python/pytest-runner-5.2
+>=sys-apps/gawk-5.2.0

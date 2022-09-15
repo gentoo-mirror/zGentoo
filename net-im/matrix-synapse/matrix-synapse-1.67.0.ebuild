@@ -58,6 +58,7 @@ RDEPEND="
 	>=dev-python/txredisapi-1.4.7[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.2.0[${PYTHON_USEDEP}]
 	>=dev-python/unpaddedbase64-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pydantic-1.9.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 

@@ -10,5 +10,5 @@ LICENSE=MIT BSD-3 MPL-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://gitlab.com/hectorjsmith/grafana-matrix-forwarder/-/archive/0.6.0/grafana-matrix-forwarder-0.6.0.tar.gz https://vendors.retarded.farm/grafana-matrix-forwarder/vendor-grafana-matrix-forwarder-0.6.0.tar.xz
-_eclasses_=toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	systemd	2736b403a83f194b59b767f3b344c2c1	go-module	b088539f282ed242c23f38fa65472184
+_eclasses_=go-module	b088539f282ed242c23f38fa65472184	toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	systemd	2736b403a83f194b59b767f3b344c2c1
 _md5_=fd3800e06b8fe6cb46150f2a46826fe4

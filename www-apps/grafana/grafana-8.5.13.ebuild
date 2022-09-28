@@ -14,6 +14,7 @@ SRC_URI="
 	https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
 	https://vendors.retarded.farm/${PN}/vendor_yarn-${P}.tar.xz
+	https://vendors.retarded.farm/${PN}/yarn-3.2.3.cjs.gz
 "
 LICENSE="AGPL-3.0 Apache-2.0 BSD-2 BSD-3 BSD-4 BSL-1.0 ImageMagick ISC LGPL-3.0 MIT MPL-2.0 OpenSSL Zlib"
 SLOT="8/"${PV}
@@ -28,6 +29,7 @@ DEPEND="!www-apps/${PN}-bin
 	acct-user/${PN}
 	media-libs/fontconfig
 	>=net-libs/nodejs-16[icu]
+	<net-libs/nodejs-17[icu]
 	sys-apps/yarn
 	>=dev-lang/go-1.16
 	dev-go/wire"
@@ -38,6 +40,9 @@ src_unpack() {
 	default
 	mv vendor "${S}/vendor"
 	mv vendor_yarn "${S}/vendor_yarn"
+
+	## setting latest yarn version (and replace the shipped 3.2.0 cjs)
+	mv yarn-3.2.3.cjs "${S}/.yarn/releases/yarn-3.2.0.cjs"
 }
 
 src_prepare() {

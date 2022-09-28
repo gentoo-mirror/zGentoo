@@ -20,20 +20,22 @@ Clone the desired \<version\> into a temporary space:
 git clone https://github.com/grafana/grafana -b v<vsrion> /tmp/grafana
 ```
 
-### create go vendors (approx. 12 MiB)
+### create go vendors (approx. 14 MiB)
 
 ```bash
 cd /tmp/grafana
-go mod vendor && tar -c -I 'xz -9 -T0' -f ../vendor-grafana-<version>.tar.xz vendor
+go mod vendor && tar -c -I 'xz -9 -T0' -f ../vendor-grafana-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`.tar.xz vendor
 ```
 
-### create yarn vendor file (this is way bigger, approx. 210 MiB)
+### create yarn vendor file (this is way bigger, approx. 220 MiB)
 
 ```bash
 cd /tmp/grafana
 echo -e "enableMirror: true\ncacheFolder: ./vendor_yarn" >> .yarnrc.yml
-yarn cache clean --mirror && yarn install
-tar -c -I 'xz -9 -T0' -f ../vendor_yarn-grafana-<version>.tar.xz vendor_yarn
+# only needed in grafana 8.x tree
+#yarn set version stable
+CYPRESS_INSTALL_BINARY=0 yarn cache clean --mirror && yarn install
+tar -c -I 'xz -9 -T0' -f ../vendor_yarn-grafana-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`.tar.xz vendor_yarn
 ```
 
 ### obtain licenses

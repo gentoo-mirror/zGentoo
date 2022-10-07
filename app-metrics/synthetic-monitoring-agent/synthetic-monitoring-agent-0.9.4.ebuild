@@ -12,9 +12,9 @@ SRC_URI="
     https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
 "
 # creating vendor bundle:
-# go mod vendor && mkdir synthetic-monitoring-agent-<version> && mv vendor synthetic-monitoring-agent-<version>/vendor && \
-# tar -c -I 'xz -9 -T0' -f vendor-synthetic-monitoring-agent-<version>.tar.xz synthetic-monitoring-agent-<version>/vendor
-
+# version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`; \
+# go mod vendor && mkdir synthetic-monitoring-agent-${version} && mv vendor synthetic-monitoring-agent-${version}/vendor && \
+# tar -c -I 'xz -9 -T0' -f vendor-synthetic-monitoring-agent-${version}.tar.xz synthetic-monitoring-agent-${version}/vendor
 LICENSE="Apache-2.0 BSD-2 BSD-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64"

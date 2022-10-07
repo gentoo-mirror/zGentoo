@@ -1,14 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-## WARN
-# This ebauild was moved from net-analyzer/telegraf to app-metrics/telegraf
-#
-# This ebuild is still WIP! Expect issues. If you find one - please contribute!
-# The best place for this is dicord(currently): https://discord.gg/f8xbb6g
-#
-# Due to the mass of dependencies, LICENSEs might not be complete. (TODO)
-
 EAPI=8
 inherit go-module systemd
 go-module_set_globals
@@ -19,9 +11,10 @@ SRC_URI="
     https://github.com/influxdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
     https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
 "
-RESTRICT="mirror"
-
-LICENSE="MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 BSD-2 ISC"
+# creating vendor bundle:
+# go mod vendor && mkdir telegraf-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"` && mv vendor telegraf-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`/vendor && \
+# tar -c -I 'xz -9 -T0' -f vendor-telegraf-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`.tar.xz telegraf-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`/vendor
+LICENSE="MIT ISC Apache-2.0 BSD-2 BSD-3 EPL-2.0 MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 

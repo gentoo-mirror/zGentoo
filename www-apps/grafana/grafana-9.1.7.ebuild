@@ -29,7 +29,7 @@ DEPEND="!www-apps/${PN}-bin
 	media-libs/fontconfig
 	>=net-libs/nodejs-16[icu]
 	sys-apps/yarn
-	>=dev-lang/go-1.16
+	>=dev-lang/go-1.19
 	dev-go/wire"
 
 PN_S="${PN}-${SLOT%/*}"

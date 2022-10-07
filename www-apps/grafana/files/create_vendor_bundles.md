@@ -47,9 +47,3 @@ INFO: _we're not using the golicense to do this, as it's outdated and broken - a
 ```bash
 # ... tbd!
 ```
-
----
-
-## Contribute
-
-- [discord](https://discord.gg/f8xbb6g)

@@ -1,3 +1,6 @@
+# Go 1.19 moving GC workaround
+ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
+
 # The promtail config file
 PROMTAIL_CONF="/etc/loki/promtail-local-config.yaml"
 

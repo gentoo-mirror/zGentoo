@@ -15,11 +15,14 @@ SRC_URI="
 	https://vendors.retarded.farm/${PN}/package-lock-${P}.json.gz
 "
 # default vendor package created using:
-# > go mod vendor && tar -c -I 'xz -9 -T0' -f vendor-prometheus-<version>.tar.xz vendor
-# default node_modules package created using:
-# > make ui-build assets assets-compress && cd web/ui \
-# > tar -c -I 'xz -9 -T0' -f node-modules-prometheus-<version>.tar.xz node_modules
-
+# >> git clone https://github.com/prometheus/prometheus/ -b v<version> /tmp/prometheus && \
+# >> cd /tmp/prometheus && version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`; \\
+# >> go mod vendor && tar -c -I 'xz -9 -T0' -f vendor-prometheus-${version}.tar.xz vendor
+# default node_modules package-lock created using:
+# >> make ui-build; cd web/ui && npm i && version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`;; \
+# >> tar -c -I 'xz -9 -T0' -f node-modules-prometheus-${version}.tar.xz node_modules && \
+# >> gzip -c package-lock.json > package-lock-prometheus-${version}.json.gz
+# HINT: something is wrong with their tags (for example, v2.39.0 would be shown as: v0.39.0 ..)
 LICENSE="Apache-2.0 MPL-2.0 BSD-2 BSD-3 ISC MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm"

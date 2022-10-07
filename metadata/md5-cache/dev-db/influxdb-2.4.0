@@ -1,0 +1,16 @@
+BDEPEND=virtual/rust dev-libs/protobuf >=dev-lang/go-1.18 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare test unpack
+DEPEND=acct-group/influxdb acct-user/influxdb
+DESCRIPTION=Scalable datastore for metrics, events, and real-time analytics
+EAPI=8
+HOMEPAGE=https://www.influxdata.com/products/influxdb-overview/
+INHERIT=go-module systemd
+IUSE=+client telegraf
+KEYWORDS=~amd64
+LICENSE=MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 BSD-2 ISC
+RDEPEND=acct-group/influxdb acct-user/influxdb client? ( =app-admin/influx-cli-2.4.0 ) telegraf? ( app-metrics/telegraf )
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/influxdata/influxdb/archive/v2.4.0.tar.gz -> influxdb-2.4.0.tar.gz https://vendors.retarded.farm/influxdb/vendor-influxdb-2.4.0.tar.xz https://vendors.retarded.farm/influxdb/vendor-libflux-0.179.0.tar.xz https://github.com/influxdata/ui/releases/download/OSS-2022-09-16/build.tar.gz -> influxdb-2.4.0-build.tar.gz https://github.com/influxdata/openapi/archive/refs/tags/influxdb-oss-v2.4.0.tar.gz -> influxdb-2.4.0-openapi.tar.gz
+_eclasses_=go-module	b088539f282ed242c23f38fa65472184	toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	systemd	2736b403a83f194b59b767f3b344c2c1
+_md5_=3dff605cc72089f146aff37f53b0c6b6

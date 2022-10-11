@@ -106,6 +106,7 @@ src_configure() {
 		-DENABLE_GTK4=$(usex gtk)
 		-DENABLE_CANBERRA=$(usex gtk)
 		-DENABLE_OAUTH2_WEBKITGTK=$(usex oauth)
+		-DENABLE_OAUTH2_WEBKITGTK4=$(usex oauth)
 		-DENABLE_EXAMPLES=OFF
 		-DENABLE_GOA=$(usex gnome-online-accounts)
 		-DWITH_LIBDB=$(usex berkdb "${EPREFIX}"/usr OFF)

@@ -93,6 +93,12 @@ app-admin/loki:tools - Build the loki tools logcli and loki-canary
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
 dev-db/influxdb:client - BUild the influxdb client app-admin/influx-cli
 dev-db/influxdb:telegraf - Build the telegraf agent app-metrics/telegraf
+dev-util/gnome-builder:clang - Provide integration with sys-devel/clang for best possible C/C++ autocompletion, semantic highlighting, symbol resolving, and diagnostics support
+dev-util/gnome-builder:devhelp - Provide API docs browsing and integration via dev-util/devhelp
+dev-util/gnome-builder:flatpak - Enable support for flatpak applications using sys-apps/flatpak
+dev-util/gnome-builder:git - Provide support for the Git version control system via dev-libs/libgit2-glib (such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)
+dev-util/gnome-builder:glade - Provide integration with dev-util/glade UI designer for Gtk
+dev-util/gnome-builder:sysprof - Provide an integrated profiler via dev-util/sysprof
 games-emulation/rpcs3:discord-rpc - Enable Discord integration
 games-emulation/rpcs3:evdev - Enable evdev for input
 games-emulation/rpcs3:faudio - Enable audio using app-emulation/faudio
@@ -100,6 +106,10 @@ games-emulation/rpcs3:gdb - Enable debugging with sys-devel/gdb
 games-emulation/rpcs3:llvm - Enable LLVM based recompilation (recommended)
 games-emulation/rpcs3:system-llvm - Use the system-wide LLVM library instead of the bundled one (not recommended)
 games-emulation/rpcs3:vulkan - Enable vulkan video output
+gnome-extra/evolution-data-server:berkdb - sys-libs/db support needed to migrate old (pre-3.13 evolution versions) addressbook data
+gnome-extra/evolution-data-server:gnome-online-accounts - Enable net-libs/gnome-online-accounts based Google authentication support
+gnome-extra/evolution-data-server:oauth - Enable internal OAuth2 authentication support for Google and Outlook.com. If gnome-online-accounts is enabled and used, this is not necessary, but both can be supported at the same time with different setup at runtime
+gnome-extra/evolution-data-server:weather - Enable optional weather calendar support
 media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner via avahi.
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
 net-p2p/trezord-go:systemd - Install systemd service file

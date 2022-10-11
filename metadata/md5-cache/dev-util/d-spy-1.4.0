@@ -1,0 +1,15 @@
+BDEPEND=>=gui-libs/gtk-4.6.6 >=dev-libs/glib-2.74.0 >=gui-libs/libadwaita-1.0 virtual/pkgconfig app-arch/xz-utils >=dev-util/meson-0.62.2 >=dev-util/ninja-1.8.2 dev-util/meson-format-array test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst test
+DESCRIPTION=It's like d-feet, but written in C and blisteringly fast. Also comes with a library for IDE integration.
+EAPI=8
+HOMEPAGE=https://gitlab.gnome.org/GNOME/d-spy
+IDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+INHERIT=gnome.org gnome2-utils meson virtualx xdg
+IUSE=-introspection vapi docs extras test
+KEYWORDS=amd64 arm64 ~ppc64 ~riscv x86
+LICENSE=GPL-3+
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://gnome/sources/d-spy/1.4/d-spy-1.4.0.tar.xz
+_eclasses_=gnome.org	429073e99d7067d3462e875bf5c6e14a	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	multilib	5ca4e49abed8e3a2f7b56920eadee157	xdg-utils	ac0e315a3688929e34ac75b139e7349a	gnome2-utils	2116cec8f46f4d1b0a88c5b1f1575dd3	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	58ec4e54962bf45d065fb95030701514	python-utils-r1	b9fc5e97e886514e5132f50465185401	meson	1994a5aef5d4f5798b92f64d6f9a6003	virtualx	644887c82aefdf12001489391fca4f02	xdg	6024fbc93167fad782e2032933654857
+_md5_=3c5b8d18098bf084731e80e2e2995386

@@ -91,6 +91,6 @@ sys-power/power-profiles-daemon 0.12: Makes power profiles handling available ov
 sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
-www-apps/grafana 8.5.13 9.1.7: The open-source platform for monitoring and observability
+www-apps/grafana 8.5.13 9.1.7 9.2.0: The open-source platform for monitoring and observability
 www-apps/snappymail 2.17.0: Simple, modern and fast web-based email client
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0

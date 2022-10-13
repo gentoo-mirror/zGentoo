@@ -17,7 +17,7 @@ Make sure the following tools are installed.
 Clone the desired \<version\> into a temporary space:
 
 ```bash
-git clone https://github.com/grafana/grafana -b v<vsrion> /tmp/grafana
+git clone https://github.com/grafana/grafana -b v<version> /tmp/grafana
 ```
 
 ### create go vendors (approx. 14 MiB)

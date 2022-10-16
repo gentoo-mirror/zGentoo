@@ -113,6 +113,8 @@ src_configure() {
 }
 
 src_install() {
+	cmake_src_install
+
 	# fixing libmysqlclient_r.so bindings..
 	[ -f /usr/lib64/libmysqlclient.so ] && \
 		mkdir -p ${D}/usr/lib64 && \
@@ -120,6 +122,4 @@ src_install() {
 	[ -f /usr/lib/libmysqlclient.so ] && \
 		mkdir -p ${D}/usr/lib && \
 		ln -s /usr/lib/libmysqlclient.so ${D}/usr/lib/libmysqlclient_r.so
-
-	default
 }

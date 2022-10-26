@@ -40,7 +40,7 @@ tar -c -I 'xz -9 -T0' -f ../vendor_yarn-grafana-`git describe --tags | sed -E "s
 
 ### obtain licenses
 
-INFO: _we're not using the golicense to do this, as it's outdated and broken - it won't work in many circumstances like builds using __CGO__ or other external dependencies_
+INFO: _we're not using "golicense" to do this, as it's outdated and broken - it won't work in many circumstances like builds using __CGO__ or other external dependencies_
 
 \(WARNING\): __this section is under construction!__
 

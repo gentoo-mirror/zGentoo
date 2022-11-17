@@ -4,8 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit distutils-r1
+
+DISTUTILS_USE_PEP517="poetry"
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Unpadded Base64"
 HOMEPAGE="https://github.com/matrix-org/python-unpaddedbase64 https://pypi.python.org/pypi/unpaddedbase64"

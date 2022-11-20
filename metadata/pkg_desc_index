@@ -60,7 +60,6 @@ gnome-extra/gnome-calendar 43.0: Manage your online calendars with simple and mo
 gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r4: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r4: Moves legacy tray icons to top panel
-gui-libs/libpanel 1.0.1: Libpanel helps you create IDE-like applications using GTK 4 and libadwaita.
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4

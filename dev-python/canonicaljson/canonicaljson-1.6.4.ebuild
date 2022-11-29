@@ -6,6 +6,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
+DISTUTILS_USE_PEP517="setuptools"
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+
 DESCRIPTION="Canonical JSON"
 HOMEPAGE="https://github.com/matrix-org/python-canonicaljson https://pypi.python.org/pypi/canonicaljson"
 SRC_URI="https://github.com/matrix-org/python-canonicaljson/archive/v${PV}.tar.gz -> ${P}.tar.gz"

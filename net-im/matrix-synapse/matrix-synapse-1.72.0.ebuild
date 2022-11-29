@@ -2,17 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_PEP517=poetry
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 systemd
+
+DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Synapse: Matrix reference homeserver"
 HOMEPAGE="http://matrix.org"
 LICENSE="GPL-3"
 
-SRC_URI="https://github.com/matrix-org/synapse/archive/v${PV/_rc/rc}.tar.gz -> ${P/_rc/rc}.tar.gz"
-S="${WORKDIR}/synapse-${PV/_rc/rc}"
+SRC_URI="
+	https://github.com/matrix-org/synapse/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://vendors.retarded.farm/matrix-synapse/synapse-${PV}-vendors.tar.xz
+"
+S="${WORKDIR}/synapse-${PV}"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -25,32 +29,35 @@ RDEPEND="
 	dev-db/redis
 	hiredis? ( dev-python/hiredis[${PYTHON_USEDEP}] )
 	systemd? ( dev-python/python-systemd[${PYTHON_USEDEP}] )
-	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
-	>=dev-python/bcrypt-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
+	>=dev-python/bcrypt-3.1.7[${PYTHON_USEDEP}]
 	>=dev-python/bleach-1.4.3[${PYTHON_USEDEP}]
 	>=dev-python/canonicaljson-1.6.1[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-3.4.7[${PYTHON_USEDEP}]
 	>=dev-python/daemonize-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/frozendict-2.3.2[${PYTHON_USEDEP}]
-	>=dev-python/ijson-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/ijson-3.1.4[${PYTHON_USEDEP}]
 	>=dev-python/importlib_metadata-4.11.4[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2[${PYTHON_USEDEP}]
-	>=dev-python/jsonschema-2.5.1[${PYTHON_USEDEP}]
-	>=dev-python/matrix-common-1.2.1[${PYTHON_USEDEP}]
-	>=dev-python/msgpack-0.5.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/matrix-common-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
+	>=dev-python/packaging-16.1[${PYTHON_USEDEP}]
 	>=dev-python/phonenumbers-8.2.0[${PYTHON_USEDEP}]
-	>=dev-python/pillow-3.1.2[jpeg,${PYTHON_USEDEP}]
-	>=dev-python/prometheus_client-0.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pillow-5.4.0[jpeg,${PYTHON_USEDEP}]
+	>=dev-python/prometheus_client-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/psycopg-2.9.1[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-0.1.9[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.0.7[${PYTHON_USEDEP}]
+	>=dev-python/pydantic-1.7.4[${PYTHON_USEDEP}]
 	>=dev-python/pymacaroons-0.13.0[${PYTHON_USEDEP}]
 	>=dev-python/pynacl-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	>=dev-python/redis-py-4.2.2[${PYTHON_USEDEP}]
-	>=dev-python/service_identity-16.0.0[${PYTHON_USEDEP}]
+	>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
 	>=dev-python/signedjson-1.1.1[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-1.4.4[${PYTHON_USEDEP}]
 	>=dev-python/treq-15.1[${PYTHON_USEDEP}]

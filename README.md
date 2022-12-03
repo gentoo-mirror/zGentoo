@@ -23,7 +23,7 @@ Then run `emaint sync -r zGentoo` to sync it.
 Add zGentoo using layman:
 
 ```Bash
-layman -o https://lab.retarded.farm/zappel/zGentoo/raw/master/repositories.xml -f -a zGentoo
+layman -o https://lab.retarded.farm/zappel/zGentoo/raw/main/repositories.xml -f -a zGentoo
 ```
 
 Then run `layman -s zGentoo`

@@ -22,8 +22,8 @@ app-metrics/prometheus 2.39.0: Prometheus monitoring system and time series data
 app-metrics/snmp_exporter 0.20.0-r2: Prometheus exporter for snmp metrics
 app-metrics/synthetic-monitoring-agent 0.9.4: The plugin-driven server agent for collecting & reporting metrics.
 app-metrics/telegraf 1.24.1 1.24.2: The plugin-driven server agent for collecting & reporting metrics.
-app-office/freeoffice 2021.1042: A complete, free Microsoft Office-compatible alternative office suite
-app-office/qownnotes 22.7.2: A plain-text file markdown note taking with Nextcloud/ownCloud integration
+app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
+app-office/qownnotes 22.12.3: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.3.0 2.4.0: Scalable datastore for metrics, events, and real-time analytics
 dev-db/mysql-workbench 8.0.31-r1: MySQL Workbench
@@ -51,12 +51,8 @@ dev-python/smbus 1.1-r2: Python bindings for Linux SMBus access through i2c-dev
 dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the redis database.
 dev-python/unpaddedbase64 2.1.0-r1: Unpadded Base64
 dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
-dev-util/d-spy 1.4.0: It's like d-feet, but written in C and blisteringly fast. Also comes with a library for IDE integration.
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
-dev-util/gnome-builder 43.2: An IDE for writing GNOME-based software
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
-gnome-extra/evolution-data-server 3.46.0-r1: Evolution groupware backend
-gnome-extra/gnome-calendar 43.0: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 43-r4: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r4: Moves legacy tray icons to top panel
@@ -80,8 +76,7 @@ net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CD
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-sys-apps/gawk 5.2.0-r1: GNU awk pattern-matching language
-sys-kernel/gentoo-sources-rog 5.15.59 5.19.13 6.0.5: Full sources including the Gentoo and ASUS ROG patchset for the 6.0 kernel tree
+sys-kernel/gentoo-sources-rog 5.15.80 6.1.1: Full sources including the Gentoo and ASUS ROG patchset for the 6.1 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 3.7.2-r2 4.0.7-r2 4.1.1 4.3.4 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

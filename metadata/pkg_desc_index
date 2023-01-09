@@ -31,7 +31,7 @@ dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-lang/kotlin-bin 1.6.10 1.7.10: Statically typed programming language for modern multiplatform applications
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/olm 3.2.13: Implementation of the olm and megolm cryptographic ratchets
-dev-python/Rx 4.0.4: Reactive Extensions for Python
+dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/canonicaljson 1.6.4: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
 dev-python/frozendict 2.3.4: An immutable dictionary

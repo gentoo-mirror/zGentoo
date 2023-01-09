@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
+DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1 virtualx
 
@@ -20,7 +21,6 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )
-	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

@@ -6,7 +6,7 @@
 EAPI=7
 GCONF_DEBUG="no"
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite"
 
 ANTLR_VERSION=4.9.1
@@ -30,7 +30,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 CDEPEND="${PYTHON_DEPS}
 		app-crypt/libsecret
 		dev-libs/glib:2
-		dev-cpp/antlr-cpp:4
+		<dev-cpp/antlr-cpp-4.11.0:4
 		dev-cpp/atkmm:*
 		dev-cpp/pangomm:1.4
 		>=dev-cpp/glibmm-2.14:2
@@ -87,6 +87,9 @@ src_prepare() {
 	## Fix doc install directory
 	sed -i -e "/WB_INSTALL_DOC_DIR/ s/mysql-workbench/${P}/ ; /WB_INSTALL_DOC_DIR/ s/-community//" CMakeLists.txt || die
 
+	## Fix ANTLR version
+	sed -i -e "s/antlr-4.9.1/antlr-${ANTLR_VERSION}/g" CMakeLists.txt || die
+
 	## package is very fragile...
 	strip-flags
 
@@ -101,13 +104,13 @@ src_configure() {
 	append-cxxflags -std=c++11
 	ANTLR_JAR_PATH="${DISTDIR}/antlr-${ANTLR_VERSION}-complete.jar"
 	local mycmakeargs=(
-		-DWITH_ANTLR_JAR=${ANTLR_JAR_PATH}
+		-DWITH_ANTLR_JAR="${ANTLR_JAR_PATH}"
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
 		-DIODBC_INCLUDE_PATH="/usr/include/iodbc"
-		${IODBC}
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DMySQL_CONFIG_PATH="/usr/bin/mysql_config"
+		${IODBC}
 	)
 	cmake_src_configure
 }

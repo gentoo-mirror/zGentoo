@@ -32,21 +32,16 @@ dev-lang/kotlin-bin 1.6.10 1.7.10: Statically typed programming language for mod
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/olm 3.2.13: Implementation of the olm and megolm cryptographic ratchets
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
-dev-python/canonicaljson 1.6.4: Canonical JSON
 dev-python/exif 1.3.5: Read and modify image EXIF metadata using Python
-dev-python/frozendict 2.3.4: An immutable dictionary
 dev-python/hid 1.0.4: ctypes bindings for hidapi
 dev-python/hidapi 0.12.0-r2: A Cython interface to the hidapi from https://github.com/libusb/hidapi
 dev-python/injector 0.20.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.5.3-r1: A logging replacement for Python
-dev-python/matrix-common 1.3.0: Common utilities for Synapse, Sydent and Sygnal.
 dev-python/matrix-nio 0.20.1: Multilayered Matrix client library
 dev-python/plum-py 0.8.1: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
-dev-python/pymacaroons 0.13.0: PyMacaroons is a Python implementation of Macaroons
 dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files
 dev-python/python-olm 3.2.13: Python CFFI binding to libolm
-dev-python/signedjson 1.1.4: Signs JSON objects with ED25519 signatures.
 dev-python/smbus 1.1-r2: Python bindings for Linux SMBus access through i2c-dev
 dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the redis database.
 dev-python/unpaddedbase64 2.1.0-r1: Unpadded Base64
@@ -64,7 +59,6 @@ media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.18.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
-net-im/matrix-synapse 1.72.0: Synapse: Matrix reference homeserver
 net-im/matrix-webhook 3.3.0-r1: Post a message to a matrix room with a simple HTTP POST
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3

@@ -1,9 +1,0 @@
-DEFINED_PHASES=install postinst preinst prerm pretend
-DESCRIPTION=System user: synapse
-EAPI=8
-INHERIT=acct-user
-KEYWORDS=~amd64 ~x86
-RDEPEND=acct-group/synapse
-SLOT=0
-_eclasses_=user-info	83547b4df3e1ba5a6bf91a0837eaa664	acct-user	bdca122e03cd10755e7ed12b03562501
-_md5_=1c3371419635b40fde84cc5f436f4dda

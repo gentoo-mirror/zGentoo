@@ -120,9 +120,9 @@ RDEPEND="${DEPEND}
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	systemd? ( dev-python/python-systemd[${PYTHON_USEDEP}] )
-	<dev-python/poetry-core-1.5.0
 "
 BDEPEND="
+	<dev-python/poetry-core-1.5.0
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
 		dev-python/idna[${PYTHON_USEDEP}]

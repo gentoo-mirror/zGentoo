@@ -60,7 +60,6 @@ net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensib
 net-im/element-desktop-bin 1.11.22: A glossy Matrix collaboration client for desktop (binary package)
 net-im/matrix-webhook 3.3.0-r1: Post a message to a matrix room with a simple HTTP POST
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
-net-im/synapse 1.76.0: Reference implementation of Matrix homeserver
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
 net-misc/anydesk 6.1.1: Feature rich multi-platform remote desktop application

@@ -14,5 +14,5 @@ RDEPEND=!!sys-power/rog-core !!sys-power/asus-nb-ctrl acpi? ( sys-power/acpi_cal
 REQUIRED_USE=gnome? ( gfx )
 SLOT=0/4
 SRC_URI=https://gitlab.com/asus-linux/asusctl/-/archive/4.0.7/asusctl-4.0.7.tar.gz https://vendors.retarded.farm/asusctl/vendor-4.0.7.tar.xz -> vendor_asusctl-4.0.7.tar.xz
-_eclasses_=toolchain-funcs	9a610728b9bcca1919234cceb35a1027	multilib	5ca4e49abed8e3a2f7b56920eadee157	systemd	5f4bb0758df2e483babf68cd517078ca	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	cargo	f33b27c18d901601f773ae0d0f245c7d	git-r3	2347f8fe2d392b2a091191f94be37e6f	linux-info	4b552625ebd741dfd2ac08637fd2436e	udev	eec0bbab06977f1cfc5597269c1fa152	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857
+_eclasses_=toolchain-funcs	9a610728b9bcca1919234cceb35a1027	multilib	5ca4e49abed8e3a2f7b56920eadee157	systemd	5f4bb0758df2e483babf68cd517078ca	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	cargo	33a6fedd9e309870a65565d0b995fb41	git-r3	2347f8fe2d392b2a091191f94be37e6f	linux-info	4b552625ebd741dfd2ac08637fd2436e	udev	eec0bbab06977f1cfc5597269c1fa152	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857
 _md5_=3dc7a2795b569aeb302bc66efcbbe2e7

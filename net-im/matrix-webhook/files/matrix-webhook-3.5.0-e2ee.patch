@@ -1,5 +1,5 @@
 diff --git a/matrix_webhook/app.py b/matrix_webhook/app.py
-index dec9ea10d9274f4bf5e7f39905e42dfdd4c3a60a..5b3bf109cfb67d9e078d429330c8da20cae528b0 100644
+index dec9ea1..51fdf5a 100644
 --- a/matrix_webhook/app.py
 +++ b/matrix_webhook/app.py
 @@ -6,7 +6,7 @@ from signal import SIGINT, SIGTERM
@@ -11,7 +11,15 @@ index dec9ea10d9274f4bf5e7f39905e42dfdd4c3a60a..5b3bf109cfb67d9e078d429330c8da20
  
  LOGGER = logging.getLogger("matrix_webhook.app")
  
-@@ -28,7 +28,18 @@ async def main(event):
+@@ -18,7 +18,6 @@ async def main(event):
+     matrix client login & start web server
+     """
+     LOGGER.info(f"Log in {conf.MATRIX_ID=} on {conf.MATRIX_URL=}")
+-    await utils.CLIENT.login(conf.MATRIX_PW)
+ 
+     server = web.Server(handler.matrix_webhook)
+     runner = web.ServerRunner(server)
+@@ -28,7 +27,18 @@ async def main(event):
      await site.start()
  
      # Run until we get a shutdown request
@@ -33,7 +41,7 @@ index dec9ea10d9274f4bf5e7f39905e42dfdd4c3a60a..5b3bf109cfb67d9e078d429330c8da20
      await runner.cleanup()
 diff --git a/matrix_webhook/enc_client.py b/matrix_webhook/enc_client.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..8cc2bdfabab275b4160538c4e703b453cd98ca45
+index 0000000..4280f92
 --- /dev/null
 +++ b/matrix_webhook/enc_client.py
 @@ -0,0 +1,178 @@
@@ -60,7 +68,7 @@ index 0000000000000000000000000000000000000000..8cc2bdfabab275b4160538c4e703b453
 +)
 +from nio.store.database import DefaultStore
 +from typing import Optional
-+from ..b.matrix_webhook import conf
++from ..matrix_webhook import conf
 +
 +SESSION_DETAILS_FILE = "creds.json"
 +LOGGER = logging.getLogger("matrix_webhook.enc_client")
@@ -216,7 +224,7 @@ index 0000000000000000000000000000000000000000..8cc2bdfabab275b4160538c4e703b453
 +        sync_forever_task,
 +    )
 diff --git a/matrix_webhook/handler.py b/matrix_webhook/handler.py
-index 3460810b3f6bd73a8e4435636ecfb991f447849a..4db072fb6f170121a9f6b590e368bea0eb712b5e 100644
+index 3460810..4db072f 100644
 --- a/matrix_webhook/handler.py
 +++ b/matrix_webhook/handler.py
 @@ -76,10 +76,11 @@ async def matrix_webhook(request):
@@ -236,7 +244,7 @@ index 3460810b3f6bd73a8e4435636ecfb991f447849a..4db072fb6f170121a9f6b590e368bea0
      content = {
          "msgtype": "m.text",
 diff --git a/matrix_webhook/utils.py b/matrix_webhook/utils.py
-index 4116073a490dacfe7512361ea7bacbd51b6a9f14..4b445beb07b59524f23b46234c5c52812245305e 100644
+index 4116073..4b445be 100644
 --- a/matrix_webhook/utils.py
 +++ b/matrix_webhook/utils.py
 @@ -4,18 +4,17 @@ import logging

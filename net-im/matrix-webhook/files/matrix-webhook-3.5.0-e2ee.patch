@@ -68,7 +68,7 @@ index 0000000..4280f92
 +)
 +from nio.store.database import DefaultStore
 +from typing import Optional
-+from ..matrix_webhook import conf
++from . import conf
 +
 +SESSION_DETAILS_FILE = "creds.json"
 +LOGGER = logging.getLogger("matrix_webhook.enc_client")

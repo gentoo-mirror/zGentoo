@@ -1,25 +1,22 @@
 acct-group/flutter 0: Flutter program group
-acct-group/grafana-matrix-forwarder 0: System group: grafana-matrix-forwarder
 acct-group/logger 0-r1: Logger program group
 acct-group/matrix-webhook 0: System group: matrix-webhook
 acct-group/matterbridge 0: System group: matterbridge
 acct-user/fluent-bit 0-r1: fluent-bit program user
-acct-user/grafana-matrix-forwarder 0: System user: grafana-matrix-forwarder
 acct-user/loki 0-r1: Loki program user
 acct-user/matrix-webhook 0-r1: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 2.0.0: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
 app-admin/influx-cli 2.3.0 2.4.0: CLI for managing resources in InfluxDB v2
-app-admin/loki 2.6.1: Like Prometheus, but for logs.
+app-admin/loki 2.6.1 2.7.3: Like Prometheus, but for logs.
 app-editors/imhex 1.20.0: A hex editor for reverse engineers, programmers, and eyesight
 app-emulation/vmware-horizon-client 8.4.0 8.4.1 8.5.0: VMware Horizon View client
-app-metrics/grafana-matrix-forwarder 0.6.0: Forward alerts from Grafana to a Matrix chat room.
-app-metrics/prom2json 1.3.1: A tool to scrape a Prometheus client and dump the result as JSON
-app-metrics/prometheus 2.39.0: Prometheus monitoring system and time series database
-app-metrics/snmp_exporter 0.20.0-r2: Prometheus exporter for snmp metrics
+app-metrics/prom2json 1.3.2: A tool to scrape a Prometheus client and dump the result as JSON
+app-metrics/prometheus 2.39.0 2.42.0: Prometheus monitoring system and time series database
+app-metrics/snmp_exporter 0.20.0-r2 0.21.0-r1: Prometheus exporter for snmp metrics
 app-metrics/synthetic-monitoring-agent 0.9.4: The plugin-driven server agent for collecting & reporting metrics.
-app-metrics/telegraf 1.24.1 1.24.2: The plugin-driven server agent for collecting & reporting metrics.
+app-metrics/telegraf 1.24.2 1.25.2: The plugin-driven server agent for collecting & reporting metrics.
 app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 22.12.3: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
@@ -57,6 +54,7 @@ media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.18.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
+net-im/discord 0.0.25: All-in-one voice and text chat for gamers
 net-im/element-desktop-bin 1.11.22: A glossy Matrix collaboration client for desktop (binary package)
 net-im/matrix-webhook 3.3.0-r1 3.5.0: Post a message to a matrix room with a simple HTTP POST
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
@@ -80,6 +78,6 @@ sys-power/power-profiles-daemon 0.12: Makes power profiles handling available ov
 sys-power/supergfxctl 4.0.5: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
-www-apps/grafana 8.5.13 9.1.8 9.2.2: The open-source platform for monitoring and observability
+www-apps/grafana 8.5.16 9.3.6: The open-source platform for monitoring and observability
 www-apps/snappymail 2.17.0: Simple, modern and fast web-based email client
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0

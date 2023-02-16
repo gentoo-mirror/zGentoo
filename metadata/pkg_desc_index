@@ -55,7 +55,6 @@ media-sound/freetube 0.18.0: An open source desktop YouTube player built with pr
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord 0.0.25: All-in-one voice and text chat for gamers
-net-im/element-desktop-bin 1.11.22: A glossy Matrix collaboration client for desktop (binary package)
 net-im/matrix-webhook 3.3.0-r1 3.5.0: Post a message to a matrix room with a simple HTTP POST
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
@@ -80,4 +79,5 @@ virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.16 9.3.6: The open-source platform for monitoring and observability
 www-apps/snappymail 2.17.0: Simple, modern and fast web-based email client
+x11-drivers/nvidia-vaapi-driver 0.0.8: VA-API implementation that uses NVDEC as a backend
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0

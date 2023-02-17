@@ -1,26 +1,32 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
-CRATES="vendor"
 
-inherit systemd cargo git-r3 linux-info xdg
+# cargo tree --features "deamon cli" --prefix none | cut -d\( -f1 | sort -k 1,1 -u | sed 's/\ v/-/g'
+# or use cargo-ebuild, btw. is the following legit?! 
+CRATES=$(<"${BASH_SOURCE[0]/${P}*}"/files/${P}.crates)
+
+inherit systemd cargo git-r3 linux-info udev xdg
 
 _PN="supergfxd"
 
 DESCRIPTION="${PN} (${_PN}) Graphics switching"
 HOMEPAGE="https://asus-linux.org"
-SRC_HASH="d60cf5834dc712b44e624f6c4aee976d"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://vendors.retarded.farm/${PN}/vendor-${PV}.tar.xz -> vendor_${PN}-${PV}.tar.xz
+    "$(cargo_crate_uris)"
 "
 
 LICENSE="MPL-2.0"
-SLOT="0"
-KEYWORDS="~amd64"
 IUSE="gnome"
+SLOT="4/4.0.5"
+KEYWORDS="amd64"
+RESTRICT="mirror"
 
-BDEPEND="!!<=sys-power/asusctl-4.0.0"
+BDEPEND="
+    !!<=sys-power/asusctl-4.0.0
+    !!>=sys-power/${PN}-5.0.0
+"
 RDEPEND="
     gnome? (
         x11-apps/xrandr
@@ -35,11 +41,14 @@ DEPEND="${BDEPEND}
 "
 
 S="${WORKDIR}/${PN}-${PV}"
+QA_PRESTRIPPED="
+    /usr/bin/${PN}
+    /usr/bin/${_PN}
+"
 
 src_unpack() {
+    cargo_src_unpack
     unpack ${PN}-${PV}.tar.gz
-    # adding vendor-package
-    cd ${S} && unpack vendor_${PN}-${PV}.tar.xz
 }
 
 src_prepare() {
@@ -65,8 +74,6 @@ src_prepare() {
     sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
         ${S}/src/lib.rs || die "Can't add nvidia device section to the gfx switcher."
 
-    # adding vendor package config
-    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
     default
 }
 
@@ -101,7 +108,7 @@ Possible locations are ~/.xinitrc, /etc/sddm/Xsetup, etc.\n"
 
     systemd_dounit data/${_PN}.service
 
-    ins into /usr/lib/systemd/user-preset/
+    insinto /usr/lib/systemd/user-preset/
     doins data/${_PN}.preset
 
     default
@@ -109,6 +116,8 @@ Possible locations are ~/.xinitrc, /etc/sddm/Xsetup, etc.\n"
 
 pkg_postinst() {
     xdg_icon_cache_update
+    udev_reload
+
     ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
 by runnning:\n \`systemctl daemon-reload && systemctl enable --now ${_PN}\`\n"
 
@@ -126,4 +135,5 @@ by runnning:\n \`systemctl daemon-reload && systemctl enable --now ${_PN}\`\n"
 
 pkg_postrm() {
     xdg_icon_cache_update
+    udev_reload
 }

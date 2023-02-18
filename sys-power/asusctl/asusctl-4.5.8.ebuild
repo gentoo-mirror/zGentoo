@@ -9,7 +9,7 @@ declare -A GIT_CRATES=(
     [notify-rust]="https://github.com/flukejones/notify-rust;c83082a2549932bde52a4ec449b9981fc39e9a0d"
 )
 
-inherit systemd cargo linux-info udev xdg
+inherit systemd cargo linux-info udev xdg desktop
 
 _PN="asusd"
 

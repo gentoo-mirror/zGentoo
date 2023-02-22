@@ -26,8 +26,8 @@ sys-kernel/gentoo-sources-g14
 www-apps/rainloop
 www-apps/rainloop-community
 
-# temporary mask of supergfxctl:5 during stabilization
+# temporary mask of sys-power/supergfxctl:5 during stabilization
 >=sys-power/supergfxctl-5.0.0
 
-# temporary mask of asusctl during stabilization
+# temporary mask of sys-power/asusctl during stabilization
 >=sys-power/asusctl-4.5.8

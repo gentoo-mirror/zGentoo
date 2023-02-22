@@ -24,8 +24,9 @@ KEYWORDS="amd64"
 RESTRICT="mirror"
 
 BDEPEND="
+    !!sys-power/${PN}:0
+    !!sys-power/${PN}:5
     !!<=sys-power/asusctl-4.0.0
-    !!>=sys-power/${PN}-5.0.0
 "
 RDEPEND="
     gnome? (

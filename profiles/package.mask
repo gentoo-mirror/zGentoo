@@ -31,3 +31,6 @@ www-apps/rainloop-community
 
 # temporary mask of sys-power/asusctl during stabilization
 >=sys-power/asusctl-4.5.8
+
+# masked as you should know what you're installing - use at own risk
+dev-util/ghidra-bin

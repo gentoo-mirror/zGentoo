@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-40.0
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
+_eclasses_=git-r3	c57c50c922e121043788de0b40ada60a
 _md5_=af8b3afb69a2e025f4cc99230237acc7

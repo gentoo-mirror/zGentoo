@@ -3,9 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{9..11} )
+DISTUTILS_USE_PEP517=setuptools
 
-inherit edos2unix distutils-r1 git-r3
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Pack/Unpack Memory"
 HOMEPAGE="https://gitlab.com/dangass/plum/ https://pypi.org/project/plum-py/"
@@ -20,6 +21,11 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
+
+src_prepare() {
+	default
+	sed -i 's/3.6.*/3.6.0/g' setup.cfg || die
+}
 
 python_test() {
 	"${PYTHON}" setup.py test || die

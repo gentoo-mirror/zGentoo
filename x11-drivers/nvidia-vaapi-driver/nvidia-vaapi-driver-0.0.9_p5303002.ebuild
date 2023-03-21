@@ -26,7 +26,7 @@ BDEPEND="
         !!<x11-drivers/nvidia-drivers-${NV_VER}
         !!>x11-drivers/nvidia-drivers-${NV_VER}
     )
-    !!<x11-drivers/nvidia-vaapi-driver-0.0.8_p0
+    !<x11-drivers/nvidia-vaapi-driver-${MY_PV}_p0
     media-libs/nv-codec-headers
     media-video/ffmpeg[nvenc]
 "

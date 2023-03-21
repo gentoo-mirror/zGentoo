@@ -1,0 +1,14 @@
+BDEPEND=|| ( !!<x11-drivers/nvidia-drivers-530.30.02 !!>x11-drivers/nvidia-drivers-530.30.02 ) !!<x11-drivers/nvidia-vaapi-driver-0.0.8_p0 media-libs/nv-codec-headers media-video/ffmpeg[nvenc] >=dev-util/meson-0.62.2 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=VA-API implementation that uses NVDEC as a backend
+EAPI=8
+HOMEPAGE=https://github.com/elFarto/nvidia-vaapi-driver/
+INHERIT=meson
+IUSE=+direct
+KEYWORDS=~amd64
+LICENSE=MIT Expat
+RDEPEND==x11-drivers/nvidia-drivers-530.30.02
+SLOT=530/30.02
+SRC_URI=https://github.com/elFarto/nvidia-vaapi-driver/archive/refs/tags/v0.0.8.tar.gz -> nvidia-vaapi-driver-0.0.8.tar.gz https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/530.30.02.tar.gz -> open-gpu-kernel-modules-530.30.02.tar.gz
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	38c85b725d0467e51954ea921b6c104b	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	429bfd4e8d8e39db5385ba5744f30788	meson	cd2865332c8d99e1da0655523ff4a28f
+_md5_=2da7e23c6b92f732a93a085a152abbdf

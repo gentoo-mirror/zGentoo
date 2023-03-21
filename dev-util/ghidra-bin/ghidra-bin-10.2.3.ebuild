@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit desktop xdg-utils
+
 MY_PN=${PN/-bin}
 PB_DATE="20230208"
 
@@ -31,4 +34,21 @@ src_install() {
 
     dodir /usr/bin
     dosym /usr/share/ghidra/ghidraRun /usr/bin/ghidra
+
+    insinto /usr/share/ghidra
+    doins ${FILESDIR}/ghidra_icon.png
+
+    make_desktop_entry /usr/bin/ghidra "Ghidra" /usr/share/ghidra/ghidra_icon.png "Development"
+}
+
+pkg_postinst() {
+    xdg_icon_cache_update
+    xdg_desktop_database_update
+    xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+    xdg_icon_cache_update
+    xdg_desktop_database_update
+    xdg_mimeinfo_database_update
 }

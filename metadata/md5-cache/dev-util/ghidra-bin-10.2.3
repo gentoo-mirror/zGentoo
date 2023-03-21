@@ -1,11 +1,13 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install postinst postrm
 DEPEND=>=virtual/jdk-11.0.0
 DESCRIPTION=A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 EAPI=8
 HOMEPAGE=https://ghidra-sre.org/ https://github.com/NationalSecurityAgency/ghidra/
+INHERIT=desktop xdg-utils
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0 && public-domain
 RDEPEND=>=virtual/jdk-11.0.0
 SLOT=0
 SRC_URI=https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.2.3_build/ghidra_10.2.3_PUBLIC_20230208.zip -> ghidra-bin-10.2.3.zip
-_md5_=067d76e4cae9a9ae2cc7e265299d0123
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_md5_=51ac2fe1fa5a0f61faf96768b4b667f7

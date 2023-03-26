@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm64
 LICENSE=AGPL-3.0
 SLOT=0
 SRC_URI=amd64? ( https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb -> freetube-0.18.0-amd64.deb ) arm64? ( https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_arm64.deb -> freetube-0.18.0-arm64.deb )
-_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	baea6080dd821f5562d715887954c9d3
 _md5_=3d332c3529f88d80a7f4c1a63a618a81

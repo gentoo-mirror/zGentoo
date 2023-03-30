@@ -48,7 +48,7 @@ dev-util/registry-spy 1.0.2: Cross-Platform Windows Registry Browser
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
-gnome-extra/gnome-shell-extension-freon 43-r4: Freon is an extension for displaying sensors data.
+gnome-extra/gnome-shell-extension-freon 43-r5: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-topicons-plus 27-r4: Moves legacy tray icons to top panel
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)

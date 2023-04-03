@@ -31,7 +31,9 @@ RDEPEND="
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
+        gnome-extra/gnome-shell-extension-supergfxctl-gex
     )
+    sys-process/lsof
 "
 DEPEND="${BDEPEND}
     ${RDEPEND}
@@ -69,11 +71,6 @@ src_prepare() {
         sed -i 's/gfx_vfio_enable:\ false,/gfx_vfio_enable:\ true,/g' ${S}/src/config.rs || die "Could not enable VFIO."
     fi
 
-    # fix nvidia as primary (might be gentoo specific)
-    # this enables modesetting modules and nvidia as a device entry in the generated 90-nvidia-primary.conf (if siwtched to nvidia as primary)
-    #sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
-    #    ${S}/src/lib.rs || die "Can't add nvidia device section to the gfx switcher."
-
     default
 }
 
@@ -90,7 +87,7 @@ src_install() {
     insinto /etc/modprobe.d
     doins ${FILESDIR}/90-nvidia-blacklist.conf
 
-    # xrandr settings for nvidia-primary (gnome only, will autofail on non-nvidia as primary)
+    # xrandr settings for nvidia-primary (gnome x11 only, will autofail on non-nvidia as primary or wayland)
     if use gnome; then
         insinto /etc/xdg/autostart
         doins "${FILESDIR}"/xrandr-nvidia.desktop
@@ -126,9 +123,6 @@ by runnning:\n \`systemctl daemon-reload && systemctl enable --now ${_PN}\`\n"
         if ! `grep -q ${_PN} "$c"` && [[ "$c" != *"90-${_PN}-nvidia-pm.rules" ]]; then
             x11_warn_conf="$x11_warn_conf$c\n";
         fi
-        # TODO: 
-        # should we be backwards compatible? 
-        # (! `grep -q asusd "$c"` && [[ "$c" != *"90-asusd-nvidia-pm.rules" ]])
     done
     [[ "$x11_warn_conf" == "" ]] || ewarn "WARNING: Potential inteferring files found:\n$x11_warn_conf"
 }

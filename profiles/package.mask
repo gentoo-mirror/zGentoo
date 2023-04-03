@@ -26,11 +26,8 @@ sys-kernel/gentoo-sources-g14
 www-apps/rainloop
 www-apps/rainloop-community
 
-# temporary mask of sys-power/supergfxctl:5 during stabilization
->=sys-power/supergfxctl-5.0.0
-
-# temporary mask of sys-power/asusctl during stabilization
->=sys-power/asusctl-4.5.8
+# mask of sys-power/asusctl during-4.5.8 stabilization
+=sys-power/asusctl-4.5.8
 
 # masked as you should know what you're installing - use at own risk
 dev-util/ghidra-bin

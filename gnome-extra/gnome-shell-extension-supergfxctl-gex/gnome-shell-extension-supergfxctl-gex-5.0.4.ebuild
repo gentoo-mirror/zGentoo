@@ -3,11 +3,13 @@
 
 EAPI=8
 
+MY_PN="${PN/gnome-shell-extension-/}"
+
 DESCRIPTION="Extension for visualizing asusctl-ctrl(asusd) settings and status."
-HOMEPAGE="https://gitlab.com/asus-linux/asusctl-gex"
-SRC_JID="2835289200"
-SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/${SRC_JID}/artifacts/download -> ${P}.zip"
-S="${WORKDIR}/asusctl-gex@asus-linux.org"
+HOMEPAGE="https://gitlab.com/asus-linux/${MY_PN}"
+SRC_AID="3c9ea3ea8550f03bff793a12e7d7035a" # attachment-id
+SRC_URI="https://gitlab.com/asus-linux/${MY_PN}/uploads/${SRC_AID}/${MY_PN}_asus-linux.org.zip -> ${P}.zip"
+S="${WORKDIR}/${MY_PN}@asus-linux.org"
 
 LICENSE="GPL-3"
 SLOT="0/4"
@@ -16,17 +18,22 @@ IUSE=""
 
 RDEPEND="
 	!!gnome-extra/gnome-shell-extension-asus-nb-gex
-	!!>=gnome-base/gnome-shell-43.0
-	>=gnome-base/gnome-shell-40.0
+	!!gnome-extra/gnome-shell-extension-asusctl-gex
+	!!<=gnome-base/gnome-shell-42.0
+	>=gnome-base/gnome-shell-43.0
 	app-eselect/eselect-gnome-shell-extensions
-	>=sys-power/supergfxctl-4.0.4
 "
 DEPEND="${RDEPEND}
 	dev-libs/glib:2
 "
 
+src_unpack() {
+	mkdir -p "${S}"
+	cd "${S}" && unpack "${P}.zip"
+}
+
 src_install() {
-	insinto /usr/share/gnome-shell/extensions/asusctl-gex@asus-linux.org
+	insinto "/usr/share/gnome-shell/extensions/${MY_PN}@asus-linux.org"
     doins -r ${S}/*
 }
 

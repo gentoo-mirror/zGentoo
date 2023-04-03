@@ -47,9 +47,9 @@ dev-util/ghidra-bin 10.2.3: A software reverse engineering (SRE) suite of tools 
 dev-util/registry-spy 1.0.2: Cross-Platform Windows Registry Browser
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
-gnome-extra/gnome-shell-extension-asusctl-gex 3.7.2-r1 4.1.0 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
-gnome-extra/gnome-shell-extension-freon 43-r5: Freon is an extension for displaying sensors data.
-gnome-extra/gnome-shell-extension-topicons-plus 27-r4: Moves legacy tray icons to top panel
+gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-freon 45: Freon is an extension for displaying sensors data.
+gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
@@ -74,11 +74,11 @@ sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/gentoo-sources-rog 5.15.88 6.1.11 6.2.0: Full sources including the Gentoo and ASUS ROG patchset for the 6.2 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
-sys-power/asusctl 3.7.2-r2 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0_rc1 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
+sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/liquidctl 1.10.0: Cross-platform tool and drivers for liquid coolers and other devices
 sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.
-sys-power/supergfxctl 4.0.5-r2 5.0.1: supergfxctl (supergfxd) Graphics switching
+sys-power/supergfxctl 4.0.5-r2 5.0.1-r1: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.16 9.3.6: The open-source platform for monitoring and observability

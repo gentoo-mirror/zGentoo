@@ -11,4 +11,4 @@ PROPERTIES=live
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-40.0
 SLOT=0
 _eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
-_md5_=af8b3afb69a2e025f4cc99230237acc7
+_md5_=ac418c4a5c2e8efabc95c6bb1de33441

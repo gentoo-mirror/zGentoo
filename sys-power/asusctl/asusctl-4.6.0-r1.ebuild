@@ -1,7 +1,15 @@
 # Copyright 2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
-CRATES="vendor"
+
+CRATES=$(<"${BASH_SOURCE[0]/${P}*}"/files/${P}.crates)
+SGFX_COMMIT="387e115a0f338662be313627308201405039d116"
+declare -A GIT_CRATES=(
+    [supergfxctl]="https://gitlab.com/asus-linux/supergfxctl;${SGFX_COMMIT}"
+ 	[eframe]="https://github.com/flukejones/egui;056fd4bd1ed8c48c035e6b75111cfa8087634934;egui-%commit%/crates/eframe"
+    [egui]="https://github.com/flukejones/egui;056fd4bd1ed8c48c035e6b75111cfa8087634934;egui-%commit%/crates/egui"
+    [notify-rust]="https://github.com/flukejones/notify-rust;c83082a2549932bde52a4ec449b9981fc39e9a0d"
+)
 
 inherit systemd cargo linux-info udev xdg desktop
 
@@ -11,8 +19,10 @@ DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of va
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/asusctl/uploads/c7dcfa0491c220ea960443695123135e/vendor_${PN}_${PV}.tar.xz
+    "$(cargo_crate_uris)"
+    https://gitlab.com/asus-linux/supergfxctl/-/archive/${SGFX_COMMIT}/supergfxctl-${SGFX_COMMIT}.tar.gz -> supergfxctl-${SGFX_COMMIT}.gl.tar.gz
 "
+
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC LicenseRef-UFL-1.0 MIT MPL-2.0 OFL-1.1 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0/4"
@@ -39,13 +49,15 @@ DEPEND="${RDEPEND}
 	sys-apps/dbus
 "
 
-PATCHES="${FILESDIR}/${P}_zbus.patch"
+PATCHES="
+    ${FILESDIR}/${P}_zbus.patch
+    ${FILESDIR}/${P}_anime_fix.patch
+"
 S="${WORKDIR}/${PN}-${PV/_/-}"
 
 src_unpack() {
-    unpack ${PN}-${PV/_/-}.tar.gz
-    # adding vendor-package
-    cd "${S}" && unpack vendor_${PN}_${PV}.tar.xz || die "can't unpack vendors"
+    cargo_src_unpack
+    unpack ${PN}-${PV/_/.}.tar.gz
     sed -i "1s/.*/Version=\"${PV}\"/" ${S}/Makefile
 }
 
@@ -63,8 +75,6 @@ src_prepare() {
     # only build rog-control-center when "gui" flag is set (TODO!)
     ! use gui && eapply "${FILESDIR}/${P}-disable_rog-cc.patch"
 
-    # using shipped vendors
-    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
     default
 }
 

@@ -19,8 +19,8 @@ DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of va
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    "$(cargo_crate_uris)"
     https://gitlab.com/asus-linux/supergfxctl/-/archive/${SGFX_COMMIT}/supergfxctl-${SGFX_COMMIT}.tar.gz -> supergfxctl-${SGFX_COMMIT}.gl.tar.gz
+    $(cargo_crate_uris)
 "
 
 
@@ -52,6 +52,7 @@ DEPEND="${RDEPEND}
 PATCHES="
     ${FILESDIR}/${P}_zbus.patch
     ${FILESDIR}/${P}_anime_fix.patch
+    ${FILESDIR}/${P}_rog-cc_crates.patch
 "
 S="${WORKDIR}/${PN}-${PV/_/-}"
 

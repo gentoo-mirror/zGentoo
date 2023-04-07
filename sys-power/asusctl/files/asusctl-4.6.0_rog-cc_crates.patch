@@ -1,0 +1,13 @@
+--- a/rog-control-center/Cargo.toml	2023-04-07 14:52:01.092081085 +0200
++++ b/rog-control-center/Cargo.toml	2023-04-07 14:51:54.920125392 +0200
+@@ -10,8 +10,8 @@
+ mocking = []
+ 
+ [dependencies]
+-egui = { git = "https://github.com/flukejones/egui", branch = "wayland_dark_theme" }
+-eframe = { git = "https://github.com/flukejones/egui", branch = "wayland_dark_theme" }
++egui = { path = "../../egui-056fd4bd1ed8c48c035e6b75111cfa8087634934/crates/egui" }
++eframe = { path = "../../egui-056fd4bd1ed8c48c035e6b75111cfa8087634934/crates/eframe" }
+ 
+ libappindicator = "0.7" # Tray icon
+ gtk = "0.15.5"

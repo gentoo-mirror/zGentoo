@@ -28,7 +28,7 @@ LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC
 SLOT="0/4"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
-IUSE="+acpi +gfx gnome gui notify"
+IUSE="+acpi +gfx gnome gui"
 REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
@@ -106,7 +106,6 @@ src_install() {
 
     systemd_dounit data/${_PN}.service
     systemd_douserunit data/${_PN}-user.service
-    use notify && systemd_douserunit data/asus-notify.service
 
     if use acpi; then
         insinto /etc/modules-load.d

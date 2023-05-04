@@ -21,7 +21,7 @@ RESTRICT="mirror"
 
 BDEPEND="
     !!<sys-power/asusctl-4.6.0
-    !!<sys-power/${PN}-5.1.0
+    !!<sys-power/${PN}-5.0.0
 "
 RDEPEND="
     gnome? (

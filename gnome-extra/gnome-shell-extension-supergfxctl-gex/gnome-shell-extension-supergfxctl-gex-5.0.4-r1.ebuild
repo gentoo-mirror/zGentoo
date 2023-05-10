@@ -1,6 +1,5 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
 EAPI=8
 
 MY_PN="${PN/gnome-shell-extension-/}"
@@ -11,8 +10,8 @@ SRC_AID="3c9ea3ea8550f03bff793a12e7d7035a" # attachment-id
 SRC_URI="https://gitlab.com/asus-linux/${MY_PN}/uploads/${SRC_AID}/${MY_PN}_asus-linux.org.zip -> ${P}.zip"
 S="${WORKDIR}/${MY_PN}@asus-linux.org"
 
-LICENSE="GPL-3"
-SLOT="0/4"
+LICENSE="MPL-2.0"
+SLOT="0/5.0"
 KEYWORDS="~amd64"
 IUSE=""
 

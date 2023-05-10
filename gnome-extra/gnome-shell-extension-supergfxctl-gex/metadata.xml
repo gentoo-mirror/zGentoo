@@ -6,6 +6,6 @@
         <name>Armas Spann</name>
     </maintainer>
 	<upstream>
-		<remote-id type="git">https://gitlab.com/asus-linux/asusctl-gex</remote-id>
+		<remote-id type="git">https://gitlab.com/asus-linux/supergfxctl-gex</remote-id>
 	</upstream>
 </pkgmetadata>

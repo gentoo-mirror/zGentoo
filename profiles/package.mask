@@ -31,6 +31,3 @@ www-apps/rainloop-community
 
 # masked as you should know what you're installing - use at own risk
 dev-util/ghidra-bin
-
-# mask of sys-power/supergfxctl until the GNOME extension is adjusted
-=sys-power/supergfxctl-5.1.1

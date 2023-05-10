@@ -4,8 +4,8 @@ DESCRIPTION=Extension for visualizing asusctl-ctrl(asusd) settings and status.
 EAPI=8
 HOMEPAGE=https://gitlab.com/asus-linux/supergfxctl-gex
 KEYWORDS=~amd64
-LICENSE=GPL-3
+LICENSE=MPL-2.0
 RDEPEND=!!gnome-extra/gnome-shell-extension-asus-nb-gex !!gnome-extra/gnome-shell-extension-asusctl-gex !!<=gnome-base/gnome-shell-42.0 >=gnome-base/gnome-shell-43.0 app-eselect/eselect-gnome-shell-extensions
-SLOT=0/4
+SLOT=0/5.0
 SRC_URI=https://gitlab.com/asus-linux/supergfxctl-gex/uploads/3c9ea3ea8550f03bff793a12e7d7035a/supergfxctl-gex_asus-linux.org.zip -> gnome-shell-extension-supergfxctl-gex-5.0.4.zip
-_md5_=28ce03f2ab5d0dc71e908a4f2d6e04e5
+_md5_=083f5e718d9c7a9d0e70b80e8d1cfe6a

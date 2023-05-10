@@ -46,6 +46,7 @@ src_unpack() {
 
 src_prepare() {
 	cp "${FILESDIR}/Makefile" "${S}" || die
+	eapply "${FILESDIR}/fix_kernel_6.3_build.patch"
 	eapply_user
 }
 

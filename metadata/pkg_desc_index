@@ -53,7 +53,7 @@ gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4: Extension for visualizi
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
-media-gfx/gphotos-sync 2.14.2: Google Photos Sync downloads your Google Photos to the local file system.
+media-gfx/gphotos-sync 3.1.2: Google Photos Sync downloads your Google Photos to the local file system.
 media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.18.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.5.6-r9999: A client software for quality voice communication via the internet

@@ -1,6 +1,5 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
 EAPI=8
 
 DESCRIPTION="Extension for visualizing asusctl-ctrl(asusd) settings and status."
@@ -9,7 +8,7 @@ SRC_JID="2835289200"
 SRC_URI="https://gitlab.com/asus-linux/asusctl-gex/-/jobs/${SRC_JID}/artifacts/download -> ${P}.zip"
 S="${WORKDIR}/asusctl-gex@asus-linux.org"
 
-LICENSE="GPL-3"
+LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="~amd64"
 IUSE=""

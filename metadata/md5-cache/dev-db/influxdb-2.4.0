@@ -12,5 +12,5 @@ RDEPEND=acct-group/influxdb acct-user/influxdb client? ( =app-admin/influx-cli-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/influxdata/influxdb/archive/v2.4.0.tar.gz -> influxdb-2.4.0.tar.gz https://vendors.retarded.farm/influxdb/vendor-influxdb-2.4.0.tar.xz https://vendors.retarded.farm/influxdb/vendor-libflux-0.179.0.tar.xz https://github.com/influxdata/ui/releases/download/OSS-2022-09-16/build.tar.gz -> influxdb-2.4.0-build.tar.gz https://github.com/influxdata/openapi/archive/refs/tags/influxdb-oss-v2.4.0.tar.gz -> influxdb-2.4.0-openapi.tar.gz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	104e1332efb829e2f7cbf89307a474f1	go-module	9c75e51a48520b2f01471c1f91762882	systemd	5f4bb0758df2e483babf68cd517078ca
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	9c75e51a48520b2f01471c1f91762882	systemd	5f4bb0758df2e483babf68cd517078ca
 _md5_=3dff605cc72089f146aff37f53b0c6b6

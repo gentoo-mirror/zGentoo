@@ -9,7 +9,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite"
 
-ANTLR_VERSION=4.9.1
+ANTLR_VERSION=4.11.1
 
 inherit gnome2 flag-o-matic python-single-r1 cmake
 
@@ -30,7 +30,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 CDEPEND="${PYTHON_DEPS}
 		app-crypt/libsecret
 		dev-libs/glib:2
-		<dev-cpp/antlr-cpp-4.11.0:4
+		dev-cpp/antlr-cpp:4
 		dev-cpp/atkmm:*
 		dev-cpp/pangomm:1.4
 		>=dev-cpp/glibmm-2.14:2
@@ -89,6 +89,21 @@ src_prepare() {
 
 	## Fix ANTLR version
 	sed -i -e "s/antlr-4.9.1/antlr-${ANTLR_VERSION}/g" CMakeLists.txt || die
+
+	## fix GCC-13 shizzle
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' backend/wbprivate/sqlide/wb_sql_editor_form.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' backend/wbpublic/grtsqlparser/sql_specifics.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' backend/wbpublic/sqlide/sqlide_generics.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' backend/wbpublic/sqlide/sqlide_generics_private.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/base/base/string_utilities.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/base/base/util_functions.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/cdbc/src/driver_manager.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/forms/gtk/lf_treeview.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/forms/mforms/treeview.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/forms/stub/stub_treenode.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' library/forms/winforms/src/wf_treenode.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' modules/db.mysql.sqlparser/src/mysql_sql_specifics.h || die
+	sed -i '0,/*\//s//*\/\n#include <cstdint>\n/' testing/test-suite/tests/library/forms/stub/stub_treenode.h || die
 
 	## package is very fragile...
 	strip-flags

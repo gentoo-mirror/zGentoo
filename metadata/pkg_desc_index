@@ -20,7 +20,7 @@ app-metrics/telegraf 1.24.2 1.25.2: The plugin-driven server agent for collectin
 app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 22.12.3: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
-dev-db/influxdb 2.3.0 2.4.0: Scalable datastore for metrics, events, and real-time analytics
+dev-db/influxdb 2.3.0 2.4.0 2.7.1: Scalable datastore for metrics, events, and real-time analytics
 dev-db/mysql-workbench 8.0.33-r1: MySQL Workbench
 dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-lang/kotlin-bin 1.6.10 1.7.10: Statically typed programming language for modern multiplatform applications

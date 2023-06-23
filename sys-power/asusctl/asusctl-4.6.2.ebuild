@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-CRATES="vendor"
+CRATES=" "
 inherit systemd cargo linux-info udev xdg desktop
 
 _PN="asusd"
@@ -12,6 +12,7 @@ HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
     https://gitlab.com/asus-linux/${PN}/uploads/9162a15ea1b77cd2507517d9c1adca3e/vendor_${PN}_${PV}.tar.xz
+    ${CARGO_CRATE_URIS}
 "
 
 

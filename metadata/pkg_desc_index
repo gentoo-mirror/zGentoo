@@ -88,5 +88,5 @@ virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.16 9.3.6: The open-source platform for monitoring and observability
 www-apps/snappymail 2.17.0: Simple, modern and fast web-based email client
 x11-drivers/nvidia-drivers 535.43.02: NVIDIA Accelerated Graphics Driver
-x11-drivers/nvidia-vaapi-driver 0.0.9_p5354302 0.0.9_p5355403: VA-API implementation that uses NVDEC as a backend
+x11-drivers/nvidia-vaapi-driver 0.0.10_p5354302 0.0.10_p5355403: VA-API implementation that uses NVDEC as a backend
 x11-libs/gtkglext 1.2.0-r5: GL extensions for Gtk+ 2.0

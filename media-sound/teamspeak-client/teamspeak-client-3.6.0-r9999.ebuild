@@ -9,10 +9,9 @@ MY_PV="${PV/_/-}"
 
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="amd64? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_amd64-${MY_PV}.run )
-	x86? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_x86-${MY_PV}.run )"
+SRC_URI="amd64? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_amd64-${MY_PV}.run )"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 LICENSE="teamspeak3"
 SLOT="3"
 IUSE="alsa pulseaudio"

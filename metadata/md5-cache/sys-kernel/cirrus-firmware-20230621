@@ -1,0 +1,11 @@
+BDEPEND=sys-kernel/linux-firmware >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+EAPI=8
+HOMEPAGE=https://www.cirrus.com/
+INHERIT=git-r3
+KEYWORDS=amd64 x86
+LICENSE=unknown
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
+_md5_=610d104a9cf94e8e06bc387b372db305

@@ -19,7 +19,7 @@ SRC_URI="
 IUSE="+direct"
 LICENSE="MIT Expat"
 KEYWORDS="~amd64"
-SLOT="530/30.02"
+SLOT="535/43.02"
 
 BDEPEND="
     || (

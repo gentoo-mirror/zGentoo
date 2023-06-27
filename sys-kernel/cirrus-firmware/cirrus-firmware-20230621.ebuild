@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 BDEPEND="sys-kernel/linux-firmware"
 
 src_install() {
-    [ -f /var/db/pkg/sys-kernel/linux-firmware-*/CONTENTS ] && die "Could not determine the base-firmware blobs."
+    [ -f /var/db/pkg/sys-kernel/linux-firmware-*/CONTENTS ] || die "Could not determine the base-firmware blobs."
     list=`cat /var/db/pkg/sys-kernel/linux-firmware-*/CONTENTS | grep cirrus | awk '{print $2}'`
     for f in `find cirrus \( -type l -o -type f \)`; do
         if ! [[ $list =~ .*"${f}".* ]]; then

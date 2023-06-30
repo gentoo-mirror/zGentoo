@@ -43,7 +43,7 @@ dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the 
 dev-python/unpaddedbase64 2.1.0-r1: Unpadded Base64
 dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
-dev-util/ghidra-bin 10.2.3: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
+dev-util/ghidra-bin 10.3.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
 games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.

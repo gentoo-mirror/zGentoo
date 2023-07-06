@@ -74,7 +74,7 @@ net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/cirrus-firmware 20230621: 
-sys-kernel/gentoo-sources-rog 6.3.9 6.4.0: Full sources including the Gentoo and ASUS ROG patchset for the 6.4 kernel tree
+sys-kernel/gentoo-sources-rog 6.3.12 6.4.2: Full sources including the Gentoo and ASUS ROG patchset for the 6.4 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0_rc1 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

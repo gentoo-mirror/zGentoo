@@ -17,6 +17,7 @@ RESTRICT="mirror"
 ## TODO: add all needed DEPS(!) - still WiP
 RDEPEND="
     x11-misc/xdotool
+    x11-libs/libvdpau
 "
 DEPEND="${RDEPEND}"
 

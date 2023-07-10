@@ -93,6 +93,13 @@ app-admin/loki:tools - Build the loki tools logcli and loki-canary
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
 dev-db/influxdb:client - BUild the influxdb client app-admin/influx-cli
 dev-db/influxdb:telegraf - Build the telegraf agent app-metrics/telegraf
+dev-games/godot:bullet - Enable the sci-physics/bullet module
+dev-games/godot:deprecated - Enable support for deprecated features
+dev-games/godot:raycast - Enable the raycast Editor module using media-libs/embree
+dev-games/godot:runner - Build an additional binary optimized for running games (only relevant with USE=tools)
+dev-games/godot:speech - Enable text-to-speech support
+dev-games/godot:tools - Enable the Godot Editor for game development
+dev-games/godot:webm - Enable the WebM module
 games-emulation/rpcs3:discord-rpc - Enable Discord integration
 games-emulation/rpcs3:evdev - Enable evdev for input
 games-emulation/rpcs3:faudio - Enable audio using app-emulation/faudio

@@ -31,3 +31,4 @@ dev-util/ghidra-bin
 
 # masked during stabilization (use at own risk!)
 =sys-power/asusctl-4.7.0_rc1
+=sys-power/asusctl-4.7.0_rc2

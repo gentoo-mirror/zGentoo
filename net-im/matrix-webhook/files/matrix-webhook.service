@@ -8,7 +8,7 @@ Type=simple
 User=matrix-webhook
 Group=matrix-webhook
 EnvironmentFile=/etc/conf.d/matrix-webhook
-ExecStart=/usr/bin/python -m matrix_webhook
+ExecStart=/usr/bin/python -m matrix_webhook -i $MATRIX_ID -k $API_KEY -p $MATRIX_PW -u $MATRIX_URL -P $PORT
 WorkingDirectory=/var/lib/matrix-webhook
 
 Restart=always

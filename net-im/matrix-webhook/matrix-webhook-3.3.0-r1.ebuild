@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
     )
     dev-python/pycryptodome[${PYTHON_USEDEP}]
     dev-python/unpaddedbase64[${PYTHON_USEDEP}]"
-S="${WORKDIR}/${PN//-/_}-${PV}"
+S="${WORKDIR}/${PN}-${PV}"
 
 src_prepare() {
     default

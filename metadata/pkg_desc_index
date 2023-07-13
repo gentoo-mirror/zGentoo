@@ -61,7 +61,7 @@ media-sound/freetube 0.18.0: An open source desktop YouTube player built with pr
 media-sound/teamspeak-client 3.6.0-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord 0.0.25: All-in-one voice and text chat for gamers
-net-im/matrix-webhook 3.3.0-r1 3.5.0: Post a message to a matrix room with a simple HTTP POST
+net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0: Post a message to a matrix room with a simple HTTP POST
 net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries

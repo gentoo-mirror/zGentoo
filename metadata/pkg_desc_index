@@ -60,9 +60,7 @@ media-gfx/yed 3.22: yEd Graph Editor - High-quality diagrams made easy
 media-sound/freetube 0.18.0: An open source desktop YouTube player built with privacy in mind.
 media-sound/teamspeak-client 3.6.0-r9999: A client software for quality voice communication via the internet
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
-net-im/discord 0.0.25: All-in-one voice and text chat for gamers
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0: Post a message to a matrix room with a simple HTTP POST
-net-im/matterbridge 1.25.2: A simple chat bridge - for matrix
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
 net-misc/anydesk 6.1.1: Feature rich multi-platform remote desktop application
@@ -76,7 +74,7 @@ net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/cirrus-firmware 20230621: 
-sys-kernel/gentoo-sources-rog 6.3.12 6.4.2: Full sources including the Gentoo and ASUS ROG patchset for the 6.4 kernel tree
+sys-kernel/gentoo-sources-rog 6.3.12 6.4.2 6.4.3: Full sources including the Gentoo and ASUS ROG patchset for the 6.4 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0_rc1 4.7.0_rc2 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

@@ -1,0 +1,121 @@
+diff --git a/matrix_webhook/app.py b/matrix_webhook/app.py
+index b56ad7d..3f33b1a 100644
+--- a/matrix_webhook/app.py
++++ b/matrix_webhook/app.py
+@@ -6,7 +6,7 @@ from signal import SIGINT, SIGTERM
+ 
+ from aiohttp import web
+ 
+-from . import conf, handler, utils
++from . import conf, handler, utils, enc_client
+ 
+ LOGGER = logging.getLogger("matrix_webhook.app")
+ 
+@@ -30,8 +30,19 @@ async def main(event):
+     site = web.TCPSite(runner, *conf.SERVER_ADDRESS)
+     await site.start()
+ 
+-    # Run until we get a shutdown request
+-    await event.wait()
++    # CHANGED: Run until we get a shutdown request
++    # new task routine, as we now have two background tasks
++    # (end of execution if one is complete, mostly sigterm/kill)
++    done, pending = await asyncio.wait(
++        [
++            asyncio.create_task(enc_client.run(utils.CLIENT)),
++            asyncio.create_task(event.wait())
++        ],
++        return_when=asyncio.FIRST_COMPLETED
++    )
++    for task in pending:
++        task.cancel()
++    await asyncio.wait(pending)
+ 
+     # Cleanup
+     await runner.cleanup()
+diff --git a/matrix_webhook/handler.py b/matrix_webhook/handler.py
+index 5efbf1e..0c90f29 100644
+--- a/matrix_webhook/handler.py
++++ b/matrix_webhook/handler.py
+@@ -84,10 +84,11 @@ async def matrix_webhook(request):
+     else:
+         formatted_body = markdown(str(data["body"]), extensions=["extra"])
+ 
+-    # try to join room first -> non none response means error
+-    resp = await utils.join_room(data["room_id"])
+-    if resp is not None:
+-        return resp
++    # TODO obsolete as we join a room directly after invite. (maybe use this as a rejoin)
++    # try to join room first -> non none response means error 
++    #resp = await utils.join_room(data["room_id"])
++    #if resp is not None:
++    #    return resp
+ 
+     content = {
+         "msgtype": "m.text",
+diff --git a/matrix_webhook/utils.py b/matrix_webhook/utils.py
+index 4fa379f..948ebb9 100644
+--- a/matrix_webhook/utils.py
++++ b/matrix_webhook/utils.py
+@@ -5,11 +5,10 @@ from collections import defaultdict
+ from http import HTTPStatus
+ 
+ from aiohttp import web
+-from nio import AsyncClient
+ from nio.exceptions import LocalProtocolError
+-from nio.responses import JoinError, RoomSendError
++from nio.responses import RoomSendError
+ 
+-from . import conf
++from . import conf, enc_client
+ 
+ ERROR_MAP = defaultdict(
+     lambda: HTTPStatus.INTERNAL_SERVER_ERROR,
+@@ -19,7 +18,7 @@ ERROR_MAP = defaultdict(
+     },
+ )
+ LOGGER = logging.getLogger("matrix_webhook.utils")
+-CLIENT = AsyncClient(conf.MATRIX_URL, conf.MATRIX_ID)
++CLIENT = enc_client.AsyncClient(conf.MATRIX_URL, conf.MATRIX_ID)
+ 
+ 
+ def error_map(resp):
+@@ -37,29 +36,6 @@ def create_json_response(status, ret):
+     response_data = {"status": status, "ret": ret}
+     return web.json_response(response_data, status=status)
+ 
+-
+-async def join_room(room_id):
+-    """Try to join the room."""
+-    LOGGER.debug(f"Join room {room_id=}")
+-
+-    for _ in range(10):
+-        try:
+-            resp = await CLIENT.join(room_id)
+-            if isinstance(resp, JoinError):
+-                if resp.status_code == "M_UNKNOWN_TOKEN":
+-                    LOGGER.warning("Reconnecting")
+-                    if conf.MATRIX_PW:
+-                        await CLIENT.login(conf.MATRIX_PW)
+-                else:
+-                    return create_json_response(error_map(resp), resp.message)
+-            else:
+-                return None
+-        except LocalProtocolError as e:
+-            LOGGER.error(f"Send error: {e}")
+-        LOGGER.warning("Trying again")
+-    return create_json_response(HTTPStatus.GATEWAY_TIMEOUT, "Homeserver not responding")
+-
+-
+ async def send_room_message(room_id, content):
+     """Send a message to a room."""
+     LOGGER.debug(f"Sending room message in {room_id=}: {content=}")
+@@ -75,7 +51,7 @@ async def send_room_message(room_id, content):
+                 if resp.status_code == "M_UNKNOWN_TOKEN":
+                     LOGGER.warning("Reconnecting")
+                     if conf.MATRIX_PW:
+-                        await CLIENT.login(conf.MATRIX_PW)
++                        await CLIENT.login()
+                 else:
+                     return create_json_response(error_map(resp), resp.message)
+             else:

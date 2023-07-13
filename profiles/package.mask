@@ -32,3 +32,6 @@ dev-util/ghidra-bin
 # masked during stabilization (use at own risk!)
 =sys-power/asusctl-4.7.0_rc1
 =sys-power/asusctl-4.7.0_rc2
+
+# mask because of corruption (e2ee patch not working correctly)
+=net-im/matrix-webhook-3.8.0

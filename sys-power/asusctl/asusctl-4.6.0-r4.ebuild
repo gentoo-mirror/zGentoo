@@ -34,6 +34,7 @@ REQUIRED_USE="gnome? ( gfx )"
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
     acpi? ( sys-power/acpi_call )
+    gui? ( dev-libs/libappindicator:3 )
     >=sys-power/power-profiles-daemon-0.10.0
 "
 DEPEND="${RDEPEND}

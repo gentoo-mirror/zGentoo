@@ -27,7 +27,8 @@ RDEPEND="!!sys-power/rog-core
         x11-apps/xrandr
         gnome-base/gdm
         gnome-extra/gnome-shell-extension-asusctl-gex:3
-    )"
+    )
+    gui? ( dev-libs/libappindicator:3 )"
 DEPEND="${RDEPEND}
 	>=virtual/rust-1.44.0
     >=sys-devel/llvm-9.0.1

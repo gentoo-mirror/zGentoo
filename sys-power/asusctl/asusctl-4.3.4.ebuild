@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
         !sys-kernel/gentoo-g14-next  
         >=sys-power/supergfxctl-2.0.0[gnome?] 
     )
+    gui? ( dev-libs/libappindicator:3 )
     gnome? ( gnome-extra/gnome-shell-extension-asusctl-gex:0/4 )
     sys-apps/systemd:0=
 	sys-apps/dbus

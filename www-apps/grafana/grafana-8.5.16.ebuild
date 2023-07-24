@@ -12,9 +12,9 @@ DESCRIPTION="The open-source platform for monitoring and observability"
 HOMEPAGE="https://grafana.com"
 SRC_URI="
 	https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
-	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
-	https://vendors.retarded.farm/${PN}/vendor_yarn-${P}.tar.xz
-	https://vendors.retarded.farm/${PN}/yarn-3.2.3.cjs.gz
+	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/vendor_yarn-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/yarn-3.2.3.cjs.gz
 "
 LICENSE="AGPL-3.0 Apache-2.0 BSD-2 BSD-3 BSD-4 BSL-1.0 ImageMagick ISC LGPL-3.0 MIT MPL-2.0 OpenSSL Zlib"
 SLOT="8/"${PV}

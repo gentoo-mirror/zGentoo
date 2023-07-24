@@ -16,7 +16,7 @@ DESCRIPTION="CLI for managing resources in InfluxDB v2"
 HOMEPAGE="https://github.com/influxdata/${PN}"
 SRC_URI="
 	https://github.com/influxdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
 "
 RESTRICT="mirror"
 

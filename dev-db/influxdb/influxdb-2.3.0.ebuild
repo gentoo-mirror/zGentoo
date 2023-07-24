@@ -9,8 +9,8 @@ DESCRIPTION="Scalable datastore for metrics, events, and real-time analytics"
 HOMEPAGE="https://www.influxdata.com/products/influxdb-overview/"
 SRC_URI="
     https://github.com/influxdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-    https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
-    https://vendors.retarded.farm/${PN}/vendor-libflux-0.171.0.tar.xz
+    https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
+    https://vendors.simple-co.de/${PN}/vendor-libflux-0.171.0.tar.xz
     https://github.com/influxdata/ui/releases/download/OSS-2.1.2/build.tar.gz -> ${P}-build.tar.gz
     https://github.com/influxdata/openapi/archive/refs/tags/${PN}-oss-v${PV}.tar.gz -> ${P}-openapi.tar.gz
 "

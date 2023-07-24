@@ -23,7 +23,7 @@ Then run `emaint sync -r zGentoo` to sync it.
 Add zGentoo using layman:
 
 ```Bash
-layman -o https://lab.retarded.farm/zappel/zGentoo/raw/main/repositories.xml -f -a zGentoo
+layman -o https://lab.simple-co.de/zappel/zGentoo/raw/main/repositories.xml -f -a zGentoo
 ```
 
 Then run `layman -s zGentoo`
@@ -36,7 +36,7 @@ Create a `/etc/portage/repos.conf/zGentoo.conf` file containing
 [zGentoo]
 location = /usr/local/portage/zGentoo
 sync-type = git
-sync-uri = https://lab.retarded.farm/zappel/zGentoo
+sync-uri = https://lab.simple-co.de/zappel/zGentoo
 priority=9999
 ```
 

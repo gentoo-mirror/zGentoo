@@ -10,7 +10,7 @@ DESCRIPTION="TREZOR Communication Daemon"
 HOMEPAGE="https://github.com/trezor/${TD}-go"
 SRC_URI="
 	https://github.com/trezor/${TD}-go/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
 "
 
 LICENSE="LGPL-3"

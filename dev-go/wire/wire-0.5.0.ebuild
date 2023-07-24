@@ -7,7 +7,7 @@ DESCRIPTION="Wire: Automated Initialization in Go"
 HOMEPAGE="https://github.com/google/${PN}"
 SRC_URI="
 	https://github.com/google/${PN}/archive/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz
-	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
 "
 
 KEYWORDS="~amd64"

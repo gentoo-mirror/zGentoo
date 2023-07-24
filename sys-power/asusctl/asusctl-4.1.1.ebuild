@@ -11,7 +11,7 @@ DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of va
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://vendors.retarded.farm/${PN}/vendor-${PV}.tar.xz -> vendor_${PN}-${PV}.tar.xz
+    https://vendors.simple-co.de/${PN}/vendor-${PV}.tar.xz -> vendor_${PN}-${PV}.tar.xz
 "
 
 LICENSE="MPL-2.0"

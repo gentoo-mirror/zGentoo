@@ -9,7 +9,7 @@ DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics."
 HOMEPAGE="https://www.influxdata.com/time-series-platform/telegraf/"
 SRC_URI="
     https://github.com/influxdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-    https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+    https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
 "
 # creating vendor bundle:
 # go mod vendor && mkdir telegraf-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"` && mv vendor telegraf-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`/vendor && \

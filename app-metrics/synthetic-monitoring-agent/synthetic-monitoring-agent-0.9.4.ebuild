@@ -9,7 +9,7 @@ DESCRIPTION="The plugin-driven server agent for collecting & reporting metrics."
 HOMEPAGE="https://github.com/grafana/synthetic-monitoring-agent"
 SRC_URI="
     https://github.com/grafana/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-    https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+    https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
 "
 # creating vendor bundle:
 # version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`; \

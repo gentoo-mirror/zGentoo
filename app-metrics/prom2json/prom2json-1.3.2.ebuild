@@ -8,7 +8,7 @@ DESCRIPTION="A tool to scrape a Prometheus client and dump the result as JSON"
 HOMEPAGE="https://github.com/prometheus/prom2json"
 SRC_URI="
 	https://github.com/prometheus/prom2json/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
 "
 
 LICENSE="Apache-2.0"

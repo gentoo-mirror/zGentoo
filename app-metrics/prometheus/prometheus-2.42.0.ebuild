@@ -10,9 +10,9 @@ HOMEPAGE="https://github.com/prometheus/prometheus"
 go-module_set_globals
 SRC_URI="
 	https://github.com/prometheus/prometheus/archive/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz
-	https://vendors.retarded.farm/${PN}/vendor-${P}.tar.xz
-	https://vendors.retarded.farm/${PN}/node-modules-${P}.tar.xz
-	https://vendors.retarded.farm/${PN}/package-lock-${P}.json.gz
+	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/node-modules-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/package-lock-${P}.json.gz
 "
 # default vendor package created using:
 # >> git clone https://github.com/prometheus/prometheus/ -b v<version> /tmp/prometheus && \

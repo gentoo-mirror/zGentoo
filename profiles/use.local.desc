@@ -116,6 +116,5 @@ sys-kernel/gentoo-sources-rog:fanmode_hotkey - Apply patch for G14/G15 to enable
 sys-power/asusctl:gfx - Adds support for switching graphics(gfx) devices
 sys-power/asusctl:gui - Installs rog-control-center(UI)
 sys-power/asusctl:notify - Installs asusctl notify executable and service
-sys-power/liquidctl:experimental - Enables experimental NZXT-Kraken x53/x63/x73 AIO-Watercooling support
 virtual/linux-sources:firmware - Install linux kernel firmware
 x11-drivers/nvidia-vaapi-driver:direct - Enables the "direct" NVDEC backend (enabled by default)

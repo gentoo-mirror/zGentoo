@@ -80,7 +80,6 @@ sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0_rc1 4.7.0_rc2 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/iasl 20230331: Intel ACPI Source Language (ASL) compiler
-sys-power/liquidctl 1.10.0: Cross-platform tool and drivers for liquid coolers and other devices
 sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.
 sys-power/supergfxctl 4.0.5-r2 5.0.1-r1 5.1.1: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual

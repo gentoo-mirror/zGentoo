@@ -11,7 +11,8 @@ MY_PV=${PVR/-r/.post}
 
 DESCRIPTION="Python bindings for Linux SMBus access through i2c-dev"
 HOMEPAGE="https://pypi.org/project/smbus"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://files.pythonhosted.org/packages/4d/5c/70e14aa4f0c586efc017e1d1aa6e2f7921eefc7602fc2d03368ff912aa91/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"

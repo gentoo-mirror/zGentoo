@@ -9,7 +9,6 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	=virtual/linux-sources-3-r100
-	sys-kernel/cirrus-firmware
 	sys-kernel/gentoo-sources-rog
 	sys-power/asusctl[gfx]
 "

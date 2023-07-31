@@ -73,7 +73,6 @@ net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Se
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
-sys-kernel/cirrus-firmware 20230621: 
 sys-kernel/gentoo-sources-rog 6.3.12 6.4.2 6.4.3: Full sources including the Gentoo and ASUS ROG patchset for the 6.4 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
@@ -82,7 +81,7 @@ sys-power/gwe 0.15.5: System utility designed to provide information, control th
 sys-power/iasl 20230331: Intel ACPI Source Language (ASL) compiler
 sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.
 sys-power/supergfxctl 4.0.5-r2 5.0.1-r1 5.1.1: supergfxctl (supergfxd) Graphics switching
-virtual/gentoo-asus 2.0: ASUS ROG on gentoo linux virtual
+virtual/gentoo-asus 2.0-r1: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.16 9.3.6: The open-source platform for monitoring and observability
 www-apps/snappymail 2.17.0: Simple, modern and fast web-based email client

@@ -5,7 +5,7 @@ EAPI=8
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 

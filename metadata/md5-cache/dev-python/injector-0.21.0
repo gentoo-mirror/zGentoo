@@ -1,16 +1,16 @@
 BDEPEND=python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) python_targets_python3_12? ( dev-lang/python:3.12 ) >=dev-python/setuptools-67.8.0-r1[python_targets_python3_10(-)?,python_targets_python3_11(-)?,python_targets_python3_12(-)?]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=x11-drivers/nvidia-drivers test? ( dev-python/pytest dev-python/hypothesis ) doc? ( dev-python/sphinx )
-DESCRIPTION=Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
+DEPEND=test? ( dev-python/pytest dev-python/hypothesis ) doc? ( dev-python/sphinx )
+DESCRIPTION=Python dependency injection framework, inspired by Guice
 EAPI=8
-HOMEPAGE=https://github.com/fbcotter/py3nvml
+HOMEPAGE=https://github.com/alecthomas/injector
 INHERIT=distutils-r1
 IUSE=doc test python_targets_python3_10 python_targets_python3_11 python_targets_python3_12
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=x11-drivers/nvidia-drivers test? ( dev-python/pytest dev-python/hypothesis ) python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) python_targets_python3_12? ( dev-lang/python:3.12 )
+RDEPEND=test? ( dev-python/pytest dev-python/hypothesis ) python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) python_targets_python3_12? ( dev-lang/python:3.12 )
 REQUIRED_USE=|| ( python_targets_python3_10 python_targets_python3_11 python_targets_python3_12 )
 SLOT=0
-SRC_URI=https://github.com/fbcotter/py3nvml/archive/0.2.7.tar.gz
+SRC_URI=https://github.com/python-injector/injector/archive/refs/tags/0.21.0.tar.gz -> injector-0.21.0.tar.gz
 _eclasses_=toolchain-funcs	0c8a0b0d318eb5d5180d114bd3f6592b	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	ad475baa777c9978fa035216c8264a10	out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	30dbf3c5a31db09a19f31ad0a68f2405	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	f3010c780f65d1bb5aea15a9af1adc9c	python-utils-r1	1f435bc389faf790af695df46b8dcb73	python-r1	b3f874304c1bda6ffc3450ebb4ae5169	distutils-r1	b7cd5736a595ec0df9b164d5aec6f228
-_md5_=16c262abb23469f9ae0aa399a6c5cc7d
+_md5_=ba3b0708b4166dab270ec4547cad5033

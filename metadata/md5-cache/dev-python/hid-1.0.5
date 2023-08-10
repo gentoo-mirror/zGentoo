@@ -1,9 +1,9 @@
 BDEPEND=python_targets_pypy3? ( dev-python/pypy3:= ) python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) python_targets_python3_12? ( dev-lang/python:3.12 ) >=dev-python/setuptools-67.8.0-r1[python_targets_pypy3(-)?,python_targets_python3_10(-)?,python_targets_python3_11(-)?,python_targets_python3_12(-)?]
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/hidapi dev-python/setuptools[python_targets_pypy3(-)?,python_targets_python3_10(-)?,python_targets_python3_11(-)?,python_targets_python3_12(-)?]
-DESCRIPTION=Python bindings for Linux SMBus access through i2c-dev
+DESCRIPTION=ctypes bindings for hidapi
 EAPI=8
-HOMEPAGE=https://pypi.org/project/smbus
+HOMEPAGE=https://github.com/apmorton/pyhidapi https://pypi.org/project/hid
 INHERIT=edos2unix distutils-r1
 IUSE=test python_targets_pypy3 python_targets_python3_10 python_targets_python3_11 python_targets_python3_12
 KEYWORDS=amd64 ~x86
@@ -12,6 +12,6 @@ RDEPEND=python_targets_pypy3? ( dev-python/pypy3:= ) python_targets_python3_10? 
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_10 python_targets_python3_11 python_targets_python3_12 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=mirror://pypi/s/smbus/smbus-1.1.post2.tar.gz -> smbus-1.1.tar.gz
+SRC_URI=mirror://pypi/h/hid/hid-1.0.5.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	toolchain-funcs	0c8a0b0d318eb5d5180d114bd3f6592b	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	ad475baa777c9978fa035216c8264a10	out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	30dbf3c5a31db09a19f31ad0a68f2405	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	f3010c780f65d1bb5aea15a9af1adc9c	python-utils-r1	1f435bc389faf790af695df46b8dcb73	python-r1	b3f874304c1bda6ffc3450ebb4ae5169	distutils-r1	b7cd5736a595ec0df9b164d5aec6f228
-_md5_=69f36f4da425a693240a07596f236b44
+_md5_=41fab8d056d4e1a4916a40d5cf81ad6e

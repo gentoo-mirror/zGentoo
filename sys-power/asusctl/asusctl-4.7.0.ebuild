@@ -13,7 +13,7 @@ DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of va
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${_PV}/${PN}-${_PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/d75c3fe82fcc50634915ff1ea0b4a16f/vendor_${PN}_${_PVV}.tar.xz -> vendor_${PN}_${_PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/uploads/ef37ef5eb35f20302807e9522c466889/vendor_${PN}_${_PV}.tar.xz
     ${CARGO_CRATE_URIS}
 "
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC LicenseRef-UFL-1.0 MIT MPL-2.0 OFL-1.1 Unicode-DFS-2016 Unlicense ZLIB"
@@ -41,9 +41,6 @@ DEPEND="${RDEPEND}
     sys-apps/systemd:0=
 	sys-apps/dbus
     media-libs/sdl2-gfx
-"
-PATCHES="
-    ${FILESDIR}/${PN}-${PV}_zbus.patch
 "
 S="${WORKDIR}/${PN}-${_PV/_/-}"
 

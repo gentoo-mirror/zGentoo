@@ -33,6 +33,7 @@ dev-python/exif 1.6.0: Read and modify image EXIF metadata using Python
 dev-python/hid 1.0.5: ctypes bindings for hidapi
 dev-python/injector 0.21.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.6.0: A logging replacement for Python
+dev-python/matplotlib 3.7.2-r1: Pure python plotting library with matlab like syntax
 dev-python/matrix-nio 0.21.1: Multilayered Matrix client library
 dev-python/plum-py 0.8.6: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program

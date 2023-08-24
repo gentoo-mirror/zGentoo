@@ -24,7 +24,7 @@ dev-db/influxdb 2.3.0 2.4.0 2.7.1: Scalable datastore for metrics, events, and r
 dev-db/mysql-workbench 8.0.33-r1: MySQL Workbench
 dev-games/godot 4.1: Multi-platform 2D and 3D game engine with a feature-rich editor
 dev-go/wire 0.5.0: Wire: Automated Initialization in Go
-dev-lang/kotlin-bin 1.6.10 1.7.10: Statically typed programming language for modern multiplatform applications
+dev-lang/kotlin-bin 1.6.10 1.7.10 1.9.10: Statically typed programming language for modern multiplatform applications
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bindings, based on nativefiledialog
 dev-libs/olm 3.2.13: Implementation of the olm and megolm cryptographic ratchets

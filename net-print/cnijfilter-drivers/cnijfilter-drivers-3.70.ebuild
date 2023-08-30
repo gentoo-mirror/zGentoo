@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="${PN/-drivers/}"
 
-inherit eutils autotools flag-o-matic multilib
+inherit autotools flag-o-matic multilib
 
 DESCRIPTION="Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series)."
 HOMEPAGE="http://support-sg.canon-asia.com/contents/SG/EN/0100411802.html"

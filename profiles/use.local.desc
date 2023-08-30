@@ -103,13 +103,6 @@ dev-games/godot:webm - Enable the WebM module
 dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
 dev-python/matplotlib:gtk3 - Enable x11-libs/gtk+:3 support
 dev-python/matplotlib:webagg - Enable webagg backend that uses dev-python/tornado
-games-emulation/rpcs3:discord-rpc - Enable Discord integration
-games-emulation/rpcs3:evdev - Enable evdev for input
-games-emulation/rpcs3:faudio - Enable audio using app-emulation/faudio
-games-emulation/rpcs3:gdb - Enable debugging with sys-devel/gdb
-games-emulation/rpcs3:llvm - Enable LLVM based recompilation (recommended)
-games-emulation/rpcs3:system-llvm - Use the system-wide LLVM library instead of the bundled one (not recommended)
-games-emulation/rpcs3:vulkan - Enable vulkan video output
 media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner via avahi.
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
 net-p2p/trezord-go:systemd - Install systemd service file

@@ -21,7 +21,6 @@ app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible al
 app-office/qownnotes 23.8.2: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.3.0 2.4.0 2.7.1: Scalable datastore for metrics, events, and real-time analytics
-dev-db/mysql-workbench 8.0.33-r1: MySQL Workbench
 dev-games/godot 4.1: Multi-platform 2D and 3D game engine with a feature-rich editor
 dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-lang/kotlin-bin 1.6.10 1.7.10 1.9.10: Statically typed programming language for modern multiplatform applications
@@ -48,7 +47,6 @@ dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 dev-util/ghidra-bin 10.3.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
-games-emulation/rpcs3 0.0.12: Open source PlayStation 3 emulator
 games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0: Extension for visualizing asusctl-ctrl(asusd) settings and status.
@@ -72,12 +70,13 @@ net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
 net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CDW
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
+net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/gentoo-sources-rog 6.3.12 6.4.2 6.4.3 6.4.9 6.4.10: Full sources including the Gentoo and ASUS ROG patchset for the 6.4 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
-sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0 9999: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
+sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/iasl 20230331: Intel ACPI Source Language (ASL) compiler
 sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.

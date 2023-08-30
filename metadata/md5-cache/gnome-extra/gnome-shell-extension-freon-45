@@ -2,7 +2,7 @@ BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install postinst prepare unpack
 DEPEND=dev-libs/glib:2
 DESCRIPTION=Freon is an extension for displaying sensors data.
-EAPI=7
+EAPI=8
 HOMEPAGE=https://extensions.gnome.org/extension/841/freon/
 INHERIT=git-r3
 KEYWORDS=amd64 x86
@@ -11,4 +11,4 @@ PROPERTIES=live
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-40.0
 SLOT=0
 _eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991
-_md5_=ac418c4a5c2e8efabc95c6bb1de33441
+_md5_=001cad44c0332935d72f5c6129b99670

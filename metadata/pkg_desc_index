@@ -18,6 +18,7 @@ app-metrics/snmp_exporter 0.20.0-r2 0.21.0-r1: Prometheus exporter for snmp metr
 app-metrics/synthetic-monitoring-agent 0.9.4: The plugin-driven server agent for collecting & reporting metrics.
 app-metrics/telegraf 1.24.2 1.25.2: The plugin-driven server agent for collecting & reporting metrics.
 app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
+app-office/qownnotes 23.8.2: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.3.0 2.4.0 2.7.1: Scalable datastore for metrics, events, and real-time analytics
 dev-db/mysql-workbench 8.0.33-r1: MySQL Workbench
@@ -64,6 +65,7 @@ net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensib
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0: Post a message to a matrix room with a simple HTTP POST
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
+net-misc/anydesk 6.3.0: Feature rich multi-platform remote desktop application
 net-misc/postman-bin 10.6.0: Supercharge your API workflow
 net-misc/rustdesk-bin 1.2.0: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon

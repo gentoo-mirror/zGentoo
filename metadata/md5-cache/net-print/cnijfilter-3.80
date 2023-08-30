@@ -2,7 +2,7 @@ BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/
 DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=sys-devel/gettext
 DESCRIPTION=Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-EAPI=7
+EAPI=8
 HOMEPAGE=http://support-sg.canon-asia.com/contents/SG/EN/0100469302.html
 INHERIT=autotools flag-o-matic multilib
 IUSE=+net +servicetools
@@ -12,4 +12,4 @@ RDEPEND=>=media-libs/libpng-1.5 >=media-libs/tiff-3.4 >=net-print/cups-1.4 servi
 SLOT=0
 SRC_URI=http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-3.80-1.tar.gz
 _eclasses_=gnuconfig	b6b3e92f8b8c996400074b5f61a59256	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	9d3a9a889a6fa62ae794f817c156491b	autotools	6ae9a4347149b19a112caa1182d03bde	flag-o-matic	be27a904c614cb93ae037762dc69bcc2
-_md5_=6263a9a1ed5a82eaa047e3c33d6890d2
+_md5_=4856bfafd010e0be2b9781812e918296

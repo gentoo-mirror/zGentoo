@@ -31,8 +31,11 @@ src_prepare() {
 multilib_src_configure() {
     local myconf=(OBJC=gcc)
     use llvm && myconf=(OBJC=clang)
-    [ $MULTILIB_ABI_FLAG == abi_x86_32 ] && myconf=$(myconf -m32)
-    ECONF_SOURCE="${S}" econf "${myconf[@]}"
+    if [ $MULTILIB_ABI_FLAG == abi_x86_32 ]; then
+        ECONF_SOURCE="${S}" econf "${myconf[@]} -m32"
+    else
+        ECONF_SOURCE="${S}" econf "${myconf[@]}"
+    fi
 }
 
 multilib_src_install() {

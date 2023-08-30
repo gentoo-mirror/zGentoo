@@ -1,12 +1,13 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-EAPI=7
 
-inherit qmake-utils eutils desktop
+EAPI=8
+
+inherit qmake-utils desktop
 
 DESCRIPTION="A plain-text file markdown note taking with Nextcloud/ownCloud integration"
 HOMEPAGE="https://www.qownnotes.org/"
-SRC_URI="https://download.tuxfamily.org/${PN}/src/${P}.tar.xz"
+SRC_URI="https://github.com/pbek/QOwnNotes/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,19 +15,17 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
+	dev-qt/qtwidgets:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtprintsupport:5
+	dev-qt/qtcore:5
 	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
-	dev-qt/qtwebsockets:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtxml:5
-	dev-qt/qtxmlpatterns:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtwebsockets:5
+	dev-qt/qtx11extras:5
 "
 RDEPEND="${DEPEND}"
 

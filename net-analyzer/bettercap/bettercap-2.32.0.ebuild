@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGO_VENDOR=(
 	"github.com/acarl005/stripansi 5a71ef0e047d"
@@ -55,7 +55,7 @@ EGO_VENDOR=(
 
 EGO_PN=github.com/bettercap/bettercap
 
-inherit golang-build golang-vcs-snapshot
+inherit go-module
 
 EGIT_COMMIT="v${PV}"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz ${EGO_VENDOR_URI}"

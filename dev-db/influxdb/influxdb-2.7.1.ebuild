@@ -171,7 +171,11 @@ KEYWORDS="~amd64"
 IUSE="+systemd +client telegraf test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
+## build fails with rust >= 1.70
+BDEPEND="
+	virtual/pkgconfig
+	<virtual/rust-1.70.0
+"
 
 COMMON_DEPEND="
 	acct-group/influxdb
@@ -183,6 +187,8 @@ RDEPEND="${COMMON_DEPEND}
     client? ( =app-admin/influx-cli-${PV} )
     telegraf? ( app-metrics/telegraf )
 "
+
+PATCHES=("${FILESDIR}/${P}-GNUmakefile.patch")
 
 src_unpack() {
 	cargo_src_unpack

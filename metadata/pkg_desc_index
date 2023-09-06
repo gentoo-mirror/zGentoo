@@ -8,7 +8,7 @@ acct-user/matrix-webhook 0-r1: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 2.0.0: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
-app-admin/influx-cli 2.3.0 2.4.0: CLI for managing resources in InfluxDB v2
+app-admin/influx-cli 2.3.0 2.4.0 2.7.1 2.7.3: CLI for managing resources in InfluxDB v2
 app-admin/loki 2.6.1 2.7.3: Like Prometheus, but for logs.
 app-editors/imhex 1.30.1: A hex editor for reverse engineers, programmers, and eyesight
 app-emulation/vmware-horizon-client 8.4.0 8.4.1 8.5.0 8.9.0: VMware Horizon View client

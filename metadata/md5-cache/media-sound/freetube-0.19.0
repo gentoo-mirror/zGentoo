@@ -7,6 +7,6 @@ IUSE=+l10n_am +l10n_ar +l10n_bg +l10n_bn +l10n_ca +l10n_cs +l10n_da +l10n_de +l1
 KEYWORDS=~amd64 ~arm64
 LICENSE=AGPL-3.0
 SLOT=0
-SRC_URI=amd64? ( https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_amd64.deb -> freetube-0.18.0-amd64.deb ) arm64? ( https://github.com/FreeTubeApp/FreeTube/releases/download/v0.18.0-beta/freetube_0.18.0_arm64.deb -> freetube-0.18.0-arm64.deb )
+SRC_URI=amd64? ( https://github.com/FreeTubeApp/FreeTube/releases/download/v0.19.0-beta/freetube_0.19.0_amd64.deb -> freetube-0.19.0-amd64.deb ) arm64? ( https://github.com/FreeTubeApp/FreeTube/releases/download/v0.19.0-beta/freetube_0.19.0_arm64.deb -> freetube-0.19.0-arm64.deb )
 _eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	baea6080dd821f5562d715887954c9d3
 _md5_=76329eaeb0d132afff7f9c9fa9868ef4

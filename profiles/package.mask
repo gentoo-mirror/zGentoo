@@ -38,3 +38,6 @@ dev-util/ghidra-bin
 
 # mask because of upstream availibility as app-misc/liquidctl
 sys-power/liquidctl
+
+# masked because only provided for ceph compatibility
+=dev-python/cryptography-40.0.2-r2

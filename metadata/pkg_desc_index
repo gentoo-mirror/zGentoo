@@ -29,6 +29,7 @@ dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bin
 dev-libs/objfw 1.0: Portable, lightweight framework for the Objective-C language
 dev-libs/olm 3.2.13: Implementation of the olm and megolm cryptographic ratchets
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
+dev-python/cryptography 40.0.2-r2: Library providing cryptographic recipes and primitives
 dev-python/exif 1.6.0: Read and modify image EXIF metadata using Python
 dev-python/hid 1.0.5: ctypes bindings for hidapi
 dev-python/injector 0.21.0: Python dependency injection framework, inspired by Guice

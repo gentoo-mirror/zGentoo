@@ -4,7 +4,7 @@
 
 ## Installation
 
---
+NOTE: Managing overlays via `layman` is deprecated and superseded by `eselect repository`!
 
 ### Using repositories (eselect) - preferred method
 
@@ -18,16 +18,6 @@ eselect repository enable zGentoo
 
 Then run `emaint sync -r zGentoo` to sync it.
 
-### Using layman (app-portage/layman)
-
-Add zGentoo using layman:
-
-```Bash
-layman -o https://lab.simple-co.de/zappel/zGentoo/raw/main/repositories.xml -f -a zGentoo
-```
-
-Then run `layman -s zGentoo`
-
 ### Using local overlay
 
 Create a `/etc/portage/repos.conf/zGentoo.conf` file containing
@@ -36,13 +26,12 @@ Create a `/etc/portage/repos.conf/zGentoo.conf` file containing
 [zGentoo]
 location = /usr/local/portage/zGentoo
 sync-type = git
-sync-uri = https://lab.simple-co.de/zappel/zGentoo
+sync-uri = https://lab.simple-co.de/zappel/zGentoo.git
 priority=9999
 ```
 
 Then run `emerge --sync`
 
-## Colaboration
+## Collaboration
 
-You can directly communicate with us using discord, just follow this invite link: 
-[zGentoo (#zgentoo)](https://discord.gg/f8xbb6g)
+You can directly communicate with us using discord, just follow this invite link: [zGentoo (#zgentoo)](https://discord.gg/f8xbb6g)

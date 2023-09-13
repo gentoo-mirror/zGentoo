@@ -11,8 +11,7 @@ DESCRIPTION="${PN} (${_PN}) Graphics switching"
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/45dc2d12ad08afddedb71bc8ef984c51/vendor-${PV}.tar.xz -> vendor_${PN}_${PV}.tar.xz
-    https://gitlab.com/asus-linux/${PN}/uploads/31e1640ed949ba5d9f29e63d8d9ed016/vendor-${PV}.tar.xz -> vendor_all_${PN}_${PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/uploads/31e1640ed949ba5d9f29e63d8d9ed016/vendor-${PV}.tar.xz -> vendor_${PN}_${PV}.tar.xz
 "
 LICENSE="MPL-2.0"
 IUSE="gnome"
@@ -51,7 +50,6 @@ src_unpack() {
 
     # adding vendor-package
     cd ${S} && unpack vendor_${PN}_${PV%%_*}.tar.xz
-    cd ${S} && unpack vendor_all_${PN}_${PV%%_*}.tar.xz
 }
 
 src_prepare() {

@@ -8,7 +8,7 @@ INHERIT=git-r3
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-40.0
+RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions || ( !!<gnome-base/gnome-shell-40.0 !!>=gnome-base/gnome-shell-45.0 )
 SLOT=0
 _eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991
-_md5_=001cad44c0332935d72f5c6129b99670
+_md5_=f38f451f2d547b8eb5ac316691b5c5e4

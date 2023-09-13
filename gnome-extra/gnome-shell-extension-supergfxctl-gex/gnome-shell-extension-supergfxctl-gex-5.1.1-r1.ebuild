@@ -16,28 +16,30 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	!!gnome-extra/gnome-shell-extension-asus-nb-gex
-	!!gnome-extra/gnome-shell-extension-asusctl-gex
-	!!<=gnome-base/gnome-shell-42.0
-	>=gnome-base/gnome-shell-43.0
-	app-eselect/eselect-gnome-shell-extensions
+    !!gnome-extra/gnome-shell-extension-asus-nb-gex
+    !!gnome-extra/gnome-shell-extension-asusctl-gex
+    || ( 
+        !!<gnome-base/gnome-shell-43.0
+        !!>=gnome-base/gnome-shell-45.0
+    )
+    app-eselect/eselect-gnome-shell-extensions
 "
 DEPEND="${RDEPEND}
-	dev-libs/glib:2
+    dev-libs/glib:2
 "
 
 src_unpack() {
-	mkdir -p "${S}"
-	cd "${S}" && unpack "${P}.zip"
+    mkdir -p "${S}"
+    cd "${S}" && unpack "${P}.zip"
 }
 
 src_install() {
-	insinto "/usr/share/gnome-shell/extensions/${MY_PN}@asus-linux.org"
+    insinto "/usr/share/gnome-shell/extensions/${MY_PN}@asus-linux.org"
     doins -r ${S}/*
 }
 
 pkg_postinst() {
-	ebegin "Updating list of installed extensions"
-	eselect gnome-shell-extensions update
-	eend $?
+    ebegin "Updating list of installed extensions"
+    eselect gnome-shell-extensions update
+    eend $?
 }

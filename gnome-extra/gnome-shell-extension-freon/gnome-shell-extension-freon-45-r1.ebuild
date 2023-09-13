@@ -17,29 +17,29 @@ IUSE=""
 
 # glib for glib-compile-schemas at build time, needed at runtime anyways
 DEPEND="
-	dev-libs/glib:2
+    dev-libs/glib:2
 "
 RDEPEND="${DEPEND}
-	app-eselect/eselect-gnome-shell-extensions
-	|| ( 
-		!!<gnome-base/gnome-shell-40.0
-		!!>=gnome-base/gnome-shell-45.0
-	)
+    app-eselect/eselect-gnome-shell-extensions
+    || ( 
+        !!<gnome-base/gnome-shell-40.0
+        !!>=gnome-base/gnome-shell-45.0
+    )
 "
 BDEPEND=""
 
 src_prepare() {
-	default
-	cp ${FILESDIR}/Makefile ${S}
+    default
+    cp ${FILESDIR}/Makefile ${S}
 }
 
 src_install() {
-	make install INSTALL_PATH="${ED}/usr/share/gnome-shell/extensions/"
-	dodoc README.md
+    make install INSTALL_PATH="${ED}/usr/share/gnome-shell/extensions/"
+    dodoc README.md
 }
 
 pkg_postinst() {
-	ebegin "Updating list of installed extensions"
-	eselect gnome-shell-extensions update
-	eend $?
+    ebegin "Updating list of installed extensions"
+    eselect gnome-shell-extensions update
+    eend $?
 }

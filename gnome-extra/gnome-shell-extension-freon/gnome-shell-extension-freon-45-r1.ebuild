@@ -21,7 +21,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	app-eselect/eselect-gnome-shell-extensions
-	>=gnome-base/gnome-shell-40.0
+	|| ( 
+		!!<gnome-base/gnome-shell-40.0
+		!!>=gnome-base/gnome-shell-45.0
+	)
 "
 BDEPEND=""
 

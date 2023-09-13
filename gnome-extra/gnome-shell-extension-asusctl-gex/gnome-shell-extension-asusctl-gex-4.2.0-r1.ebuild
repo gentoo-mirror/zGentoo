@@ -14,23 +14,26 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	!!gnome-extra/gnome-shell-extension-asus-nb-gex
-	!!>=gnome-base/gnome-shell-43.0
-	>=gnome-base/gnome-shell-40.0
-	app-eselect/eselect-gnome-shell-extensions
-	>=sys-power/supergfxctl-4.0.4
+    !!gnome-extra/gnome-shell-extension-asus-nb-gex
+    || ( 
+        !!<gnome-base/gnome-shell-43.0
+        !!>=gnome-base/gnome-shell-45.0
+    )
+    >=gnome-base/gnome-shell-40.0
+    app-eselect/eselect-gnome-shell-extensions
+    >=sys-power/supergfxctl-4.0.4
 "
 DEPEND="${RDEPEND}
-	dev-libs/glib:2
+    dev-libs/glib:2
 "
 
 src_install() {
-	insinto /usr/share/gnome-shell/extensions/asusctl-gex@asus-linux.org
+    insinto /usr/share/gnome-shell/extensions/asusctl-gex@asus-linux.org
     doins -r ${S}/*
 }
 
 pkg_postinst() {
-	ebegin "Updating list of installed extensions"
-	eselect gnome-shell-extensions update
-	eend $?
+    ebegin "Updating list of installed extensions"
+    eselect gnome-shell-extensions update
+    eend $?
 }

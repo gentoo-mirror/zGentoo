@@ -32,8 +32,7 @@ go mod vendor && tar -c -I 'xz -9 -T0' -f ../vendor-grafana-`git describe --tags
 ```bash
 cd /tmp/grafana
 echo -e "enableMirror: true\ncacheFolder: ./vendor_yarn" >> .yarnrc.yml
-# only needed in grafana 8.x tree
-#yarn set version stable
+yarn set version stable
 CYPRESS_INSTALL_BINARY=0 yarn cache clean --mirror && yarn install
 tar -c -I 'xz -9 -T0' -f ../vendor_yarn-grafana-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`.tar.xz vendor_yarn
 ```

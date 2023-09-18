@@ -93,6 +93,7 @@ app-admin/loki:tools - Build the loki tools logcli and loki-canary
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
 dev-db/influxdb:client - BUild the influxdb client app-admin/influx-cli
 dev-db/influxdb:telegraf - Build the telegraf agent app-metrics/telegraf
+dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
 dev-games/godot:bullet - Enable the sci-physics/bullet module
 dev-games/godot:deprecated - Enable support for deprecated features
 dev-games/godot:raycast - Enable the raycast Editor module using media-libs/embree

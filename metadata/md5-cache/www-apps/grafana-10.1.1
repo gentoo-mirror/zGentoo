@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.18 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare pretend setup unpack
+DEPEND=!www-apps/grafana-bin acct-group/grafana acct-user/grafana media-libs/fontconfig >=net-libs/nodejs-18[icu] sys-apps/yarn >=dev-lang/go-1.20 dev-go/wire
+DESCRIPTION=The open-source platform for monitoring and observability
+EAPI=8
+HOMEPAGE=https://grafana.com
+INHERIT=check-reqs go-module systemd
+IUSE=systemd
+KEYWORDS=~amd64
+LICENSE=AGPL-3.0 Apache-2.0 BSD-2 BSD-3 BSD-4 BSL-1.0 ImageMagick ISC LGPL-3.0 MIT MPL-2.0 OpenSSL Zlib
+RESTRICT=strip
+SLOT=10/10.1.1
+SRC_URI=https://github.com/grafana/grafana/archive/v10.1.1.tar.gz -> grafana-10.1.1.tar.gz https://vendors.simple-co.de/grafana/vendor-grafana-10.1.1.tar.xz https://vendors.simple-co.de/grafana/vendor_yarn-grafana-10.1.1.tar.xz
+_eclasses_=check-reqs	02ac7654b64f7acc7a8b1a35ad9d6ddc	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	5f4bb0758df2e483babf68cd517078ca
+_md5_=d7a6c49b36f6ff1e55d96d009a5ee138

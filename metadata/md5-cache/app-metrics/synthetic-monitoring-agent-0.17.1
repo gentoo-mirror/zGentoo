@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.18 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install unpack
+DEPEND=acct-group/grafana acct-user/grafana
+DESCRIPTION=The plugin-driven server agent for collecting & reporting metrics.
+EAPI=8
+HOMEPAGE=https://github.com/grafana/synthetic-monitoring-agent
+INHERIT=go-module systemd
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD-2 BSD-3 MIT
+RDEPEND=acct-group/grafana acct-user/grafana
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/grafana/synthetic-monitoring-agent/archive/v0.17.1.tar.gz -> synthetic-monitoring-agent-0.17.1.tar.gz https://vendors.simple-co.de/synthetic-monitoring-agent/vendor-synthetic-monitoring-agent-0.17.1.tar.xz
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	5f4bb0758df2e483babf68cd517078ca
+_md5_=1c0afa1facba781f67b3e2d5fdd68184

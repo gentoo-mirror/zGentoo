@@ -24,7 +24,7 @@ Create a `/etc/portage/repos.conf/zGentoo.conf` file containing
 
 ```Bash
 [zGentoo]
-location = /usr/local/portage/zGentoo
+location = /var/db/repos/zGentoo
 sync-type = git
 sync-uri = https://lab.simple-co.de/zappel/zGentoo.git
 priority=9999

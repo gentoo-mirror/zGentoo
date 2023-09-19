@@ -27,7 +27,10 @@ DEPEND="!www-apps/${PN}-bin
 	acct-group/${PN}
 	acct-user/${PN}
 	media-libs/fontconfig
-	net-libs/nodejs:0/20[icu]
+	|| (
+		net-libs/nodejs:0/18[icu]
+		<net-libs/nodejs-20.6.0[icu]
+	)
 	sys-apps/yarn
 	>=dev-lang/go-1.20
 	dev-go/wire"

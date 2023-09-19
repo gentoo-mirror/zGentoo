@@ -1,6 +1,6 @@
 BDEPEND=>=dev-lang/go-1.18 app-arch/unzip virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare pretend setup unpack
-DEPEND=!www-apps/grafana-bin acct-group/grafana acct-user/grafana media-libs/fontconfig >=net-libs/nodejs-16[icu] sys-apps/yarn >=dev-lang/go-1.19 dev-go/wire
+DEPEND=!www-apps/grafana-bin acct-group/grafana acct-user/grafana media-libs/fontconfig || ( net-libs/nodejs:0/16[icu] net-libs/nodejs:0/18[icu] ) sys-apps/yarn >=dev-lang/go-1.19 dev-go/wire
 DESCRIPTION=The open-source platform for monitoring and observability
 EAPI=8
 HOMEPAGE=https://grafana.com
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=9/9.3.6
 SRC_URI=https://github.com/grafana/grafana/archive/v9.3.6.tar.gz -> grafana-9.3.6.tar.gz https://vendors.simple-co.de/grafana/vendor-grafana-9.3.6.tar.xz https://vendors.simple-co.de/grafana/vendor_yarn-grafana-9.3.6.tar.xz
 _eclasses_=check-reqs	02ac7654b64f7acc7a8b1a35ad9d6ddc	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	5f4bb0758df2e483babf68cd517078ca
-_md5_=3246708a7e4b9067573c829a66d45040
+_md5_=33382e9b3ebb2cd20aa050081d6ea01d

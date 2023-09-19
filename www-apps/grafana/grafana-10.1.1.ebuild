@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs go-module systemd
+inherit check-reqs go-module systemd tmpfiles
 
 MY_PV=${PV/_beta/-beta}
 S=${WORKDIR}/${PN}-${MY_PV}
@@ -79,13 +79,18 @@ src_compile() {
 	yarn run plugins:build-bundled || die "compile failed"
 }
 
-src_install() {	
+src_install() {
 	insinto /etc/${PN_S}
 	newins conf/sample.ini ${PN}.ini
 	newins conf/ldap.toml ldap.toml
 
+	newbin `(find bin -name ${PN})` ${PN_S}
 	newbin `(find bin -name ${PN}-cli)` ${PN_S}-cli
 	newbin `(find bin -name ${PN}-server)` ${PN_S}-server
+
+	# new since grafana 10..
+	# this requires an eselect-grafana plugin when v11 is realeased
+	dosym /usr/bin/${PN_S} /usr/bin/${PN}
 
 	insinto "/usr/share/${PN_S}"
 	doins -r public conf tools
@@ -93,6 +98,8 @@ src_install() {
 	newconfd "${S}/files/${PN}.confd" "${PN_S}"
 	newinitd "${S}/files/${PN}.initd" "${PN_S}"
 	use systemd && systemd_newunit "${S}/files/${PN}.service" "${PN_S}.service"
+
+	newtmpfiles "${S}/files"/${PN}.conf ${PN_S}.conf
 
 	keepdir /var/{lib,log}/${PN_S}
 	fowners ${PN}:${PN} /var/{lib,log}/${PN_S}
@@ -108,6 +115,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN_S}.conf
+
 	if [ -d /var/lib/${PN} ]; then
 		# found non-slotted grafana installation
 		ewarn "We found an old ${PN} installation in '/var/lib/${PN}'!"

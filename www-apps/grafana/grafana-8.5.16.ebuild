@@ -28,8 +28,7 @@ DEPEND="!www-apps/${PN}-bin
 	acct-group/${PN}
 	acct-user/${PN}
 	media-libs/fontconfig
-	>=net-libs/nodejs-16[icu]
-	<net-libs/nodejs-17[icu]
+	net-libs/nodejs:0/16[icu]
 	sys-apps/yarn
 	>=dev-lang/go-1.16
 	dev-go/wire"

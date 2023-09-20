@@ -23,11 +23,11 @@ BDEPEND="
     !!<sys-power/asusctl-4.6.0
     !!<sys-power/${PN}-5.0.0
 "
-# need to readd: gnome? gnome-extra/gnome-shell-extension-supergfxctl-gex
 RDEPEND="
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
+        gnome-extra/gnome-shell-extension-supergfxctl-gex
     )
     sys-process/lsof
 "

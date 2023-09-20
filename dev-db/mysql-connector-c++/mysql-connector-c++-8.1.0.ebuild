@@ -41,8 +41,8 @@ src_prepare() {
     if [ `printf "%.0f" $(protoc --version | awk '{print $2}' | bc | sed 's/[.]/,/')` -ge 23 ]; then
         eapply "${FILESDIR}"/${PN}-8.0.33-backport-logging.patch
         sed -i "s/zero_copy_stream.h>/zero_copy_stream.h>\n#include\ \"..\/..\/..\/..\/include\/logging\/logging.h\"/g" "${S}"/cdk/protocol/mysqlx/protocol.cc || die
-        sed -i 's/LibraryLoader : public util::nocopy/LibraryLoader/g' "${S}"/jdbc/driver/nativeapi/library_loader.h || die
     fi
+    sed -i 's/LibraryLoader : public util::nocopy/LibraryLoader/g' "${S}"/jdbc/driver/nativeapi/library_loader.h || die
     cmake_src_prepare
 }
 

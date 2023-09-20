@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=!!gnome-extra/gnome-shell-extension-asus-nb-gex !!gnome-extra/gnome-shell-extension-asusctl-gex !!<gnome-base/gnome-shell-45_alpha app-eselect/eselect-gnome-shell-extensions dev-libs/glib:2
+DESCRIPTION=Extension for visualizing asusctl-ctrl(asusd) settings and status.
+EAPI=8
+HOMEPAGE=https://gitlab.com/asus-linux/supergfxctl-gex
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RDEPEND=!!gnome-extra/gnome-shell-extension-asus-nb-gex !!gnome-extra/gnome-shell-extension-asusctl-gex !!<gnome-base/gnome-shell-45_alpha app-eselect/eselect-gnome-shell-extensions
+SLOT=0/5.1
+SRC_URI=https://gitlab.com/asus-linux/supergfxctl-gex/uploads/1ba130c6566e5f2be7ca946284f7d295/supergfxctl-gex_asus-linux.org.zip -> gnome-shell-extension-supergfxctl-gex-5.1.2_rc1.zip
+_md5_=450bac1571cacfa4a828de34825bebf1

@@ -53,7 +53,7 @@ games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, tempe
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 45-r1: Freon is an extension for displaying sensors data.
-gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1 5.1.2_rc1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
@@ -82,7 +82,7 @@ sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0: asusctl (asus
 sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/iasl 20230331: Intel ACPI Source Language (ASL) compiler
 sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.
-sys-power/supergfxctl 4.0.5-r2 5.0.1-r1 5.1.1 5.1.2: supergfxctl (supergfxd) Graphics switching
+sys-power/supergfxctl 4.0.5-r2 5.0.1-r1 5.1.1 5.1.2-r1: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0-r1: ASUS ROG on gentoo linux virtual
 virtual/linux-sources 3-r100: Virtual for Linux kernel sources
 www-apps/grafana 8.5.16 9.3.6 10.1.1: The open-source platform for monitoring and observability

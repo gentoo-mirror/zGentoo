@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=MPL-2.0
 RDEPEND=!!gnome-extra/gnome-shell-extension-asus-nb-gex !!gnome-extra/gnome-shell-extension-asusctl-gex !!<gnome-base/gnome-shell-45_alpha app-eselect/eselect-gnome-shell-extensions
 SLOT=0/5.1
-SRC_URI=https://gitlab.com/asus-linux/supergfxctl-gex/uploads/1ba130c6566e5f2be7ca946284f7d295/supergfxctl-gex_asus-linux.org.zip -> gnome-shell-extension-supergfxctl-gex-5.1.2_rc1.zip
-_md5_=450bac1571cacfa4a828de34825bebf1
+SRC_URI=https://gitlab.com/asus-linux/supergfxctl-gex/uploads/d3a403bbbb9cb47f8a8e2000e4df90f2/supergfxctl-gex_asus-linux.org.zip -> gnome-shell-extension-supergfxctl-gex-5.1.2_rc2.zip
+_md5_=f983ae4675887e7b6e52c58bbecaff1c

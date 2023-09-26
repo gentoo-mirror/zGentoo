@@ -26,7 +26,10 @@ REQUIRED_USE="gnome? ( gfx )"
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
     acpi? ( sys-power/acpi_call )
-    gui? ( dev-libs/libappindicator:3 )
+    gui? ( 
+        dev-libs/libappindicator:3 
+        !!gnome-extra/gnome-shell-extension-supergfxctl-gex
+    )
     >=sys-power/power-profiles-daemon-0.10.0
 "
 DEPEND="${RDEPEND}
@@ -79,13 +82,15 @@ src_compile() {
 }
 
 src_install() {
-    # icons (apps)
-    insinto /usr/share/icons/hicolor/512x512/apps/
-    doins data/icons/*.png
+    if use gui; then
+        # icons (apps)
+        insinto /usr/share/icons/hicolor/512x512/apps/
+        doins data/icons/*.png
 
-    # icons (status/notify)
-    insinto /usr/share/icons/hicolor/scalable/status/
-    doins data/icons/scalable/*.svg
+        # icons (status/notify)
+        insinto /usr/share/icons/hicolor/scalable/status/
+        doins data/icons/scalable/*.svg
+    fi
 
     insinto /lib/udev/rules.d/
     doins data/${_PN}.rules

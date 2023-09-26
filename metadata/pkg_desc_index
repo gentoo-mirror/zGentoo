@@ -78,7 +78,7 @@ sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/gentoo-sources-rog 6.4.16 6.5.4: Full sources including the Gentoo and ASUS ROG patchset for the 6.5 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
-sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0 4.7.2: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
+sys-power/asusctl 4.0.7-r2 4.1.1 4.3.4 4.5.8 4.6.0-r4 4.6.2 4.7.0 4.7.2-r1: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/gwe 0.15.5: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/iasl 20230331: Intel ACPI Source Language (ASL) compiler
 sys-power/power-profiles-daemon 0.12: Makes power profiles handling available over D-Bus.

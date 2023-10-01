@@ -9,5 +9,5 @@ LICENSE=MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 BSD-2 ISC
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=https://github.com/influxdata/influx-cli/archive/v2.3.0.tar.gz -> influx-cli-2.3.0.tar.gz https://vendors.simple-co.de/influx-cli/vendor-influx-cli-2.3.0.tar.xz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	5f4bb0758df2e483babf68cd517078ca
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	go-module	8624eede24936fd7666e5298e5332f22	systemd	5f4bb0758df2e483babf68cd517078ca
 _md5_=b43937303fd9d367900dd08e8476972f

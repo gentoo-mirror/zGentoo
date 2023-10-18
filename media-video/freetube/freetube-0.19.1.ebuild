@@ -4,9 +4,9 @@
 EAPI=8
 
 _PN="FreeTube"
-LANGUAGES="am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he
+LANGUAGES="af am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh-CN zh-TW"
+	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
 for lang in ${LANGUAGES}; do
 	IUSE+=" +l10n_${lang}"
@@ -22,6 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 SRC_URI="amd64? ( ${HOMEPAGE}/releases/download/v${PV}-beta/${PN}_${PV}_amd64.deb -> ${P}-amd64.deb )
     arm64? ( ${HOMEPAGE}/releases/download/v${PV}-beta/${PN}_${PV}_arm64.deb -> ${P}-arm64.deb )"
+BDEPEND="!!media-sound/freetube"
 QA_PREBUILT="opt/${_PN}/swiftshader/libEGL.so
     opt/${_PN}/swiftshader/libGLESv2.so
     opt/${_PN}/chrome-sandbox
@@ -83,7 +84,8 @@ src_install() {
 	dosym ${FREETUBE_HOME}/${PN} /usr/bin/${PN} || die
 	
 	insinto /usr/share/doc/${P}
-	doins usr/share/doc/${PN}/changelog.gz
+	gunzip usr/share/doc/${PN}/changelog.gz
+	doins usr/share/doc/${PN}/changelog
 
     insinto /usr/share/icons/hicolor/scalable/apps
     doins usr/share/icons/hicolor/scalable/apps/${PN}.svg
@@ -92,11 +94,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }

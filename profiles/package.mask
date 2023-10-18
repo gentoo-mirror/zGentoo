@@ -41,3 +41,6 @@ sys-power/liquidctl
 
 # masked because only provided for ceph compatibility
 =dev-python/cryptography-40.0.2
+
+# masked because it has moved to another category (use: media-video/freetube instead)
+media-audio/freetube

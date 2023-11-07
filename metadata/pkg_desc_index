@@ -28,7 +28,6 @@ dev-lang/kotlin-bin 1.6.10 1.7.10 1.9.10: Statically typed programming language 
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bindings, based on nativefiledialog
 dev-libs/objfw 1.0: Portable, lightweight framework for the Objective-C language
-dev-libs/olm 3.2.13: Implementation of the olm and megolm cryptographic ratchets
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/cryptography 40.0.2: Library providing cryptographic recipes and primitives
 dev-python/exif 1.6.0: Read and modify image EXIF metadata using Python
@@ -36,7 +35,7 @@ dev-python/hid 1.0.5: ctypes bindings for hidapi
 dev-python/injector 0.21.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.6.0: A logging replacement for Python
 dev-python/matplotlib 3.7.2-r1: Pure python plotting library with matlab like syntax
-dev-python/matrix-nio 0.21.1: Multilayered Matrix client library
+dev-python/matrix-nio 0.22.1: Multilayered Matrix client library
 dev-python/plum-py 0.8.6: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files

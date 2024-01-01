@@ -37,6 +37,9 @@ DEPEND="${BDEPEND}
     sys-apps/systemd:0=
 	sys-apps/dbus
 "
+PATCHES="
+    ${FILESDIR}/${P}-vkicd.patch
+"
 
 S="${WORKDIR}/${PN}-${PV}"
 QA_PRESTRIPPED="

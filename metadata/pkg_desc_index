@@ -17,6 +17,7 @@ app-metrics/prometheus 2.39.0 2.42.0 2.47.0: Prometheus monitoring system and ti
 app-metrics/snmp_exporter 0.20.0-r2 0.21.0-r1 0.24.1: Prometheus exporter for snmp metrics
 app-metrics/synthetic-monitoring-agent 0.9.4 0.17.1: The plugin-driven server agent for collecting & reporting metrics.
 app-metrics/telegraf 1.24.2 1.25.2 1.28.0: The plugin-driven server agent for collecting & reporting metrics.
+app-misc/fastgron 0.7.7: fastgron is a High-performance JSON to GRON (greppable, flattened JSON) converter
 app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 23.8.2: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.

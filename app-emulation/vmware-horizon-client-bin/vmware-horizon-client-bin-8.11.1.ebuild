@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit xdg-utils
+
 DESCRIPTION="VMware Horizon View client"
 HOMEPAGE="https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/8_0"
 SRC_URI="https://download3.vmware.com/software/CART24FQ4_LIN_2309.1_TARBALL/VMware-Horizon-Client-Linux-2309.1-${PV}-22775487.tar.gz -> ${PF}.tar.gz"
@@ -59,11 +61,20 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-QA_PREBUILT="usr/lib/vmware/*"
+QA_PREBUILT="
+    usr/lib64/*
+    usr/lib64/pcoip/vchan_plugins/*
+    usr/lib64/vmware/gcc/*
+    usr/lib64/vmware/*
+    usr/lib64/vmware/view/vdpService/*
+    usr/lib64/vmware/view/software/*
+    usr/lib64/vmware/view/vaapi/*
+    usr/lib64/vmware/view/lib/*
+    usr/lib64/vmware/view/vaapi2.7/*
+    usr/lib64/vmware/view/vdpau/*
+    usr/lib64/vmware/view/vaapi2/*
+"
 
-#
-# VMware bundle is in $DISTDIR
-#
 src_unpack() {
     default
     # getting client from tgz
@@ -79,14 +90,34 @@ src_prepare() {
 
     # correcting lib path (strict-multilib)
     mv "${S}"/usr/lib "${S}"/usr/lib64
+
+    # removing un-needed docs (willl reinstall them later)
+    mv "${S}"/usr/share/doc/vmware-horizon-client "${WORKDIR}/${P}_docs"
     
     # patching lib-path inside binaries
     sed -i 's~/usr/lib/~/usr/lib64/~g' "${S}"/usr/bin/vmware-* || die "couldn't patch library path"
 
     # copying libs into client directory
     cp -a "${WORKDIR}"/VMware-Horizon-Client-Linux-ClientSDK-${SLOT#*/}-${PV}-*.x64/lib/* "${S}"/usr/lib64/
+
+    # correcting desktop-file
+    sed -i 's~Application;Network;~Network;~g' "${S}"/usr/share/applications/vmware-view.desktop || \
+        die "couldn't patch library path"
 }
 
 src_install() {
+    # installing aplication
     cp -a usr "${D}"
+
+    # installing docs
+    dodoc "${WORKDIR}/${P}_docs/"*.txt
+    dodoc "${WORKDIR}/${P}_docs/patches/"*   
+}
+
+pkg_postinst() {
+    xdg_desktop_database_update
+}
+
+pkg_postrm() {
+    xdg_desktop_database_update
 }

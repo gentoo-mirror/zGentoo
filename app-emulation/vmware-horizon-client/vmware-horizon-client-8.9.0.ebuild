@@ -10,7 +10,7 @@ SRC_URI="https://download3.vmware.com/software/CART24FQ1_LIN64_2303/VMware-Horiz
 RESTRICT="mirror"
 
 LICENSE="vmware"
-SLOT="0/2203"
+SLOT="0/2303"
 KEYWORDS="~amd64"
 IUSE=""
 

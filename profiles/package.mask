@@ -44,3 +44,6 @@ sys-power/liquidctl
 
 # masked because it has moved to another category (use: media-video/freetube instead)
 media-audio/freetube
+
+# masked due to upcoming removal in 14 days (2024-02-05)
+<=app-emulation/vmware-horizon-client-8.9.0

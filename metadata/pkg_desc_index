@@ -67,7 +67,7 @@ net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-libs/libnm-glib 1.18.10-r2: Legacy NetworkManager glib and util libraries
 net-misc/anydesk 6.3.0: Feature rich multi-platform remote desktop application
 net-misc/postman-bin 10.6.0: Supercharge your API workflow
-net-misc/rustdesk-bin 1.2.2: Yet another remote desktop software, written in Rust.
+net-misc/rustdesk-bin 1.2.3: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
 net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CDW
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn

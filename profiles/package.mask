@@ -47,3 +47,6 @@ media-audio/freetube
 
 # masked due removal, use app-emulation/vmware-horizon-client-bin as a replacement
 app-emulation/vmware-horizon-client
+
+# masked due to critical vulnerabilities (https://anydesk.com/en/public-statement)
+net-misc/anydesk

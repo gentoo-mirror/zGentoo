@@ -48,6 +48,7 @@ src_install() {
 
     # bin
     chmod +x "${D}"/usr/lib/${_PN}/${_PN}
+    chmod +x "${D}"/usr/share/rustdesk/files/polkit
     dosym /usr/lib/${_PN}/${_PN} /usr/bin/${_PN}
 
     # pam

@@ -3,9 +3,9 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
-IUSE="+av1 +codec2 -daemon -extras"
+IUSE="+av1 +codec2 -daemon doc -extras"
 
-# language spport - not yet 100% implemented
+# language support
 LANGS="cs da de en es fr_FR hu it ja lt pt_BR ru sv tr uk zh_CN"
 for lang in ${LANGS}; do
     IUSE="${IUSE} linguas_${lang}"
@@ -31,7 +31,7 @@ EGIT_SUBMODULES=(
     'linphone-sdk/external/decaf'
 )
 
-BDEPEND="
+RDEPEND="
     dev-db/sqlite
     dev-libs/jsoncpp
     dev-libs/libxml2
@@ -42,11 +42,7 @@ BDEPEND="
     dev-qt/linguist-tools[qml]
     dev-qt/qtquickcontrols[widgets]
     dev-qt/qtquickcontrols2[widgets]
-    codec2? ( media-libs/codec2 )
-    av1? (
-        media-libs/dav1d
-        media-libs/libaom
-    )
+    media-libs/glew:0
     media-libs/libjpeg-turbo
     media-libs/libvpx
     media-libs/libyuv
@@ -61,7 +57,15 @@ BDEPEND="
     net-libs/libsrtp:2
     net-libs/mbedtls
     net-nds/openldap
+    av1? (
+        media-libs/dav1d
+        media-libs/libaom
+    )
+    codec2? ( media-libs/codec2 )
+    doc? ( app-text/doxygen )
 "
+DEPEND="${RDEPEND}"
+
 PATCHES="${FILESDIR}/${P}-fix_enum.patch"
 
 src_unpack() {
@@ -99,6 +103,7 @@ src_configure() {
         -DENABLE_SHARED=ON
 
         # daemon
+        -DENABLE_DOC=$(usex doc)
         -DENABLE_DAEMON=$(usex daemon)
         -DENABLE_TOOLS=$(usex extras)
         -DENABLE_AV1=$(usex av1)
@@ -219,14 +224,4 @@ src_install() {
             sed -i "/${lang}.qm/d" "${D}/opt/${PN}/assets/languages/i18n.qrc" || die
         fi
     done
-}
-
-pkg_postinst() {
-    xdg_icon_cache_update
-    xdg_desktop_database_update
-}
-
-pkg_postrm() {
-    xdg_icon_cache_update
-    xdg_desktop_database_update
 }

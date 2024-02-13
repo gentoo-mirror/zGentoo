@@ -1,0 +1,10 @@
+--- a/linphone-app/src/utils/LinphoneEnums.cpp	2024-02-09 16:25:03.817325036 +0100
++++ b/linphone-app/src/utils/LinphoneEnums.cpp	2024-02-09 16:26:10.558922601 +0100
+@@ -160,6 +160,7 @@
+ 	case TransportTypeTls: return "TLS";
+ 	case TransportTypeDtls: return "DTLS";
+ 	}
++	return "TLS"; // default if not found (same return type as below)
+ }
+ void LinphoneEnums::fromString(const QString& transportType, LinphoneEnums::TransportType *transport){
+ 	if (transportType.toUpper() == QLatin1String("TCP"))

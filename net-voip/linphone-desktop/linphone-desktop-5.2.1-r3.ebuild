@@ -40,6 +40,7 @@ RDEPEND="
     dev-python/pystache[${PYTHON_USEDEP}]
     dev-python/six[${PYTHON_USEDEP}]
     dev-qt/linguist-tools[qml]
+    dev-qt/qtmultimedia:5
     dev-qt/qtquickcontrols[widgets]
     dev-qt/qtquickcontrols2[widgets]
     media-libs/glew:0
@@ -50,6 +51,7 @@ RDEPEND="
     media-libs/openh264
     media-libs/opus
     media-libs/speex
+    media-libs/speexdsp
     media-libs/vo-amrwbenc
     media-libs/zxing-cpp
     media-sound/gsm

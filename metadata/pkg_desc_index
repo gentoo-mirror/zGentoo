@@ -59,6 +59,7 @@ media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CD
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 3.1.3: Google Photos Sync downloads your Google Photos to the local file system.
 media-gfx/yed 3.23.2: yEd Graph Editor - High-quality diagrams made easy
+media-libs/libyuv 20240206: Open source project that includes YUV scaling and conversion functionality.
 media-sound/teamspeak-client 3.6.2-r9999: A client software for quality voice communication via the internet
 media-video/freetube 0.19.1: An open source desktop YouTube player built with privacy in mind.
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
@@ -73,6 +74,7 @@ net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CD
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
+net-voip/linphone-desktop 5.2.1: Open source softphone for voice and video over IP calling and instant messaging.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/gentoo-sources-rog 6.4.16 6.5.4 6.6.9: Full sources including the Gentoo and ASUS ROG patchset for the 6.6 kernel tree

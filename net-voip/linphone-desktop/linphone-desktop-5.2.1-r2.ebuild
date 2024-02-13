@@ -50,6 +50,7 @@ RDEPEND="
     media-libs/openh264
     media-libs/opus
     media-libs/speex
+    media-libs/speexdsp
     media-libs/vo-amrwbenc
     media-libs/zxing-cpp
     media-sound/gsm

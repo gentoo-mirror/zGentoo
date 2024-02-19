@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,11 @@ LICENSE="AGPL-3"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="dev-lang/php[curl,iconv,json,ssl,xml]
-	virtual/httpd-php"
+RDEPEND="
+	dev-lang/php[curl,iconv,ssl,xml]
+	virtual/httpd-php
+"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
 

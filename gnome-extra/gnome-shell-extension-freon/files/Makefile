@@ -19,10 +19,6 @@ build: compile-schema
 compile-schema: ./$(INSTALL_NAME)/schemas/org.gnome.shell.extensions.sensors.gschema.xml
 	glib-compile-schemas $(INSTALL_NAME)/schemas
 
-delivery: delivery
-	rm -f TopIcons.zip
-	zip --include '*.js' 'metadata.json' 'locale/*' 'schemas/*' --exclude '*_build*' '*.po' -r TopIcons.zip .
-
 clean:
 	rm -rf _build
 

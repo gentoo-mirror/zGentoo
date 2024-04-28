@@ -29,6 +29,7 @@ dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bindings, based on nativefiledialog
 dev-libs/objfw 1.0: Portable, lightweight framework for the Objective-C language
+dev-python/PyDrive2 1.19.0: Wrapper library of google-api-python-client
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/cryptography 40.0.2: Library providing cryptographic recipes and primitives
 dev-python/exif 1.6.0: Read and modify image EXIF metadata using Python
@@ -37,6 +38,7 @@ dev-python/injector 0.21.0: Python dependency injection framework, inspired by G
 dev-python/logbook 1.6.0: A logging replacement for Python
 dev-python/matplotlib 3.7.2-r1: Pure python plotting library with matlab like syntax
 dev-python/matrix-nio 0.22.1: Multilayered Matrix client library
+dev-python/pecan 1.5.1 1.5.1-r1: A WSGI object-dispatching web framework, lean, fast, with few dependencies
 dev-python/plum-py 0.8.6: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files
@@ -78,6 +80,7 @@ net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/
 net-voip/linphone-desktop 5.2.1-r3: Open source softphone for voice and video over IP calling and instant messaging.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sci-electronics/kicad 8.0.1-r1: Electronic Schematic and PCB design tools
+sys-cluster/ceph 18.2.2: Ceph distributed filesystem
 sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-kernel/gentoo-sources-rog 6.4.16 6.5.4 6.6.9: Full sources including the Gentoo and ASUS ROG patchset for the 6.6 kernel tree
 sys-libs/minilog 9999: A minimal header only C++ logger system

@@ -50,3 +50,6 @@ app-emulation/vmware-horizon-client
 
 # masked due to critical vulnerabilities (https://anydesk.com/en/public-statement)
 net-misc/anydesk
+
+# please use "sys-kernel/gentoo-sources" from upstream as a replacement
+sys-kernel/gentoo-sources-rog

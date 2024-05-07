@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=ASUS ROG on gentoo linux virtual
-EAPI=8
-KEYWORDS=~amd64
-RDEPEND==virtual/linux-sources-3-r100 sys-kernel/gentoo-sources-rog sys-power/asusctl[gfx]
-SLOT=0
-_md5_=6c26da01753b6de4d6cb87d50530e42e

@@ -11,5 +11,5 @@ LICENSE=GPL-2 cnijfilter
 RDEPEND=>=media-libs/libpng-1.5 >=media-libs/tiff-3.4 >=net-print/cups-1.4 servicetools? ( >=dev-libs/libxml2-2.7.3-r2 >=x11-libs/gtk+-2.6:2 )
 SLOT=0
 SRC_URI=http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-3.80-1.tar.gz
-_eclasses_=gnuconfig	a397adda6984a4c423e28ac274c1ba98	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	5f49a16f67f81bdf873e3d1f10b10001	autotools	dc70c1dc473b68317fc4a86f5fbfc57d	flag-o-matic	288c54efeb5e2aa70775e39032695ad4
+_eclasses_=gnuconfig	a397adda6984a4c423e28ac274c1ba98	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	5f49a16f67f81bdf873e3d1f10b10001	autotools	dc70c1dc473b68317fc4a86f5fbfc57d	flag-o-matic	d309b9713dfc18e754cba88d3ba69653
 _md5_=4856bfafd010e0be2b9781812e918296

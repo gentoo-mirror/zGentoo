@@ -29,9 +29,8 @@ www-apps/rainloop-community
 # masked as you should know what you're installing - use at own risk
 dev-util/ghidra-bin
 
-# masked during stabilization (use at own risk!)
-=sys-power/asusctl-4.7.0_rc1
-=sys-power/asusctl-4.7.0_rc2
+# masked as prepared for removal (no longer supported versions)
+<=sys-power/asusctl-4.7.0
 
 # mask because of corruption (e2ee patch not working correctly)
 =net-im/matrix-webhook-3.8.0
@@ -53,3 +52,6 @@ net-misc/anydesk
 
 # please use "sys-kernel/gentoo-sources" from upstream as a replacement
 sys-kernel/gentoo-sources-rog
+
+# masked during stabilization (use at own risk!)
+=sys-power/asusctl-6.0.7

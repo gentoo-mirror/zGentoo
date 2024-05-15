@@ -27,7 +27,10 @@ RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
     >=sys-power/power-profiles-daemon-0.13
     acpi? ( sys-power/acpi_call )
-    gui? ( dev-libs/libappindicator:3 )
+    gui? (
+        dev-libs/libappindicator:3
+        sys-auth/seatd
+    )
 "
 DEPEND="${RDEPEND}
     >=virtual/rust-1.75.0
@@ -37,10 +40,7 @@ DEPEND="${RDEPEND}
     sys-apps/systemd:0=
 	sys-apps/dbus
     media-libs/sdl2-gfx
-    gfx? ( 
-        >=sys-power/supergfxctl-5.2.1[gnome?]
-        sys-auth/seatd
-    )
+    gfx? ( >=sys-power/supergfxctl-5.2.1[gnome?] )
 "
 S="${WORKDIR}/${PN}-${_PV/_/-}"
 

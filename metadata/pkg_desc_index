@@ -48,6 +48,7 @@ dev-python/python-registry 1.4: Cross-Platform Windows Registry Browser
 dev-python/smbus 1.1-r2: Python bindings for Linux SMBus access through i2c-dev
 dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the redis database.
 dev-python/unpaddedbase64 2.1.0-r1: Unpadded Base64
+dev-python/wxpython 4.2.1-r1: A blending of the wxWindows C++ class library with Python
 dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 dev-util/ghidra-bin 10.3.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate

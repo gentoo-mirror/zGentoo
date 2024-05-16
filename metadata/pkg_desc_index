@@ -52,6 +52,7 @@ dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 dev-util/ghidra-bin 10.3.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
+dev-util/selenium-manager 4.20.0: CLI tool that manages the browser/driver infrastructure required by Selenium
 games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-appindicator 57-r1: Support legacy, AppIndicators and KStatusNotifierItems in Gnome

@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop xdg-utils
 
 MY_PN=${PN/-bin}
-PB_DATE="20230614"
+PB_DATE="20240410"
 
 DESCRIPTION="A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate"
 HOMEPAGE="https://ghidra-sre.org/ https://github.com/NationalSecurityAgency/ghidra/"

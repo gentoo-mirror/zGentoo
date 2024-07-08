@@ -25,6 +25,7 @@ app-text/obsidian 1.5.3: A second brain, for you, forever.
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.3.0 2.4.0 2.7.1: Scalable datastore for metrics, events, and real-time analytics
 dev-db/mysql-connector-c++ 8.0.33 8.1.0: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-workbench 8.0.38-r1: MySQL Workbench
 dev-games/godot 4.1: Multi-platform 2D and 3D game engine with a feature-rich editor
 dev-go/wire 0.5.0: Wire: Automated Initialization in Go
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
@@ -64,7 +65,7 @@ media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW 
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
 media-gfx/gphotos-sync 3.1.3: Google Photos Sync downloads your Google Photos to the local file system.
-media-gfx/yed 3.23.2: yEd Graph Editor - High-quality diagrams made easy
+media-gfx/yed 3.24: yEd Graph Editor - High-quality diagrams made easy
 media-libs/libyuv 20240206: Open source project that includes YUV scaling and conversion functionality.
 media-sound/teamspeak-client 3.6.2-r9999: A client software for quality voice communication via the internet
 media-video/freetube 0.20.0: An open source desktop YouTube player built with privacy in mind.

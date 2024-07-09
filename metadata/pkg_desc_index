@@ -1,7 +1,9 @@
+acct-group/bofh_generator 0: BOFH server group
 acct-group/flutter 0: Flutter program group
 acct-group/logger 0-r1: Logger program group
 acct-group/matrix-webhook 0: System group: matrix-webhook
 acct-group/matterbridge 0: System group: matterbridge
+acct-user/bofh_generator 0: User for BOFH-Server
 acct-user/fluent-bit 0-r1: fluent-bit program user
 acct-user/loki 0-r1: Loki program user
 acct-user/matrix-webhook 0-r1: System user: matrix-webhook
@@ -73,6 +75,7 @@ net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensib
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-misc/anydesk 6.3.0: Feature rich multi-platform remote desktop application
+net-misc/bofh_generator 1.0.0: BOFH excuse generator
 net-misc/postman-bin 10.6.0: Supercharge your API workflow
 net-misc/rustdesk-bin 1.2.3-r1: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon

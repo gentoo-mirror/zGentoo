@@ -6,13 +6,13 @@ EAPI=8
 inherit xdg-utils
 
 DESCRIPTION="VMware Horizon View client"
-HOMEPAGE="https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/8_0"
-SRC_URI="https://download3.vmware.com/software/CART24FQ4_LIN_2309.1_TARBALL/VMware-Horizon-Client-Linux-2309.1-${PV}-22775487.tar.gz -> ${PF}.tar.gz"
+HOMEPAGE="https://docs.omnissa.com/de-DE/bundle/HorizonOverviewDeployment/page/AboutHorizon8.html"
+SRC_URI="https://download3.omnissa.com/software/CART25FQ1_LIN_2312.1_TARBALL/VMware-Horizon-Client-Linux-2312.1-${PV}-23543969.tar.gz -> ${PF}.tar.gz"
 
 RESTRICT="mirror"
 
 LICENSE="vmware"
-SLOT="0/2309.1"
+SLOT="0/2312.1"
 KEYWORDS="~amd64"
 IUSE=""
 

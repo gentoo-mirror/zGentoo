@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ## WARN
@@ -8,17 +8,19 @@ EAPI=8
 inherit go-module systemd
 go-module_set_globals
 
-
 DESCRIPTION="CLI for managing resources in InfluxDB v2"
 HOMEPAGE="https://github.com/influxdata/${PN}"
+
+## howto build vendor bundle
+# >> git clone https://github.com/influxdata/influx-cli -b v<version> /tmp/influx-cli
+# >> cd /tmp/influx-cli && version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`
+# >> go mod vendor && mkdir influx-cli-${version} && mv vendor influx-cli-${version}/vendor
+# >> tar -caf influx-cli-${version}-vendor.tar.xz influx-cli-${version}/vendor
+
 SRC_URI="
 	https://github.com/influxdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://vendors.simple-co.de/${PN}/vendor-${P}.tar.xz
+	https://vendors.simple-co.de/${PN}/${P}-vendor.tar.xz
 "
-# >> git clone https://github.com/influxdata/influx-cli -b v<version> /tmp/influx-cli && cd /tmp/influx-cli
-# >> go mod vendor && mkdir influx-cli-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"` && mv vendor influx-cli-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`/vendor && \
-# >> tar -c -I 'xz -9 -T0' -f vendor-influx-cli-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`.tar.xz influx-cli-`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`/vendor
-RESTRICT="mirror"
 
 LICENSE="MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 BSD-2 ISC"
 SLOT="0"

@@ -10,26 +10,26 @@ acct-user/matrix-webhook 0-r1: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 2.0.0 2.1.9: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
-app-admin/influx-cli 2.3.0 2.4.0 2.7.1 2.7.3: CLI for managing resources in InfluxDB v2
+app-admin/influx-cli 2.7.1 2.7.3 2.7.5: CLI for managing resources in InfluxDB v2
 app-admin/loki 2.6.1 2.7.3 2.9.1: Like Prometheus, but for logs.
 app-containers/podman-compose 1.0.6: Run docker-compose files without root with podman
 app-editors/imhex 1.30.1: A hex editor for reverse engineers, programmers, and eyesight
 app-emulation/vmware-horizon-client-bin 8.12.1: VMware Horizon View client
-app-metrics/prom2json 1.3.2 1.3.3: A tool to scrape a Prometheus client and dump the result as JSON
-app-metrics/prometheus 2.39.0 2.42.0 2.47.0: Prometheus monitoring system and time series database
-app-metrics/snmp_exporter 0.20.0-r2 0.21.0-r1 0.24.1: Prometheus exporter for snmp metrics
-app-metrics/synthetic-monitoring-agent 0.9.4 0.17.1: The plugin-driven server agent for collecting & reporting metrics.
-app-metrics/telegraf 1.24.2 1.25.2 1.28.0: The plugin-driven server agent for collecting & reporting metrics.
+app-metrics/prom2json 1.3.3 1.4.0: A tool to scrape a Prometheus client and dump the result as JSON
+app-metrics/prometheus 2.47.0 2.53.1: Prometheus monitoring system and time series database
+app-metrics/snmp_exporter 0.24.1 0.26.0: Prometheus exporter for snmp metrics
+app-metrics/synthetic-monitoring-agent 0.17.1 0.25.2: The plugin-driven server agent for collecting & reporting metrics.
+app-metrics/telegraf 1.28.0 1.31.2: The plugin-driven server agent for collecting & reporting metrics.
 app-misc/fastgron 0.7.7: fastgron is a High-performance JSON to GRON (greppable, flattened JSON) converter
 app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
 app-office/qownnotes 23.8.2: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 app-text/obsidian 1.5.3: A second brain, for you, forever.
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
-dev-db/influxdb 2.3.0 2.4.0 2.7.1: Scalable datastore for metrics, events, and real-time analytics
+dev-db/influxdb 2.7.8: Scalable datastore for metrics, events, and real-time analytics
 dev-db/mysql-connector-c++ 8.0.33 8.1.0: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-workbench 8.0.38-r1: MySQL Workbench
 dev-games/godot 4.1: Multi-platform 2D and 3D game engine with a feature-rich editor
-dev-go/wire 0.5.0: Wire: Automated Initialization in Go
+dev-go/wire 0.6.0: Wire: Automated Initialization in Go
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bindings, based on nativefiledialog
 dev-libs/objfw 1.0: Portable, lightweight framework for the Objective-C language
@@ -76,7 +76,7 @@ net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensib
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-misc/anydesk 6.3.0: Feature rich multi-platform remote desktop application
-net-misc/bofh_generator 1.0.0: BOFH excuse generator
+net-misc/bofh_generator 1.0.0-r1: BOFH excuse generator
 net-misc/postman-bin 10.6.0: Supercharge your API workflow
 net-misc/rustdesk-bin 1.2.6: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
@@ -96,5 +96,5 @@ sys-power/gwe 0.15.5: System utility designed to provide information, control th
 sys-power/iasl 20230331: Intel ACPI Source Language (ASL) compiler
 sys-power/supergfxctl 4.0.5-r2 5.0.1-r1 5.1.1 5.1.2-r2 5.2.1: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0-r2: ASUS ROG on gentoo linux virtual
-www-apps/grafana 8.5.16 9.3.6 10.1.1: The open-source platform for monitoring and observability
+www-apps/grafana 8.5.16 8.5.27 9.3.6 9.5.21 10.1.1 10.4.6 11.1.3: The open-source platform for monitoring and observability
 www-apps/snappymail 2.36.1: Simple, modern and fast web-based email client

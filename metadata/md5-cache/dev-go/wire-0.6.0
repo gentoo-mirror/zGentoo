@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/go
+DESCRIPTION=Wire: Automated Initialization in Go
+EAPI=8
+HOMEPAGE=https://github.com/google/wire
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/google/wire/archive/v0.6.0.tar.gz -> wire-0.6.0.tar.gz https://vendors.simple-co.de/wire/wire-0.6.0-vendor.tar.xz
+_md5_=8f16dc2c435963e537b2a4000632e468

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,15 +6,23 @@ inherit systemd go-module
 
 DESCRIPTION="Prometheus exporter for snmp metrics"
 HOMEPAGE="https://github.com/prometheus/snmp_exporter"
+
+# creating vendor bundle:
+# >> git clone https://github.com/prometheus/snmp_exporter -b v<version> /tmp/snmp_exporter
+# >> cd /tmp/snmp_exporter && version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`
+# >> go mod vendor && mkdir snmp_exporter-${version} && mv vendor snmp_exporter-${version}/vendor
+# >> tar -caf snmp_exporter-${version}-vendor.tar.xz snmp_exporter-${version}/vendor
+
 SRC_URI="
 	https://github.com/prometheus/snmp_exporter/archive/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz
+	https://vendors.simple-co.de/${PN}/${P}-vendor.tar.xz
 "
 
 KEYWORDS="~amd64"
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE="systemd"
+RESTRICT="test"
 
 BDEPEND="dev-util/promu"
 DEPEND="

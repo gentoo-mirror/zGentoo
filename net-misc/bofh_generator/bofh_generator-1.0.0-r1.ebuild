@@ -13,7 +13,7 @@ SRC_URI="https://lab.simple-co.de/zappel/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="server systemd"
+IUSE="server"
 
 DEPEND=">=virtual/rust-1.75.0
     server? ( 
@@ -36,7 +36,7 @@ src_install() {
     insinto /usr/bin
     dobin ${S}/target/release/${PN}
 
-    if use server && use systemd; then
+    if use server; then
         insinto /etc/${PN}
         newins ${FILESDIR}/${PN}.settings settings.env
         systemd_dounit ${FILESDIR}/${PN}.service

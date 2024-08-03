@@ -66,7 +66,7 @@ src_prepare() {
     # only build rog-control-center when "gui" flag is set (TODO!)
     ! use gui && eapply "${FILESDIR}/${P}-disable_rog-cc.patch"
 
-    # setting correfct version
+    # setting correct version
     sed -i "1s/.*/Version=\"${_PV}\"/" ${S}/Makefile
 
     default

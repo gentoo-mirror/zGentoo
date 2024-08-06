@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( pypy3 python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{11..13} )
 
 inherit distutils-r1 meson git-r3 xdg-utils virtualx
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
     dev-libs/gobject-introspection
 	dev-libs/libdazzle
-	dev-libs/libappindicator
+	dev-libs/libayatana-appindicator
 	>=dev-python/injector-0.1.7[${PYTHON_USEDEP}]
 	>=dev-python/matplotlib-3.1.1[${PYTHON_USEDEP}]
 	>=dev-python/peewee-3.9.6[${PYTHON_USEDEP}]
@@ -33,7 +33,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}	
 	test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )
-	dev-util/meson
+	dev-build/meson
 "
 
 distutils_enable_tests pytest

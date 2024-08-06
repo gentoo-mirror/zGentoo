@@ -89,7 +89,7 @@ src_compile() {
     yarn run plugins:build-bundled || die "compile failed"
 }
 
-src_install() {	
+src_install() {
     insinto /etc/${PN_S}
     newins conf/sample.ini ${PN}.ini
     newins conf/ldap.toml ldap.toml
@@ -98,12 +98,12 @@ src_install() {
     newexe `(find bin -name ${PN})` ${PN}
     newexe `(find bin -name ${PN}-cli)` ${PN}-cli
     newexe `(find bin -name ${PN}-server)` ${PN}-server
-    
+
     exeinto /usr/bin
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} \$@" >> ${D}/usr/bin/${PN_S}
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN}-cli --homepath /var/lib/${PN_S} --pluginsDir /var/lib/${PN_S}/plugins \$@" >> ${D}/usr/bin/${PN_S}-cli
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN}-server --homepath /var/lib/${PN_S} \$@" >> ${D}/usr/bin/${PN_S}-server
-    
+
     fperms +x /usr/bin/${PN_S}
     fperms +x /usr/bin/${PN_S}-cli
     fperms +x /usr/bin/${PN_S}-server

@@ -61,7 +61,7 @@ src_prepare() {
     echo -e "enableMirror: true\ncacheFolder: ./vendor_yarn" >> .yarnrc.yml
     sed -i '/^yarnPath/d' .yarnrc.yml
     echo "yarnPath: .yarn/releases/yarn-${yarn_version}.cjs" >> .yarnrc.yml
-    cp ${DISTDIR}/yarn-${yarn_version}.cjs .yarn/releases/ || die "could not copy yarn-${yarn_version}.cjs"	
+    cp ${DISTDIR}/yarn-${yarn_version}.cjs .yarn/releases/ || die "could not copy yarn-${yarn_version}.cjs"
 
     ## preparing files (and replace the version)
     mkdir -p "files"
@@ -89,7 +89,7 @@ src_compile() {
     yarn run plugins:build-bundled || die "compile failed"
 }
 
-src_install() {	
+src_install() {
     insinto /etc/${PN_S}
     newins conf/sample.ini ${PN}.ini
     newins conf/ldap.toml ldap.toml
@@ -97,11 +97,11 @@ src_install() {
     exeinto /usr/libexec/${PN_S}
     newexe `(find bin -name ${PN}-cli)` ${PN}-cli
     newexe `(find bin -name ${PN}-server)` ${PN}-server
-    
+
     exeinto /usr/bin
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN}-cli --homepath /var/lib/${PN_S} --pluginsDir /var/lib/${PN_S}/plugins \$@" >> ${D}/usr/bin/${PN_S}-cli
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN}-server --homepath /var/lib/${PN_S} \$@" >> ${D}/usr/bin/${PN_S}-server
-    
+
     fperms +x /usr/bin/${PN_S}-cli
     fperms +x /usr/bin/${PN_S}-server
 

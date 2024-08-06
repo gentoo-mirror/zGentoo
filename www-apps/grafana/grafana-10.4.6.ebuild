@@ -18,7 +18,7 @@ yarn_version="4.3.1"
 # >> GOWORK=off go mod vendor && go work vendor && mkdir grafana-${version} && mv vendor grafana-${version}/vendor
 # >> tar -caf grafana-${version}-vendor.tar.xz grafana-${version}/vendor
 # >> echo -e "enableMirror: true\ncacheFolder: ./vendor_yarn" >> .yarnrc.yml
-# >> CYPRESS_INSTALL_BINARY=0 yarn set version 4.3.1
+# >> CYPRESS_INSTALL_BINARY=0 yarn set version 4.3.*
 # >> CYPRESS_INSTALL_BINARY=0 yarn cache clean --mirror && yarn install
 # >> mv vendor_yarn grafana-${version}/vendor_yarn
 # >> tar -caf grafana-${version}-vendor_yarn.tar.xz grafana-${version}/vendor_yarn
@@ -27,7 +27,7 @@ SRC_URI="
     https://github.com/grafana/grafana/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
     https://vendors.simple-co.de/${PN}/${P}-vendor.tar.xz
     https://vendors.simple-co.de/${PN}/${P}-vendor_yarn.tar.xz
-    https://repo.yarnpkg.com/4.3.1/packages/yarnpkg-cli/bin/yarn.js -> yarn-4.3.1.cjs
+    https://repo.yarnpkg.com/${yarn_version}/packages/yarnpkg-cli/bin/yarn.js -> yarn-${yarn_version}.cjs
 "
 LICENSE="AGPL-3.0 Apache-2.0 BSD-2 BSD-3 BSD-4 BSL-1.0 ImageMagick ISC LGPL-3.0 MIT MPL-2.0 OpenSSL Zlib"
 SLOT="10/"${PV}
@@ -75,8 +75,6 @@ src_prepare() {
 }
 
 src_compile() {
-    # addpredict /etc/npm
-
     ## install yarn deps(offline)..
     CYPRESS_INSTALL_BINARY=0 yarn install || die "prepare failed"
 
@@ -101,12 +99,12 @@ src_install() {
     ## legacy
     newexe `(find bin -name ${PN}-cli)` ${PN}-cli
     newexe `(find bin -name ${PN}-server)` ${PN}-server
-    
+
     exeinto /usr/bin
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} \$@" >> ${D}/usr/bin/${PN_S}
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} cli --homepath /var/lib/${PN_S} --pluginsDir /var/lib/${PN_S}/plugins \$@" >> ${D}/usr/bin/${PN_S}-cli
     echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} server --homepath /var/lib/${PN_S} \$@" >> ${D}/usr/bin/${PN_S}-server
-    
+
     fperms +x /usr/bin/${PN_S}
     fperms +x /usr/bin/${PN_S}-cli
     fperms +x /usr/bin/${PN_S}-server

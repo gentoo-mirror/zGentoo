@@ -12,7 +12,7 @@ DESCRIPTION="The open-source platform for monitoring and observability"
 HOMEPAGE="https://grafana.com"
 yarn_version="4.3.1"
 
-## building vendor and yarn vendors
+## building vendor and yarn vendors (@WilliamH - ping me!)
 # >> git clone https://github.com/grafana/grafana -b v<version> /tmp/grafana
 # >> cd /tmp/grafana && version=`git describe --tags | sed -E "s/v([0-9.]+)/\1/g"`
 # >> GOWORK=off go mod vendor && go work vendor && mkdir grafana-${version} && mv vendor grafana-${version}/vendor
@@ -71,14 +71,16 @@ src_prepare() {
     ## setting build-info
     sed -i 's/unknown-dev/gentoo/g' pkg/build/git.go
 
+    ## patching wrong package.json (should be oneshot fix)
+    # TODO: remove me ASAP!
+    sed -i 's/"version": "11.1.1"/"version": "11.1.3"/g' package.json
+
     default
 }
 
 src_compile() {
-    addpredict /etc/npm
-
     ## install yarn deps(offline)..
-    CYPRESS_INSTALL_BINARY=0 yarn install >/dev/null 2>&1 || die "prepare failed"
+    CYPRESS_INSTALL_BINARY=0 yarn install || die "prepare failed"
 
     einfo "Wiring everything up.."
     wire gen -tags oss ./pkg/server ./pkg/cmd/grafana-cli/runner || die "wiring failed"

@@ -10,6 +10,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 DESCRIPTION="The open-source platform for monitoring and observability"
 HOMEPAGE="https://grafana.com"
+yarn_version="4.3.1"
 
 ## building (yarn_)vendor
 # >> git clone https://github.com/grafana/grafana -b v<version> /tmp/grafana
@@ -17,6 +18,7 @@ HOMEPAGE="https://grafana.com"
 # >> GOWORK=off go mod vendor && go work vendor && mkdir grafana-${version} && mv vendor grafana-${version}/vendor
 # >> tar -caf grafana-${version}-vendor.tar.xz grafana-${version}/vendor
 # >> echo -e "enableMirror: true\ncacheFolder: ./vendor_yarn" >> .yarnrc.yml
+# >> CYPRESS_INSTALL_BINARY=0 yarn set version 4.3.1
 # >> CYPRESS_INSTALL_BINARY=0 yarn cache clean --mirror && yarn install
 # >> mv vendor_yarn grafana-${version}/vendor_yarn
 # >> tar -caf grafana-${version}-vendor_yarn.tar.xz grafana-${version}/vendor_yarn
@@ -31,7 +33,7 @@ LICENSE="AGPL-3.0 Apache-2.0 BSD-2 BSD-3 BSD-4 BSL-1.0 ImageMagick ISC LGPL-3.0 
 SLOT="10/"${PV}
 KEYWORDS="~amd64"
 IUSE="systemd"
-RESTRICT="test" # tests are not working (a proper fix would take to long)
+RESTRICT="mirror test" # tests are not working (a proper fix would take to long)
 
 # needed for webpack (nodejs)
 CHECKREQS_MEMORY="8G"
@@ -58,22 +60,25 @@ src_prepare() {
     ## offline/cache installation
     echo -e "enableMirror: true\ncacheFolder: ./vendor_yarn" >> .yarnrc.yml
     sed -i '/^yarnPath/d' .yarnrc.yml
-    echo "yarnPath: .yarn/releases/yarn-4.3.1.cjs" >> .yarnrc.yml
-    cp ${DISTDIR}/yarn-4.3.1.cjs .yarn/releases/ || die "could not copy yarn-4.3.1.cjs"
+    echo "yarnPath: .yarn/releases/yarn-${yarn_version}.cjs" >> .yarnrc.yml
+    cp ${DISTDIR}/yarn-${yarn_version}.cjs .yarn/releases/ || die "could not copy yarn-${yarn_version}.cjs"
 
     ## preparing files (and replace the version)
     mkdir -p "files"
     cp -a "${FILESDIR}/${PN}".* files || die "coudln't copy needed files!"
     sed -i "s/~PN_S~/${PN_S}/g" files/* || die "couldn't apply slot-patches!"
 
+    ## setting build-info
+    sed -i 's/unknown-dev/gentoo/g' pkg/build/git.go
+
     default
 }
 
 src_compile() {
-    addpredict /etc/npm
+    # addpredict /etc/npm
 
     ## install yarn deps(offline)..
-    CYPRESS_INSTALL_BINARY=0 yarn install >/dev/null 2>&1 || die "prepare failed"
+    CYPRESS_INSTALL_BINARY=0 yarn install || die "prepare failed"
 
     einfo "Wiring everything up.."
     wire gen -tags oss ./pkg/server ./pkg/cmd/grafana-cli/runner || die "wiring failed"
@@ -91,13 +96,20 @@ src_install() {
     newins conf/sample.ini ${PN}.ini
     newins conf/ldap.toml ldap.toml
 
-    newbin `(find bin -name ${PN})` ${PN_S}
-    newbin `(find bin -name ${PN}-cli)` ${PN_S}-cli
-    newbin `(find bin -name ${PN}-server)` ${PN_S}-server
-
-    # new since grafana 10..
-    # this requires an eselect-grafana plugin when v11 is realeased
-    dosym /usr/bin/${PN_S} /usr/bin/${PN}
+    exeinto /usr/libexec/${PN_S}
+    newexe `(find bin -name ${PN})` ${PN}
+    ## legacy
+    newexe `(find bin -name ${PN}-cli)` ${PN}-cli
+    newexe `(find bin -name ${PN}-server)` ${PN}-server
+    
+    exeinto /usr/bin
+    echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} \$@" >> ${D}/usr/bin/${PN_S}
+    echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} cli --homepath /var/lib/${PN_S} --pluginsDir /var/lib/${PN_S}/plugins \$@" >> ${D}/usr/bin/${PN_S}-cli
+    echo -e "#"'!'"/bin/sh\nPATH=\"/usr/libexec/${PN_S}:\${PATH}\" && ${PN} server --homepath /var/lib/${PN_S} \$@" >> ${D}/usr/bin/${PN_S}-server
+    
+    fperms +x /usr/bin/${PN_S}
+    fperms +x /usr/bin/${PN_S}-cli
+    fperms +x /usr/bin/${PN_S}-server
 
     insinto "/usr/share/${PN_S}"
     doins -r public conf tools

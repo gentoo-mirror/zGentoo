@@ -53,5 +53,5 @@ net-misc/anydesk
 # please use "sys-kernel/gentoo-sources" from upstream as a replacement
 sys-kernel/gentoo-sources-rog
 
-# masked during stabilization (use at own risk!)
-=sys-power/asusctl-6.0.7
+# masked because of deprecation (unmaintained for 4 years)
+net-im/youp

@@ -38,7 +38,7 @@ RDEPEND="!!sys-power/rog-core
     >=sys-power/power-profiles-daemon-0.13
     acpi? ( sys-power/acpi_call )
     gui? (
-        dev-libs/libappindicator:3
+        dev-libs/libayatana-appindicator
         sys-auth/seatd
     )
 "

@@ -22,7 +22,7 @@ app-metrics/synthetic-monitoring-agent 0.17.1 0.25.2: The plugin-driven server a
 app-metrics/telegraf 1.28.0 1.31.2: The plugin-driven server agent for collecting & reporting metrics.
 app-misc/fastgron 0.7.7: fastgron is a High-performance JSON to GRON (greppable, flattened JSON) converter
 app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
-app-office/qownnotes 23.8.2: A plain-text file markdown note taking with Nextcloud/ownCloud integration
+app-office/qownnotes 24.8.4: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 app-text/obsidian 1.5.3: A second brain, for you, forever.
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.7.8: Scalable datastore for metrics, events, and real-time analytics

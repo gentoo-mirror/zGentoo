@@ -1,50 +1,53 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
+
 CRATES=" "
+inherit systemd cargo linux-info udev xdg desktop
 
-inherit systemd cargo git-r3 linux-info udev xdg
-
+_PV=${PV//_rc/-RC}
+_PVV=`[[ ${_PV} =~ .*"RC".* ]] && echo || echo ${_PV}`
 _PN="asusd"
 
 DESCRIPTION="${PN} (${_PN}) is a utility for Linux to control many aspects of various ASUS laptops."
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
-    https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://vendors.simple-co.de/${PN}/vendor-${PV}.tar.xz -> vendor_${PN}-${PV}.tar.xz
+    https://gitlab.com/asus-linux/${PN}/-/archive/${_PV}/${PN}-${_PV}.tar.gz
+    https://gitlab.com/asus-linux/${PN}/uploads/15f94f447c4cec063923c8d356f47695/vendor_${PN}_.tar.xz -> vendor_${PN}_${_PV}.tar.xz
+    ${CARGO_CRATE_URIS}
 "
-
-LICENSE="MPL-2.0"
-SLOT="0/4"
+LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC LicenseRef-UFL-1.0 MIT MPL-2.0 OFL-1.1 Unicode-DFS-2016 Unlicense ZLIB"
+SLOT="0/5"
 KEYWORDS="~amd64"
-IUSE="+acpi +gfx gnome notify"
+RESTRICT="mirror"
+IUSE="+acpi +gfx gnome gui"
 REQUIRED_USE="gnome? ( gfx )"
 
 RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
+    >=sys-power/power-profiles-daemon-0.13
     acpi? ( sys-power/acpi_call )
-    >=sys-power/power-profiles-daemon-0.10.0
+    gui? ( dev-libs/libayatana-appindicator )
 "
 DEPEND="${RDEPEND}
-    >=virtual/rust-1.51.0
-    >=sys-devel/llvm-10.0.1
-    >=sys-devel/clang-runtime-10.0.1
+    >=virtual/rust-1.75.0
+    >=sys-devel/llvm-17.0.6
+    >=sys-devel/clang-runtime-17.0.6
     dev-libs/libusb:1
-    gfx? ( 
-        !sys-kernel/gentoo-g14-next  
-        >=sys-power/supergfxctl-2.0.0[gnome?] 
-    )
-    gnome? ( gnome-extra/gnome-shell-extension-asusctl-gex:0/4 )
     sys-apps/systemd:0=
 	sys-apps/dbus
+    media-libs/sdl2-gfx
+    gfx? ( >=sys-power/supergfxctl-${PV}[gnome?] )
 "
-PATCHES=("${FILESDIR}/${P}-fancurve_fix.patch")
-S="${WORKDIR}/${PN}-${PV}"
+S="${WORKDIR}/${PN}-${_PV/_/-}"
 
 src_unpack() {
-    unpack ${PN}-${PV}.tar.gz
+    cargo_src_unpack
+    unpack ${PN}-${_PV/_/.}.tar.gz
+    sed -i "1s/.*/Version=\"${_PV}\"/" ${S}/Makefile
+
     # adding vendor-package
-    cd ${S} && unpack vendor_${PN}-${PV}.tar.xz
+    cd ${S} && unpack vendor_${PN}_${_PV%%_*}.tar.xz
 }
 
 src_prepare() {
@@ -59,30 +62,29 @@ src_prepare() {
     [[ ${k_wrn_touch} != "" ]] && ewarn "\nKernel configuration issue(s), needed for touchpad support:\n\n${k_wrn_touch}"
 
     # adding vendor package config
-    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
+    mkdir -p ${S}/.cargo && cp ${FILESDIR}/${P}-vendor_config ${S}/.cargo/config
 
-    # fixing wrong relative path in asusctl/Cargo.toml
-    sed -i "s~../../supergfx~../vendor/supergfx~g" ${S}/*/Cargo.toml
+    # only build rog-control-center when "gui" flag is set (TODO!)
+    ! use gui && eapply "${FILESDIR}/${P}-disable_rog-cc.patch"
 
     default
 }
 
 src_compile() {
     cargo_gen_config
-    default
+    cargo_src_compile
 }
 
 src_install() {
-    insinto /etc/${_PN}
-    doins data/${_PN}-ledmodes.toml
+    if use gui; then
+        # icons (apps)
+        insinto /usr/share/icons/hicolor/512x512/apps/
+        doins data/icons/*.png
 
-    # icons (apps)
-    insinto /usr/share/icons/hicolor/512x512/apps/
-    doins data/icons/*.png
-
-    # icons (status/notify)
-    insinto /usr/share/icons/hicolor/scalable/status/
-    doins data/icons/scalable/*.svg
+        # icons (status/notify)
+        insinto /usr/share/icons/hicolor/scalable/status/
+        doins data/icons/scalable/*.svg
+    fi
 
     insinto /lib/udev/rules.d/
     doins data/${_PN}.rules
@@ -97,12 +99,13 @@ src_install() {
 
     systemd_dounit data/${_PN}.service
     systemd_douserunit data/${_PN}-user.service
-    use notify && systemd_douserunit data/asus-notify.service
 
     if use acpi; then
         insinto /etc/modules-load.d
         doins ${FILESDIR}/90-acpi_call.conf
     fi
+
+    use gui && domenu rog-control-center/data/rog-control-center.desktop
 
     default
 }

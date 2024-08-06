@@ -27,7 +27,7 @@ RDEPEND="!!sys-power/rog-core
     !!sys-power/asus-nb-ctrl
     acpi? ( sys-power/acpi_call )
     gui? ( 
-        dev-libs/libappindicator:3 
+        dev-libs/libayatana-appindicator
         !!gnome-extra/gnome-shell-extension-supergfxctl-gex
     )
     >=sys-power/power-profiles-daemon-0.10.0

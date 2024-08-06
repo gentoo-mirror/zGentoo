@@ -74,7 +74,6 @@ media-sound/teamspeak-client 3.6.2-r9999: A client software for quality voice co
 media-video/freetube 0.21.1: An open source desktop YouTube player built with privacy in mind.
 net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
-net-im/youp 2.0.0: Youp - a whatsapp wrapper written with Rust and GTK3
 net-misc/anydesk 6.3.0: Feature rich multi-platform remote desktop application
 net-misc/bofh_generator 1.0.0-r1: BOFH excuse generator
 net-misc/postman-bin 10.6.0: Supercharge your API workflow

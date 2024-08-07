@@ -83,7 +83,7 @@ net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CD
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
-net-voip/linphone-desktop 5.2.1-r3: Open source softphone for voice and video over IP calling and instant messaging.
+net-voip/linphone-desktop 5.2.6: Open source softphone for voice and video over IP calling and instant messaging.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sci-electronics/kicad 8.0.1-r1: Electronic Schematic and PCB design tools
 sys-cluster/ceph 18.2.2: Ceph distributed filesystem

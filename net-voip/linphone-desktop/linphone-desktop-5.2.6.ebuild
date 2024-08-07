@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 IUSE="+av1 +codec2 -daemon doc -extras"
 
 # language support
@@ -18,7 +18,7 @@ HOMEPAGE="https://www.linphone.org/technical-corner/linphone"
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
-RESTRICT="test" # TODO
+#RESTRICT="test" # TODO
 
 EGIT_REPO_URI="https://github.com/BelledonneCommunications/linphone-desktop.git"
 EGIT_COMMIT="${PV}"
@@ -34,13 +34,14 @@ EGIT_SUBMODULES=(
 RDEPEND="
     dev-db/sqlite
     dev-libs/jsoncpp
+    dev-libs/libayatana-appindicator
     dev-libs/libxml2
-    dev-libs/qtkeychain[qt5]
+    dev-libs/qtkeychain
     dev-libs/xerces-c
     dev-python/pystache[${PYTHON_USEDEP}]
     dev-python/six[${PYTHON_USEDEP}]
     dev-qt/linguist-tools[qml]
-    dev-qt/qtmultimedia:5
+    dev-qt/qtmultimedia
     dev-qt/qtquickcontrols[widgets]
     dev-qt/qtquickcontrols2[widgets]
     media-libs/glew:0

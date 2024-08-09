@@ -1,0 +1,41 @@
+--- a/meson.build	2024-08-09 17:44:04.846013569 +0200
++++ b/meson.build	2024-08-09 17:45:04.313484455 +0200
+@@ -281,9 +281,7 @@
+ 
+ libm = cc.find_library('m', required: false)
+ 
+-nice_incs = include_directories('.', 'agent', 'random', 'socket', 'stun')
+-
+-nice_deps = gio_deps + [gthread_dep, crypto_dep, gupnp_igd_dep] + syslibs
++nice_incs = include_directories('.')
+ 
+ ignored_iface_prefix = get_option('ignored-network-interface-prefix')
+ if ignored_iface_prefix != []
+@@ -296,11 +294,7 @@
+ 
+ gir = find_program('g-ir-scanner', required : get_option('introspection'))
+ 
+-subdir('agent')
+-subdir('stun')
+-subdir('socket')
+-subdir('random')
+-subdir('nice')
++libnice_dep = dependency('nice', version: nice_version, required: true)
+ 
+ if gst_dep.found()
+   subdir('gst')
+@@ -316,14 +310,6 @@
+   endif
+ endif
+ 
+-if not get_option('tests').disabled()
+-  subdir('tests')
+-endif
+-
+-if not get_option('examples').disabled()
+-  subdir('examples')
+-endif
+-
+ add_test_setup('valgrind',
+ 	       exe_wrapper: ['valgrind',
+ 			     '--leak-check=full',

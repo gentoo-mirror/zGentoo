@@ -83,6 +83,9 @@ src_configure() {
 src_compile() {
     cargo_gen_config
     cargo_src_compile
+
+    # cargo is using a different target-path during compilation (correcting it)
+    [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {

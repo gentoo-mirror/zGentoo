@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="server"
 
-DEPEND=">=virtual/rust-1.75.0
+DEPEND=">=virtual/rust-1.79.0
     server? ( 
         acct-user/${PN}
         acct-group/${PN}
@@ -30,6 +30,14 @@ src_prepare() {
     mv ${WORKDIR}/vendor ${S}/vendor
     mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
     default
+}
+
+src_compile() {
+    cargo_gen_config
+    cargo_src_compile
+
+    # cargo is using a different target-path during compilation (correcting it)
+    [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {

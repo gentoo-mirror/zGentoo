@@ -47,8 +47,12 @@ DEPEND="${RDEPEND}
     >=sys-devel/llvm-17.0.6
     >=sys-devel/clang-runtime-17.0.6
     dev-libs/libusb:1
-    sys-apps/systemd:0=
-	sys-apps/dbus
+    || (
+        sys-apps/systemd[kernel-install(-)]
+        sys-apps/systemd-utils[kernel-install(-)]
+    )
+
+    sys-apps/dbus
     media-libs/sdl2-gfx
     gfx? ( >=sys-power/supergfxctl-5.2.1[gnome?] )
 "

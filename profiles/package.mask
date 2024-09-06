@@ -55,3 +55,6 @@ sys-kernel/gentoo-sources-rog
 
 # masked because of deprecation (unmaintained for 4 years)
 net-im/youp
+
+# masked during stabilization
+<www-apps/grafana-11.2.0

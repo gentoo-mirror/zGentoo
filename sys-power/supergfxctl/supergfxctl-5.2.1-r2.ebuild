@@ -62,7 +62,7 @@ src_prepare() {
     linux_chkconfig_module VFIO_MDEV || k_wrn_vfio="${k_wrn_vfio}> CONFIG_VFIO_MDEV should be enabled as module\n"
     linux_chkconfig_module VFIO_PCI || k_wrn_vfio="${k_wrn_vfio}> CONFIG_VFIO_PCI should be enabled as module\n"
     linux_chkconfig_module VFIO_VIRQFD || k_wrn_vfio="${k_wrn_vfio}> CONFIG_VFIO_VIRQFD should be enabled as module\n"
-    if [[ ${k_wrn_vfio} != "" ]]; then 
+    if [[ ${k_wrn_vfio} != "" ]]; then
         ewarn "\nKernel configuration issue(s), needed for switching gfx vfio mode (disabled by default):\n\n${k_wrn_vfio}"
     else
         ## enabeling fvio mode
@@ -90,7 +90,7 @@ src_compile() {
 src_install() {
     insinto /lib/udev/rules.d/
     doins data/*${_PN}*.rules
-    
+
     ## mod blacklisting
     insinto /etc/modprobe.d
     doins ${FILESDIR}/90-nvidia-blacklist.conf
@@ -113,6 +113,9 @@ Possible locations are ~/.xinitrc, /etc/sddm/Xsetup, etc.\n"
 
     systemd_dounit data/${_PN}.service
 
+    newinitd "${FILESDIR}"/supergfxd.init supergfxd
+
+
     insinto /usr/lib/systemd/user-preset/
     doins data/${_PN}.preset
 
@@ -127,7 +130,7 @@ pkg_postinst() {
 by runnning:\n \`systemctl daemon-reload && systemctl enable --now ${_PN}\`\n"
 
     x11_warn_conf=""
-    for c in `grep -il nvidia /etc/X11/xorg.conf.d/*.*`; do 
+    for c in `grep -il nvidia /etc/X11/xorg.conf.d/*.*`; do
         if ! `grep -q ${_PN} "$c"` && [[ "$c" != *"90-${_PN}-nvidia-pm.rules" ]]; then
             x11_warn_conf="$x11_warn_conf$c\n";
         fi

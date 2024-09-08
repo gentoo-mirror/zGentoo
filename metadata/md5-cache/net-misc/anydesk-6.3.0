@@ -10,5 +10,5 @@ RDEPEND=dev-libs/atk dev-libs/glib:2 media-libs/fontconfig:1.0 media-libs/freety
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://download.anydesk.com/linux/anydesk-6.3.0-amd64.tar.gz https://download.anydesk.com/linux/generic-linux/anydesk-6.3.0-amd64.tar.gz
-_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	toolchain-funcs	333970c740aa7b1a92e4fcdc52f612bd	multilib	c19072c3cd7ac5cb21de013f7e9832e0	systemd	c8b03e8df84486aa991d4396686e8942	xdg-utils	baea6080dd821f5562d715887954c9d3
+_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6	toolchain-funcs	948855ec7ad9f11351edf9066708dfa9	multilib	7e1347c006a76bb812f3a9f663b79991	systemd	0f241b5c9f3758c3d3423df59a7f655a	xdg-utils	5465aed08f1dfc2a75f14cbea4272961
 _md5_=65315ef1eea4bb24bb54e4859dce60fc

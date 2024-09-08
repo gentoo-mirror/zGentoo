@@ -1,0 +1,19 @@
+#!/usr/bin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+
+description="Asusctl Daemon"
+command="/usr/bin/asusd"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+supervisor=supervise-daemon
+supervise_daemon_args="-e IS_SERVICE=1"
+
+Type=dbus
+BusName=org.asuslinux.Daemon
+
+output_log="/var/log/asusd.log"
+error_log="/var/log/asusd.err"
+
+depend() {
+        after logger modules
+}

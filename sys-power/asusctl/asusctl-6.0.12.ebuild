@@ -41,17 +41,17 @@ RDEPEND="!!sys-power/rog-core
         dev-libs/libayatana-appindicator
         sys-auth/seatd
     )
-    openrc? ( || ( 
-        sys-apps/openrc
-        sys-apps/sysvinit 
-    ) )
 "
 DEPEND="${RDEPEND}
     >=virtual/rust-1.75.0
     >=sys-devel/llvm-17.0.6
     >=sys-devel/clang-runtime-17.0.6
     dev-libs/libusb:1
-    sys-apps/systemd:0=
+    !openrc? ( sys-apps/systemd:0= )
+    openrc? ( || ( 
+        sys-apps/openrc
+        sys-apps/sysvinit 
+    ) )
 	sys-apps/dbus
     media-libs/sdl2-gfx
     gfx? ( >=sys-power/supergfxctl-5.2.1[gnome?] )

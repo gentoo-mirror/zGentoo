@@ -28,17 +28,17 @@ RDEPEND="
         x11-apps/xrandr
         gnome-base/gdm
         gnome-extra/gnome-shell-extension-supergfxctl-gex:0/${PV%.*}
-    )    
-    openrc? ( || ( 
-        sys-apps/openrc
-        sys-apps/sysvinit 
-    ) )
+    )
     sys-process/lsof
 "
 DEPEND="${BDEPEND}
     ${RDEPEND}
     >=virtual/rust-1.75.0
-    sys-apps/systemd:0=
+    !openrc? ( sys-apps/systemd:0= )
+    openrc? ( || ( 
+        sys-apps/openrc
+        sys-apps/sysvinit 
+    ) )
 	sys-apps/dbus
 "
 

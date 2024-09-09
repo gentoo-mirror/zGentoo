@@ -6,13 +6,9 @@
         <name>Armas Spann</name>
     </maintainer>
     <upstream>
-        <remote-id type="git">https://gitlab.com/asus-linux/asusctl</remote-id>
+        <remote-id type="git">https://gitlab.com/asus-linux/supergfxctl</remote-id>
     </upstream>
     <use>
-        <flag name="X">[experimental] Add support for X11 - officially unsupported</flag>
-        <flag name="gfx">Adds support for <pkg>sys-power/supergfxctl</pkg></flag>
-        <flag name="gui">Installs rog-control-center(UI)</flag>
-        <flag name="notify">Installs asusctl notify executable and service</flag>
         <flag name="openrc">[experimental] Installs OpenRC init files - officially unsupported</flag>
     </use>
 </pkgmetadata>

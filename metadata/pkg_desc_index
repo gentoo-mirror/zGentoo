@@ -77,6 +77,7 @@ net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensib
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-misc/anydesk 6.3.0: Feature rich multi-platform remote desktop application
 net-misc/bofh_generator 1.0.0-r2: BOFH excuse generator
+net-misc/netbsd-mopd 2.5.3: MOP server and utilities for Linux
 net-misc/postman-bin 10.6.0: Supercharge your API workflow
 net-misc/rustdesk-bin 1.2.6: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon

@@ -1,0 +1,13 @@
+[Unit]
+Description=MOP server daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+EnvironmentFile=/etc/mopd/mopd.conf
+ExecStart=/usr/bin/mopd -f -d ${MOP_INTERFACE}
+
+[Install]
+WantedBy=multi-user.target

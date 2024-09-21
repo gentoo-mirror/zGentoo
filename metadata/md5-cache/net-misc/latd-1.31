@@ -1,0 +1,15 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
+DEFINED_PHASES=install unpack
+DEPEND=systemd? ( sys-apps/systemd )
+DESCRIPTION=LAT terminal daemon for Linux and BSD
+EAPI=8
+HOMEPAGE=https://lab.simple-co.de/zappel/latd
+INHERIT=git-r3 systemd
+IUSE=systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=systemd? ( sys-apps/systemd )
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	toolchain-funcs	948855ec7ad9f11351edf9066708dfa9	multilib	7e1347c006a76bb812f3a9f663b79991	systemd	0f241b5c9f3758c3d3423df59a7f655a
+_md5_=15c266601afc03ce44cd77d02f606134

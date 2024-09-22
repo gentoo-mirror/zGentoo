@@ -10,7 +10,6 @@ EnvironmentFile=/etc/mopd/mopd.conf
 ExecStartPre=-/usr/bin/ifconfig %i promisc
 ExecStartPre=-/usr/bin/ip link set %i promisc on
 ExecStart=/usr/bin/mopd -f ${MOP_FLAG} -s ${MOP_DIR} -d %i
-ExexStart
 
 [Install]
 WantedBy=multi-user.target

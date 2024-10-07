@@ -134,10 +134,6 @@ sys-cluster/ceph:uring - Build with support for sys-libs/liburing
 sys-cluster/ceph:xfs - Add xfs support
 sys-cluster/ceph:zbd - Enable sys-block/libzbd bluestore backend
 sys-cluster/ceph:zfs - Add zfs support
-sys-kernel/gentoo-kernel:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
-sys-kernel/gentoo-kernel:generic-uki - Build and install a generic initramfs and Unified Kernel Image, this is intended for building binpkgs with a pre-generated UKI included (EXPERIMENTAL).
-sys-kernel/gentoo-kernel:hardened - Use selection of hardening options recommended by Kernel Self Protection Project
-sys-kernel/gentoo-kernel:initramfs - Build initramfs along with the kernel.
 sys-power/asusctl:X - [experimental] Add support for X11 - officially unsupported
 sys-power/asusctl:gfx - Adds support for sys-power/supergfxctl
 sys-power/asusctl:gui - Installs rog-control-center(UI)

@@ -6,7 +6,7 @@ MY_PN="${PN/gnome-shell-extension-/}"
 
 DESCRIPTION="Extension for visualizing asusctl-ctrl(asusd) settings and status."
 HOMEPAGE="https://gitlab.com/asus-linux/${MY_PN}"
-SRC_URI="https://vendors.simple-co.de/gnome-extra/${PN}/${MY_PN}-${PV}@asus-linux.org.zip -> ${P}.zip"
+SRC_URI="https://vendors.simple-co.de/gnome-extra/${PN}/${MY_PN}-${PVR}@asus-linux.org.zip -> ${P}.zip"
 S="${WORKDIR}/${MY_PN}@asus-linux.org"
 
 LICENSE="MPL-2.0"

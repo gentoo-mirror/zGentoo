@@ -60,10 +60,9 @@ dev-util/selenium-manager 4.20.0: CLI tool that manages the browser/driver infra
 dev-vcs/git-cliff 2.4.0-r1: A highly customizable Changelog Generator that follows Conventional Commit specifications
 games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
-gnome-extra/gnome-shell-extension-appindicator 57-r1: Support legacy, AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
-gnome-extra/gnome-shell-extension-freon 56: Freon is an extension for displaying sensors data.
-gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1 5.1.2_rc2 5.2.1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
+gnome-extra/gnome-shell-extension-freon 56-r1: Freon is an extension for displaying sensors data.
+gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1 5.1.2_rc2 5.2.1_rc1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4

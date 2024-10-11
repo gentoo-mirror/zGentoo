@@ -18,7 +18,7 @@ IUSE="alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
 RDEPEND="
-	app-arch/snappy:0/1
+	app-arch/snappy:0/1.1
 	dev-libs/openssl-compat:1.0.0
 	dev-libs/quazip
 	net-libs/libsrtp:0

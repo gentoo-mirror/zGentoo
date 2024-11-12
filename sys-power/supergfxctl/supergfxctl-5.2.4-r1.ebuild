@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
-CRATES=" "
 
-inherit systemd cargo git-r3 linux-info udev xdg
+RUST_MIN_VER="1.75.0"
+
+inherit systemd cargo linux-info udev xdg
 
 _PN="supergfxd"
 
@@ -11,11 +12,12 @@ DESCRIPTION="${PN} (${_PN}) Graphics switching"
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    https://gitlab.com/asus-linux/${PN}/uploads/72db515bcc8cbd6875fca60c0eb2f354/vendor-${PV}.tar.xz -> vendor_${PN}_${PV}.tar.xz
+    https://vendors.simple-co.de/${PN}/${P}-vendor.tar.xz
+    https://vendors.simple-co.de/${PN}/${P}-cargo_config.tar.xz
 "
 LICENSE="MPL-2.0"
-IUSE="gnome"
-SLOT="5/5.2.1"
+IUSE="gnome -openrc"
+SLOT="5/5.2.4"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -33,8 +35,11 @@ RDEPEND="
 "
 DEPEND="${BDEPEND}
     ${RDEPEND}
-    >=virtual/rust-1.75.0
-    sys-apps/systemd:0=
+    !openrc? ( sys-apps/systemd:0= )
+    openrc? ( || ( 
+        sys-apps/openrc
+        sys-apps/sysvinit 
+    ) )
 	sys-apps/dbus
 "
 
@@ -43,14 +48,6 @@ QA_PRESTRIPPED="
     /usr/bin/${PN}
     /usr/bin/${_PN}
 "
-
-src_unpack() {
-    cargo_src_unpack
-    unpack ${PN}-${PV}.tar.gz
-
-    # adding vendor-package
-    cd ${S} && unpack vendor_${PN}_${PV%%_*}.tar.xz
-}
 
 src_prepare() {
     require_configured_kernel
@@ -70,13 +67,8 @@ src_prepare() {
         sed -i 's/gfx_vfio_enable:\ false,/gfx_vfio_enable:\ true,/g' ${S}/src/config.rs || die "Could not enable VFIO."
     fi
 
-    # adding vendor package config
-    mkdir -p ${S}/.cargo && cp ${FILESDIR}/${P}-vendor_config ${S}/.cargo/config
-
-    # removing Cargo.lock (seems outdated!)
-    rm -f ${S}/Cargo.lock
-
     default
+    rust_pkg_setup
 }
 
 src_compile() {
@@ -108,13 +100,17 @@ src_install() {
 Possible locations are ~/.xinitrc, /etc/sddm/Xsetup, etc.\n"
     fi
 
-    insinto /usr/share/dbus-1/system.d/
-    doins data/org.${PN}.Daemon.conf
+    if ! use openrc; then
+        insinto /usr/share/dbus-1/system.d/
+        doins data/org.${PN}.Daemon.conf
 
-    systemd_dounit data/${_PN}.service
+        systemd_dounit data/${_PN}.service
 
-    insinto /usr/lib/systemd/user-preset/
-    doins data/${_PN}.preset
+        insinto /usr/lib/systemd/user-preset/
+        doins data/${_PN}.preset
+    else
+        newinitd "${FILESDIR}"/supergfxd.init supergfxd
+    fi
 
     default
 }
@@ -123,8 +119,15 @@ pkg_postinst() {
     xdg_icon_cache_update
     udev_reload
 
-    ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
+    if ! use openrc; then
+        ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
 by runnning:\n \`systemctl daemon-reload && systemctl enable --now ${_PN}\`\n"
+    else
+        ewarn "You've set the OpenRC useflag - Expect issues (as this is officially unsupported)!"
+        ewarn "Don't forget to reload dbus to enable \"${_PN}\" service, \
+by runnning:\n \`rc-update add ${_PN} default && /etc/init.d/${_PN} start\`\n"
+    fi
+
 
     x11_warn_conf=""
     for c in `grep -il nvidia /etc/X11/xorg.conf.d/*.*`; do 

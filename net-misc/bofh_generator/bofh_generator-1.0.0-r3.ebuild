@@ -3,6 +3,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.79.0"
+
 inherit systemd cargo
 
 DESCRIPTION="BOFH excuse generator"
@@ -15,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="server"
 
-DEPEND=">=virtual/rust-1.79.0
+DEPEND="
     server? ( 
         acct-user/${PN}
         acct-group/${PN}
@@ -28,21 +30,18 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 src_prepare() {
     mv ${WORKDIR}/vendor ${S}/vendor
-    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
+    mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config.toml
     default
+    rust_pkg_setup
 }
 
 src_compile() {
     cargo_gen_config
     cargo_src_compile
-
-    # cargo is using a different target-path during compilation (correcting it)
-    [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {
-    insinto /usr/bin
-    dobin ${S}/target/release/${PN}
+    cargo_src_install
 
     if use server; then
         insinto /etc/${PN}

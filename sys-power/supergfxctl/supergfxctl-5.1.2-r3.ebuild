@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-# cargo tree --features "deamon cli" --prefix none | cut -d\( -f1 | sort -k 1,1 -u | sed 's/\ v/-/g'
-# or use cargo-ebuild, btw. is the following legit?! 
-CRATES=$(<"${BASH_SOURCE[0]/${P}*}"/files/${P}.crates)
+RUST_MIN_VER="1.71.1"
 
 inherit systemd cargo git-r3 linux-info udev xdg
 
@@ -14,31 +12,33 @@ DESCRIPTION="${PN} (${_PN}) Graphics switching"
 HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${PV}/${PN}-${PV}.tar.gz
-    "$(cargo_crate_uris)"
+    https://gitlab.com/asus-linux/${PN}/uploads/31e1640ed949ba5d9f29e63d8d9ed016/vendor-${PV}.tar.xz -> vendor_${PN}_${PV}.tar.xz
 "
-
 LICENSE="MPL-2.0"
 IUSE="gnome"
-SLOT="4/4.0.5"
+SLOT="5/5.1.2"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
 BDEPEND="
-    !!sys-power/${PN}:0
-    !!sys-power/${PN}:5
-    !!<=sys-power/asusctl-4.0.0
+    !!<sys-power/asusctl-4.6.0
+    !!<sys-power/${PN}-5.0.0
 "
 RDEPEND="
     gnome? (
         x11-apps/xrandr
         gnome-base/gdm
+        gnome-extra/gnome-shell-extension-supergfxctl-gex
     )
+    sys-process/lsof
 "
 DEPEND="${BDEPEND}
     ${RDEPEND}
-    >=virtual/rust-1.51.0
     sys-apps/systemd:0=
 	sys-apps/dbus
+"
+PATCHES="
+    ${FILESDIR}/${P}-vkicd.patch
 "
 
 S="${WORKDIR}/${PN}-${PV}"
@@ -50,6 +50,9 @@ QA_PRESTRIPPED="
 src_unpack() {
     cargo_src_unpack
     unpack ${PN}-${PV}.tar.gz
+
+    # adding vendor-package
+    cd ${S} && unpack vendor_${PN}_${PV%%_*}.tar.xz
 }
 
 src_prepare() {
@@ -70,17 +73,22 @@ src_prepare() {
         sed -i 's/gfx_vfio_enable:\ false,/gfx_vfio_enable:\ true,/g' ${S}/src/config.rs || die "Could not enable VFIO."
     fi
 
-    # fix nvidia as primary (might be gentoo specific)
-    # this enables modesetting modules and nvidia as a device entry in the generated 90-nvidia-primary.conf (if siwtched to nvidia as primary)
-    sed -i '/Option\ "PrimaryGPU"\ "true"/c\EndSection\n\nSection\ "Module"\n\tLoad\ "modesetting"\nEndSection\n\nSection\ "Device"\n\tIdentifier\ "nvidia"\n\tDriver\ "nvidia"\n\tOption\ "AllowEmptyInitialConfiguration"\ "true"\n\tOption\ "PrimaryGPU"\ "true""#;' \
-        ${S}/src/lib.rs || die "Can't add nvidia device section to the gfx switcher."
+    # adding vendor package config
+    mkdir -p ${S}/.cargo && cp ${FILESDIR}/${P}-vendor_config ${S}/.cargo/config
+
+    # removing Cargo.lock (seems outdated!)
+    rm -f ${S}/Cargo.lock
 
     default
+    rust_pkg_setup
 }
 
 src_compile() {
     cargo_gen_config
-    default
+    cargo_src_compile
+
+    # cargo is using a different target-path during compilation (correcting it)
+    [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {
@@ -91,7 +99,7 @@ src_install() {
     insinto /etc/modprobe.d
     doins ${FILESDIR}/90-nvidia-blacklist.conf
 
-    # xrandr settings for nvidia-primary (gnome only, will autofail on non-nvidia as primary)
+    # xrandr settings for nvidia-primary (gnome x11 only, will autofail on non-nvidia as primary or wayland)
     if use gnome; then
         insinto /etc/xdg/autostart
         doins "${FILESDIR}"/xrandr-nvidia.desktop
@@ -127,9 +135,6 @@ by runnning:\n \`systemctl daemon-reload && systemctl enable --now ${_PN}\`\n"
         if ! `grep -q ${_PN} "$c"` && [[ "$c" != *"90-${_PN}-nvidia-pm.rules" ]]; then
             x11_warn_conf="$x11_warn_conf$c\n";
         fi
-        # TODO: 
-        # should we be backwards compatible? 
-        # (! `grep -q asusd "$c"` && [[ "$c" != *"90-asusd-nvidia-pm.rules" ]])
     done
     [[ "$x11_warn_conf" == "" ]] || ewarn "WARNING: Potential inteferring files found:\n$x11_warn_conf"
 }

@@ -2,8 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-CRATES=" "
-inherit systemd cargo linux-info udev xdg desktop
+RUST_MIN_VER="1.71.1"
+RUST_NEEDS_LLVM=1
+LLVM_COMPAT=( {17..19} )
+
+inherit llvm-r1 systemd cargo linux-info udev xdg desktop
 
 _PV=${PV//_rc/-RC}
 _PVV=`[[ ${_PV} =~ .*"RC".* ]] && echo || echo ${_PV}`
@@ -30,14 +33,15 @@ RDEPEND="!!sys-power/rog-core
     gui? ( dev-libs/libayatana-appindicator )
 "
 DEPEND="${RDEPEND}
-    >=virtual/rust-1.75.0
-    >=sys-devel/llvm-17.0.6
-    >=sys-devel/clang-runtime-17.0.6
     dev-libs/libusb:1
     sys-apps/systemd:0=
 	sys-apps/dbus
     media-libs/sdl2-gfx
     gfx? ( >=sys-power/supergfxctl-${PV}[gnome?] )
+    $(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}=
+		sys-devel/llvm:${LLVM_SLOT}=
+	')
 "
 S="${WORKDIR}/${PN}-${_PV/_/-}"
 
@@ -68,11 +72,15 @@ src_prepare() {
     ! use gui && eapply "${FILESDIR}/${P}-disable_rog-cc.patch"
 
     default
+    rust_pkg_setup
 }
 
 src_compile() {
     cargo_gen_config
     cargo_src_compile
+
+    # cargo is using a different target-path during compilation (correcting it)
+    [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {

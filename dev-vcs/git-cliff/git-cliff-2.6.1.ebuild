@@ -3,27 +3,25 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.75.0"
+
 inherit cargo
 
 DESCRIPTION="A highly customizable Changelog Generator that follows Conventional Commit specifications"
 HOMEPAGE="https://git-cliff.org/"
 SRC_URI="https://github.com/orhun/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-    https://vendors.simple-co.de/${PN}/${PN}-vendor-${PV}.tar.xz"
+    https://vendors.simple-co.de/${PN}/${P}-vendor.tar.xz"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=">=virtual/rust-1.75.0"
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 QA_PRESTRIPPED="/usr/bin/git-cliff"
 
 src_prepare() {
-    mv ${WORKDIR}/vendor ${S}/vendor
     mkdir -p ${S}/.cargo && cp ${FILESDIR}/vendor_config ${S}/.cargo/config
     default
+    rust_pkg_setup
 }
 
 src_compile() {

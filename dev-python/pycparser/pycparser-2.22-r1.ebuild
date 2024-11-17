@@ -41,11 +41,10 @@ python_prepare_all() {
 
 	# unbundle ply
 	rm -r pycparser/ply || die
+	## re-export (external) system ply
+ 	sed -i -e 's/import io/import io\nimport ply/' pycparser/__init__.py || die
 	sed -i -e 's:\(from \)[.]\(ply\b\):\1\2:' pycparser/*.py || die
 	sed -i -e "s:'pycparser.ply'::" setup.py || die
-
-	# re-export external system ply
- 	sed -i -e 's/import io/import io\nimport ply/' pycparser/__init__.py || die
 
 	ln -s "${S}"/examples tests/examples || die
 

@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-RUST_MIN_VER="1.71.1"
+RUST_MIN_VER="1.76.0"
+RUST_MAX_VER="1.81.0"
 RUST_NEEDS_LLVM=1
-LLVM_COMPAT=( {17..19} )
+LLVM_COMPAT=( {17..18} )
 
 inherit llvm-r1 systemd cargo linux-info udev xdg desktop
 
@@ -17,7 +18,6 @@ HOMEPAGE="https://asus-linux.org"
 SRC_URI="
     https://gitlab.com/asus-linux/${PN}/-/archive/${_PV}/${PN}-${_PV}.tar.gz
     https://gitlab.com/asus-linux/${PN}/uploads/15f94f447c4cec063923c8d356f47695/vendor_${PN}_.tar.xz -> vendor_${PN}_${_PV}.tar.xz
-    ${CARGO_CRATE_URIS}
 "
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 ISC LicenseRef-UFL-1.0 MIT MPL-2.0 OFL-1.1 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0/5"

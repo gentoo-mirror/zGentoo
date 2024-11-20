@@ -7,17 +7,55 @@ inherit pam xdg desktop
 
 DESCRIPTION="Yet another remote desktop software, written in Rust."
 HOMEPAGE="https://rustdesk.com/"
-SRC_URI="https://github.com/${_PN}/${_PN}/releases/download/${PV}/${_PN}-${PV}-x86_64.deb"
+SRC_URI="
+    amd64? ( https://github.com/${_PN}/${_PN}/releases/download/${PV}/${_PN}-${PV}-x86_64.deb )
+    arm64? ( https://github.com/${_PN}/${_PN}/releases/download/${PV}/${_PN}-${PV}-aarch64.deb )
+"
 
 LICENSE="AGPL-3.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="mirror"
+
+IUSE="X wayland"
 
 ## TODO: add all needed DEPS(!) - still WiP
 RDEPEND="
-    x11-misc/xdotool
-    x11-libs/libvdpau
+    app-accessibility/at-spi2-core
+    app-arch/brotli
+    dev-libs/fribidi
+    >=dev-libs/glib-2.76.4
+    dev-libs/libffi
+    dev-libs/libpcre2
+    dev-libs/wayland
+    media-gfx/graphite2
+    media-libs/fontconfig
+    media-libs/freetype
+    media-libs/harfbuzz
+    media-libs/libepoxy
+    >=media-libs/libjpeg-turbo-3.0.0
+    media-libs/libpng:0/16
+    sys-apps/dbus
+    sys-apps/systemd
+    sys-libs/libcap
+    sys-libs/zlib
+    x11-libs/cairo
+    x11-libs/gdk-pixbuf
+    x11-libs/gtk+:3
+    x11-libs/libXau
+    x11-libs/libxcb
+    x11-libs/libXcomposite
+    x11-libs/libXcursor
+    x11-libs/libXdamage
+    x11-libs/libXdmcp
+    x11-libs/libXext
+    x11-libs/libXfixes
+    x11-libs/libXi
+    x11-libs/libxkbcommon
+    x11-libs/libXrandr
+    x11-libs/libXrender
+    x11-libs/pango
+    x11-libs/pixman
 "
 DEPEND="${RDEPEND}"
 

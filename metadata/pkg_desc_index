@@ -81,7 +81,7 @@ net-misc/bofh_generator 1.0.0-r3: BOFH excuse generator
 net-misc/latd 1.31: LAT terminal daemon for Linux and BSD
 net-misc/netbsd-mopd 2.5.3: MOP server and utilities for Linux
 net-misc/postman-bin 11.16.0: Supercharge your API workflow
-net-misc/rustdesk-bin 1.2.6: Yet another remote desktop software, written in Rust.
+net-misc/rustdesk-bin 1.3.2: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
 net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CDW
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn

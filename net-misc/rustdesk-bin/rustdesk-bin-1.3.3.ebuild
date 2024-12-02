@@ -56,6 +56,7 @@ RDEPEND="
     x11-libs/libXrender
     x11-libs/pango
     x11-libs/pixman
+    x11-misc/xdotool
 "
 DEPEND="${RDEPEND}"
 

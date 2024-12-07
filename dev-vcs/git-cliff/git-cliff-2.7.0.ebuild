@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.75.0"
+RUST_MIN_VER="1.82.0"
 CRATES="
     addr2line@0.24.1
     adler2@2.0.0
@@ -431,11 +431,16 @@ src_compile() {
     cargo_gen_config
     cargo_src_compile
 
-    # cargo is using a different target-path during compilation (correcting it)
+    # cargo eclass is using a different target-path during compilation (correcting it)
     [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {
     insinto /usr/bin
     dobin ${S}/target/release/${PN}
+}
+
+src_test() {
+    die "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    cargo_src_test
 }

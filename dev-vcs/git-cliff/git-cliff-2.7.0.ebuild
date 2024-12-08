@@ -410,37 +410,68 @@ CRATES="
     zstd@0.13.2
 "
 
-inherit cargo
+inherit cargo git-r3 shell-completion
 
 DESCRIPTION="A highly customizable Changelog Generator that follows Conventional Commit specifications"
 HOMEPAGE="https://git-cliff.org/"
-SRC_URI="
-    https://github.com/orhun/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-   	${CARGO_CRATE_URIS}
+
+EGIT_REPO_URI="https://github.com/orhun/git-cliff.git"
+EGIT_COMMIT="v${PV}"
+
+SRC_URI="${CARGO_CRATE_URIS}"
+
+LICENSE="
+    Apache-2.0 MIT BSD-2 BSD Boost-1.0 CDDL ISC MPL-2.0 
+    Unicode-3.0 Unicode-DFS-2016 ZLIB
 "
-LICENSE="Apache-2.0 MIT Apache-2.0 BSD-2 BSD Boost-1.0 CDDL ISC MIT MPL-2.0 Unicode-3.0 Unicode-DFS-2016 ZLIB"
+
 SLOT="0"
 KEYWORDS="~amd64"
 
 src_prepare() {
     default
+
+    cargo_src_unpack
+    cargo_gen_config
+
     rust_pkg_setup
 }
 
 src_compile() {
-    cargo_gen_config
     cargo_src_compile
-
-    # cargo eclass is using a different target-path during compilation (correcting it)
-    [ -d `cargo_target_dir` ] && mv -f "`cargo_target_dir`/"* ./target/release/
 }
 
 src_install() {
+    local release_dir="${S}/`cargo_target_dir`"
+
     insinto /usr/bin
-    dobin ${S}/target/release/${PN}
+    dobin "${release_dir}/"${PN}
+
+    # generate and install man file
+    mkdir "${release_dir}/man"
+    OUT_DIR="${release_dir}/man" "${release_dir}/"${PN}-mangen
+    doman "${release_dir}/man/"${PN}.1
+
+    # generate and install completion scripts
+    mkdir "${release_dir}/completion"
+    OUT_DIR="${release_dir}/completion" "${release_dir}/"${PN}-completions
+
+    newbashcomp "${release_dir}/completion/${PN}.bash" ${PN}
+    newfishcomp "${release_dir}/completion/${PN}.fish" ${PN}
+    
+    # elv and ps1 are not supported at time of writing
+    #newelvcomp "${release_dir}/completion/${PN}.elv" ${PN}
+    #newps1comp "${release_dir}/completion/${PN}.ps1" ${PN}
+
+    # docs and examples
+    dodoc ${S}/README.md
+
+    insinto /usr/share/doc/${P}/examples
+    doins -r ${S}/examples/
 }
 
 src_test() {
-    die "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    # disable "git_upstream_remote" test, as it must fail inside network-sandbox
+    eapply "${FILESDIR}/${P}-disable_git_upstream_remote_test.patch"
     cargo_src_test
 }

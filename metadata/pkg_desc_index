@@ -58,7 +58,7 @@ dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user exper
 dev-util/ghidra-bin 11.0.3: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
 dev-util/selenium-manager 4.20.0: CLI tool that manages the browser/driver infrastructure required by Selenium
-dev-vcs/git-cliff 2.7.0: A highly customizable Changelog Generator that follows Conventional Commit specifications
+dev-vcs/git-cliff 2.7.0 9999: A highly customizable Changelog Generator that follows Conventional Commit specifications
 games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.

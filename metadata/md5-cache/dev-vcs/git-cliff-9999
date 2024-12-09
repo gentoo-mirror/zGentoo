@@ -1,0 +1,12 @@
+BDEPEND=|| ( dev-lang/rust-bin:1.83.0 dev-lang/rust:1.83.0 dev-lang/rust-bin:1.82.0 dev-lang/rust:1.82.0 ) >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DESCRIPTION=A highly customizable Changelog Generator that follows Conventional Commit specifications
+EAPI=8
+HOMEPAGE=https://git-cliff.org/
+INHERIT=cargo shell-completion git-r3
+IUSE=debug
+LICENSE=Apache-2.0 MIT BSD-2 BSD Boost-1.0 CDDL ISC MPL-2.0 Unicode-3.0 Unicode-DFS-2016 ZLIB
+PROPERTIES=live
+SLOT=0
+_eclasses_=toolchain-funcs	d3d42b22a610ce81c267b644bcec9b87	multilib	b2a329026f2e404e9e371097dda47f96	flag-o-matic	f14aba975c94ccaa9f357a27e3b17ffe	multiprocessing	1e32df7deee68372153dca65f4a7c21f	rust	55e231f09fddb09cbbaa254cf234368b	rust-toolchain	3f822985d9297438ed2443aa1fbdf33e	cargo	b5f350ebe96460cff090d0f2ae7e698a	bash-completion-r1	767861f3744f589ee5291c1698b1c082	shell-completion	0b655d0d825e157a5e99c463bddaac16	git-r3	875eb471682d3e1f18da124be97dcc81
+_md5_=12e3b7c46c352cd33d143d0f32a225aa

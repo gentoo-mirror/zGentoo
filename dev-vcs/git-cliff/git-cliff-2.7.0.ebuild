@@ -410,39 +410,37 @@ CRATES="
     zstd@0.13.2
 "
 
-inherit cargo git-r3 shell-completion
+inherit cargo shell-completion
 
 DESCRIPTION="A highly customizable Changelog Generator that follows Conventional Commit specifications"
 HOMEPAGE="https://git-cliff.org/"
+SRC_URI="
+    https://github.com/orhun/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+    ${CARGO_CRATE_URIS}    
+"
 
-EGIT_REPO_URI="https://github.com/orhun/git-cliff.git"
-EGIT_COMMIT="v${PV}"
-
-SRC_URI="${CARGO_CRATE_URIS}"
-
+SLOT="0"
+KEYWORDS="~amd64"
 LICENSE="
     Apache-2.0 MIT BSD-2 BSD Boost-1.0 CDDL ISC MPL-2.0 
     Unicode-3.0 Unicode-DFS-2016 ZLIB
 "
 
-SLOT="0"
-KEYWORDS="~amd64"
+PATCHES=(
+    # disables tests against local (.)git repo
+    "${FILESDIR}/${P}-disable_repo_tests.patch"
+    # silences a "command not found" error (QA)
+    "${FILESDIR}/${P}-silence_run_os_command_test.patch"
+)
 
 src_prepare() {
     default
-
-    cargo_src_unpack
     cargo_gen_config
-
     rust_pkg_setup
 }
 
-src_compile() {
-    cargo_src_compile
-}
-
 src_install() {
-    local release_dir="${S}/`cargo_target_dir`"
+    local release_dir="${S}/$(cargo_target_dir)"
 
     insinto /usr/bin
     dobin "${release_dir}/"${PN}
@@ -468,10 +466,4 @@ src_install() {
 
     insinto /usr/share/doc/${P}/examples
     doins -r ${S}/examples/
-}
-
-src_test() {
-    # disable "git_upstream_remote" test, as it must fail inside network-sandbox
-    eapply "${FILESDIR}/${P}-disable_git_upstream_remote_test.patch"
-    cargo_src_test
 }

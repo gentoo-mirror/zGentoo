@@ -3,11 +3,13 @@ acct-group/flutter 0: Flutter program group
 acct-group/logger 0-r1: Logger program group
 acct-group/matrix-webhook 0: System group: matrix-webhook
 acct-group/matterbridge 0: System group: matterbridge
+acct-group/nym 0: NYM(VPN) group
 acct-user/bofh_generator 0: User for BOFH-Server
 acct-user/fluent-bit 0-r1: fluent-bit program user
 acct-user/loki 0-r1: Loki program user
 acct-user/matrix-webhook 0-r1: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
+acct-user/nym 0: NYM(VPN) user
 acct-user/trezord 0: User for TREZOR Bridge
 app-admin/fluent-bit 2.0.0 2.1.9: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
 app-admin/influx-cli 2.7.1 2.7.3 2.7.5: CLI for managing resources in InfluxDB v2
@@ -87,6 +89,8 @@ net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-voip/linphone-desktop 5.2.6: Open source softphone for voice and video over IP calling and instant messaging.
+net-vpn/nym 9999: NYM(VPN) is a privacy platform providing strong network-level privacy.
+net-vpn/nym-wallet 1.2.15: NYM(VPN) is a privacy platform providing strong network-level privacy.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sci-electronics/kicad 8.0.1-r1: Electronic Schematic and PCB design tools
 sys-cluster/ceph 18.2.2: Ceph distributed filesystem

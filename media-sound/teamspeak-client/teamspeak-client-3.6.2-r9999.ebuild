@@ -21,8 +21,8 @@ RDEPEND="
 	app-arch/snappy:0/1.1
 	dev-libs/openssl-compat:1.0.0
 	dev-libs/quazip
+	llvm-runtimes/libcxxabi
 	net-libs/libsrtp:0
-	sys-libs/libcxx[libcxxabi]
 	sys-libs/zlib:0/1
 	virtual/udev
 	alsa? ( media-libs/alsa-lib )

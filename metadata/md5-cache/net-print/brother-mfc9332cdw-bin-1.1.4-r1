@@ -11,5 +11,5 @@ RDEPEND=net-print/cups
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=http://download.brother.com/welcome/dlf101622/mfc9332cdwlpr-1.1.3-0.i386.rpm http://download.brother.com/welcome/dlf101623/mfc9332cdwcupswrapper-1.1.4-0.i386.rpm
-_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	rpm	7828cd38ff559545ca52f92064d0f8f4	multilib	b2a329026f2e404e9e371097dda47f96	toolchain-funcs	fa554cc3cff825d21dfe3f24841e29cf
+_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	rpm	7828cd38ff559545ca52f92064d0f8f4	multilib	b2a329026f2e404e9e371097dda47f96	toolchain-funcs	14648d8795f7779e11e1bc7cf08b7536
 _md5_=d2778862f18379da11f2e8d69031e085

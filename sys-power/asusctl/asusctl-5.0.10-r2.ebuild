@@ -39,8 +39,8 @@ DEPEND="${RDEPEND}
     media-libs/sdl2-gfx
     gfx? ( >=sys-power/supergfxctl-${PV}[gnome?] )
     $(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 S="${WORKDIR}/${PN}-${_PV/_/-}"

@@ -58,8 +58,8 @@ DEPEND="${RDEPEND}
     media-libs/sdl2-gfx
     gfx? ( >=sys-power/supergfxctl-5.2.1[gnome?] )
     $(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}=
-		sys-devel/llvm:${LLVM_SLOT}=
+		llvm-core/clang:${LLVM_SLOT}=
+		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
 src_prepare() {

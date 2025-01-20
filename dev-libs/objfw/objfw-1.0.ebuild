@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 doc? ( app-doc/doxygen )
 || (
-    llvm? ( <sys-devel/llvm-17.0.0[${MULTILIB_USEDEP}] )
+    llvm? ( <llvm-core/llvm-17.0.0[${MULTILIB_USEDEP}] )
     sys-devel/gcc[objc]
 )"
 

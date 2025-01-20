@@ -13,7 +13,7 @@ KEYWORDS="~x86 ~amd64"
 
 DEPENDS="dev-libs/glib:2
 	dev-libs/libxml2
-	sys-devel/llvm:="
+	llvm-core/llvm:="
 RDEPENDS="${DEPENDS}"
 
 src_configure() {

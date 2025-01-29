@@ -10,8 +10,8 @@ HOMEPAGE="https://www.teamspeak.com/"
 SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${PV/_/-}/teamspeak-client.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
-LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
-SLOT="5"
+LICENSE="teamspeak6 || ( GPL-2 GPL-3 LGPL-3 )"
+SLOT="6"
 KEYWORDS="-* ~amd64"
 
 RDEPEND="
@@ -50,17 +50,17 @@ RDEPEND="
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="
-	opt/teamspeak5-client/chrome-sandbox
-	opt/teamspeak5-client/hotkey_helper
-	opt/teamspeak5-client/libcef.so
-	opt/teamspeak5-client/libEGL.so
-	opt/teamspeak5-client/libGLESv2.so
-	opt/teamspeak5-client/libtschat_client_lib.so
-	opt/teamspeak5-client/libtschat_client_lib_export.so
-	opt/teamspeak5-client/patcher
-	opt/teamspeak5-client/TeamSpeak
-	opt/teamspeak5-client/soundbackends/libalsa_linux_amd64.so
-	opt/teamspeak5-client/libvulkan.so.1
+	opt/teamspeak6-client/chrome-sandbox
+	opt/teamspeak6-client/hotkey_helper
+	opt/teamspeak6-client/libcef.so
+	opt/teamspeak6-client/libEGL.so
+	opt/teamspeak6-client/libGLESv2.so
+	opt/teamspeak6-client/libtschat_client_lib.so
+	opt/teamspeak6-client/libtschat_client_lib_export.so
+	opt/teamspeak6-client/patcher
+	opt/teamspeak6-client/TeamSpeak
+	opt/teamspeak6-client/soundbackends/libalsa_linux_amd64.so
+	opt/teamspeak6-client/libvulkan.so.1
 "
 
 src_prepare() {
@@ -68,7 +68,7 @@ src_prepare() {
 }
 
 src_install() {
-	exeinto /opt/teamspeak5-client
+	exeinto /opt/teamspeak6-client
 	doexe chrome-sandbox hotkey_helper patcher TeamSpeak libcef.so libtschat_client_lib.so libtschat_client_lib_export.so
 
 	# Unfortunately we need to use shipped libs as otherwise
@@ -76,20 +76,20 @@ src_install() {
 	# is, they only need to be placed in it's teamspeaks home directory.
 	doexe libEGL.so libGLESv2.so libvulkan.so.1
 
-	insinto /opt/teamspeak5-client
+	insinto /opt/teamspeak6-client
 	doins *.bin *.dat *.pak
 	doins -r html licenses locales soundbackends
 
 	dodir /opt/bin
-	dosym ../teamspeak5-client/TeamSpeak /opt/bin/ts5client
+	dosym ../teamspeak6-client/TeamSpeak /opt/bin/ts6client
 
 	for iconsize in 48 128 256; do
-		newicon -s ${iconsize} logo-${iconsize}.png teamspeak5.png
+		newicon -s ${iconsize} logo-${iconsize}.png teamspeak6.png
 	done
 
 	make_desktop_entry \
-		/opt/bin/ts5client "Teamspeak 5 Client" \
-		"teamspeak5" "Audio;AudioVideo;Network"
+		/opt/bin/ts6client "Teamspeak 6 Client" \
+		"teamspeak6" "Audio;AudioVideo;Network"
 
 	dodoc docs/*
 }

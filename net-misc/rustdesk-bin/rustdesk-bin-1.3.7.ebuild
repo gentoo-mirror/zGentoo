@@ -86,9 +86,9 @@ src_install() {
     doins -r .
 
     # bin
-    chmod +x "${D}"/usr/lib/${_PN}/${_PN}
-    chmod +x "${D}"/usr/share/rustdesk/files/polkit
-    dosym /usr/lib/${_PN}/${_PN} /usr/bin/${_PN}
+    chmod +x "${D}"/usr/share/${_PN}/${_PN}
+    chmod +x "${D}"/usr/share/${_PN}/files/polkit
+    dosym /usr/share/${_PN}/${_PN} /usr/bin/${_PN}
 
     # pam
     dopamd etc/pam.d/rustdesk

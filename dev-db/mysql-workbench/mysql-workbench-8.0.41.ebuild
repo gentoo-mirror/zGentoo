@@ -1,17 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 GCONF_DEBUG="no"
 
-PYTHON_COMPAT=( python3_{10,11,12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 
-ANTLR_VERSION=4.11.1
-JAVA_PKG_WANT_SOURCE="11"
-JAVA_PKG_WANT_TARGET="11"
+ANTLR_VERSION=4.13.2
 
-inherit gnome2 flag-o-matic java-utils-2 python-single-r1 cmake
+inherit gnome2 flag-o-matic python-single-r1 cmake
 
 MY_P="${PN}-community-${PV}-src"
 
@@ -64,9 +62,7 @@ RDEPEND="${CDEPEND}
 
 DEPEND="${CDEPEND}
 		dev-lang/swig
-		>=virtual/jre-11:*
-		>=virtual/jdk-11:*
-		app-portage/portage-utils
+		>=virtual/jre-11
 		virtual/pkgconfig"
 
 PATCHES=(
@@ -74,11 +70,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.19-mysql-connector-8.patch"
 	"${FILESDIR}/${PN}-8.0.33-gcc13.patch"
 )
-
-pkg_setup() {
-    java-pkg_init
-    python-single-r1_pkg_setup
-}
 
 src_unpack() {
 	unpack ${PN}-community-${PV}-src.tar.gz
@@ -99,6 +90,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/924671
+	# https://bugs.mysql.com/bug.php?id=115735
+	filter-lto
+
 	if has_version dev-db/libiodbc ; then
 		IODBC="-DIODBC_CONFIG_PATH=/usr/bin/iodbc-config"
 	fi

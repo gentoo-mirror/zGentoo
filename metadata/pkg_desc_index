@@ -29,7 +29,7 @@ app-text/obsidian 1.5.3: A second brain, for you, forever.
 dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/influxdb 2.7.8: Scalable datastore for metrics, events, and real-time analytics
 dev-db/mysql-connector-c++ 8.0.33 8.1.0: MySQL database connector for C++ (mimics JDBC 4.0 API)
-dev-db/mysql-workbench 8.0.38-r1: MySQL Workbench
+dev-db/mysql-workbench 8.0.41: MySQL Workbench
 dev-games/godot 4.1: Multi-platform 2D and 3D game engine with a feature-rich editor
 dev-go/wire 0.6.0: Wire: Automated Initialization in Go
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices

@@ -1,4 +1,4 @@
-BDEPEND=|| ( dev-lang/rust-bin:9999 dev-lang/rust:9999 dev-lang/rust-bin:1.86.0 dev-lang/rust:1.86.0 dev-lang/rust-bin:1.85.0 dev-lang/rust:1.85.0 dev-lang/rust-bin:1.84.1 dev-lang/rust:1.84.1 dev-lang/rust-bin:1.83.0 dev-lang/rust:1.83.0 dev-lang/rust-bin:1.82.0 dev-lang/rust:1.82.0 ) >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=|| ( dev-lang/rust-bin:9999 dev-lang/rust:9999 dev-lang/rust-bin:1.86.0 dev-lang/rust:1.86.0 dev-lang/rust-bin:1.85.0 dev-lang/rust:1.85.0 dev-lang/rust-bin:1.84.1 dev-lang/rust:1.84.1 dev-lang/rust-bin:1.84.0 dev-lang/rust:1.84.0 dev-lang/rust-bin:1.83.0 dev-lang/rust:1.83.0 dev-lang/rust-bin:1.82.0 dev-lang/rust:1.82.0 ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare setup test unpack
 DESCRIPTION=NYM(VPN) is a privacy platform providing strong network-level privacy.
 EAPI=8
@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=acct-group/nym acct-user/nym
 SLOT=0
 SRC_URI=https://github.com/swagger-api/swagger-ui/archive/refs/tags/v5.17.12.zip -> swagger-ui-5.17.12.zip
-_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	flag-o-matic	357f1a896fbedcd06e5ce55419c49eb9	multiprocessing	1e32df7deee68372153dca65f4a7c21f	rust	c5b98ad87d66110ef256b49a177f3b66	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	cargo	313cf4d416506d4c3d8b9c5dbd9ce689	git-r3	875eb471682d3e1f18da124be97dcc81
+_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	flag-o-matic	357f1a896fbedcd06e5ce55419c49eb9	multiprocessing	1e32df7deee68372153dca65f4a7c21f	rust	4fcc266e35b188de828a39aa7df727e4	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	cargo	313cf4d416506d4c3d8b9c5dbd9ce689	git-r3	875eb471682d3e1f18da124be97dcc81
 _md5_=5de1655c32a3afeb5298eaca1834276b

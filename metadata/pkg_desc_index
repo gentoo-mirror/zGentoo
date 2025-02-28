@@ -84,6 +84,8 @@ net-misc/latd 1.31: LAT terminal daemon for Linux and BSD
 net-misc/netbsd-mopd 2.5.3: MOP server and utilities for Linux
 net-misc/postman-bin 11.16.0: Supercharge your API workflow
 net-misc/rustdesk-bin 1.3.7: Yet another remote desktop software, written in Rust.
+net-misc/seafile 9.0.11: File syncing and sharing software with file encryption and group sharing
+net-misc/seafile-client 9.0.11: Seafile desktop client
 net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
 net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CDW
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn

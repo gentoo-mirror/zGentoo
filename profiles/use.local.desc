@@ -107,6 +107,7 @@ dev-python/matplotlib:webagg - Enable webagg backend that uses dev-python/tornad
 media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner via avahi.
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
 net-misc/bofh_generator:server - Enables systemd service to spawn a webserver. This will also install acct-user/bofh_generator and acct-group/bofh_generator
+net-misc/seafile-client:shibboleth - Build support for Shibboleth single sign-on
 net-p2p/trezord-go:systemd - Install systemd service file
 net-p2p/trezord-go:udev - Install udev rules
 sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace

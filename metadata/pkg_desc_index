@@ -79,6 +79,7 @@ net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensib
 net-im/discord 0.0.81: All-in-one voice and text chat for gamers
 net-im/element-desktop-bin 1.11.83: A glossy Matrix collaboration client for desktop (binary package)
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
+net-libs/re 3.20.0: Generic library for real-time communications with async IO support
 net-misc/bofh_generator 1.0.0-r3: BOFH excuse generator
 net-misc/latd 1.31: LAT terminal daemon for Linux and BSD
 net-misc/netbsd-mopd 2.5.3: MOP server and utilities for Linux
@@ -91,6 +92,7 @@ net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CD
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
+net-voip/baresip 3.20.0: Baresip is a portable and modular SIP User-Agent
 net-voip/linphone-desktop 5.2.6: Open source softphone for voice and video over IP calling and instant messaging.
 net-vpn/nym 9999: NYM(VPN) is a privacy platform providing strong network-level privacy.
 net-vpn/nym-wallet 1.2.15: NYM(VPN) is a privacy platform providing strong network-level privacy.

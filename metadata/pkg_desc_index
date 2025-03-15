@@ -35,6 +35,9 @@ dev-go/wire 0.6.0: Wire: Automated Initialization in Go
 dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bindings, based on nativefiledialog
 dev-libs/objfw 1.0: Portable, lightweight framework for the Objective-C language
+dev-php/psr-log 3.0.2: Common interface for logging libraries
+dev-php/xdebug 3.4.2: A PHP debugging and profiling extension
+dev-php/xdebug-handler 3.0.5: Restart a CLI process without loading the xdebug extension
 dev-python/PyDrive2 1.19.0: Wrapper library of google-api-python-client
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/cryptography 40.0.2: Library providing cryptographic recipes and primitives

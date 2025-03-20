@@ -83,6 +83,10 @@ src_prepare() {
 	## Fix doc install directory
 	sed -i -e "/WB_INSTALL_DOC_DIR/ s/mysql-workbench/${P}/ ; /WB_INSTALL_DOC_DIR/ s/-community//" CMakeLists.txt || die
 
+	## fix for SWIG >=4.3 (should also work with 4.2.x)
+	sed -i -e 's/SWIG_Python_AppendOutput/SWIG_AppendOutput/' library/forms/swig/mforms.i || die
+	sed -i -e 's/SWIG_Python_AppendOutput/SWIG_AppendOutput/' library/forms/swig/cairo.i || die
+
 	## package is very fragile...
 	strip-flags
 

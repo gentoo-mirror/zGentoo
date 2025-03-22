@@ -33,7 +33,7 @@ RDEPEND="
     dev-libs/libayatana-appindicator
     dev-libs/libxml2
     dev-libs/openssl:0/3
-    dev-libs/qtkeychain
+    dev-libs/qtkeychain[qt6]
     dev-libs/xerces-c
     dev-python/pystache[${PYTHON_USEDEP}]
     dev-python/six[${PYTHON_USEDEP}]
@@ -152,7 +152,7 @@ src_configure() {
         -DENABLE_QT_KEYCHAIN=OFF
         -DQTKEYCHAIN_TARGET_NAME=Qt6Keychain
 
-        -DQT_I18N_TRANSLATED_LANGUAGES="en fr de"
+        -DQT_I18N_TRANSLATED_LANGUAGES="de en fr"
         -DI18N_SOURCE_LANGUAGE="fr"
 
         # correcting plugin paths

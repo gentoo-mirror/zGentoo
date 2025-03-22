@@ -20,7 +20,7 @@ BDEPEND="
 	dev-qt/qtopengl
 	dev-qt/qtprintsupport
 	dev-qt/linguist-tools
-	>=dev-util/cmake-3.5
+	dev-build/cmake
 "
 
 src_prepare() {

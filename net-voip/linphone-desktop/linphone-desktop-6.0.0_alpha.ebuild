@@ -197,7 +197,6 @@ src_install() {
 
     einfo "move binaries into right place.."
     for exf in "${D}"/usr/bin/*; do
-        local exb=`basename ${exf}`
         exeinto /opt/${PN}/bin
         doexe ${exf}                                    # install from bin (exe)
         rm ${exf}                                       # remove installed bin

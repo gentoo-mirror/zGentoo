@@ -304,7 +304,7 @@
             <location filename="../../view/Page/Layout/Settings/AccountSettingsParametersLayout.qml" line="36" />
             <source>contact_editor_saved_changes_toast</source>
             <extracomment>"Modifications sauvegardés"</extracomment>
-            <translation>Gespeicherte Änderungen</translation>
+            <translation>Änderungen gespeichert</translation>
         </message>
         <message>
             <location filename="../../view/Page/Layout/Settings/AccountSettingsParametersLayout.qml" line="53" />
@@ -2856,7 +2856,7 @@
         <message>
             <location filename="../../view/Page/Window/Main/MainWindow.qml" line="104" />
             <source>information_popup_success_title</source>
-            <translation>Gerettet</translation>
+            <translation>Gespeichert</translation>
         </message>
         <message>
             <location filename="../../view/Page/Window/Main/MainWindow.qml" line="106" />
@@ -3093,7 +3093,7 @@
             <location filename="../../view/Page/Main/Meeting/MeetingPage.qml" line="688" />
             <source>saved</source>
             <extracomment>"Enregistré"</extracomment>
-            <translation>Gerettet</translation>
+            <translation>Gespeichert</translation>
         </message>
         <message>
             <location filename="../../view/Page/Main/Meeting/MeetingPage.qml" line="463" />

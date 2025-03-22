@@ -86,6 +86,10 @@ src_prepare() {
     # removing jsoncpp (it does no longer provide cmake files)
     sed -i '/find_package(JsonCPP REQUIRED)/d' external/linphone-sdk/liblinphone/CMakeLists.txt || die
 
+    # enabeling german langauge
+    cp "${FILESDIR}/de.ts" Linphone/data/languages || die
+    sed -i 's/set(LANGUAGES en fr_FR)/set(LANGUAGES de en fr_FR)/' Linphone/CMakeLists.txt || die
+
     cmake_src_prepare
 }
 
@@ -102,7 +106,7 @@ src_configure() {
         -DENABLE_AV1=$(usex av1)
         -DENABLE_CODEC2=$(usex codec2)
 
-        # testing .. 
+        # moving to ssl instead of mbedtls .. 
         -DENABLE_MBEDTLS=NO
         -DENABLE_OPENSSL=YES
         -DBUILD_OPENSSL=OFF
@@ -144,7 +148,7 @@ src_configure() {
         -DDav1d_TARGET=dav1d
         -DAom_TARGET=aom
 
-        # Qt5 adjustments (use system keychain)
+        # Qt6 adjustments (use system keychain)
         -DENABLE_QT_KEYCHAIN=OFF
         -DQTKEYCHAIN_TARGET_NAME=Qt6Keychain
 
@@ -196,8 +200,8 @@ src_install() {
     dosym "/usr/`get_libdir`/libsoci_sqlite3.so" "/opt/${PN}/plugins/libsoci_sqlite3.so"
 
     einfo "move binaries into right place.."
+    exeinto /opt/${PN}/bin
     for exf in "${D}"/usr/bin/*; do
-        exeinto /opt/${PN}/bin
         doexe ${exf}                                    # install from bin (exe)
         rm ${exf}                                       # remove installed bin
     done
@@ -209,6 +213,7 @@ src_install() {
     newicon "${S}/Linphone/data/image/${PBN}.svg" ${PBN}.svg
     make_desktop_entry /usr/bin/${PBN} Linphone /usr/share/pixmaps/${PBN}.svg
 }
+
 
 pkg_postinst() {
     xdg_icon_cache_update

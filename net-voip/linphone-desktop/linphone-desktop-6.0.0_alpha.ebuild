@@ -37,6 +37,8 @@ RDEPEND="
     dev-libs/xerces-c
     dev-python/pystache[${PYTHON_USEDEP}]
     dev-python/six[${PYTHON_USEDEP}]
+    dev-qt/qttools:6[linguist,qml]
+    dev-qt/qtdeclarative:6
     dev-qt/qtmultimedia:6
     dev-qt/qtnetworkauth:6
     media-libs/glew:0
@@ -202,11 +204,11 @@ src_install() {
     done
 
     # re-link main binary
-    dosym /opt/${PN}/bin/linphone6 /usr/bin/${PN}
+    dosym /opt/${PN}/bin/${PBN}6 /usr/bin/${PBN}
 
     # create desktop icon
-    newicon "${S}/Linphone/data/image/linphone.svg" ${PN}.svg
-    make_desktop_entry /usr/bin/${PN} Linphone /usr/share/pixmaps/${PN}.svg
+    newicon "${S}/Linphone/data/image/${PBN}.svg" ${PBN}.svg
+    make_desktop_entry /usr/bin/${PBN} Linphone /usr/share/pixmaps/${PBN}.svg
 }
 
 pkg_postinst() {

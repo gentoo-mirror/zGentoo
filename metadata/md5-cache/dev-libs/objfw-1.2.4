@@ -1,0 +1,13 @@
+BDEPEND=doc? ( app-doc/doxygen ) || ( llvm? ( <llvm-core/llvm-17.0.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) sys-devel/gcc[objc] )
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Portable, lightweight framework for the Objective-C language
+EAPI=8
+HOMEPAGE=https://objfw.nil.im
+INHERIT=multilib-minimal
+IUSE=+llvm doc abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-3 QPL
+SLOT=0
+SRC_URI=https://objfw.nil.im/downloads/objfw-1.2.4.tar.gz
+_eclasses_=out-of-source-utils	dbf9e34ee8964084651e25907fa8f52c	multibuild	4650a65187015567b4e041bb9bfdb364	multilib	b2a329026f2e404e9e371097dda47f96	toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib-build	9ac26ea006828266d235e2f0135429b5	multilib-minimal	e9f54d75b074edc47d36994bbc1e2123
+_md5_=80cbd0d6bfae197fbc45f3d4bb2f054f

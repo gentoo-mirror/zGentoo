@@ -11,58 +11,45 @@ acct-user/matrix-webhook 0-r1: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/nym 0: NYM(VPN) user
 acct-user/trezord 0: User for TREZOR Bridge
-app-admin/fluent-bit 2.0.0 2.1.9: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
+app-admin/fluent-bit 3.2.9: Fast and Lightweight Log processor and forwarder for Linux, BSD and OSX
 app-admin/influx-cli 2.7.1 2.7.3 2.7.5: CLI for managing resources in InfluxDB v2
-app-admin/loki 2.6.1 2.7.3 2.9.1: Like Prometheus, but for logs.
-app-containers/podman-compose 1.0.6: Run docker-compose files without root with podman
-app-editors/imhex 1.30.1: A hex editor for reverse engineers, programmers, and eyesight
+app-admin/loki 3.4.2: Like Prometheus, but for logs.
+app-containers/podman-compose 1.3.0: Run docker-compose files without root with podman
+app-editors/imhex 1.37.4: A hex editor for reverse engineers, programmers, and eyesight
 app-emulation/vmware-horizon-client-bin 8.12.1: VMware Horizon View client
 app-metrics/prom2json 1.3.3 1.4.0: A tool to scrape a Prometheus client and dump the result as JSON
 app-metrics/prometheus 2.47.0 2.53.1: Prometheus monitoring system and time series database
-app-metrics/snmp_exporter 0.24.1 0.26.0: Prometheus exporter for snmp metrics
+app-metrics/snmp_exporter 0.28.0: Prometheus exporter for snmp metrics
 app-metrics/synthetic-monitoring-agent 0.17.1 0.25.2: The plugin-driven server agent for collecting & reporting metrics.
 app-metrics/telegraf 1.28.0 1.31.2: The plugin-driven server agent for collecting & reporting metrics.
 app-misc/fastgron 0.7.7: fastgron is a High-performance JSON to GRON (greppable, flattened JSON) converter
-app-office/freeoffice 2021.1060: A complete, free Microsoft Office-compatible alternative office suite
-app-office/qownnotes 24.8.4: A plain-text file markdown note taking with Nextcloud/ownCloud integration
-app-text/obsidian 1.5.3: A second brain, for you, forever.
-dev-cpp/CastXML 0.4.5: CastXML is a C-family abstract syntax tree XML output tool.
-dev-db/influxdb 2.7.8: Scalable datastore for metrics, events, and real-time analytics
+app-office/freeoffice 1224: A complete, free Microsoft Office-compatible alternative office suite
+app-office/qownnotes 25.3.3: A plain-text file markdown note taking with Nextcloud/ownCloud integration
+app-text/obsidian-bin 1.8.9: A second brain, for you, forever.
+dev-cpp/CastXML 0.6.11: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/mysql-workbench 8.0.41-r1: MySQL Workbench
-dev-games/godot 4.1: Multi-platform 2D and 3D game engine with a feature-rich editor
 dev-go/wire 0.6.0: Wire: Automated Initialization in Go
-dev-libs/hidapi 0.12.0: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/nativefiledialog-extended 1.1.0: File dialog library with C and C++ bindings, based on nativefiledialog
-dev-libs/objfw 1.0: Portable, lightweight framework for the Objective-C language
+dev-libs/objfw 1.2.4: Portable, lightweight framework for the Objective-C language
 dev-php/psr-log 3.0.2: Common interface for logging libraries
 dev-php/xdebug 3.4.2: A PHP debugging and profiling extension
 dev-php/xdebug-handler 3.0.5: Restart a CLI process without loading the xdebug extension
-dev-python/PyDrive2 1.19.0: Wrapper library of google-api-python-client
+dev-python/PyDrive2 1.21.3: Wrapper library of google-api-python-client
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
-dev-python/cryptography 40.0.2: Library providing cryptographic recipes and primitives
-dev-python/exif 1.6.0: Read and modify image EXIF metadata using Python
-dev-python/hid 1.0.5: ctypes bindings for hidapi
+dev-python/exif 1.6.1: Read and modify image EXIF metadata using Python
+dev-python/hid 1.0.7: ctypes bindings for hidapi
 dev-python/injector 0.21.0: Python dependency injection framework, inspired by Guice
-dev-python/logbook 1.6.0: A logging replacement for Python
-dev-python/matplotlib 3.7.2-r1: Pure python plotting library with matlab like syntax
-dev-python/matrix-nio 0.22.1: Multilayered Matrix client library
-dev-python/pecan 1.5.1 1.5.1-r1: A WSGI object-dispatching web framework, lean, fast, with few dependencies
-dev-python/plum-py 0.8.6: Pack/Unpack Memory
+dev-python/logbook 1.8.1: A logging replacement for Python
+dev-python/matrix-nio 0.25.2: Multilayered Matrix client library
+dev-python/plum-py 0.8.7: Pack/Unpack Memory
 dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pycparser 2.22-r1: C parser and AST generator written in Python
-dev-python/pytest-runner 6.0.0: Adds support for tests during installation of setup.py files
-dev-python/python-olm 3.2.15: Python CFFI binding to libolm
+dev-python/python-olm 3.2.16: Python CFFI binding to libolm
 dev-python/python-registry 1.4: Cross-Platform Windows Registry Browser
-dev-python/smbus 1.1-r2: Python bindings for Linux SMBus access through i2c-dev
-dev-python/txredisapi 1.4.7: txredisapi is a non-blocking client driver for the redis database.
-dev-python/unpaddedbase64 2.1.0-r1: Unpadded Base64
-dev-python/wxpython 4.2.1-r1: A blending of the wxWindows C++ class library with Python
-dev-util/android-sdk-cmdline-tools 6.0.8092744: Android SDK Command-line Tools
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
-dev-util/ghidra-bin 11.0.3: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
+dev-util/ghidra-bin 11.3.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
-dev-util/selenium-manager 4.20.0: CLI tool that manages the browser/driver infrastructure required by Selenium
-dev-vcs/git-cliff 2.7.0 9999: A highly customizable Changelog Generator that follows Conventional Commit specifications
+dev-util/selenium-manager 4.30.0: CLI tool that manages the browser/driver infrastructure required by Selenium
+dev-vcs/git-cliff 2.8.0 9999: A highly customizable Changelog Generator that follows Conventional Commit specifications
 games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
@@ -71,37 +58,26 @@ gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1 5.1.2_rc2 5.
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)
 media-gfx/brother-scan4-bin 0.4.11-r1: Brother scanner tool version 4
-media-gfx/gphotos-sync 3.1.3: Google Photos Sync downloads your Google Photos to the local file system.
-media-gfx/yed 3.24: yEd Graph Editor - High-quality diagrams made easy
-media-libs/libyuv 20240206: Open source project that includes YUV scaling and conversion functionality.
-media-plugins/gst-plugins-libnice 0.1.22: GStreamer plugin for ICE (RFC 5245) support
+media-gfx/gphotos-sync 3.2.5: Google Photos Sync downloads your Google Photos to the local file system.
+media-gfx/yed 3.25.1: yEd Graph Editor - High-quality diagrams made easy
 media-sound/teamspeak-client 6.0.0_beta2-r1: A client software for quality voice communication via the internet
-media-video/freetube 0.22.0: An open source desktop YouTube player built with privacy in mind.
-net-analyzer/bettercap 2.32.0: A complete, modular, portable and easily extensible MITM framework
-net-im/discord 0.0.81: All-in-one voice and text chat for gamers
-net-im/element-desktop-bin 1.11.83: A glossy Matrix collaboration client for desktop (binary package)
+media-video/freetube 0.23.2: An open source desktop YouTube player built with privacy in mind.
+net-analyzer/bettercap 2.41.0: A complete, modular, portable and easily extensible MITM framework
 net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-libs/re 3.20.0: Generic library for real-time communications with async IO support
 net-misc/bofh_generator 1.0.0-r3: BOFH excuse generator
 net-misc/latd 1.31: LAT terminal daemon for Linux and BSD
 net-misc/netbsd-mopd 2.5.3: MOP server and utilities for Linux
-net-misc/postman-bin 11.16.0: Supercharge your API workflow
-net-misc/rustdesk-bin 1.3.7: Yet another remote desktop software, written in Rust.
-net-misc/seafile 9.0.11: File syncing and sharing software with file encryption and group sharing
-net-misc/seafile-client 9.0.11: Seafile desktop client
-net-p2p/trezord-go 2.0.31: TREZOR Communication Daemon
+net-misc/postman-bin 11.37.5: Supercharge your API workflow
+net-misc/rustdesk-bin 1.3.8: Yet another remote desktop software, written in Rust.
+net-p2p/trezord-go 2.0.33: TREZOR Communication Daemon
 net-print/brother-mfc9332cdw-bin 1.1.4-r1: Brother printer driver for MFC-9332CDW
 net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-voip/baresip 3.20.0: Baresip is a portable and modular SIP User-Agent
 net-voip/linphone-desktop 6.0.0_alpha: Open source softphone for voice and video over IP calling and instant messaging.
-net-vpn/nym 9999: NYM(VPN) is a privacy platform providing strong network-level privacy.
-net-vpn/nym-wallet 1.2.15: NYM(VPN) is a privacy platform providing strong network-level privacy.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
-sci-electronics/kicad 8.0.1-r1: Electronic Schematic and PCB design tools
-sys-cluster/ceph 18.2.2: Ceph distributed filesystem
-sys-firmware/edk2-ovmf 202211: UEFI firmware for 64-bit x86 virtual machines
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 4.7.2-r3 5.0.10-r2 6.0.12-r1: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
@@ -110,4 +86,4 @@ sys-power/iasl 20240321: Intel ACPI Source Language (ASL) compiler
 sys-power/supergfxctl 4.0.5-r4 5.0.1-r2 5.1.2-r3 5.2.4-r1: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0-r2: ASUS ROG on gentoo linux virtual
 www-apps/grafana 8.5.16 8.5.27 9.3.6 9.5.21 10.1.1 10.4.6 10.4.8 11.1.3 11.2.0: The open-source platform for monitoring and observability
-www-apps/snappymail 2.36.4: Simple, modern and fast web-based email client
+www-apps/snappymail 2.38.2: Simple, modern and fast web-based email client

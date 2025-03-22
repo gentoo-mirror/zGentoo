@@ -60,4 +60,4 @@ net-im/youp
 <www-apps/grafana-11.2.0
 
 # mask during stabilization (currently also uses git-r3)
->=net-voip/linphone-desktop-6.0.0
+>=net-voip/linphone-desktop-6.0.0_alpha

@@ -1,34 +1,30 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
 IUSE="+av1 +codec2 -daemon doc -extras"
 
-# language support
-LANGS="cs da de en es fr_FR hu it ja lt pt_BR ru sv tr uk zh_CN"
-for lang in ${LANGS}; do
-    IUSE="${IUSE} linguas_${lang}"
-done
-
-inherit cmake distutils-r1 git-r3 xdg
+inherit cmake distutils-r1 git-r3 xdg-utils desktop
 
 DESCRIPTION="Open source softphone for voice and video over IP calling and instant messaging."
-HOMEPAGE="https://www.linphone.org/technical-corner/linphone"
-KEYWORDS="~amd64 ~x86"
+HOMEPAGE="https://www.linphone.org/en/homepage-linphone"
+KEYWORDS="~amd64"
 LICENSE="GPL-3"
 SLOT="0"
-#RESTRICT="test" # TODO
+
+RESTRICT="test" # Not yet evaluated - TODO
 
 EGIT_REPO_URI="https://github.com/BelledonneCommunications/linphone-desktop.git"
-EGIT_COMMIT="${PV}"
+#EGIT_COMMIT="${PV//_/-}"
+EGIT_COMMIT="ee8e8a4fa8f2b05303e6357fca2836dda98e8f28"
 EGIT_SUBMODULES=(
     '*'
-    '-linphone-sdk/external/*'
-    'linphone-sdk/external/bv16-floatingpoint'
-    'linphone-sdk/external/soci'
-    'linphone-sdk/external/liboqs'
-    'linphone-sdk/external/decaf'
+    '-external/linphone-sdk/external/*'
+    'external/linphone-sdk/external/bv16-floatingpoint'
+    'external/linphone-sdk/external/soci'
+    'external/linphone-sdk/external/liboqs'
+    'external/linphone-sdk/external/decaf'
 )
 
 RDEPEND="
@@ -36,14 +32,13 @@ RDEPEND="
     dev-libs/jsoncpp
     dev-libs/libayatana-appindicator
     dev-libs/libxml2
+    dev-libs/openssl:0/3
     dev-libs/qtkeychain
     dev-libs/xerces-c
     dev-python/pystache[${PYTHON_USEDEP}]
     dev-python/six[${PYTHON_USEDEP}]
-    dev-qt/linguist-tools[qml]
-    dev-qt/qtmultimedia:5
-    dev-qt/qtquickcontrols[widgets]
-    dev-qt/qtquickcontrols2[widgets]
+    dev-qt/qtmultimedia:6
+    dev-qt/qtnetworkauth:6
     media-libs/glew:0
     media-libs/libjpeg-turbo
     media-libs/libvpx
@@ -58,7 +53,6 @@ RDEPEND="
     media-sound/gsm
     media-video/ffmpeg
     net-libs/libsrtp:2
-    net-libs/mbedtls
     net-nds/openldap
     av1? (
         media-libs/dav1d
@@ -69,8 +63,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES="${FILESDIR}/${P}-fix_enum.patch"
-
 src_unpack() {
     git-r3_src_unpack
     default
@@ -78,22 +70,19 @@ src_unpack() {
 
 src_prepare() {
     # invalid files (those are directories and must be removed)
-    rm -rf linphone-sdk/external/liboqs/scripts/copy_from_upstream/src/CMakeLists.txt || die
-    rm -rf linphone-sdk/external/liboqs/scripts/copy_from_upstream/CMakeLists.txt || die
+    rm -rf external/linphone-sdk/external/liboqs/scripts/copy_from_upstream/src/CMakeLists.txt || die
+    rm -rf external/linphone-sdk/external/liboqs/scripts/copy_from_upstream/CMakeLists.txt || die
 
     # patching non-default TLS_PEER_CN flag (this might cause serious problems)
     sed -i 's/LDAP_OPT_X_TLS_PEER_CN/0x601c/g' \
-        linphone-sdk/liblinphone/src/ldap/ldap-contact-provider.cpp || die
+        external/linphone-sdk/liblinphone/src/ldap/ldap-contact-provider.cpp || die
 
     # patching post-build copyings
     sed -i -e "s~>\ \"~>\ \"/${T}/${P}~g" -e "s~/\"\ \"~\"\ \"/${T}/${P}~g" \
-        linphone-app/CMakeLists.txt || die
+        Linphone/CMakeLists.txt || die
 
     # removing jsoncpp (it does no longer provide cmake files)
-    sed -i '/find_package(JsonCPP REQUIRED)/d' linphone-sdk/liblinphone/CMakeLists.txt || die
-
-    # we must make sure that ${D}/usr/lib* exists during compile
-    mkdir -p "${T}/${P}/usr/`get_libdir`" || die
+    sed -i '/find_package(JsonCPP REQUIRED)/d' external/linphone-sdk/liblinphone/CMakeLists.txt || die
 
     cmake_src_prepare
 }
@@ -105,12 +94,18 @@ src_configure() {
         -DBUILD_SHARED_LIBS=ON
         -DENABLE_SHARED=ON
 
-        # daemon
         -DENABLE_DOC=$(usex doc)
         -DENABLE_DAEMON=$(usex daemon)
         -DENABLE_TOOLS=$(usex extras)
         -DENABLE_AV1=$(usex av1)
         -DENABLE_CODEC2=$(usex codec2)
+
+        # testing .. 
+        -DENABLE_MBEDTLS=NO
+        -DENABLE_OPENSSL=YES
+        -DBUILD_OPENSSL=OFF
+        -DENABLE_LDAP=NO
+        -DBUILD_LDAP=OFF
 
         # not availbale libs (must be build)
         -DBUILD_BV16=ON
@@ -149,7 +144,10 @@ src_configure() {
 
         # Qt5 adjustments (use system keychain)
         -DENABLE_QT_KEYCHAIN=OFF
-        -DQTKEYCHAIN_TARGET_NAME=Qt5Keychain
+        -DQTKEYCHAIN_TARGET_NAME=Qt6Keychain
+
+        -DQT_I18N_TRANSLATED_LANGUAGES="en fr de"
+        -DI18N_SOURCE_LANGUAGE="fr"
 
         # correcting plugin paths
         -DLIBLINPHONE_PLUGINS_DIR=/opt/${PN}/plugins
@@ -157,24 +155,19 @@ src_configure() {
 
         # skipping RPATH
         -DCMAKE_SKIP_RPATH=ON
-
-        # hide dev-warnings
         -Wno-dev
 
         # add missing include dirs
-        -DCMAKE_CXX_FLAGS=-I\ /usr/include/openh264\ -I\ /usr/include/jsoncpp\ -I\ "${T}/${P}"/usr/include
+        -DCMAKE_CXX_FLAGS=-Wno-dev\ -I\ /usr/include/openh264\ -I\ /usr/include/jsoncpp\ -I\ /usr/include/mbedtls3\ -I\ "${T}/${P}"/usr/include
     )
     cmake_src_configure
 }
 
 src_compile() {
-    cmake_src_compile
     sed -i 's/RelWithDebInfo/Release/g' \
         "${WORKDIR}/${P}_build/cmake_install.cmake" || die
 
-    ## some cleanup
-    rm "${WORKDIR}/${P}_build/${PN%%-*}-app/assets"/*.ts
-    rm "${WORKDIR}/${P}_build/${PN%%-*}-app/assets"/*.cmake
+    cmake_src_compile
 }
 
 src_install() {
@@ -195,11 +188,6 @@ src_install() {
     einfo "removing external docs.."
     rm -rf "${D}"/usr/share/doc/ortp*
 
-    einfo "correcting qt-conf.."
-    dodir /opt/${PN}/bin
-    mv "${D}/usr/bin/qt.conf" "${D}/opt/${PN}/bin/qt.conf"
-
-
     einfo "installing plugin(s).."
     dodir "/opt/${PN}/plugins/"
     dosym "/usr/`get_libdir`/libsoci_core.so" "/opt/${PN}/plugins/libsoci_core.so"
@@ -211,20 +199,20 @@ src_install() {
         exeinto /opt/${PN}/bin
         doexe ${exf}                                    # install from bin (exe)
         rm ${exf}                                       # remove installed bin
-        dodir /opt/${PN}/bin
-        dosym /opt/${PN}/bin/${exb} /usr/bin/${exb}     # re-link to bin
     done
 
-    einfo "installing assets.."
-    insinto /opt/${PN}
-    doins -r "${WORKDIR}/${P}_build/${PBN}-app/assets"
+    # re-link main binary
+    dosym /opt/${PN}/bin/linphone6 /usr/bin/${PN}
 
-    einfo "sanitizing languages.."
-    for lang in ${LANGS}; do
-        [ ${lang} == "en" ] && continue # skipt if default lang
-        if ! use linguas_${lang} ; then
-            rm "${D}/opt/${PN}/assets/languages/${lang}.qm"
-            sed -i "/${lang}.qm/d" "${D}/opt/${PN}/assets/languages/i18n.qrc" || die
-        fi
-    done
+    # create desktop icon
+    newicon "${S}/Linphone/data/image/linphone.svg" ${PN}.svg
+    make_desktop_entry /usr/bin/${PN} Linphone /usr/share/pixmaps/${PN}.svg
+}
+
+pkg_postinst() {
+    xdg_icon_cache_update
+}
+
+pkg_postrm() {
+    xdg_icon_cache_update
 }

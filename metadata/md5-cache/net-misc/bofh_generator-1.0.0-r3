@@ -11,5 +11,5 @@ LICENSE=0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicod
 RDEPEND=server? ( acct-user/bofh_generator acct-group/bofh_generator )
 SLOT=0
 SRC_URI=https://lab.simple-co.de/zappel/bofh_generator/-/archive/v1.0.0/bofh_generator-v1.0.0.tar.gz -> bofh_generator-1.0.0.tar.gz https://lab.simple-co.de/api/v4/projects/86/packages/generic/bofh_generator/v1.0.0/bofh_generator-vendor-1.0.0.tar.xz
-_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	systemd	54bd206bb5c4efac6ae28b6b006713b0	flag-o-matic	16d3941ed2dc39f4819368ae51bc0b72	multiprocessing	1e32df7deee68372153dca65f4a7c21f	rust	e9d31591b9b0251018cd5c60a43bafa1	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	cargo	eb4315c13bbb1d5195ce27f8934644f9
+_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	systemd	54bd206bb5c4efac6ae28b6b006713b0	flag-o-matic	16d3941ed2dc39f4819368ae51bc0b72	multiprocessing	1e32df7deee68372153dca65f4a7c21f	rust	e9d31591b9b0251018cd5c60a43bafa1	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	cargo	7282c47a52f41c358a5d49c66884c7bc
 _md5_=d134e1740134f2ee4d7b8cf2528ee45d

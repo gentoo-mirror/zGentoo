@@ -122,6 +122,10 @@ net-voip/baresip:v4l - Video4Linux2 video source
 net-voip/baresip:video - Build vidbridge and vidinfo modules.
 net-voip/baresip:vpx - Enables VP8 and VP9 codec support using libvpx
 net-voip/baresip:webrtc - Use media-plugins/gst-plugins-webrtc for webrtc support
+sys-kernel/gentoo-kernel:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
+sys-kernel/gentoo-kernel:generic-uki - Build and install a generic initramfs and Unified Kernel Image, this is intended for building binpkgs with a pre-generated UKI included (EXPERIMENTAL).
+sys-kernel/gentoo-kernel:hardened - Use selection of hardening options recommended by Kernel Self Protection Project
+sys-kernel/gentoo-kernel:initramfs - Build initramfs along with the kernel.
 sys-power/asusctl:X - [experimental] Add support for X11 - officially unsupported
 sys-power/asusctl:gfx - Adds support for sys-power/supergfxctl
 sys-power/asusctl:gui - Installs rog-control-center(UI)

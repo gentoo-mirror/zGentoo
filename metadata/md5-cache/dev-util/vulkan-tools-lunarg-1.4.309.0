@@ -1,0 +1,17 @@
+BDEPEND=dev-libs/jsoncpp:= qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) qt6? ( dev-qt/qtbase:6[gui,network,widgets] ) app-alternatives/ninja >=dev-build/cmake-3.20.5
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-cpp/valijson =dev-util/vulkan-headers-1.4.309.0 =dev-util/vulkan-utility-libraries-1.4.309.0 =media-libs/vulkan-loader-1.4.309.0
+DESCRIPTION=Vulkan Ecosystem Tools by LunarG
+EAPI=8
+HOMEPAGE=https://github.com/LunarG/VulkanTools/
+INHERIT=cmake
+IUSE=-qt5 qt6
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-cpp/valijson =dev-util/vulkan-headers-1.4.309.0 =dev-util/vulkan-utility-libraries-1.4.309.0 =media-libs/vulkan-loader-1.4.309.0
+REQUIRED_USE=^^ ( qt5 qt6 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/LunarG/VulkanTools/archive/vulkan-sdk-1.4.309.0.tar.gz -> vulkan-tools-lunarg-1.4.309.0.tar.gz
+_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	flag-o-matic	16d3941ed2dc39f4819368ae51bc0b72	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	10a50dfaf728b802fcfd37f8d0da9056
+_md5_=1f3268983649ecfa946d7d255044784e

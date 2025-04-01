@@ -61,3 +61,6 @@ net-im/youp
 
 # mask during stabilization (currently also uses git-r3)
 >=net-voip/linphone-desktop-6.0.0_alpha
+
+# legacy mask - keep in mind, this is NOT safe! (update your app ASAP!)
+<dev-lang/php-8

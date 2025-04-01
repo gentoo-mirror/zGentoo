@@ -29,6 +29,7 @@ app-text/obsidian-bin 1.8.9: A second brain, for you, forever.
 dev-cpp/CastXML 0.6.11: CastXML is a C-family abstract syntax tree XML output tool.
 dev-db/mysql-workbench 8.0.41-r1: MySQL Workbench
 dev-go/wire 0.6.0: Wire: Automated Initialization in Go
+dev-lang/php 5.6.40_p20250331 7.4.33_p20250331: The PHP language runtime engine
 dev-libs/objfw 1.2.4: Portable, lightweight framework for the Objective-C language
 dev-php/psr-log 3.0.2: Common interface for logging libraries
 dev-php/xdebug 3.4.2: A PHP debugging and profiling extension

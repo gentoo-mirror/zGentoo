@@ -13,9 +13,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="fetch"
 
-IUSE="abi_x86_32 cpu_flags_x86_sse4_1"
-REQUIRED_USE="cpu_flags_x86_sse4_1"
-
 MY_SLUG="opt/${PN}"
 
 DEPEND=""
@@ -54,8 +51,6 @@ src_install() {
     dodir ${TARGET}
     insinto ${TARGET}
 
-    # check against useflags and pre-image cleanup
-    ! use abi_x86_32 && rm -f ${MY_SLUG}/bin/BitwigPluginHost-X86-SSE41
     # remove ffmpeg
     rm -f ${MY_SLUG}/bin/ff*
 
@@ -63,17 +58,21 @@ src_install() {
     dodoc -r ${MY_SLUG}/resources/doc
 
     # install files (copy)
+    chmod +x ${MY_SLUG}/lib/jre/lib
+    chmod +x ${MY_SLUG}/lib/jre/lib/server
+    chmod +x ${MY_SLUG}/lib/jre/lib/securit
     doins -r ${MY_SLUG}/*
 
-    # fixing perms (chmod if glob-list is adjusted)
-    chmod +x "${ED}"${TARGET}/bin/*
     fperms +x ${TARGET}/bitwig-studio
-    fperms 644 ${TARGET}/lib/jre/lib/*
-    fperms 755 ${TARGET}/lib/jre/lib/classlist \
+    
+    chmod +x "${ED}"${TARGET}/bin/*
+    fperms 755 ${TARGET}/lib/jre/lib/*.so \
+        ${TARGET}/lib/jre/lib/classlist \
         ${TARGET}/lib/jre/lib/jexec \
         ${TARGET}/lib/jre/lib/jspawnhelper \
         ${TARGET}/lib/jre/bin/keytool \
         ${TARGET}/lib/jre/bin/jrunscript
+    
     dosym ${TARGET}/bitwig-studio /usr/bin/bitwig-studio
 
     # desktop file and icons

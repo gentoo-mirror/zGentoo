@@ -32,7 +32,7 @@ dev-go/wire 0.6.0: Wire: Automated Initialization in Go
 dev-lang/php 5.6.40_p20250331 7.4.33_p20250331: The PHP language runtime engine
 dev-libs/objfw 1.2.4: Portable, lightweight framework for the Objective-C language
 dev-php/psr-log 3.0.2: Common interface for logging libraries
-dev-php/xdebug 3.4.2: A PHP debugging and profiling extension
+dev-php/xdebug 2.5.2 3.4.2: A PHP debugging and profiling extension
 dev-php/xdebug-handler 3.0.5: Restart a CLI process without loading the xdebug extension
 dev-python/PyDrive2 1.21.3: Wrapper library of google-api-python-client
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python

@@ -64,3 +64,4 @@ net-im/youp
 
 # legacy mask - keep in mind, this is NOT safe! (update your app ASAP!)
 <dev-lang/php-8
+<dev-php/xdebug-3.2.0

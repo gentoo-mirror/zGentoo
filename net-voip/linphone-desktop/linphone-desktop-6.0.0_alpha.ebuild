@@ -173,10 +173,15 @@ src_compile() {
     sed -i 's/RelWithDebInfo/Release/g' \
         "${WORKDIR}/${P}_build/cmake_install.cmake" || die
 
+    # removing root.ca from installation (fails)
+    sed -i '/rootca.pem/d' \
+        "${WORKDIR}/${P}_build/cmake_install.cmake" || die
+
     cmake_src_compile
 }
 
 src_install() {
+
     cmake_src_install # this might produce "errors" (corrections below)
 
     # package base-name (linphone)

@@ -188,6 +188,7 @@ src_install() {
     rm -rf "${D}"/usr/share/*/cmake
     rm -rf "${D}"/usr/share/BCUnit
     rm -rf "${D}"/usr/share/images
+    rm -rf "${D}"/usr/share/rootca.pem
     rm -rf "${D}/usr/`get_libdir`"/cmake
     rm -rf "${D}/usr/`get_libdir`"/pkgconfig
 

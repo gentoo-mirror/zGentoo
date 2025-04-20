@@ -3,9 +3,11 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
-IUSE="+av1 +codec2 -daemon doc -extras"
+DISTUTILS_USE_PEP517=setuptools
 
 inherit cmake distutils-r1 git-r3 xdg-utils desktop
+
+IUSE="+av1 +codec2 -daemon doc -extras"
 
 DESCRIPTION="Open source softphone for voice and video over IP calling and instant messaging."
 HOMEPAGE="https://www.linphone.org/en/homepage-linphone"

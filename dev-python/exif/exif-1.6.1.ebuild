@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( pypy3 python3_{11..13} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit edos2unix distutils-r1 pypi
 

@@ -85,7 +85,6 @@ sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Ha
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 4.7.2-r3 5.0.10-r2 6.0.12-r1 6.1.10: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
-sys-power/gwe 0.15.9: System utility designed to provide information, control the fans and overclock your NVIDIA card
 sys-power/iasl 20240321: Intel ACPI Source Language (ASL) compiler
 sys-power/supergfxctl 4.0.5-r4 5.0.1-r2 5.1.2-r3 5.2.4-r1 5.2.7: supergfxctl (supergfxd) Graphics switching
 virtual/gentoo-asus 2.0-r2: ASUS ROG on gentoo linux virtual

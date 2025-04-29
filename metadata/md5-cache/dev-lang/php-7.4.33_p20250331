@@ -13,5 +13,5 @@ RDEPEND=>=app-eselect/eselect-php-0.9.1[apache2?,fpm?] >=dev-libs/libpcre2-10.30
 REQUIRED_USE=|| ( cli cgi fpm apache2 embed phpdbg ) cli? ( ^^ ( readline libedit ) ) !cli? ( ?? ( readline libedit ) ) truetype? ( gd zlib ) webp? ( gd zlib ) cjk? ( gd zlib ) exif? ( gd zlib ) xpm? ( gd zlib ) gd? ( zlib ) simplexml? ( xml ) soap? ( xml ) xmlrpc? ( xml iconv ) xmlreader? ( xml ) xmlwriter? ( xml ) xslt? ( xml ) ldap-sasl? ( ldap ) oci8-instant-client? ( !ldap ) qdbm? ( !gdbm ) session-mm? ( session ) mysql? ( || ( mysqli pdo ) ) firebird? ( pdo ) mssql? ( pdo )
 RESTRICT=!test? ( test )
 SLOT=7.4
-_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	e8de74bac929ba17427e740e95707d00	git-r3	875eb471682d3e1f18da124be97dcc81	systemd	a964c0cbe818b5729da1dbfcee5be861	gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	35f9bf6198bb538e28dcdea5fda274f2	multilib	b2a329026f2e404e9e371097dda47f96
+_eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	35f9bf6198bb538e28dcdea5fda274f2	flag-o-matic	e8de74bac929ba17427e740e95707d00	git-r3	875eb471682d3e1f18da124be97dcc81	systemd	a964c0cbe818b5729da1dbfcee5be861	multilib	b2a329026f2e404e9e371097dda47f96
 _md5_=fb63a72030de4baea15c6d4a19f08f5a

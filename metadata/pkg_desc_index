@@ -1,12 +1,14 @@
 acct-group/bofh_generator 0: BOFH server group
 acct-group/flutter 0: Flutter program group
 acct-group/logger 0-r1: Logger program group
+acct-group/matrix-auth-svc 0: System group: matrix-auth-svc
 acct-group/matrix-webhook 0: System group: matrix-webhook
 acct-group/matterbridge 0: System group: matterbridge
 acct-group/nym 0: NYM(VPN) group
 acct-user/bofh_generator 0: User for BOFH-Server
 acct-user/fluent-bit 0-r1: fluent-bit program user
 acct-user/loki 0-r1: Loki program user
+acct-user/matrix-auth-svc 0: System user: matrix-auth-svc
 acct-user/matrix-webhook 0-r1: System user: matrix-webhook
 acct-user/matterbridge 0: System user: matterbridge
 acct-user/nym 0: NYM(VPN) user
@@ -66,11 +68,13 @@ media-sound/teamspeak-client 6.0.0_beta2-r1: A client software for quality voice
 media-video/freetube 0.23.2: An open source desktop YouTube player built with privacy in mind.
 net-analyzer/bettercap 2.41.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord 0.0.90: All-in-one voice and text chat for gamers
-net-im/matrix-webhook 3.3.0-r1 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
+net-im/matrix-authentication-service 0.16.0: OAuth2.0 + OpenID Connect Provider for Matrix Homeservers
+net-im/matrix-webhook 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-libs/re 3.20.0: Generic library for real-time communications with async IO support
 net-misc/bofh_generator 1.0.0-r3: BOFH excuse generator
 net-misc/latd 1.31: LAT terminal daemon for Linux and BSD
 net-misc/netbsd-mopd 2.5.3: MOP server and utilities for Linux
+net-misc/opa 1.4.2: Open Policy Agent (OPA) is an open source, general-purpose policy engine that enables unified, context-aware policy enforcement across the entire stack.
 net-misc/postman-bin 11.37.5: Supercharge your API workflow
 net-misc/rustdesk-bin 1.3.8: Yet another remote desktop software, written in Rust.
 net-p2p/trezord-go 2.0.33: TREZOR Communication Daemon

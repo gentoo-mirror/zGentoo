@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst preinst prerm pretend
+DESCRIPTION=System user: matrix-auth-svc
+EAPI=8
+INHERIT=acct-user
+KEYWORDS=~amd64 ~x86
+RDEPEND=acct-group/matrix-auth-svc
+SLOT=0
+_eclasses_=user-info	9951b1a0e4f026d16c33a001fd2d5cdf	acct-user	a4bf64e6c32b95705287346a2b678ae1
+_md5_=b46cfaa66d633a3088bc8f4e9237eb63

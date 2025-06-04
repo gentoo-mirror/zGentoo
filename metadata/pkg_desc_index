@@ -35,25 +35,16 @@ dev-libs/objfw 1.2.4: Portable, lightweight framework for the Objective-C langua
 dev-php/psr-log 3.0.2: Common interface for logging libraries
 dev-php/xdebug 2.5.2 3.4.2: A PHP debugging and profiling extension
 dev-php/xdebug-handler 3.0.5: Restart a CLI process without loading the xdebug extension
-dev-python/PyDrive2 1.21.3: Wrapper library of google-api-python-client
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/exif 1.6.1: Read and modify image EXIF metadata using Python
-dev-python/hid 1.0.7: ctypes bindings for hidapi
-dev-python/injector 0.21.0: Python dependency injection framework, inspired by Guice
-dev-python/logbook 1.8.1: A logging replacement for Python
-dev-python/matrix-nio 0.25.2: Multilayered Matrix client library
 dev-python/plum-py 0.8.7: Pack/Unpack Memory
-dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pycparser 2.22-r1: C parser and AST generator written in Python
 dev-python/python-olm 3.2.16: Python CFFI binding to libolm
-dev-python/python-registry 1.4: Cross-Platform Windows Registry Browser
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 dev-util/ghidra-bin 11.3.2: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
-dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
 dev-util/selenium-manager 4.30.0: CLI tool that manages the browser/driver infrastructure required by Selenium
 dev-util/vulkan-tools-lunarg 1.4.309.0 1.4.313.0: Vulkan Ecosystem Tools by LunarG
 dev-vcs/git-cliff 2.8.0 9999: A highly customizable Changelog Generator that follows Conventional Commit specifications
-games-util/mangohud 0.6.8: A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 56-r1: Freon is an extension for displaying sensors data.
@@ -69,7 +60,6 @@ media-video/freetube 0.23.2: An open source desktop YouTube player built with pr
 net-analyzer/bettercap 2.41.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord 0.0.90: All-in-one voice and text chat for gamers
 net-im/matrix-authentication-service 0.16.0: OAuth2.0 + OpenID Connect Provider for Matrix Homeservers
-net-im/matrix-webhook 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-libs/re 3.20.0: Generic library for real-time communications with async IO support
 net-misc/bofh_generator 1.0.0-r3: BOFH excuse generator
 net-misc/latd 1.31: LAT terminal daemon for Linux and BSD

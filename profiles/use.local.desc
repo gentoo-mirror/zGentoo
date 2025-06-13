@@ -91,6 +91,16 @@ app-admin/loki:promtail - Build the promtail log gathering agent
 app-admin/loki:server - Build the loki server
 app-admin/loki:tools - Build the loki tools logcli and loki-canary
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
+mail-client/evolution:archive - Enable archives support in attachments via app-arch/gnome-autoar
+mail-client/evolution:bogofilter - Build mail-filter/bogofilter plugin
+mail-client/evolution:geolocation - Enable support for displaying contacts on a map inside evolution using media-libs/libchamplain
+mail-client/evolution:highlight - Enable text highlighting plugin
+mail-client/evolution:ldap - Enable support for fetching contacts from an LDAP or Active Directory server using net-nds/openldap
+mail-client/evolution:libnotify - Enable desktop notifications through x11-libs/libnotify
+mail-client/evolution:sound - Enable sound notifications using media-libs/libcanberra-gtk3
+mail-client/evolution:spamassassin - Build mail-filter/spamassassin plugin
+mail-client/evolution:weather - Enable optional weather calendar support
+mail-client/evolution:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
 media-gfx/brother-scan4-bin:avahi - Enable this, if you want to find the scanner via avahi.
 media-gfx/brother-scan4-bin:usb - Enable this, if you want to scan over usb connection.
 net-misc/bofh_generator:server - Enables systemd service to spawn a webserver. This will also install acct-user/bofh_generator and acct-group/bofh_generator

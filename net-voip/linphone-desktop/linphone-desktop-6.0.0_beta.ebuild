@@ -19,7 +19,7 @@ RESTRICT="test" # Not yet evaluated - TODO
 
 EGIT_REPO_URI="https://github.com/BelledonneCommunications/linphone-desktop.git"
 #EGIT_COMMIT="${PV//_/-}"
-EGIT_COMMIT="ee8e8a4fa8f2b05303e6357fca2836dda98e8f28"
+EGIT_COMMIT="dad3cb084f11e9aa0535a1024aab71dff8554ab2"
 EGIT_SUBMODULES=(
     '*'
     '-external/linphone-sdk/external/*'
@@ -76,6 +76,8 @@ src_prepare() {
     # invalid files (those are directories and must be removed)
     rm -rf external/linphone-sdk/external/liboqs/scripts/copy_from_upstream/src/CMakeLists.txt || die
     rm -rf external/linphone-sdk/external/liboqs/scripts/copy_from_upstream/CMakeLists.txt || die
+
+    # external/linphone-sdk/bctoolbox/cmake/BCToolboxCMakeUtils.cmake
 
     # patching non-default TLS_PEER_CN flag (this might cause serious problems)
     sed -i 's/LDAP_OPT_X_TLS_PEER_CN/0x601c/g' \
@@ -163,7 +165,6 @@ src_configure() {
 
         # skipping RPATH
         -DCMAKE_SKIP_RPATH=ON
-        -Wno-dev
 
         # add missing include dirs
         -DCMAKE_CXX_FLAGS=-Wno-dev\ -I\ /usr/include/openh264\ -I\ /usr/include/jsoncpp\ -I\ /usr/include/mbedtls3\ -I\ "${T}/${P}"/usr/include

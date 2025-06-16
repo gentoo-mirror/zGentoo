@@ -37,6 +37,7 @@ dev-php/xdebug 2.5.2 3.4.2: A PHP debugging and profiling extension
 dev-php/xdebug-handler 3.0.5: Restart a CLI process without loading the xdebug extension
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/exif 1.6.1: Read and modify image EXIF metadata using Python
+dev-python/logbook 1.8.1: A logging replacement for Python
 dev-python/plum-py 0.8.7: Pack/Unpack Memory
 dev-python/pycparser 2.22-r1: C parser and AST generator written in Python
 dev-python/python-olm 3.2.16: Python CFFI binding to libolm

@@ -4,31 +4,29 @@
 EAPI=8
 
 RUST_MIN_VER="1.82.0"
-inherit cargo shell-completion git-r3
 
-EGIT_REPO_URI="https://github.com/orhun/git-cliff.git"
-EGIT_BRANCH="main"
+inherit cargo shell-completion
 
 DESCRIPTION="A highly customizable Changelog Generator that follows Conventional Commit specifications"
 HOMEPAGE="https://git-cliff.org/"
+SRC_URI="
+    https://github.com/orhun/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+    https://vendors.simple-co.de/git-cliff/${P}-crates.tar.xz   
+"
 
 SLOT="0"
+KEYWORDS="~amd64"
 LICENSE="
     Apache-2.0 MIT BSD-2 BSD Boost-1.0 CDDL ISC MPL-2.0 
     Unicode-3.0 Unicode-DFS-2016 ZLIB
 "
 
 PATCHES=(
-    "${FILESDIR}/${P}-disable_git_upstream_remote_test.patch"
+    # disables tests against local (.)git repo
+    "${FILESDIR}/${P}-disable_repo_tests.patch"
     # silences a "command not found" error (QA)
-    "${FILESDIR}/${PN}-2.7.0-silence_run_os_command_test.patch"
+    "${FILESDIR}/${P}-silence_run_os_command_test.patch"
 )
-
-src_unpack() {
-    default
-    git-r3_src_unpack
-    cargo_live_src_unpack
-}
 
 src_prepare() {
     default

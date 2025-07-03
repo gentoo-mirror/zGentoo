@@ -329,7 +329,7 @@ declare -A GIT_CRATES=(
 )
 
 LLVM_COMPAT=( {18..20} )
-RUST_MIN_VER="1.76.0"
+RUST_MIN_VER="1.85.1"
 
 inherit cargo llvm-r2 xdg
 
@@ -412,4 +412,3 @@ src_test() {
 	)
 	cargo_src_test --workspace -- "${skip[@]}"
 }
-

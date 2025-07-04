@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.82.0"
+RUST_MIN_VER="1.85.0"
 inherit cargo shell-completion git-r3
 
 EGIT_REPO_URI="https://github.com/orhun/git-cliff.git"
@@ -21,7 +21,7 @@ LICENSE="
 PATCHES=(
     "${FILESDIR}/${P}-disable_git_upstream_remote_test.patch"
     # silences a "command not found" error (QA)
-    "${FILESDIR}/${PN}-2.7.0-silence_run_os_command_test.patch"
+    "${FILESDIR}/${P}-silence_run_os_command_test.patch"
 )
 
 src_unpack() {

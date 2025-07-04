@@ -34,27 +34,37 @@ src_prepare() {
     rust_pkg_setup
 }
 
+src_compile() {
+    cargo_src_compile
+
+    local target_dir="${S}/$(cargo_target_dir)"
+
+    # generating man pages
+    mkdir "${target_dir}/man"
+    OUT_DIR="${target_dir}/man" "${target_dir}/"${PN}-mangen
+
+    # generating completion scripts
+    mkdir "${target_dir}/completion"
+    OUT_DIR="${target_dir}/completion" "${target_dir}/"${PN}-completions
+}
+
 src_install() {
     local release_dir="${S}/$(cargo_target_dir)"
 
     insinto /usr/bin
     dobin "${release_dir}/"${PN}
 
-    # generate and install man file
-    mkdir "${release_dir}/man"
-    OUT_DIR="${release_dir}/man" "${release_dir}/"${PN}-mangen
+    # install man file
     doman "${release_dir}/man/"${PN}.1
 
-    # generate and install completion scripts
-    mkdir "${release_dir}/completion"
-    OUT_DIR="${release_dir}/completion" "${release_dir}/"${PN}-completions
-
+    # install completion scripts
     newbashcomp "${release_dir}/completion/${PN}.bash" ${PN}
     newfishcomp "${release_dir}/completion/${PN}.fish" ${PN}
 
-    # docs and examples
-    dodoc ${S}/README.md
+    # install docs
+    einstalldocs
 
+    # install examples
     insinto /usr/share/doc/${P}/examples
     doins -r ${S}/examples/
 }

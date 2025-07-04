@@ -66,6 +66,7 @@ src_install() {
     # install docs
     einstalldocs
 
+    # install examples
     insinto /usr/share/doc/${P}/examples
     doins -r ${S}/examples/
 }

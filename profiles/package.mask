@@ -68,3 +68,6 @@ net-im/youp
 
 # prepare for removal (unmaintained since over a year - I don't expect this is coming back to life)
 >=net-im/matrix-webhook-3.8.0
+
+# upsteam available (yay!)
+dev-vcs/git-cliff

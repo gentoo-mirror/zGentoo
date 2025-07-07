@@ -80,7 +80,7 @@ net-voip/linphone-desktop 6.0.0_beta: Open source softphone for voice and video 
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
-sys-power/asusctl 4.7.2-r3 5.0.10-r2 6.0.12-r1 6.1.10: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
+sys-power/asusctl 4.7.2-r3 5.0.10-r2 6.0.11-r3 6.0.12-r1 6.1.10: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.
 sys-power/corectrl 1.5.1: CoreCtrl allows you to control with ease your computer hardware using application profiles
 sys-power/iasl 20240321: Intel ACPI Source Language (ASL) compiler
 sys-power/lact 0.7.4: Linux GPU Control Application

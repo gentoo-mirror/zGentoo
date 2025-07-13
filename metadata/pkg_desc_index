@@ -35,12 +35,18 @@ dev-libs/objfw 1.2.4: Portable, lightweight framework for the Objective-C langua
 dev-php/psr-log 3.0.2: Common interface for logging libraries
 dev-php/xdebug 2.5.2 3.4.2: A PHP debugging and profiling extension
 dev-php/xdebug-handler 3.0.5: Restart a CLI process without loading the xdebug extension
+dev-python/PyDrive2 1.21.3: Wrapper library of google-api-python-client
 dev-python/Rx 4.0.4-r1: Reactive Extensions for Python
 dev-python/exif 1.6.1: Read and modify image EXIF metadata using Python
+dev-python/hid 1.0.7: ctypes bindings for hidapi
+dev-python/injector 0.21.0: Python dependency injection framework, inspired by Guice
 dev-python/logbook 1.8.1: A logging replacement for Python
+dev-python/matrix-nio 0.25.2: Multilayered Matrix client library
 dev-python/plum-py 0.8.7: Pack/Unpack Memory
+dev-python/py3nvml 0.2.7: Python 3 Bindings for NVML library. Get NVIDIA GPU status inside your program
 dev-python/pycparser 2.22-r1: C parser and AST generator written in Python
 dev-python/python-olm 3.2.16: Python CFFI binding to libolm
+dev-python/python-registry 1.4: Cross-Platform Windows Registry Browser
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 dev-util/ghidra-bin 11.3.2: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/selenium-manager 4.30.0: CLI tool that manages the browser/driver infrastructure required by Selenium

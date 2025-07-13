@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{11..13} )
 
 inherit edos2unix distutils-r1 pypi
@@ -16,8 +17,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/google-api-python-client[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="dev-python/google-api-python-client[${PYTHON_USEDEP}]"
 
 python_test() {
 	"${PYTHON}" setup.py test || die

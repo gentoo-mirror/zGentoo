@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+DISTUTILS_USE_PEP517="setuptools"
+PYTHON_COMPAT=( pypy3 python3_{11..13} )
 
 inherit distutils-r1 git-r3
 
@@ -18,7 +19,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND=""
 RDEPEND=""
 
 python_test() {

@@ -3,12 +3,11 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517="setuptools"
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
-
-DISTUTILS_USE_PEP517="setuptools"
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Multilayered Matrix client library"
 HOMEPAGE="https://pypi.python.org/pypi/matrix-nio https://github.com/poljar/matrix-nio"

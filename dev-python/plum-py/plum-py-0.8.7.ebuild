@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( pypy3 python3_{11..13} )
 
 inherit distutils-r1
 
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/plum-${PV}"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND=""
 RDEPEND=""
 
 src_prepare() {

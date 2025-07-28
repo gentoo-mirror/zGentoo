@@ -15,7 +15,7 @@ DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
 EGIT_REPO_URI="https://github.com/shivammathur/php-src-backports"
 EGIT_BRANCH="PHP-7.4-security-backports"
-EGIT_COMMIT="45fa214ea3a98e645b5a26c53a61b5fee9c39d13"
+EGIT_COMMIT="78eed5e70e3c16e2d310ccd95b9e247891033cf5"
 
 LICENSE="PHP-3.01
 	BSD

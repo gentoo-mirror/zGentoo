@@ -71,3 +71,6 @@ net-im/youp
 
 # upsteam available (yay!)
 dev-vcs/git-cliff
+
+# experimental - not yet finished
+dev-util/dpdk

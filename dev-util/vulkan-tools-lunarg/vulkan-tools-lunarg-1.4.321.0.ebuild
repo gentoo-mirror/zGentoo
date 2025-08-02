@@ -52,7 +52,6 @@ src_prepare() {
     ## removing internally used valijson to make use of the system-wide one
     sed -i '/find_package(valijson REQUIRED CONFIG)/d' CMakeLists.txt || die
     sed -i 's/valijson Qt/Qt/' vkconfig_core/CMakeLists.txt || die
-    sed -i '/valijson/d' via/CMakeLists.txt || die
 
     cmake_src_prepare
 }

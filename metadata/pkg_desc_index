@@ -49,7 +49,7 @@ dev-python/python-olm 3.2.16: Python CFFI binding to libolm
 dev-python/python-registry 1.4: Cross-Platform Windows Registry Browser
 dev-util/dpdk 25.07: Data Plane Development Kit (DPDK)
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
-dev-util/ghidra-bin 11.3.2: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
+dev-util/ghidra-bin 11.4.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
 dev-util/selenium-manager 4.30.0: CLI tool that manages the browser/driver infrastructure required by Selenium
 dev-util/vulkan-tools-lunarg 1.4.309.0 1.4.313.0 1.4.321.0: Vulkan Ecosystem Tools by LunarG
 dev-vcs/git-cliff 2.9.1 9999: A highly customizable Changelog Generator that follows Conventional Commit specifications

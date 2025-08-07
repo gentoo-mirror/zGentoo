@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop xdg-utils
 
 MY_PN=${PN/-bin}
-PB_DATE="20250415"
+PB_DATE="20250731"
 
 DESCRIPTION="A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate"
 HOMEPAGE="https://ghidra-sre.org/ https://github.com/NationalSecurityAgency/ghidra/"

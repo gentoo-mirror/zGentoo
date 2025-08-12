@@ -3,11 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 systemd
-
-DISTUTILS_USE_PEP517=poetry
 
 DESCRIPTION="Post a message to a matrix room with a simple HTTP POST"
 HOMEPAGE="https://pypi.python.org/pypi/matrix-webhook https://github.com/nim65s/matrix-webhook"

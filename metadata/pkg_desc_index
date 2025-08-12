@@ -50,6 +50,7 @@ dev-python/python-registry 1.4: Cross-Platform Windows Registry Browser
 dev-util/dpdk 25.07: Data Plane Development Kit (DPDK)
 dev-util/flutter 2.10.3-r1: Google's SDK for crafting beautiful, fast user experiences for mobile, web, and desktop from a single codebase
 dev-util/ghidra-bin 11.4.1: A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate
+dev-util/registry-spy 1.1.0: Cross-Platform Windows Registry Browser
 dev-util/selenium-manager 4.30.0: CLI tool that manages the browser/driver infrastructure required by Selenium
 dev-util/vulkan-tools-lunarg 1.4.309.0 1.4.313.0 1.4.321.0: Vulkan Ecosystem Tools by LunarG
 dev-vcs/git-cliff 2.9.1 9999: A highly customizable Changelog Generator that follows Conventional Commit specifications
@@ -70,6 +71,7 @@ media-video/freetube 0.23.2: An open source desktop YouTube player built with pr
 net-analyzer/bettercap 2.41.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord 0.0.90: All-in-one voice and text chat for gamers
 net-im/matrix-authentication-service 0.16.0: OAuth2.0 + OpenID Connect Provider for Matrix Homeservers
+net-im/matrix-webhook 3.5.0 3.8.0 3.9.1: Post a message to a matrix room with a simple HTTP POST
 net-libs/re 3.20.0: Generic library for real-time communications with async IO support
 net-misc/bofh_generator 1.0.0-r3: BOFH excuse generator
 net-misc/latd 1.31: LAT terminal daemon for Linux and BSD

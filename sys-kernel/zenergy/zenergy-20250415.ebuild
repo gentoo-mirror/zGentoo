@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info linux-mod-r1
+inherit linux-mod-r1
 
 GIT_COMMIT="f77293fc4aa8c2f5645b2d05d8f0d476220cba9a"
 
@@ -15,15 +15,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="${DEPEND}"
+PATCHES=( "${FILESDIR}/${P}-kernel_6.16.patch" )
+
 S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 
 MODULES_KERNEL_MIN=5.10
-MODULES_KERNEL_MAX=6.15
+MODULES_KERNEL_MAX=6.16
 CONFIG_CHECK="HWMON PCI AMD_NB"
 
 src_compile() {
     local modlist=( ${PN}=kernel/drivers/hwmon:${S} )
-    local modargs=( NIH_SOURCE="${KV_OUT_DIR}" )
+    local modargs=(
+        NIH_SOURCE="${KV_OUT_DIR}"
+        KDIR="${KV_OUT_DIR}"
+    )
     linux-mod-r1_src_compile
 }

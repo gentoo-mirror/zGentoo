@@ -20,8 +20,8 @@ HOMEPAGE="https://github.com/${_PN}App/${_PN}"
 LICENSE="AGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-SRC_URI="amd64? ( ${HOMEPAGE}/releases/download/v${PV}-beta/${PN}_${PV}_amd64.deb -> ${P}-amd64.deb )
-    arm64? ( ${HOMEPAGE}/releases/download/v${PV}-beta/${PN}_${PV}_arm64.deb -> ${P}-arm64.deb )"
+SRC_URI="amd64? ( ${HOMEPAGE}/releases/download/v${PV}-beta/${PN}_${PV}_beta_amd64.deb -> ${P}-amd64.deb )
+    arm64? ( ${HOMEPAGE}/releases/download/v${PV}-beta/${PN}_${PV}_beta_arm64.deb -> ${P}-arm64.deb )"
 BDEPEND="!!media-sound/freetube"
 QA_PREBUILT="opt/${_PN}/swiftshader/libEGL.so
     opt/${_PN}/swiftshader/libGLESv2.so

@@ -17,7 +17,6 @@ app-admin/fluent-bit 3.2.9: Fast and Lightweight Log processor and forwarder for
 app-admin/influx-cli 2.7.1 2.7.3 2.7.5: CLI for managing resources in InfluxDB v2
 app-admin/loki 3.4.2: Like Prometheus, but for logs.
 app-editors/imhex 1.37.4: A hex editor for reverse engineers, programmers, and eyesight
-app-emulation/vmware-horizon-client-bin 8.12.1: VMware Horizon View client
 app-metrics/prom2json 1.3.3 1.4.0: A tool to scrape a Prometheus client and dump the result as JSON
 app-metrics/prometheus 2.47.0 2.53.1: Prometheus monitoring system and time series database
 app-metrics/snmp_exporter 0.28.0: Prometheus exporter for snmp metrics
@@ -67,7 +66,7 @@ media-gfx/gphotos-sync 3.2.5: Google Photos Sync downloads your Google Photos to
 media-gfx/yed 3.25.1: yEd Graph Editor - High-quality diagrams made easy
 media-sound/bitwig-studio 5.3.5-r1: Multi-platform music-creation system for production, performance and DJing
 media-sound/teamspeak-client 6.0.0_beta2-r1: A client software for quality voice communication via the internet
-media-video/freetube 0.23.2: An open source desktop YouTube player built with privacy in mind.
+media-video/freetube 0.23.7: An open source desktop YouTube player built with privacy in mind.
 net-analyzer/bettercap 2.41.0: A complete, modular, portable and easily extensible MITM framework
 net-im/discord 0.0.90: All-in-one voice and text chat for gamers
 net-im/matrix-authentication-service 0.16.0: OAuth2.0 + OpenID Connect Provider for Matrix Homeservers
@@ -87,6 +86,7 @@ net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/
 net-voip/baresip 3.20.0: Baresip is a portable and modular SIP User-Agent
 net-voip/linphone-desktop 6.0.0_beta: Open source softphone for voice and video over IP calling and instant messaging.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
+sys-kernel/zenergy 20250415: Linux kernel driver for reading RAPL registers for AMD Zen CPUs
 sys-libs/minilog 9999: A minimal header only C++ logger system
 sys-libs/tinyply 9999: A minimal header only C++ logger system
 sys-power/asusctl 4.7.2-r3 5.0.10-r2 6.0.11-r3 6.0.12-r1 6.1.10: asusctl (asusd) is a utility for Linux to control many aspects of various ASUS laptops.

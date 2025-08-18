@@ -15,13 +15,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-PATCHES=( "${FILESDIR}/${P}-kernel_6.16.patch" )
+PATCHES=(
+    "${FILESDIR}/${P}-kernel_6.16.patch"
+    "${FILESDIR}/${P}-amd_phoenix.patch"
+)
 
 S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 
 MODULES_KERNEL_MIN=5.10
 MODULES_KERNEL_MAX=6.16
 CONFIG_CHECK="HWMON PCI AMD_NB"
+
 
 src_compile() {
     local modlist=( ${PN}=kernel/drivers/hwmon:${S} )

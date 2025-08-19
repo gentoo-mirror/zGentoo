@@ -8,7 +8,7 @@ inherit git-r3
 DESCRIPTION="Freon is an extension for displaying sensors data."
 HOMEPAGE="https://extensions.gnome.org/extension/841/freon/"
 EGIT_REPO_URI="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
-EGIT_COMMIT="a38b120"
+EGIT_COMMIT="9379f2c"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}
     app-eselect/eselect-gnome-shell-extensions
     || ( 
         !!<gnome-base/gnome-shell-45.0
-        !!>=gnome-base/gnome-shell-48.0
+        !!>=gnome-base/gnome-shell-49.0
     )
 "
 BDEPEND=""

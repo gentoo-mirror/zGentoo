@@ -56,7 +56,7 @@ dev-vcs/git-cliff 2.9.1 9999: A highly customizable Changelog Generator that fol
 games-util/mangohud 0.8.1: Vulkan and OpenGL overlay for monitoring FPS, sensors, system load and more
 games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S accessories
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
-gnome-extra/gnome-shell-extension-freon 56-r1: Freon is an extension for displaying sensors data.
+gnome-extra/gnome-shell-extension-freon 58: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1 5.1.2_rc2 5.2.1_rc1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 mail-client/evolution 3.56.2-r1: Integrated mail, addressbook and calendaring functionality
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)

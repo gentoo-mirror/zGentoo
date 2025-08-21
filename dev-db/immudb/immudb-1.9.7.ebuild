@@ -69,9 +69,9 @@ src_compile() {
 
     # manpages
     go run ${S}/cmd/immuclient mangen ${S}/cmd/docs/man/immuclient
-	go run ${S}/cmd/immuadmin mangen ${S}/cmd/docs/man/immuadmin
-	go run ${S}/cmd/immudb mangen ${S}/cmd/docs/man/immudb
-	go run ${S}/cmd/immutest mangen ${S}/cmd/docs/man/immutest
+    go run ${S}/cmd/immuadmin mangen ${S}/cmd/docs/man/immuadmin
+    go run ${S}/cmd/immudb mangen ${S}/cmd/docs/man/immudb
+    go run ${S}/cmd/immutest mangen ${S}/cmd/docs/man/immutest
 }
 
 src_install() {

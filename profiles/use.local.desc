@@ -91,6 +91,7 @@ app-admin/loki:promtail - Build the promtail log gathering agent
 app-admin/loki:server - Build the loki server
 app-admin/loki:tools - Build the loki tools logcli and loki-canary
 app-office/freeoffice:pax_kernel - Triggers a paxmarking of the binary
+dev-db/immudb:webconsole - Enables the internal webserver, defaults to: http://localhost:8080
 mail-client/evolution:archive - Enable archives support in attachments via app-arch/gnome-autoar
 mail-client/evolution:bogofilter - Build mail-filter/bogofilter plugin
 mail-client/evolution:geolocation - Enable support for displaying contacts on a map inside evolution using media-libs/libchamplain

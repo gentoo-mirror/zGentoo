@@ -1,5 +1,6 @@
 acct-group/bofh_generator 0: BOFH server group
 acct-group/flutter 0: Flutter program group
+acct-group/immudb 0: ImmuDB server group
 acct-group/logger 0-r1: Logger program group
 acct-group/matrix-auth-svc 0: System group: matrix-auth-svc
 acct-group/matrix-webhook 0: System group: matrix-webhook
@@ -7,6 +8,7 @@ acct-group/matterbridge 0: System group: matterbridge
 acct-group/nym 0: NYM(VPN) group
 acct-user/bofh_generator 0: User for BOFH-Server
 acct-user/fluent-bit 0-r1: fluent-bit program user
+acct-user/immudb 0: User for ImmuDB-Server
 acct-user/loki 0-r1: Loki program user
 acct-user/matrix-auth-svc 0: System user: matrix-auth-svc
 acct-user/matrix-webhook 0-r1: System user: matrix-webhook
@@ -27,6 +29,7 @@ app-office/freeoffice 1224: A complete, free Microsoft Office-compatible alterna
 app-office/qownnotes 25.3.3: A plain-text file markdown note taking with Nextcloud/ownCloud integration
 app-text/obsidian-bin 1.8.9: A second brain, for you, forever.
 dev-cpp/CastXML 0.6.11: CastXML is a C-family abstract syntax tree XML output tool.
+dev-db/immudb 1.9.7: Open-Source immutable database
 dev-db/mysql-workbench 8.0.41-r1: MySQL Workbench
 dev-go/wire 0.6.0: Wire: Automated Initialization in Go
 dev-lang/php 5.6.40_p20250331 7.4.33_p20250703: The PHP language runtime engine

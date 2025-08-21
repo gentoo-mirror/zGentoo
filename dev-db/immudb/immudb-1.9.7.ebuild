@@ -42,9 +42,17 @@ src_prepare() {
 src_configure() {
     GOFLAGS+=""
 
+    # change all IP-Wildcards to localhost
+    sed -i 's/0.0.0.0/127.0.0.1/g' configs/*.toml || die
+
+    # disable pgsql by default (supports pgsql compatible clients)
+    sed -i 's/pgsql-server = true/pgsql-server = false/g' configs/${PN}.toml || die
+
+    # disable metrics by default
+    echo "metrics-server = false" >> configs/${PN}.toml
+
     # disable web-server if not used
     use webconsole || echo "web-server = false" >> configs/${PN}.toml
-    sed -i 's/0.0.0.0/127.0.0.1/g' configs/*.toml || die
 }
 
 src_compile() {

@@ -21,7 +21,7 @@ sys-kernel/gentoo-sources-g14
 <=sys-power/asusctl-3.7.2-r1
 <=gnome-extra/gnome-shell-extension-asusctl-gex-3.7.2
 
-# masked rainloop because of a critical security flaw (use snappymail as a replacement), 
+# masked rainloop because of a critical security flaw (use snappymail as a replacement),
 # see: https://blog.sonarsource.com/rainloop-emails-at-risk-due-to-code-flaw/
 www-apps/rainloop
 www-apps/rainloop-community
@@ -74,3 +74,6 @@ dev-vcs/git-cliff
 
 # experimental - not yet finished
 dev-util/dpdk
+
+# masked during stabilization
+=gui-apps/gnome-console-49_rc

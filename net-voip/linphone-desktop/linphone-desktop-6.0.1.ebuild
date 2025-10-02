@@ -25,12 +25,12 @@ EGIT_SUBMODULES=(
     '*'
     '-external/linphone-sdk/external/*'
     'external/linphone-sdk/external/bv16-floatingpoint'
-    'external/linphone-sdk/external/soci'
     'external/linphone-sdk/external/liboqs'
     'external/linphone-sdk/external/decaf'
 )
 
 RDEPEND="
+    <dev-db/soci-4.1.0
     dev-db/sqlite
     dev-libs/jsoncpp
     dev-libs/libayatana-appindicator
@@ -117,7 +117,6 @@ src_configure() {
         # not availbale libs (must be build)
         -DBUILD_BV16=ON
         -DBUILD_LIBOQS=ON
-        -DBUILD_SOCI=ON
 
         # disabled building external libs
         -DBUILD_AOM=OFF
@@ -136,6 +135,7 @@ src_configure() {
         -DBUILD_OPENH264=OFF
         -DBUILD_OPENLDAP=OFF
         -DBUILD_OPUS=OFF
+        -DBUILD_SOCI=OFF
         -DBUILD_SPEEX=OFF
         -DBUILD_SQLITE3=OFF
         -DBUILD_VO_AMRWBENC=OFF
@@ -164,7 +164,7 @@ src_configure() {
         -DCMAKE_SKIP_RPATH=ON
 
         # add missing include dirs
-        -DCMAKE_CXX_FLAGS=-Wno-dev\ -I\ /usr/include/openh264\ -I\ /usr/include/jsoncpp\ -I\ /usr/include/mbedtls3\ -I\ "${T}/${P}"/usr/include
+        -DCMAKE_CXX_FLAGS=-I\ /usr/include/openh264\ -I\ /usr/include/jsoncpp\ -I\ /usr/include/mbedtls3\ -I\ "${T}/${P}"/usr/include
     )
     cmake_src_configure
 }

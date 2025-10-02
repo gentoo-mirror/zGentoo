@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
 
@@ -18,8 +19,8 @@ SLOT="0"
 RESTRICT="test" # Not yet evaluated - TODO
 
 EGIT_REPO_URI="https://github.com/BelledonneCommunications/linphone-desktop.git"
-#EGIT_COMMIT="${PV//_/-}"
-EGIT_COMMIT="dad3cb084f11e9aa0535a1024aab71dff8554ab2"
+EGIT_BRANCH="release/6.0"
+EGIT_TAG="${PV}-CallEdition"
 EGIT_SUBMODULES=(
     '*'
     '-external/linphone-sdk/external/*'
@@ -89,10 +90,6 @@ src_prepare() {
 
     # removing jsoncpp (it does no longer provide cmake files)
     sed -i '/find_package(JsonCPP REQUIRED)/d' external/linphone-sdk/liblinphone/CMakeLists.txt || die
-
-    # enabeling german langauge
-    cp "${FILESDIR}/de.ts" Linphone/data/languages || die
-    sed -i 's/set(LANGUAGES en fr_FR)/set(LANGUAGES de en fr_FR)/' Linphone/CMakeLists.txt || die
 
     cmake_src_prepare
 }
@@ -222,7 +219,6 @@ src_install() {
     newicon "${S}/Linphone/data/image/${PBN}.svg" ${PBN}.svg
     make_desktop_entry /usr/bin/${PBN} Linphone /usr/share/pixmaps/${PBN}.svg
 }
-
 
 pkg_postinst() {
     xdg_icon_cache_update

@@ -75,5 +75,5 @@ dev-vcs/git-cliff
 # experimental - not yet finished
 dev-util/dpdk
 
-# masked during stabilization
-=gui-apps/gnome-console-49_rc
+# masked during stabilization (patch not yet ready)
+>=gui-apps/gnome-console-49.0

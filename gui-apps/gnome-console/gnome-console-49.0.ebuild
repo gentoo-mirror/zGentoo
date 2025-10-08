@@ -33,6 +33,9 @@ BDEPEND="
 		dev-libs/appstream-glib
 	)
 "
+PATCHES=(
+	"${FILESDIR}/${PN}-48.1-enable_fullscreen_toggle.patch"
+)
 
 src_configure() {
 	local emesonargs=(

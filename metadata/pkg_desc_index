@@ -61,7 +61,7 @@ games-util/xone 0.3: Linux kernel driver for Xbox One and Xbox Series X|S access
 gnome-extra/gnome-shell-extension-asusctl-gex 4.2.0-r1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
 gnome-extra/gnome-shell-extension-freon 58: Freon is an extension for displaying sensors data.
 gnome-extra/gnome-shell-extension-supergfxctl-gex 5.0.4-r2 5.1.1-r1 5.1.2_rc2 5.2.1_rc1: Extension for visualizing asusctl-ctrl(asusd) settings and status.
-gui-apps/gnome-console 48.0.1-r1 49_rc: A simple user-friendly terminal emulator for the GNOME desktop
+gui-apps/gnome-console 48.1-r1 49.0: A simple user-friendly terminal emulator for the GNOME desktop
 mail-client/evolution 3.56.2-r1: Integrated mail, addressbook and calendaring functionality
 media-gfx/brother-mfc9332cdw-bin 1.0-r1: Scanner driver for Brother MFC-9332CDW (brscan4)
 media-gfx/brother-mfcl3730cdn-bin 1.0-r1: Scanner driver for Brother MFC-L3730CDN (brscan4)

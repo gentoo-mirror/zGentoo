@@ -30,7 +30,7 @@ EGIT_SUBMODULES=(
 )
 
 RDEPEND="
-    <dev-db/soci-4.1.0
+    >=dev-db/soci-4.1.0
     dev-db/sqlite
     dev-libs/jsoncpp
     dev-libs/libayatana-appindicator
@@ -67,6 +67,9 @@ RDEPEND="
     doc? ( app-text/doxygen )
 "
 DEPEND="${RDEPEND}"
+PATCHES=(
+    "${FILESDIR}/${P}_soci.patch" # fixes compile against soci >= 4.1
+)
 
 src_unpack() {
     git-r3_src_unpack
@@ -181,7 +184,6 @@ src_compile() {
 }
 
 src_install() {
-
     cmake_src_install # this might produce "errors" (corrections below)
 
     # package base-name (linphone)

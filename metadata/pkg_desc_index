@@ -88,7 +88,7 @@ net-print/brother-mfcl3730cdn-bin 1.0-r1: Brother printer driver for mfcl3730cdn
 net-print/cnijfilter 3.80: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-print/cnijfilter-drivers 3.70: Canon InkJet Printer Driver for Linux (Pixus/Pixma-Series).
 net-voip/baresip 3.20.0: Baresip is a portable and modular SIP User-Agent
-net-voip/linphone-desktop 6.0.1: Open source softphone for voice and video over IP calling and instant messaging.
+net-voip/linphone-desktop 6.0.1-r1: Open source softphone for voice and video over IP calling and instant messaging.
 sci-electronics/OpenHantek6022 3.3.2.2: OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes
 sys-kernel/zenergy 20250415: Linux kernel driver for reading RAPL registers for AMD Zen CPUs
 sys-libs/minilog 9999: A minimal header only C++ logger system

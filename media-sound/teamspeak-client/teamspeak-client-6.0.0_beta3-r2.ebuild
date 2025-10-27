@@ -5,9 +5,12 @@ EAPI=8
 
 inherit desktop xdg-utils
 
+MY_PV=${PVR/_/-}
+MY_PV=${MY_PV/-r/.}
+
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${PV/_/-}/teamspeak-client.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${MY_PV}/teamspeak-client.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="teamspeak6 || ( GPL-2 GPL-3 LGPL-3 )"
@@ -21,10 +24,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/olm
-	|| (
-		<media-video/ffmpeg-8
-		media-video/ffmpeg-compat:7
-	)
+	>=media-video/ffmpeg-8
 	media-libs/alsa-lib
 	media-libs/harfbuzz
 	media-libs/mesa
